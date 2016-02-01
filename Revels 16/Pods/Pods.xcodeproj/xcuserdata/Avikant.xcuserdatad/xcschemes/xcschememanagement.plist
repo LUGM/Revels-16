@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Revels 16.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TLYShyNavBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0E320758E279BE308E1C866662667E5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C3068941EC837EDF8AA7CDBBFCC85C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>935A7E52B6D8B7E37EAEA138EDC52155</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDFB10D55FBAEB8FC5C0A841A177D796</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

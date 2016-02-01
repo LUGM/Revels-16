@@ -35,7 +35,7 @@
         self.menuTitles         = [titles copy];
         self.imagesTitles       = [imgTitles copy];
         
-        self.menuColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
+        self.menuColor = FlatForestGreenDark;
         
         
         screenW = [[UIScreen mainScreen] bounds].size.width;
@@ -144,8 +144,8 @@
     
     // - Item Behavior
     UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[menuView]];
-    itemBehaviour.elasticity = 0.7;
-    itemBehaviour.resistance = 0.8;
+    itemBehaviour.elasticity = 0.6;
+    itemBehaviour.resistance = 0.9;
     itemBehaviour.allowsRotation = YES;
     [animator addBehavior:itemBehaviour];
     
@@ -221,11 +221,12 @@
 
 - (void)switchMenuState{
     
-    NSLog(@"Menu Button Pressed");
-    
+//    NSLog(@"Menu Button Pressed");
+	
     if (isOpen) {
         [self dismissMenu];
-    }else{
+    }
+	else{
         [self openMenu];
     }
 }

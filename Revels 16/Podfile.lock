@@ -1,0 +1,18 @@
+PODS:
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - SVProgressHUD (1.1.3)
+  - TLYShyNavBar (1.0.0)
+
+DEPENDENCIES:
+  - ChameleonFramework
+  - SVProgressHUD
+  - TLYShyNavBar
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
+
+COCOAPODS: 0.39.0

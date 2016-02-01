@@ -8,7 +8,16 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+#import "CategoriesTableViewController.h"
+#import "EventsListViewController.h"
+#import "FavouritesTableViewController.h"
+#import "InstagramViewController.h"
+#import "AboutTableViewController.h"
+#import "DevelopersViewController.h"
+
+#import "TGLGuillotineMenu.h"
+
+@interface AppDelegate () <TGLGuillotineMenuDelegate>
 
 @end
 
@@ -18,7 +27,30 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
+	[Chameleon setGlobalThemeUsingPrimaryColor:FlatForestGreen withSecondaryColor:FlatForestGreenDark andContentStyle:UIContentStyleContrast];
 	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+	
+	UINavigationController *ctvc = [storyboard instantiateViewControllerWithIdentifier:@"CategoriesVCNav"];
+	UINavigationController *evc = [storyboard instantiateViewControllerWithIdentifier:@"EventsVCNav"];
+	UINavigationController *ftvc = [storyboard instantiateViewControllerWithIdentifier:@"FavouritesVCNav"];
+	UINavigationController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"InstagramVCNav"];
+	UINavigationController *atvc = [storyboard instantiateViewControllerWithIdentifier:@"AboutVCNav"];
+	UINavigationController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DevelopersVCNav"];
+	
+	
+	NSArray *vcArray = @[ctvc, evc, ftvc, ivc, atvc, dvc];
+	NSArray *titles  = @[@"Categories", @"Events", @"Favourites", @"#Revels16", @"About Us", @"Developers"];
+	NSArray *images  = @[@"categoriesIcon", @"eventsIcon", @"favouritesIcon", @"instagramLogo", @"aboutIcon", @"developersIcon"];
+	
+	TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titles andImagesTitles:images andStyle:TGLGuillotineMenuStyleCollection];
+//	menuVC.delegate = self;
+	
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.window.rootViewController = navController;
+	self.window.backgroundColor = [UIColor whiteColor];
+	[self.window makeKeyAndVisible];
 	
 	return YES;
 }
@@ -45,6 +77,20 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
+}
+
+#pragma mark - TGL Guillotine Menu Delegate
+
+- (void)selectedMenuItemAtIndex:(NSInteger)index {
+	NSLog(@"Selected menu item at index %ld", index);
+}
+
+- (void)menuDidOpen {
+	NSLog(@"Menu did Open");
+}
+
+- (void)menuDidClose {
+	NSLog(@"Menu did Close");
 }
 
 #pragma mark - Core Data stack

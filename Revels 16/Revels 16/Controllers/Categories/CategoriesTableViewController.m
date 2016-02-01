@@ -29,6 +29,8 @@
 	categories = [NSMutableArray new];
 	categories = [@[@"Cat 1", @"Cat 2", @"Cat 3", @"Cat 4"] mutableCopy];
 	
+	
+	
 }
 
 - (void)didReceiveMemoryWarning {
