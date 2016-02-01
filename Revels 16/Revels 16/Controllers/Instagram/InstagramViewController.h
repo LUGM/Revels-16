@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RPSlidingMenuViewController.h"
 
-@interface InstagramViewController : UIViewController
+#define kTagToSearch @"techtatva15"
+
+@interface InstagramViewController : RPSlidingMenuViewController
+
+
 
 @end

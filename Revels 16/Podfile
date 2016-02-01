@@ -8,6 +8,7 @@ target 'Revels 16' do
 pod 'ChameleonFramework'
 pod 'TLYShyNavBar'
 pod 'SVProgressHUD'
+pod 'SDWebImage', '~>3.7'
 
 end
 

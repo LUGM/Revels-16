@@ -20,6 +20,10 @@
 
 #import <TLYShyNavBar/TLYShyNavBarManager.h>
 
+#import "ASMutableURLRequest.h"
+
+#define SWdith [UIScreen mainScreen].bounds.size.width
+#define SHeight [UIScreen mainScreen].bounds.size.height
 
 #define SVHUD_SHOW dispatch_async(dispatch_get_main_queue(),^{[SVProgressHUD showWithStatus:@"Loading..."];});
 #define SVHUD_HIDE dispatch_async(dispatch_get_main_queue(),^{[SVProgressHUD dismiss];});

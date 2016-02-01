@@ -14,8 +14,6 @@
 		596F91CC1C5F18F9000CBD48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 596F91CB1C5F18F9000CBD48 /* Assets.xcassets */; };
 		596F91CF1C5F18F9000CBD48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */; };
 		596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92051C5F35F7000CBD48 /* TGLGuillotineMenu.m */; };
-		596F920B1C5F35F7000CBD48 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F92071C5F35F7000CBD48 /* KaedeTextField.swift */; };
-		596F920C1C5F35F7000CBD48 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F92091C5F35F7000CBD48 /* TextFieldsEffects.swift */; };
 		596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */; };
 		596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
@@ -26,6 +24,14 @@
 		59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2B71C5F7D7400471695 /* DevelopersViewController.m */; };
 		59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2BB1C5F7E6D00471695 /* ASMutableURLRequest.m */; };
 		59F7B2C01C5F801B00471695 /* InstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2BF1C5F801B00471695 /* InstagramViewController.m */; };
+		59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2C41C5F8D0200471695 /* RPSlidingMenuCell.m */; };
+		59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2C61C5F8D0200471695 /* RPSlidingMenuLayout.m */; };
+		59F7B2CB1C5F8D0200471695 /* RPSlidingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2C81C5F8D0200471695 /* RPSlidingMenuViewController.m */; };
+		59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2CE1C5FBDF700471695 /* InstagramData.m */; };
+		59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F7B2D01C5FC9BE00471695 /* ImageIO.framework */; };
+		59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */; };
+		59F7B2D81C5FD17300471695 /* CrossButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2D71C5FD17300471695 /* CrossButton.m */; };
+		59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */; };
 		EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */; };
 /* End PBXBuildFile section */
 
@@ -42,13 +48,10 @@
 		596F91D01C5F18F9000CBD48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596F92041C5F35F7000CBD48 /* TGLGuillotineMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGLGuillotineMenu.h; sourceTree = "<group>"; };
 		596F92051C5F35F7000CBD48 /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGLGuillotineMenu.m; sourceTree = "<group>"; };
-		596F92071C5F35F7000CBD48 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
-		596F92091C5F35F7000CBD48 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
 		596F920D1C5F3651000CBD48 /* CategoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewController.h; path = Controllers/Categories/CategoriesTableViewController.h; sourceTree = "<group>"; };
 		596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewController.m; path = Controllers/Categories/CategoriesTableViewController.m; sourceTree = "<group>"; };
 		596F92111C5F36B4000CBD48 /* CategoriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewCell.h; path = Views/Cells/CategoriesTableViewCell.h; sourceTree = "<group>"; };
 		596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewCell.m; path = Views/Cells/CategoriesTableViewCell.m; sourceTree = "<group>"; };
-		596F92141C5F3765000CBD48 /* Revels 16-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Revels 16-Bridging-Header.h"; sourceTree = "<group>"; };
 		59F7B2661C5F64CE00471695 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59F7B2A41C5F746A00471695 /* EventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsListViewController.h; path = Controllers/Events/EventsListViewController.h; sourceTree = "<group>"; };
 		59F7B2A51C5F746A00471695 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsListViewController.m; path = Controllers/Events/EventsListViewController.m; sourceTree = "<group>"; };
@@ -66,6 +69,22 @@
 		59F7B2BB1C5F7E6D00471695 /* ASMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASMutableURLRequest.m; path = Libraries/ASMutableURLRequest/ASMutableURLRequest.m; sourceTree = "<group>"; };
 		59F7B2BE1C5F801B00471695 /* InstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramViewController.h; path = Controllers/Instagram/InstagramViewController.h; sourceTree = "<group>"; };
 		59F7B2BF1C5F801B00471695 /* InstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramViewController.m; path = Controllers/Instagram/InstagramViewController.m; sourceTree = "<group>"; };
+		59F7B2C21C5F8D0200471695 /* RPSlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenu.h; sourceTree = "<group>"; };
+		59F7B2C31C5F8D0200471695 /* RPSlidingMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuCell.h; sourceTree = "<group>"; };
+		59F7B2C41C5F8D0200471695 /* RPSlidingMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuCell.m; sourceTree = "<group>"; };
+		59F7B2C51C5F8D0200471695 /* RPSlidingMenuLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuLayout.h; sourceTree = "<group>"; };
+		59F7B2C61C5F8D0200471695 /* RPSlidingMenuLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuLayout.m; sourceTree = "<group>"; };
+		59F7B2C71C5F8D0200471695 /* RPSlidingMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuViewController.h; sourceTree = "<group>"; };
+		59F7B2C81C5F8D0200471695 /* RPSlidingMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuViewController.m; sourceTree = "<group>"; };
+		59F7B2CD1C5FBDF700471695 /* InstagramData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramData.h; path = Model/Instagram/InstagramData.h; sourceTree = "<group>"; };
+		59F7B2CE1C5FBDF700471695 /* InstagramData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramData.m; path = Model/Instagram/InstagramData.m; sourceTree = "<group>"; };
+		59F7B2D01C5FC9BE00471695 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		59F7B2D21C5FD04000471695 /* InstagramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramDetailViewController.h; path = Controllers/Instagram/InstagramDetailViewController.h; sourceTree = "<group>"; };
+		59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramDetailViewController.m; path = Controllers/Instagram/InstagramDetailViewController.m; sourceTree = "<group>"; };
+		59F7B2D61C5FD17300471695 /* CrossButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossButton.h; sourceTree = "<group>"; };
+		59F7B2D71C5FD17300471695 /* CrossButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossButton.m; sourceTree = "<group>"; };
+		59F7B2DA1C5FD4BD00471695 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Revels 16.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2288AEFED249667A1BA3B48 /* Pods-Revels 16.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */,
 				EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				59F7B2661C5F64CE00471695 /* PrefixHeader.pch */,
-				596F92141C5F3765000CBD48 /* Revels 16-Bridging-Header.h */,
 				596F91D01C5F18F9000CBD48 /* Info.plist */,
 				596F91BD1C5F18F9000CBD48 /* main.m */,
 			);
@@ -159,6 +178,7 @@
 		596F91D91C5F1927000CBD48 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				59F7B2D51C5FD17300471695 /* Cross Button */,
 				596F92101C5F3698000CBD48 /* Cells */,
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
@@ -169,6 +189,7 @@
 		596F91DA1C5F1931000CBD48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59F7B2CC1C5FBD2100471695 /* Instagram */,
 				596F91C81C5F18F9000CBD48 /* Revels_16.xcdatamodeld */,
 			);
 			name = Model;
@@ -177,9 +198,10 @@
 		596F91DB1C5F1B3A000CBD48 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */,
+				59F7B2C11C5F8D0200471695 /* RPSlidingMenu */,
 				59F7B2B91C5F7E4900471695 /* ASMutableURLRequest */,
 				596F92031C5F35F7000CBD48 /* GuillotineMenu */,
-				596F92061C5F35F7000CBD48 /* TextFieldEffects */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -192,16 +214,6 @@
 			);
 			name = GuillotineMenu;
 			path = Libraries/GuillotineMenu;
-			sourceTree = "<group>";
-		};
-		596F92061C5F35F7000CBD48 /* TextFieldEffects */ = {
-			isa = PBXGroup;
-			children = (
-				596F92071C5F35F7000CBD48 /* KaedeTextField.swift */,
-				596F92091C5F35F7000CBD48 /* TextFieldsEffects.swift */,
-			);
-			name = TextFieldEffects;
-			path = Libraries/TextFieldEffects;
 			sourceTree = "<group>";
 		};
 		596F92101C5F3698000CBD48 /* Cells */ = {
@@ -267,8 +279,53 @@
 			children = (
 				59F7B2BE1C5F801B00471695 /* InstagramViewController.h */,
 				59F7B2BF1C5F801B00471695 /* InstagramViewController.m */,
+				59F7B2D21C5FD04000471695 /* InstagramDetailViewController.h */,
+				59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */,
 			);
 			name = Instagram;
+			sourceTree = "<group>";
+		};
+		59F7B2C11C5F8D0200471695 /* RPSlidingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				59F7B2C21C5F8D0200471695 /* RPSlidingMenu.h */,
+				59F7B2C31C5F8D0200471695 /* RPSlidingMenuCell.h */,
+				59F7B2C41C5F8D0200471695 /* RPSlidingMenuCell.m */,
+				59F7B2C51C5F8D0200471695 /* RPSlidingMenuLayout.h */,
+				59F7B2C61C5F8D0200471695 /* RPSlidingMenuLayout.m */,
+				59F7B2C71C5F8D0200471695 /* RPSlidingMenuViewController.h */,
+				59F7B2C81C5F8D0200471695 /* RPSlidingMenuViewController.m */,
+			);
+			path = RPSlidingMenu;
+			sourceTree = "<group>";
+		};
+		59F7B2CC1C5FBD2100471695 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				59F7B2CD1C5FBDF700471695 /* InstagramData.h */,
+				59F7B2CE1C5FBDF700471695 /* InstagramData.m */,
+			);
+			name = Instagram;
+			sourceTree = "<group>";
+		};
+		59F7B2D51C5FD17300471695 /* Cross Button */ = {
+			isa = PBXGroup;
+			children = (
+				59F7B2D61C5FD17300471695 /* CrossButton.h */,
+				59F7B2D71C5FD17300471695 /* CrossButton.m */,
+			);
+			name = "Cross Button";
+			path = "Views/Cross Button";
+			sourceTree = "<group>";
+		};
+		59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				59F7B2DA1C5FD4BD00471695 /* UIImage+ImageEffects.h */,
+				59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */,
+			);
+			name = "UIImage+ImageEffects";
+			path = "Libraries/UIImage+ImageEffects";
 			sourceTree = "<group>";
 		};
 		8F15D47B282FEBBCEC28877F /* Pods */ = {
@@ -283,6 +340,7 @@
 		9D4BA4DDFB93C96C01B29C17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59F7B2D01C5FC9BE00471695 /* ImageIO.framework */,
 				A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */,
 			);
 			name = Frameworks;
@@ -409,22 +467,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596F920B1C5F35F7000CBD48 /* KaedeTextField.swift in Sources */,
 				596F91CA1C5F18F9000CBD48 /* Revels_16.xcdatamodeld in Sources */,
 				596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */,
+				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
-				596F920C1C5F35F7000CBD48 /* TextFieldsEffects.swift in Sources */,
 				59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */,
 				596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */,
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
 				596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */,
 				59F7B2C01C5F801B00471695 /* InstagramViewController.m in Sources */,
+				59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
 				59F7B2B01C5F79B000471695 /* FavouriteTableViewCell.m in Sources */,
+				59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */,
+				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
+				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
+				59F7B2D81C5FD17300471695 /* CrossButton.m in Sources */,
+				59F7B2CB1C5F8D0200471695 /* RPSlidingMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,8 +608,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Dark-Army.Revels-16";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Revels 16/Revels 16-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -564,7 +625,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Dark-Army.Revels-16";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Revels 16/Revels 16-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
