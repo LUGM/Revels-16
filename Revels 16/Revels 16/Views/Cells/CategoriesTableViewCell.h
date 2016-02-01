@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CategoriesTableViewCell.h
 //  Revels 16
 //
 //  Created by Avikant Saini on 2/1/16.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface CategoriesTableViewCell : UITableViewCell
 
 @end
-
