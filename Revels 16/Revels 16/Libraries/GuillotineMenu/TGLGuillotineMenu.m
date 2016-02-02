@@ -35,7 +35,7 @@
         self.menuTitles         = [titles copy];
         self.imagesTitles       = [imgTitles copy];
         
-        self.menuColor = FlatForestGreenDark;
+        self.menuColor = GLOBAL_BACK_COLOR;
         
         
         screenW = [[UIScreen mainScreen] bounds].size.width;
@@ -62,11 +62,11 @@
 
 - (void)viewDidLoad {
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     UINavigationBar* navBar = self.navigationController.navigationBar;
     [navBar setTranslucent:YES];
-    navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor darkTextColor]};
     [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
     
@@ -207,7 +207,7 @@
             [self.menuButton.layer addAnimation: rota forKey: @"rotation"];
             oldAngle = currentAngle;
             
-            self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithWhite:1.0 alpha:((-degrees)/90)]};
+            self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithWhite:0.0 alpha:((-degrees)/90)]};
         }
     };
     
@@ -354,7 +354,7 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor darkTextColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:19.f];
     cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
@@ -421,7 +421,7 @@
 	
 	if (!cell.textLabel) {
 		cell.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2*height/3, width, height/3)];
-		cell.textLabel.textColor = [UIColor whiteColor];
+		cell.textLabel.textColor = [UIColor darkTextColor];
 		cell.textLabel.textAlignment = NSTextAlignmentCenter;
 		cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:17.f];
 		[cell.contentView addSubview:cell.textLabel];

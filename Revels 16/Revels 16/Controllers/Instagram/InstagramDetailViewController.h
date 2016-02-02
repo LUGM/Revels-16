@@ -20,5 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *captionTextLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *crossButton;
+
 
 @end

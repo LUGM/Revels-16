@@ -17,6 +17,7 @@
 @implementation InstagramDetailViewController
 
 - (void)viewDidLoad {
+	
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
@@ -28,7 +29,10 @@
 	self.usernameLabel.text = [NSString stringWithFormat:@"@%@", self.instaData.username];
 	self.likesCountLabel.text = [NSString stringWithFormat:@"%li", self.instaData.likesCount];
 	self.commentsCountLabel.text = [NSString stringWithFormat:@"%li", self.instaData.commentsCount];
+	self.captionTextLabel.text = self.instaData.captionText;
 	
+	self.crossButton.backgroundColor = [UIColor clearColor];
+
 }
 
 - (void)didReceiveMemoryWarning {

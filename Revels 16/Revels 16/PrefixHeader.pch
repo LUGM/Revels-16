@@ -36,8 +36,8 @@ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-#define GLOBAL_TINT_COLOR UIColorFromRGBWithAlpha(0xffffff, 1.f)
-#define GLOBAL_BACK_COLOR UIColorFromRGBWithAlpha(0xf26822, 1.f)
+#define GLOBAL_BACK_COLOR UIColorFromRGBWithAlpha(0xf9f7f3, 1.f)
+#define GLOBAL_TINT_COLOR UIColorFromRGBWithAlpha(0xb9cf32, 1.f)
 
 #define SHOW_ALERT_IN_MAIN_QUEUE(alertMessage) dispatch_async(dispatch_get_main_queue(), ^{ SHOW_ALERT(alertMessage) });
 

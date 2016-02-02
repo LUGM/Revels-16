@@ -27,17 +27,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
-	[Chameleon setGlobalThemeUsingPrimaryColor:FlatForestGreen withSecondaryColor:FlatForestGreenDark andContentStyle:UIContentStyleContrast];
+	[Chameleon setGlobalThemeUsingPrimaryColor:GLOBAL_BACK_COLOR withSecondaryColor:GLOBAL_BACK_COLOR andContentStyle:UIContentStyleContrast];
 	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	
 	UINavigationController *ctvc = [storyboard instantiateViewControllerWithIdentifier:@"CategoriesVCNav"];
 	UINavigationController *evc = [storyboard instantiateViewControllerWithIdentifier:@"EventsVCNav"];
 	UINavigationController *ftvc = [storyboard instantiateViewControllerWithIdentifier:@"FavouritesVCNav"];
-	UINavigationController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"InstagramVCNav"];
+	UINavigationController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"InstagramV2VCNav"];
 	UINavigationController *atvc = [storyboard instantiateViewControllerWithIdentifier:@"AboutVCNav"];
 	UINavigationController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DevelopersVCNav"];
 	
+	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];
+	[SVProgressHUD setForegroundColor:[UIColor blackColor]];
 	
 	NSArray *vcArray = @[ctvc, evc, ftvc, ivc, atvc, dvc];
 	NSArray *titles  = @[@"Categories", @"Events", @"Favourites", @"#Revels16", @"About Us", @"Developers"];

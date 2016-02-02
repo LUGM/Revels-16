@@ -16,6 +16,10 @@
 		596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92051C5F35F7000CBD48 /* TGLGuillotineMenu.m */; };
 		596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */; };
 		596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */; };
+		59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */; };
+		59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */; };
+		59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13BF1C608ED200679C49 /* DMBaseTransition.m */; };
+		59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13C11C608ED200679C49 /* DMSlideTransition.m */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
 		59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */; };
 		59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */; };
@@ -30,7 +34,6 @@
 		59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2CE1C5FBDF700471695 /* InstagramData.m */; };
 		59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F7B2D01C5FC9BE00471695 /* ImageIO.framework */; };
 		59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */; };
-		59F7B2D81C5FD17300471695 /* CrossButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2D71C5FD17300471695 /* CrossButton.m */; };
 		59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */; };
 		EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */; };
 /* End PBXBuildFile section */
@@ -52,6 +55,14 @@
 		596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewController.m; path = Controllers/Categories/CategoriesTableViewController.m; sourceTree = "<group>"; };
 		596F92111C5F36B4000CBD48 /* CategoriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewCell.h; path = Views/Cells/CategoriesTableViewCell.h; sourceTree = "<group>"; };
 		596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewCell.m; path = Views/Cells/CategoriesTableViewCell.m; sourceTree = "<group>"; };
+		59BA13AC1C60764D00679C49 /* InstagramV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramV2ViewController.h; path = Controllers/Instagram/InstagramV2ViewController.h; sourceTree = "<group>"; };
+		59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramV2ViewController.m; path = Controllers/Instagram/InstagramV2ViewController.m; sourceTree = "<group>"; };
+		59BA13B61C6079B600679C49 /* ParallaxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParallaxCollectionViewCell.h; path = Views/Cells/ParallaxCollectionViewCell.h; sourceTree = "<group>"; };
+		59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParallaxCollectionViewCell.m; path = Views/Cells/ParallaxCollectionViewCell.m; sourceTree = "<group>"; };
+		59BA13BE1C608ED200679C49 /* DMBaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseTransition.h; sourceTree = "<group>"; };
+		59BA13BF1C608ED200679C49 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
+		59BA13C01C608ED200679C49 /* DMSlideTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSlideTransition.h; sourceTree = "<group>"; };
+		59BA13C11C608ED200679C49 /* DMSlideTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSlideTransition.m; sourceTree = "<group>"; };
 		59F7B2661C5F64CE00471695 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59F7B2A41C5F746A00471695 /* EventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsListViewController.h; path = Controllers/Events/EventsListViewController.h; sourceTree = "<group>"; };
 		59F7B2A51C5F746A00471695 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsListViewController.m; path = Controllers/Events/EventsListViewController.m; sourceTree = "<group>"; };
@@ -81,8 +92,6 @@
 		59F7B2D01C5FC9BE00471695 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		59F7B2D21C5FD04000471695 /* InstagramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramDetailViewController.h; path = Controllers/Instagram/InstagramDetailViewController.h; sourceTree = "<group>"; };
 		59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramDetailViewController.m; path = Controllers/Instagram/InstagramDetailViewController.m; sourceTree = "<group>"; };
-		59F7B2D61C5FD17300471695 /* CrossButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossButton.h; sourceTree = "<group>"; };
-		59F7B2D71C5FD17300471695 /* CrossButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossButton.m; sourceTree = "<group>"; };
 		59F7B2DA1C5FD4BD00471695 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Revels 16.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,7 +187,6 @@
 		596F91D91C5F1927000CBD48 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
-				59F7B2D51C5FD17300471695 /* Cross Button */,
 				596F92101C5F3698000CBD48 /* Cells */,
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
@@ -198,6 +206,7 @@
 		596F91DB1C5F1B3A000CBD48 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				59BA13BD1C608ED200679C49 /* DMCustomTransitions */,
 				59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */,
 				59F7B2C11C5F8D0200471695 /* RPSlidingMenu */,
 				59F7B2B91C5F7E4900471695 /* ASMutableURLRequest */,
@@ -219,14 +228,87 @@
 		596F92101C5F3698000CBD48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				59BA13B51C60797100679C49 /* Parallax Instagram */,
+				59BA13B41C60796B00679C49 /* Favourites */,
+				59BA13B31C60796800679C49 /* Events */,
+				59BA13B11C60795E00679C49 /* Categories */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		59BA13B11C60795E00679C49 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
 				596F92111C5F36B4000CBD48 /* CategoriesTableViewCell.h */,
 				596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		59BA13B31C60796800679C49 /* Events */ = {
+			isa = PBXGroup;
+			children = (
 				59F7B2A71C5F74DB00471695 /* EventsTableViewCell.h */,
 				59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		59BA13B41C60796B00679C49 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
 				59F7B2AE1C5F79B000471695 /* FavouriteTableViewCell.h */,
 				59F7B2AF1C5F79B000471695 /* FavouriteTableViewCell.m */,
 			);
-			name = Cells;
+			name = Favourites;
+			sourceTree = "<group>";
+		};
+		59BA13B51C60797100679C49 /* Parallax Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				59BA13B61C6079B600679C49 /* ParallaxCollectionViewCell.h */,
+				59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */,
+			);
+			name = "Parallax Instagram";
+			sourceTree = "<group>";
+		};
+		59BA13B91C608ADF00679C49 /* Version 1 */ = {
+			isa = PBXGroup;
+			children = (
+				59F7B2BE1C5F801B00471695 /* InstagramViewController.h */,
+				59F7B2BF1C5F801B00471695 /* InstagramViewController.m */,
+			);
+			name = "Version 1";
+			sourceTree = "<group>";
+		};
+		59BA13BB1C608AE800679C49 /* Version 2 */ = {
+			isa = PBXGroup;
+			children = (
+				59BA13AC1C60764D00679C49 /* InstagramV2ViewController.h */,
+				59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */,
+			);
+			name = "Version 2";
+			sourceTree = "<group>";
+		};
+		59BA13BC1C608AEB00679C49 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				59F7B2D21C5FD04000471695 /* InstagramDetailViewController.h */,
+				59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		59BA13BD1C608ED200679C49 /* DMCustomTransitions */ = {
+			isa = PBXGroup;
+			children = (
+				59BA13BE1C608ED200679C49 /* DMBaseTransition.h */,
+				59BA13BF1C608ED200679C49 /* DMBaseTransition.m */,
+				59BA13C01C608ED200679C49 /* DMSlideTransition.h */,
+				59BA13C11C608ED200679C49 /* DMSlideTransition.m */,
+			);
+			name = DMCustomTransitions;
+			path = Libraries/DMCustomTransitions;
 			sourceTree = "<group>";
 		};
 		59F7B2A31C5F744B00471695 /* Events */ = {
@@ -277,10 +359,9 @@
 		59F7B2BD1C5F800300471695 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
-				59F7B2BE1C5F801B00471695 /* InstagramViewController.h */,
-				59F7B2BF1C5F801B00471695 /* InstagramViewController.m */,
-				59F7B2D21C5FD04000471695 /* InstagramDetailViewController.h */,
-				59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */,
+				59BA13BC1C608AEB00679C49 /* Detail */,
+				59BA13BB1C608AE800679C49 /* Version 2 */,
+				59BA13B91C608ADF00679C49 /* Version 1 */,
 			);
 			name = Instagram;
 			sourceTree = "<group>";
@@ -306,16 +387,6 @@
 				59F7B2CE1C5FBDF700471695 /* InstagramData.m */,
 			);
 			name = Instagram;
-			sourceTree = "<group>";
-		};
-		59F7B2D51C5FD17300471695 /* Cross Button */ = {
-			isa = PBXGroup;
-			children = (
-				59F7B2D61C5FD17300471695 /* CrossButton.h */,
-				59F7B2D71C5FD17300471695 /* CrossButton.m */,
-			);
-			name = "Cross Button";
-			path = "Views/Cross Button";
 			sourceTree = "<group>";
 		};
 		59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */ = {
@@ -472,6 +543,7 @@
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
 				59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */,
+				59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */,
 				596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */,
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
 				596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */,
@@ -479,6 +551,7 @@
 				59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
+				59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
@@ -486,8 +559,9 @@
 				59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
 				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
-				59F7B2D81C5FD17300471695 /* CrossButton.m in Sources */,
+				59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */,
 				59F7B2CB1C5F8D0200471695 /* RPSlidingMenuViewController.m in Sources */,
+				59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
