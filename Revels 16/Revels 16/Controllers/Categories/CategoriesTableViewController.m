@@ -14,8 +14,14 @@
 
 @end
 
-@implementation CategoriesTableViewController {
+@implementation CategoriesTableViewController
+{
+    NSMutableArray *extractedArray;
 	NSMutableArray *categories;
+    NSMutableArray *categoryDescriptions;
+    NSMutableArray *categoryIds;
+    NSMutableArray *categoryTypes;
+    NSDictionary *fetchedData;
 	DADataManager *dataManager;
 }
 
@@ -45,14 +51,32 @@
 		if (error) {
 			SVHUD_FAILURE(@"Failed");
 			dispatch_async(dispatch_get_main_queue(), ^{
-				
-			});
+                
+            });
 		}
 		
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		if (statusCode == 200) {
-			
+		if (statusCode == 200)
+        {
+            id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            fetchedData = jsonData;
+            extractedArray = [jsonData valueForKey:@"data"];
+            categories = [NSMutableArray new];
+            categoryDescriptions = [NSMutableArray new];
+            categoryIds = [NSMutableArray new];
+            categoryTypes = [NSMutableArray new];
+            
+            for (NSDictionary *dict in extractedArray)
+            {
+                [categories addObject:[dict objectForKey:@"categoryName"]];
+                [categoryDescriptions addObject:[dict objectForKey:@"description"]];
+                [categoryIds addObject:[dict objectForKey:@"categoryID"]];
+                [categoryTypes addObject:[dict objectForKey:@"categoryType"]];
+            }
+            
+            [self saveToFile];
+            
 		}
 		
 		SVHUD_HIDE;
@@ -73,6 +97,21 @@
 		}
 	}
 	
+}
+
+- (void) saveToFile
+{
+    
+    NSMutableArray *arrayToSave = [NSMutableArray arrayWithCapacity:extractedArray.count];
+    [extractedArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary* exportDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    categories, @"categoryName",
+                                    categoryDescriptions, @"description", categoryIds, @"categoryID", categoryTypes, @"categoryType", nil];
+        [arrayToSave addObject:exportDict];
+    }];
+    
+    [arrayToSave writeToFile:@"categories.dat" atomically:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
