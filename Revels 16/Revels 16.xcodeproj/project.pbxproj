@@ -20,6 +20,8 @@
 		59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */; };
 		59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13BF1C608ED200679C49 /* DMBaseTransition.m */; };
 		59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13C11C608ED200679C49 /* DMSlideTransition.m */; };
+		59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13CE1C60DE1200679C49 /* REVCategory.m */; };
+		59BA13D41C60E28500679C49 /* DADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13D31C60E28500679C49 /* DADataManager.m */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
 		59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */; };
 		59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */; };
@@ -63,6 +65,11 @@
 		59BA13BF1C608ED200679C49 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
 		59BA13C01C608ED200679C49 /* DMSlideTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSlideTransition.h; sourceTree = "<group>"; };
 		59BA13C11C608ED200679C49 /* DMSlideTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSlideTransition.m; sourceTree = "<group>"; };
+		59BA13C71C60D98C00679C49 /* Revels 16.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Revels 16.entitlements"; sourceTree = "<group>"; };
+		59BA13CD1C60DE1200679C49 /* REVCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVCategory.h; path = Model/Category/REVCategory.h; sourceTree = "<group>"; };
+		59BA13CE1C60DE1200679C49 /* REVCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVCategory.m; path = Model/Category/REVCategory.m; sourceTree = "<group>"; };
+		59BA13D21C60E28500679C49 /* DADataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADataManager.h; path = Model/DADataManager/DADataManager.h; sourceTree = "<group>"; };
+		59BA13D31C60E28500679C49 /* DADataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADataManager.m; path = Model/DADataManager/DADataManager.m; sourceTree = "<group>"; };
 		59F7B2661C5F64CE00471695 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59F7B2A41C5F746A00471695 /* EventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsListViewController.h; path = Controllers/Events/EventsListViewController.h; sourceTree = "<group>"; };
 		59F7B2A51C5F746A00471695 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsListViewController.m; path = Controllers/Events/EventsListViewController.m; sourceTree = "<group>"; };
@@ -132,6 +139,7 @@
 		596F91BB1C5F18F9000CBD48 /* Revels 16 */ = {
 			isa = PBXGroup;
 			children = (
+				59BA13C71C60D98C00679C49 /* Revels 16.entitlements */,
 				596F91CB1C5F18F9000CBD48 /* Assets.xcassets */,
 				596F91DB1C5F1B3A000CBD48 /* Libraries */,
 				596F91D61C5F1913000CBD48 /* App Delegate */,
@@ -197,6 +205,8 @@
 		596F91DA1C5F1931000CBD48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59BA13D11C60E22900679C49 /* Data Manager */,
+				59BA13C81C60DD9D00679C49 /* Categories */,
 				59F7B2CC1C5FBD2100471695 /* Instagram */,
 				596F91C81C5F18F9000CBD48 /* Revels_16.xcdatamodeld */,
 			);
@@ -309,6 +319,24 @@
 			);
 			name = DMCustomTransitions;
 			path = Libraries/DMCustomTransitions;
+			sourceTree = "<group>";
+		};
+		59BA13C81C60DD9D00679C49 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				59BA13CD1C60DE1200679C49 /* REVCategory.h */,
+				59BA13CE1C60DE1200679C49 /* REVCategory.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		59BA13D11C60E22900679C49 /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				59BA13D21C60E28500679C49 /* DADataManager.h */,
+				59BA13D31C60E28500679C49 /* DADataManager.m */,
+			);
+			name = "Data Manager";
 			sourceTree = "<group>";
 		};
 		59F7B2A31C5F744B00471695 /* Events */ = {
@@ -447,10 +475,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = "Dark Army";
+				ORGANIZATIONNAME = LUG;
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = HN3SCP8A52;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -553,10 +590,12 @@
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
 				59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
+				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
 				59F7B2B01C5F79B000471695 /* FavouriteTableViewCell.m in Sources */,
 				59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */,
+				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
 				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
 				59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */,
@@ -675,12 +714,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/Avikant/Documents/Xcode/Revels-16/Revels 16/Revels 16/PrefixHeader.pch";
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Dark-Army.Revels-16";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.Revels-16";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -692,12 +732,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/Avikant/Documents/Xcode/Revels-16/Revels 16/Revels 16/PrefixHeader.pch";
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Dark-Army.Revels-16";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.Revels-16";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

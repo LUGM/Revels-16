@@ -12,15 +12,13 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-#import "AppDelegate.h"
-
 #import <SVProgressHUD/SVProgressHUD.h>
-
 #import <ChameleonFramework/Chameleon.h>
-
 #import <TLYShyNavBar/TLYShyNavBarManager.h>
 
+#import "AppDelegate.h"
 #import "ASMutableURLRequest.h"
+#import "DADataManager.h"
 
 #define SWdith [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
