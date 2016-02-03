@@ -46,7 +46,7 @@
 }
 
 - (void)setPlaceholderImage:(UIImage *)placeholderImage {
-	[self.parallaxImageView sd_setImageWithURL:self.imageURL placeholderImage:self.placeholderImage];
+	[self.parallaxImageView sd_setImageWithURL:self.imageURL placeholderImage:placeholderImage];
 	[self setImageOffset:self.imageOffset];
 }
 

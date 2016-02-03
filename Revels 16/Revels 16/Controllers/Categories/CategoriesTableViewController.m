@@ -10,18 +10,15 @@
 #import "CategoriesTableViewCell.h"
 #import "REVCategory.h"
 
-@interface CategoriesTableViewController ()
+@interface CategoriesTableViewController () <UISearchResultsUpdating>
+
+@property (nonatomic, strong) UISearchController *searchController;
 
 @end
 
-@implementation CategoriesTableViewController
-{
-    NSMutableArray *extractedArray;
-	NSMutableArray *categories;
-    NSMutableArray *categoryDescriptions;
-    NSMutableArray *categoryIds;
-    NSMutableArray *categoryTypes;
-    NSDictionary *fetchedData;
+@implementation CategoriesTableViewController {
+	NSMutableArray <REVCategory *> *categories;
+	NSMutableArray <REVCategory *> *filteredCategories;
 	DADataManager *dataManager;
 }
 
@@ -31,10 +28,14 @@
 	dataManager = [DADataManager sharedManager];
 	
 	categories = [NSMutableArray new];
+	filteredCategories = [NSMutableArray new];
 	
 	[self fetchSavedCategories];
 	
+	// Check for connection
 	[self fetchCategories];
+	
+	[self setupSearchController];
 	
 }
 
@@ -51,32 +52,32 @@
 		if (error) {
 			SVHUD_FAILURE(@"Failed");
 			dispatch_async(dispatch_get_main_queue(), ^{
-                
+				[self fetchSavedCategories];
             });
 		}
 		
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		if (statusCode == 200)
-        {
-            id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            fetchedData = jsonData;
-            extractedArray = [jsonData valueForKey:@"data"];
-            categories = [NSMutableArray new];
-            categoryDescriptions = [NSMutableArray new];
-            categoryIds = [NSMutableArray new];
-            categoryTypes = [NSMutableArray new];
-            
-            for (NSDictionary *dict in extractedArray)
-            {
-                [categories addObject:[dict objectForKey:@"categoryName"]];
-                [categoryDescriptions addObject:[dict objectForKey:@"description"]];
-                [categoryIds addObject:[dict objectForKey:@"categoryID"]];
-                [categoryTypes addObject:[dict objectForKey:@"categoryType"]];
-            }
-            
-            [self saveToFile];
-            
+		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+		
+		if (statusCode == 200) {
+			
+			id catJSON = [jsonData valueForKey:@"data"];
+			if (catJSON) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					categories = [REVCategory getArrayFromJSONData:catJSON];
+					filteredCategories  = [NSMutableArray arrayWithArray:categories];
+					[dataManager saveObject:catJSON toDocumentsFile:@"categories.dat"];
+					[self.tableView reloadData];
+				});
+			}
+		}
+		else {
+			
+			SVHUD_FAILURE(@"Failed");
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self fetchSavedCategories];
+			});
 		}
 		
 		SVHUD_HIDE;
@@ -93,25 +94,21 @@
 		
 		if (jsonData != nil) {
 			categories = [REVCategory getArrayFromJSONData:jsonData];
+			filteredCategories = [NSMutableArray arrayWithArray:categories];
 			[self.tableView reloadData];
 		}
 	}
 	
 }
 
-- (void) saveToFile
-{
-    
-    NSMutableArray *arrayToSave = [NSMutableArray arrayWithCapacity:extractedArray.count];
-    [extractedArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSDictionary* exportDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    categories, @"categoryName",
-                                    categoryDescriptions, @"description", categoryIds, @"categoryID", categoryTypes, @"categoryType", nil];
-        [arrayToSave addObject:exportDict];
-    }];
-    
-    [arrayToSave writeToFile:@"categories.dat" atomically:YES];
-    
+- (void)setupSearchController {
+	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+	self.searchController.searchResultsUpdater = self;
+	self.searchController.hidesNavigationBarDuringPresentation = NO;
+	self.searchController.dimsBackgroundDuringPresentation = NO;
+	self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+	self.definesPresentationContext = YES;
+	self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,6 +123,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	if (self.searchController.isActive && self.searchController.searchBar.text.length > 0)
+		return filteredCategories.count;
     return categories.count;
 }
 
@@ -136,8 +135,14 @@
 	if (cell == nil)
 		cell = [[CategoriesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"categoriesCell"];
 	
-	cell.textLabel.text = categories[indexPath.row];
-	cell.detailTextLabel.text = categories[3 - indexPath.row];
+	REVCategory *category;
+	if (self.searchController.isActive && self.searchController.searchBar.text.length > 0)
+		category = [filteredCategories objectAtIndex:indexPath.row];
+	else
+		category = [categories objectAtIndex:indexPath.row];
+	
+	cell.textLabel.text = category.name;
+	cell.detailTextLabel.text = category.type;
     
     return cell;
 }
@@ -148,6 +153,13 @@
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
+}
+
+#pragma mark - Search controller results updating
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+	filteredCategories = [[categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name contains [cd] %@", searchController.searchBar.text]] mutableCopy];
+	[self.tableView reloadData];
 }
 
 /*

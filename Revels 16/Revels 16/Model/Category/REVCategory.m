@@ -54,8 +54,9 @@
 	
 	// Optional sort
 	[categories sortUsingComparator:^NSComparisonResult(REVCategory *obj1, REVCategory *obj2) {
-		if (obj1.uid != 0 && obj2.uid != 0)
-			return (obj1.uid == obj2.uid)?NSOrderedSame:((obj1.uid < obj2.uid)?NSOrderedAscending:NSOrderedAscending);
+		// Sort bu uid?
+//		if (obj1.uid != 0 && obj2.uid != 0)
+//			return (obj1.uid == obj2.uid)?NSOrderedSame:((obj1.uid < obj2.uid)?NSOrderedAscending:NSOrderedAscending);
 		return [obj1.name compare:obj2.name];
 	}];
 

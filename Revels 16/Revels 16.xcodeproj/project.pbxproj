@@ -37,6 +37,9 @@
 		59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F7B2D01C5FC9BE00471695 /* ImageIO.framework */; };
 		59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */; };
 		59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */; };
+		59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE791B1C61B3F700EC61A0 /* ExtendedNavBarView.m */; };
+		59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79301C61C77700EC61A0 /* REVEvent+CoreDataProperties.m */; };
+		59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79321C61C77700EC61A0 /* REVEvent.m */; };
 		EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +104,12 @@
 		59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramDetailViewController.m; path = Controllers/Instagram/InstagramDetailViewController.m; sourceTree = "<group>"; };
 		59F7B2DA1C5FD4BD00471695 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		59F7B2DB1C5FD4BD00471695 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		59FE791A1C61B3F700EC61A0 /* ExtendedNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtendedNavBarView.h; path = Views/ExtendedNavBarView/ExtendedNavBarView.h; sourceTree = "<group>"; };
+		59FE791B1C61B3F700EC61A0 /* ExtendedNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtendedNavBarView.m; path = Views/ExtendedNavBarView/ExtendedNavBarView.m; sourceTree = "<group>"; };
+		59FE792F1C61C77700EC61A0 /* REVEvent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "REVEvent+CoreDataProperties.h"; path = "Model/Event/REVEvent+CoreDataProperties.h"; sourceTree = "<group>"; };
+		59FE79301C61C77700EC61A0 /* REVEvent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "REVEvent+CoreDataProperties.m"; path = "Model/Event/REVEvent+CoreDataProperties.m"; sourceTree = "<group>"; };
+		59FE79311C61C77700EC61A0 /* REVEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVEvent.h; path = Model/Event/REVEvent.h; sourceTree = "<group>"; };
+		59FE79321C61C77700EC61A0 /* REVEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVEvent.m; path = Model/Event/REVEvent.m; sourceTree = "<group>"; };
 		A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Revels 16.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2288AEFED249667A1BA3B48 /* Pods-Revels 16.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +204,7 @@
 		596F91D91C5F1927000CBD48 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				59FE79191C61B3D900EC61A0 /* ExtendedBarView */,
 				596F92101C5F3698000CBD48 /* Cells */,
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
@@ -207,6 +217,7 @@
 			children = (
 				59BA13D11C60E22900679C49 /* Data Manager */,
 				59BA13C81C60DD9D00679C49 /* Categories */,
+				59FE79221C61C6B600EC61A0 /* Event */,
 				59F7B2CC1C5FBD2100471695 /* Instagram */,
 				596F91C81C5F18F9000CBD48 /* Revels_16.xcdatamodeld */,
 			);
@@ -427,6 +438,26 @@
 			path = "Libraries/UIImage+ImageEffects";
 			sourceTree = "<group>";
 		};
+		59FE79191C61B3D900EC61A0 /* ExtendedBarView */ = {
+			isa = PBXGroup;
+			children = (
+				59FE791A1C61B3F700EC61A0 /* ExtendedNavBarView.h */,
+				59FE791B1C61B3F700EC61A0 /* ExtendedNavBarView.m */,
+			);
+			name = ExtendedBarView;
+			sourceTree = "<group>";
+		};
+		59FE79221C61C6B600EC61A0 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				59FE792F1C61C77700EC61A0 /* REVEvent+CoreDataProperties.h */,
+				59FE79301C61C77700EC61A0 /* REVEvent+CoreDataProperties.m */,
+				59FE79311C61C77700EC61A0 /* REVEvent.h */,
+				59FE79321C61C77700EC61A0 /* REVEvent.m */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
 		8F15D47B282FEBBCEC28877F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +616,7 @@
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
 				596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */,
 				59F7B2C01C5F801B00471695 /* InstagramViewController.m in Sources */,
+				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
@@ -596,11 +628,13 @@
 				59F7B2B01C5F79B000471695 /* FavouriteTableViewCell.m in Sources */,
 				59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
+				59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
 				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
 				59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */,
 				59F7B2CB1C5F8D0200471695 /* RPSlidingMenuViewController.m in Sources */,
 				59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */,
+				59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,8 +749,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/apple/Documents/iOS/Revels '16/Revels 16/Revels 16/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Revels 16/PrefixHeader.pch";
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -733,8 +768,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/apple/Documents/iOS/Revels '16/Revels 16/Revels 16/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Revels 16/PrefixHeader.pch";
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

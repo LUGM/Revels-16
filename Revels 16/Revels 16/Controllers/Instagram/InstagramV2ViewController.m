@@ -21,6 +21,7 @@
 	NSMutableArray *instagramObjects;
 	NSURL *nextURL;
 	DMSlideTransition *slideTransistion;
+	NSIndexPath *lastIndexPath;
 }
 
 - (void)viewDidLoad {
@@ -66,8 +67,9 @@
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[self.collectionView reloadData];
-				[self.collectionView reloadInputViews];
+//				[self.collectionView reloadInputViews];
 				SVHUD_HIDE;
+				lastIndexPath = [NSIndexPath indexPathForRow:instagramObjects.count - 1 inSection:0];
 			});
 			
 		}
@@ -156,10 +158,11 @@
 			CGFloat yOffset = ((self.collectionView.contentOffset.y - cell.frame.origin.y) / IMAGE_HEIGHT) * IMAGE_OFFSET_SPEED;
 			cell.imageOffset = CGPointMake(0.0f, yOffset);
 		}
-		ParallaxCollectionViewCell *lastCell = [visibleCells lastObject];
-		NSIndexPath *lastIndexPath = [self.collectionView indexPathForCell:lastCell];
-		if (lastIndexPath.row > instagramObjects.count - 4)
+		if ([self.collectionView.indexPathsForVisibleItems containsObject:lastIndexPath]) {
+			lastIndexPath = nil;
+			SVHUD_SHOW;
 			[self fetchImages];
+		}
 	}
 }
 
