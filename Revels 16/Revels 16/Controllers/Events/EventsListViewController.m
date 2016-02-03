@@ -36,7 +36,7 @@
 	[self fetchLocalEvents];
 	
 	// If connected to internet...
-	[self fetchEvents];
+//	[self fetchEvents];
 	
 	[self setupSearchController];
 	
@@ -101,7 +101,7 @@
 	self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
 //	self.searchController.searchBar.scopeButtonTitles = @[@"Day 1", @"Day 2", @"Day 3", @"Day 4", @"Day 5"];
 	self.searchController.searchBar.delegate = self;
-	self.searchController.searchBar.barTintColor = [UIColor brownColor];
+	[self.searchController setThemeUsingPrimaryColor:GLOBAL_BACK_COLOR withContentStyle:UIContentStyleDark];
 	self.searchController.dimsBackgroundDuringPresentation = NO;
 	self.definesPresentationContext = YES;
 	self.tableView.tableHeaderView = self.searchController.searchBar;
@@ -132,8 +132,21 @@
 	
 	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
 	
-	cell.textLabel.text = event.name;
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ | %@", event.categoryName, event.venue];
+	// SETUP CELL EXPAND
+	
+	cell.eventNameLabel.text = event.name;
+	cell.categoryNameLabel.text = event.categoryName;
+	
+	[cell.infoButton setTag:indexPath.row];
+	[cell.infoButton addTarget:self action:@selector(infoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	
+	if (event.isFavourite)
+		[cell.favsButton setImage:[UIImage imageNamed:@"favsFilled"] forState:UIControlStateNormal];
+	else
+		[cell.favsButton setImage:[UIImage imageNamed:@"favsEmpty"] forState:UIControlStateNormal];
+	
+	[cell.favsButton setTag:indexPath.row];
+	[cell.favsButton addTarget:self action:@selector(favsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	
 	return cell;
 }
@@ -144,6 +157,19 @@
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
+}
+
+#pragma mark - Cell button actions
+
+- (void)infoButtonPressed:(id)sender {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	NSLog(@"Info tapped for row: %li", indexPath.row);
+}
+
+
+- (void)favsButtonPressed:(id)sender {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	NSLog(@"Favs tapped for row: %li", indexPath.row);
 }
 
 #pragma mark - Filtering

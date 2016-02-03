@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) InstagramData *instaData;
 
+@property (nonatomic) NSUInteger pageIndex;
+
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *foregroundImageView;
 

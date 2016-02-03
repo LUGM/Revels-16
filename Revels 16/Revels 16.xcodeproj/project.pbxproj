@@ -40,6 +40,8 @@
 		59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE791B1C61B3F700EC61A0 /* ExtendedNavBarView.m */; };
 		59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79301C61C77700EC61A0 /* REVEvent+CoreDataProperties.m */; };
 		59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79321C61C77700EC61A0 /* REVEvent.m */; };
+		59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79361C625A1000EC61A0 /* InstagramRootViewController.m */; };
+		59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE793B1C62670200EC61A0 /* CrossButton.m */; };
 		EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,10 @@
 		59FE79301C61C77700EC61A0 /* REVEvent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "REVEvent+CoreDataProperties.m"; path = "Model/Event/REVEvent+CoreDataProperties.m"; sourceTree = "<group>"; };
 		59FE79311C61C77700EC61A0 /* REVEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVEvent.h; path = Model/Event/REVEvent.h; sourceTree = "<group>"; };
 		59FE79321C61C77700EC61A0 /* REVEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVEvent.m; path = Model/Event/REVEvent.m; sourceTree = "<group>"; };
+		59FE79351C625A1000EC61A0 /* InstagramRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramRootViewController.h; path = Controllers/Instagram/InstagramRootViewController.h; sourceTree = "<group>"; };
+		59FE79361C625A1000EC61A0 /* InstagramRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramRootViewController.m; path = Controllers/Instagram/InstagramRootViewController.m; sourceTree = "<group>"; };
+		59FE793A1C62670200EC61A0 /* CrossButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossButton.h; sourceTree = "<group>"; };
+		59FE793B1C62670200EC61A0 /* CrossButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossButton.m; sourceTree = "<group>"; };
 		A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Revels 16.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2288AEFED249667A1BA3B48 /* Pods-Revels 16.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				59FE79191C61B3D900EC61A0 /* ExtendedBarView */,
+				59FE79391C62670200EC61A0 /* Cross Button */,
 				596F92101C5F3698000CBD48 /* Cells */,
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
@@ -398,6 +405,7 @@
 		59F7B2BD1C5F800300471695 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				59FE79381C625A1700EC61A0 /* Page Root */,
 				59BA13BC1C608AEB00679C49 /* Detail */,
 				59BA13BB1C608AE800679C49 /* Version 2 */,
 				59BA13B91C608ADF00679C49 /* Version 1 */,
@@ -456,6 +464,25 @@
 				59FE79321C61C77700EC61A0 /* REVEvent.m */,
 			);
 			name = Event;
+			sourceTree = "<group>";
+		};
+		59FE79381C625A1700EC61A0 /* Page Root */ = {
+			isa = PBXGroup;
+			children = (
+				59FE79351C625A1000EC61A0 /* InstagramRootViewController.h */,
+				59FE79361C625A1000EC61A0 /* InstagramRootViewController.m */,
+			);
+			name = "Page Root";
+			sourceTree = "<group>";
+		};
+		59FE79391C62670200EC61A0 /* Cross Button */ = {
+			isa = PBXGroup;
+			children = (
+				59FE793A1C62670200EC61A0 /* CrossButton.h */,
+				59FE793B1C62670200EC61A0 /* CrossButton.m */,
+			);
+			name = "Cross Button";
+			path = "Views/Cross Button";
 			sourceTree = "<group>";
 		};
 		8F15D47B282FEBBCEC28877F /* Pods */ = {
@@ -615,6 +642,7 @@
 				596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */,
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
 				596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */,
+				59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */,
 				59F7B2C01C5F801B00471695 /* InstagramViewController.m in Sources */,
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */,
@@ -627,6 +655,7 @@
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
 				59F7B2B01C5F79B000471695 /* FavouriteTableViewCell.m in Sources */,
 				59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */,
+				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
 				59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,

@@ -33,7 +33,7 @@
 	[self fetchSavedCategories];
 	
 	// Check for connection
-	[self fetchCategories];
+//	[self fetchCategories];
 	
 	[self setupSearchController];
 	

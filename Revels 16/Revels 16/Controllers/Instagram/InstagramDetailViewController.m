@@ -21,8 +21,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	// Change to highRes if wifi
 	[self.foregroundImageView sd_setImageWithURL:self.instaData.lowResURL placeholderImage:[UIImage imageNamed:@"image01.jpg"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-		self.backgroundImageView.image = [image applyDarkEffect];
+//		self.backgroundImageView.image = [image applyDarkEffect];
 	}];
 	
 	self.tagsLabel.text = self.instaData.tags;

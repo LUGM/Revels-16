@@ -10,6 +10,7 @@
 #import "ParallaxCollectionViewCell.h"
 #import "InstagramData.h"
 #import "InstagramDetailViewController.h"
+#import "InstagramRootViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DMSlideTransition.h"
 
@@ -116,18 +117,24 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	
-	InstagramData *instaData = [instagramObjects objectAtIndex:indexPath.row];
+//	InstagramData *instaData = [instagramObjects objectAtIndex:indexPath.row];
+//	
+//	InstagramDetailViewController *idvc = [self.storyboard instantiateViewControllerWithIdentifier:@"InstagramDetailVC"];
+//	idvc.instaData = instaData;
 	
-	InstagramDetailViewController *idvc = [self.storyboard instantiateViewControllerWithIdentifier:@"InstagramDetailVC"];
-	idvc.instaData = instaData;
+	InstagramRootViewController *irvc = [self.storyboard instantiateViewControllerWithIdentifier:@"InstagramRootVC"];
+	irvc.instagramObjects = instagramObjects;
+	irvc.presentationIndex = indexPath.row;
 	
 	if (!slideTransistion)
 		slideTransistion = [[DMSlideTransition alloc] init];
 	[slideTransistion setBackgroundColor:[UIColor blackColor]];
 	
-	[idvc setTransitioningDelegate:slideTransistion];
+//	[idvc setTransitioningDelegate:slideTransistion];
+	[irvc setTransitioningDelegate:slideTransistion];
 
-	[self.navigationController presentViewController:idvc animated:YES completion:nil];
+//	[self.navigationController presentViewController:idvc animated:YES completion:nil];
+	[self.navigationController presentViewController:irvc animated:YES completion:nil];
 }
 
 #pragma mark - Collection view delegate flow layout
