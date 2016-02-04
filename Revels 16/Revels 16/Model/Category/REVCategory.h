@@ -10,7 +10,7 @@
 
 @interface REVCategory : NSObject
 
-@property (nonatomic) NSInteger uid;
+@property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSString *imageName;

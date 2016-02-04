@@ -13,8 +13,11 @@
 #import "InstagramRootViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DMSlideTransition.h"
+#import <KWTransition/KWTransition.h>
 
-@interface InstagramV2ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface InstagramV2ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate>
+
+@property (nonatomic, strong) KWTransition *transition;
 
 @end
 
@@ -38,6 +41,8 @@
 	nextURL = [NSURL URLWithString:URLString];
 	
 	[self fetchImages];
+	
+	self.transition = [KWTransition manager];
 	
 }
 
@@ -117,24 +122,35 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	
-//	InstagramData *instaData = [instagramObjects objectAtIndex:indexPath.row];
-//	
-//	InstagramDetailViewController *idvc = [self.storyboard instantiateViewControllerWithIdentifier:@"InstagramDetailVC"];
-//	idvc.instaData = instaData;
-	
 	InstagramRootViewController *irvc = [self.storyboard instantiateViewControllerWithIdentifier:@"InstagramRootVC"];
 	irvc.instagramObjects = instagramObjects;
 	irvc.presentationIndex = indexPath.row;
 	
-	if (!slideTransistion)
-		slideTransistion = [[DMSlideTransition alloc] init];
-	[slideTransistion setBackgroundColor:[UIColor blackColor]];
+//	if (!slideTransistion)
+//		slideTransistion = [[DMSlideTransition alloc] init];
+//	[slideTransistion setBackgroundColor:[UIColor blackColor]];
+//	[irvc setTransitioningDelegate:slideTransistion];
 	
-//	[idvc setTransitioningDelegate:slideTransistion];
-	[irvc setTransitioningDelegate:slideTransistion];
+//	self.transition.style = KWTransitionStylePushUp;
+	self.transition.style = KWTransitionStyleFadeBackOver;
+	
+	[irvc setTransitioningDelegate:self];
 
-//	[self.navigationController presentViewController:idvc animated:YES completion:nil];
 	[self.navigationController presentViewController:irvc animated:YES completion:nil];
+}
+
+#pragma mark - View controller animated transistioning
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+																   presentingController:(UIViewController *)presenting
+																	   sourceController:(UIViewController *)source {
+	self.transition.action = KWTransitionStepPresent;
+	return self.transition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+	self.transition.action = KWTransitionStepDismiss;
+	return self.transition;
 }
 
 #pragma mark - Collection view delegate flow layout

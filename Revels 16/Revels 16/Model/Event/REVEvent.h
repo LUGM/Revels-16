@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readwrite) BOOL isFavourite;
 
-@property (nonatomic, readonly) NSString *startDateString;
-@property (nonatomic, readonly) NSString *endDateString;
+@property (nonatomic, readonly) NSString *dateString;
+@property (nonatomic, readonly) NSString *timeString;
 
 + (REVEvent *)createNewEventWithDict:(id)dict inEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context;
 

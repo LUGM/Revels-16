@@ -20,16 +20,17 @@
 	self.favourite = [NSNumber numberWithBool:isFavourite];
 }
 
-- (NSString *)startDateString {
+- (NSString *)dateString {
 	NSDateFormatter *formatter = [NSDateFormatter new];
-	[formatter setDateFormat:@"EEE, MMM dd, HH:mm"];
+	[formatter setDateFormat:@"EEE, MMM dd"];
 	return [formatter stringFromDate:self.startDate];
 }
 
-- (NSString *)endDateString {
+- (NSString *)timeString {
 	NSDateFormatter *formatter = [NSDateFormatter new];
-	[formatter setDateFormat:@"EEE, MMM dd, HH:mm"];
-	return [formatter stringFromDate:self.endDate];
+	[formatter setDateFormat:@"hh:mm aa"];
+	NSString *timeString = [[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:self.startDate], [formatter stringFromDate:self.endDate]] uppercaseString];
+	return timeString;
 }
 
 + (REVEvent *)createNewEventWithDict:(id)dict inEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {

@@ -10,7 +10,6 @@
 
 @interface EventsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

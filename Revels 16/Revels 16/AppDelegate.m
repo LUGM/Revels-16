@@ -8,13 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import "CategoriesTableViewController.h"
-#import "EventsListViewController.h"
-#import "FavouritesTableViewController.h"
-#import "InstagramViewController.h"
-#import "AboutTableViewController.h"
-#import "DevelopersViewController.h"
-
 #import "TGLGuillotineMenu.h"
 
 @interface AppDelegate () <TGLGuillotineMenuDelegate>

@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ChameleonFramework.xcscheme</key>
+		<key>AMSmoothAlert.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KWTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,35 +34,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TLYShyNavBar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>234E664DAC1BA50285F3CCAFBF6F6928</key>
+		<key>00DAC6D289F748EE9F54046ECD2E8920</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2740D15B6CC87D2B9F66171DF1F670AE</key>
+		<key>38C1E017813E26D237DE62553831C387</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A8A864C8981D5F15E371232CF9E7203</key>
+		<key>942DED555E510862CAE5AA33C6784FC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C53F7C7B3C4D306A859E6EDAC392D98</key>
+		<key>B652AF4B80FD0D18F113F3A80D91EAB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>935A7E52B6D8B7E37EAEA138EDC52155</key>
+		<key>DAC475DCCCB0B0AFFFDEE302252A40AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE93392C80D45AE8768EDBA0C493C1A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

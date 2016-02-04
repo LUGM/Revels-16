@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D0793D03E21FDFB355E6754C'
+               BlueprintIdentifier = 'BB279F89E14E84588AAE696F'
                BlueprintName = 'Pods-Revels 16'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Revels 16.a'>

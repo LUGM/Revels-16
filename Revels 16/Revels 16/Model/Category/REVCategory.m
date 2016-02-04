@@ -33,7 +33,7 @@
 				self.type = [NSString stringWithFormat:@"%@", dict[@"categoryType"]];
 			
 			if ([dict valueForKey:@"categoryID"])
-				self.uid = [dict[@"categoryID"] integerValue];
+				self.uid = [NSString stringWithFormat:@"%@", dict[@"categoryID"]];
 			
 		}
 	}

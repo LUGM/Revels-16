@@ -20,8 +20,6 @@
 	
     [super viewDidLoad];
 	
-	[self setThemeUsingPrimaryColor:[UIColor clearColor] withContentStyle:UIContentStyleDark];
-	
 	InstagramDetailViewController *idvc = [self viewControllerAtIndex:self.presentationIndex];
 	
 	self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InstagramPageVC"];

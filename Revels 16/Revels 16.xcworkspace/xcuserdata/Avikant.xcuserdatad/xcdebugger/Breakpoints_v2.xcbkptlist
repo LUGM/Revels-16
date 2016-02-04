@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/AppDelegate.m"
-            timestampString = "476092899.373689"
+            timestampString = "476272163.050387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-applicationDidEnterBackground:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476272163.050387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476272163.050387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476270662.271386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-fetchImages"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476272163.050387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476272163.050387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Categories/CategoriesTableViewController.m"
-            timestampString = "476168297.770719"
+            timestampString = "476277076.94593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "@implementation CategoriesTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Model/Event/REVEvent.m"
-            timestampString = "476175025.756663"
+            timestampString = "476267407.243318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "+getEventsFromJSONData:storeIntoManagedObjectContext:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476270662.271386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-fetchImages"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476270662.271386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-fetchImages"
             landmarkType = "5">
             <Locations>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Controllers/Instagram/InstagramV2ViewController.m"
-            timestampString = "476208812.400181"
+            timestampString = "476272163.050387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
             <Locations>
@@ -255,6 +255,54 @@
                   startingLineNumber = "165"
                   endingLineNumber = "165"
                   offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revels 16/Controllers/Events/EventsListViewController.h"
+            timestampString = "476277076.94593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "segmentedControl"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventsListViewController segmentedControl]"
+                  moduleName = "Revels 16"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Avikant/Documents/Xcode/Revels-16/Revels%2016/Revels%2016/Controllers/Events/EventsListViewController.h"
+                  timestampString = "476274985.94793"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventsListViewController setSegmentedControl:]"
+                  moduleName = "Revels 16"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Avikant/Documents/Xcode/Revels-16/Revels%2016/Revels%2016/Controllers/Events/EventsListViewController.h"
+                  timestampString = "476274985.948189"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>

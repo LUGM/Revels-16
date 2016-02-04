@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F161C63612100A45854 /* EventByCategoryViewController.m */; };
 		596F91BE1C5F18F9000CBD48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F91BD1C5F18F9000CBD48 /* main.m */; };
 		596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F91C01C5F18F9000CBD48 /* AppDelegate.m */; };
 		596F91C71C5F18F9000CBD48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596F91C51C5F18F9000CBD48 /* Main.storyboard */; };
@@ -25,11 +26,9 @@
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
 		59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */; };
 		59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */; };
-		59F7B2B01C5F79B000471695 /* FavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AF1C5F79B000471695 /* FavouriteTableViewCell.m */; };
 		59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2B31C5F7AD800471695 /* AboutTableViewController.m */; };
 		59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2B71C5F7D7400471695 /* DevelopersViewController.m */; };
 		59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2BB1C5F7E6D00471695 /* ASMutableURLRequest.m */; };
-		59F7B2C01C5F801B00471695 /* InstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2BF1C5F801B00471695 /* InstagramViewController.m */; };
 		59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2C41C5F8D0200471695 /* RPSlidingMenuCell.m */; };
 		59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2C61C5F8D0200471695 /* RPSlidingMenuLayout.m */; };
 		59F7B2CB1C5F8D0200471695 /* RPSlidingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2C81C5F8D0200471695 /* RPSlidingMenuViewController.m */; };
@@ -47,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
+		59130F151C63612100A45854 /* EventByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventByCategoryViewController.h; path = Controllers/Events/EventByCategoryViewController.h; sourceTree = "<group>"; };
+		59130F161C63612100A45854 /* EventByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventByCategoryViewController.m; path = Controllers/Events/EventByCategoryViewController.m; sourceTree = "<group>"; };
 		596F91B91C5F18F9000CBD48 /* Revels 16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels 16.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596F91BD1C5F18F9000CBD48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596F91BF1C5F18F9000CBD48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -82,16 +83,12 @@
 		59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsTableViewCell.m; path = Views/Cells/EventsTableViewCell.m; sourceTree = "<group>"; };
 		59F7B2AB1C5F794B00471695 /* FavouritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesTableViewController.h; path = Controllers/Favourites/FavouritesTableViewController.h; sourceTree = "<group>"; };
 		59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesTableViewController.m; path = Controllers/Favourites/FavouritesTableViewController.m; sourceTree = "<group>"; };
-		59F7B2AE1C5F79B000471695 /* FavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouriteTableViewCell.h; path = Views/Cells/FavouriteTableViewCell.h; sourceTree = "<group>"; };
-		59F7B2AF1C5F79B000471695 /* FavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouriteTableViewCell.m; path = Views/Cells/FavouriteTableViewCell.m; sourceTree = "<group>"; };
 		59F7B2B21C5F7AD800471695 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutTableViewController.h; path = Controllers/About/AboutTableViewController.h; sourceTree = "<group>"; };
 		59F7B2B31C5F7AD800471695 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutTableViewController.m; path = Controllers/About/AboutTableViewController.m; sourceTree = "<group>"; };
 		59F7B2B61C5F7D7400471695 /* DevelopersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevelopersViewController.h; path = Controllers/Developers/DevelopersViewController.h; sourceTree = "<group>"; };
 		59F7B2B71C5F7D7400471695 /* DevelopersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DevelopersViewController.m; path = Controllers/Developers/DevelopersViewController.m; sourceTree = "<group>"; };
 		59F7B2BA1C5F7E6D00471695 /* ASMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASMutableURLRequest.h; path = Libraries/ASMutableURLRequest/ASMutableURLRequest.h; sourceTree = "<group>"; };
 		59F7B2BB1C5F7E6D00471695 /* ASMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASMutableURLRequest.m; path = Libraries/ASMutableURLRequest/ASMutableURLRequest.m; sourceTree = "<group>"; };
-		59F7B2BE1C5F801B00471695 /* InstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramViewController.h; path = Controllers/Instagram/InstagramViewController.h; sourceTree = "<group>"; };
-		59F7B2BF1C5F801B00471695 /* InstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramViewController.m; path = Controllers/Instagram/InstagramViewController.m; sourceTree = "<group>"; };
 		59F7B2C21C5F8D0200471695 /* RPSlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenu.h; sourceTree = "<group>"; };
 		59F7B2C31C5F8D0200471695 /* RPSlidingMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuCell.h; sourceTree = "<group>"; };
 		59F7B2C41C5F8D0200471695 /* RPSlidingMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuCell.m; sourceTree = "<group>"; };
@@ -257,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				59BA13B51C60797100679C49 /* Parallax Instagram */,
-				59BA13B41C60796B00679C49 /* Favourites */,
 				59BA13B31C60796800679C49 /* Events */,
 				59BA13B11C60795E00679C49 /* Categories */,
 			);
@@ -282,15 +278,6 @@
 			name = Events;
 			sourceTree = "<group>";
 		};
-		59BA13B41C60796B00679C49 /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-				59F7B2AE1C5F79B000471695 /* FavouriteTableViewCell.h */,
-				59F7B2AF1C5F79B000471695 /* FavouriteTableViewCell.m */,
-			);
-			name = Favourites;
-			sourceTree = "<group>";
-		};
 		59BA13B51C60797100679C49 /* Parallax Instagram */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,15 +285,6 @@
 				59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */,
 			);
 			name = "Parallax Instagram";
-			sourceTree = "<group>";
-		};
-		59BA13B91C608ADF00679C49 /* Version 1 */ = {
-			isa = PBXGroup;
-			children = (
-				59F7B2BE1C5F801B00471695 /* InstagramViewController.h */,
-				59F7B2BF1C5F801B00471695 /* InstagramViewController.m */,
-			);
-			name = "Version 1";
 			sourceTree = "<group>";
 		};
 		59BA13BB1C608AE800679C49 /* Version 2 */ = {
@@ -362,6 +340,8 @@
 			children = (
 				59F7B2A41C5F746A00471695 /* EventsListViewController.h */,
 				59F7B2A51C5F746A00471695 /* EventsListViewController.m */,
+				59130F151C63612100A45854 /* EventByCategoryViewController.h */,
+				59130F161C63612100A45854 /* EventByCategoryViewController.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -408,7 +388,6 @@
 				59FE79381C625A1700EC61A0 /* Page Root */,
 				59BA13BC1C608AEB00679C49 /* Detail */,
 				59BA13BB1C608AE800679C49 /* Version 2 */,
-				59BA13B91C608ADF00679C49 /* Version 1 */,
 			);
 			name = Instagram;
 			sourceTree = "<group>";
@@ -633,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */,
 				596F91CA1C5F18F9000CBD48 /* Revels_16.xcdatamodeld in Sources */,
 				596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
@@ -643,7 +623,6 @@
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
 				596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */,
 				59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */,
-				59F7B2C01C5F801B00471695 /* InstagramViewController.m in Sources */,
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				59F7B2C91C5F8D0200471695 /* RPSlidingMenuCell.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
@@ -653,7 +632,6 @@
 				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
-				59F7B2B01C5F79B000471695 /* FavouriteTableViewCell.m in Sources */,
 				59F7B2CA1C5F8D0200471695 /* RPSlidingMenuLayout.m in Sources */,
 				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,

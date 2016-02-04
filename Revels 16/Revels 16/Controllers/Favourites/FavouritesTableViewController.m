@@ -7,32 +7,55 @@
 //
 
 #import "FavouritesTableViewController.h"
-#import "FavouriteTableViewCell.h"
+#import "EventsTableViewCell.h"
+#import "REVEvent.h"
 
 @interface FavouritesTableViewController ()
+
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
 @end
 
 @implementation FavouritesTableViewController {
-	NSMutableArray *favourites;
+	NSMutableArray *events;
+	NSManagedObjectContext *managedObjectContext;
+	NSFetchRequest *fetchRequest;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-	favourites = [NSMutableArray new];
-	favourites = [@[@"Fav 1", @"Fav 2", @"Fav 3", @"Fav 4", @"Fav 5", @"Fav 6"] mutableCopy];
+	[super viewDidLoad];
+	
+	events = [NSMutableArray new];
+	
+	self.selectedIndexPath = nil;
+	
+	managedObjectContext = [AppDelegate managedObjectContext];
+	fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"REVEvent"];
+	[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"favourite == 1"]];
+	
+	[self.navigationController.navigationBar setTranslucent:NO];
+	[self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Pixel"] forBarMetrics:UIBarMetricsDefault];
+	
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[self fetchFavourites];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)fetchFavourites {
+	NSError *error;
+	events = [[managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+	if (error)
+		NSLog(@"Error in fetching: %@", error.localizedDescription);
+	[self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -42,74 +65,115 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return favourites.count;
+	return events.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	FavouriteTableViewCell *cell = (FavouriteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"favCell" forIndexPath:indexPath];
+	REVEvent *event = [events objectAtIndex:indexPath.row];
+	
+	EventsTableViewCell *cell;
+ 
+	if ([indexPath compare:self.selectedIndexPath] == NSOrderedSame)
+		cell = (EventsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"eventsCellExp" forIndexPath:indexPath];
+	else
+		cell = (EventsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"eventsCell" forIndexPath:indexPath];
 	
 	if (cell == nil)
-		cell = [[FavouriteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"favCell"];
+		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
-	cell.textLabel.text = favourites[indexPath.row];
-	cell.detailTextLabel.text = favourites[5 - indexPath.row];
-    
-    return cell;
+	cell.eventNameLabel.text = event.name;
+	cell.categoryNameLabel.text = event.categoryName;
+	
+	[cell.infoButton setTag:indexPath.row];
+	[cell.infoButton addTarget:self action:@selector(infoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	
+	if (event.isFavourite)
+		[cell.favsButton setImage:[UIImage imageNamed:@"favsFilled"] forState:UIControlStateNormal];
+	else
+		[cell.favsButton setImage:[UIImage imageNamed:@"favsEmpty"] forState:UIControlStateNormal];
+	
+	[cell.favsButton setTag:indexPath.row];
+	[cell.favsButton addTarget:self action:@selector(favsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	
+	cell.dateLabel.text = event.dateString;
+	cell.timeLabel.text = event.timeString;
+	cell.venueNameLabel.text = event.venue;
+	cell.teamInformationLabel.text = [NSString stringWithFormat:@"Maximum team members: %@", event.maxTeamNo];
+	cell.contactPersonLabel.text = event.contactName;
+	
+	[cell.timeButton setTag:indexPath.row];
+	[cell.timeButton addTarget:self action:@selector(timeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	
+	[cell.phoneButton setTag:indexPath.row];
+	[cell.phoneButton addTarget:self action:@selector(phoneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	
+	return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[tableView beginUpdates];
 	
+	if (![indexPath compare:self.selectedIndexPath] == NSOrderedSame)
+		self.selectedIndexPath = indexPath;
+	else
+		self.selectedIndexPath = nil;
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+	
+	[tableView endUpdates];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ([indexPath compare:self.selectedIndexPath] == NSOrderedSame)
+		return 228.f;
+	return 60.f;
 }
-*/
+
+#pragma mark - Cell button actions
+
+- (void)infoButtonPressed:(id)sender {
+//	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	
+//	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	
+	// Show awesome alert...
+}
+
+
+- (void)favsButtonPressed:(id)sender {
+	
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	
+	REVEvent *event = [events objectAtIndex:indexPath.row];
+	event.isFavourite = !event.isFavourite;
+	
+	NSError *error;
+	if (![managedObjectContext save:&error])
+		NSLog(@"Can't Save : %@, %@", error, [error localizedDescription]);
+	
+	[events removeObject:event];
+	[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.tableView reloadData];
+	});
+}
+
+- (void)timeButtonPressed:(id)sender {
+	// Prompt adding an event
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	NSLog(@"Time tapped for row: %li", indexPath.row);
+}
+
+- (void)phoneButtonPressed:(id)sender {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	NSLog(@"Phone tapped for row: %li", indexPath.row);
+}
+
 
 @end

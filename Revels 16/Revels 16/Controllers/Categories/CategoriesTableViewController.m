@@ -8,17 +8,18 @@
 
 #import "CategoriesTableViewController.h"
 #import "CategoriesTableViewCell.h"
+#import "EventByCategoryViewController.h"
+#import <KWTransition/KWTransition.h>
 #import "REVCategory.h"
 
-@interface CategoriesTableViewController () <UISearchResultsUpdating>
+@interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate>
 
-@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) KWTransition *transition;
 
 @end
 
 @implementation CategoriesTableViewController {
 	NSMutableArray <REVCategory *> *categories;
-	NSMutableArray <REVCategory *> *filteredCategories;
 	DADataManager *dataManager;
 }
 
@@ -28,15 +29,13 @@
 	dataManager = [DADataManager sharedManager];
 	
 	categories = [NSMutableArray new];
-	filteredCategories = [NSMutableArray new];
 	
 	[self fetchSavedCategories];
 	
 	// Check for connection
 //	[self fetchCategories];
 	
-	[self setupSearchController];
-	
+	self.transition = [KWTransition manager];
 }
 
 - (void)fetchCategories {
@@ -66,7 +65,6 @@
 			if (catJSON) {
 				dispatch_async(dispatch_get_main_queue(), ^{
 					categories = [REVCategory getArrayFromJSONData:catJSON];
-					filteredCategories  = [NSMutableArray arrayWithArray:categories];
 					[dataManager saveObject:catJSON toDocumentsFile:@"categories.dat"];
 					[self.tableView reloadData];
 				});
@@ -94,21 +92,10 @@
 		
 		if (jsonData != nil) {
 			categories = [REVCategory getArrayFromJSONData:jsonData];
-			filteredCategories = [NSMutableArray arrayWithArray:categories];
 			[self.tableView reloadData];
 		}
 	}
 	
-}
-
-- (void)setupSearchController {
-	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-	self.searchController.searchResultsUpdater = self;
-	self.searchController.hidesNavigationBarDuringPresentation = NO;
-	self.searchController.dimsBackgroundDuringPresentation = NO;
-	self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-	self.definesPresentationContext = YES;
-	self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,8 +110,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (self.searchController.isActive && self.searchController.searchBar.text.length > 0)
-		return filteredCategories.count;
     return categories.count;
 }
 
@@ -135,14 +120,10 @@
 	if (cell == nil)
 		cell = [[CategoriesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"categoriesCell"];
 	
-	REVCategory *category;
-	if (self.searchController.isActive && self.searchController.searchBar.text.length > 0)
-		category = [filteredCategories objectAtIndex:indexPath.row];
-	else
-		category = [categories objectAtIndex:indexPath.row];
+	REVCategory *category = [categories objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = category.name;
-	cell.detailTextLabel.text = category.type;
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", category.uid];
     
     return cell;
 }
@@ -151,15 +132,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+	REVCategory *category = [categories objectAtIndex:indexPath.row];
+	
+	UINavigationController *navC = [self.storyboard instantiateViewControllerWithIdentifier:@"EventsByCVCNav"];
+	EventByCategoryViewController *ebcvc = [navC.viewControllers firstObject];
+	
+//	EventByCategoryViewController *ebcvc = [self.storyboard instantiateViewControllerWithIdentifier:@"EventsByCVC"];
+	
+	ebcvc.category = category;
+	
+	self.transition.style = KWTransitionStylePushUp;
+	
+	[navC setTransitioningDelegate:self];
+//	[ebcvc setTransitioningDelegate:self];
+	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	[self.navigationController presentViewController:navC animated:YES completion:nil];
+//	[self.navigationController presentViewController:ebcvc animated:YES completion:nil];
+//	[self.navigationController pushViewController:ebcvc animated:YES];
 	
 }
 
-#pragma mark - Search controller results updating
+#pragma mark - View controller animated transistioning
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-	filteredCategories = [[categories filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name contains [cd] %@", searchController.searchBar.text]] mutableCopy];
-	[self.tableView reloadData];
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+																   presentingController:(UIViewController *)presenting
+																	   sourceController:(UIViewController *)source {
+	self.transition.action = KWTransitionStepPresent;
+	return self.transition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+	self.transition.action = KWTransitionStepDismiss;
+	return self.transition;
 }
 
 /*
