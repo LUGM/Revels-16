@@ -11,6 +11,7 @@
 		59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F611C64A58C00A45854 /* ARCGPathFromString.m */; };
 		59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */; };
 		59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F651C64A58C00A45854 /* ShapeWordView.m */; };
+		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
 		596F91BE1C5F18F9000CBD48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F91BD1C5F18F9000CBD48 /* main.m */; };
 		596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F91C01C5F18F9000CBD48 /* AppDelegate.m */; };
 		596F91C71C5F18F9000CBD48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596F91C51C5F18F9000CBD48 /* Main.storyboard */; };
@@ -54,6 +55,8 @@
 		59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+TextPaths.m"; sourceTree = "<group>"; };
 		59130F641C64A58C00A45854 /* ShapeWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeWordView.h; sourceTree = "<group>"; };
 		59130F651C64A58C00A45854 /* ShapeWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeWordView.m; sourceTree = "<group>"; };
+		5962B05C1C650EA6009290B2 /* DAHexagonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAHexagonalView.h; path = Views/DAHexagonalView/DAHexagonalView.h; sourceTree = "<group>"; };
+		5962B05D1C650EA6009290B2 /* DAHexagonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAHexagonalView.m; path = Views/DAHexagonalView/DAHexagonalView.m; sourceTree = "<group>"; };
 		596F91B91C5F18F9000CBD48 /* Revels 16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels 16.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596F91BD1C5F18F9000CBD48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596F91BF1C5F18F9000CBD48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +154,15 @@
 			path = ARCGPathFromString;
 			sourceTree = "<group>";
 		};
+		5962B05B1C650E86009290B2 /* HexagonalDevView */ = {
+			isa = PBXGroup;
+			children = (
+				5962B05C1C650EA6009290B2 /* DAHexagonalView.h */,
+				5962B05D1C650EA6009290B2 /* DAHexagonalView.m */,
+			);
+			name = HexagonalDevView;
+			sourceTree = "<group>";
+		};
 		596F91B01C5F18F9000CBD48 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +240,7 @@
 		596F91D91C5F1927000CBD48 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				5962B05B1C650E86009290B2 /* HexagonalDevView */,
 				59FE79191C61B3D900EC61A0 /* ExtendedBarView */,
 				59FE79391C62670200EC61A0 /* Cross Button */,
 				596F92101C5F3698000CBD48 /* Cells */,
@@ -645,6 +658,7 @@
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
 				59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
+				5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */,
 				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
 				59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */,
 				59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */,
