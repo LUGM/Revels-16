@@ -4,12 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AMSmoothAlert.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GPUImage.xcscheme</key>
+		<key>DGActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -20,6 +15,11 @@
 			<false/>
 		</dict>
 		<key>Pods-Revels 16.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PullToRefreshCoreText.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,12 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00DAC6D289F748EE9F54046ECD2E8920</key>
+		<key>035DE58DF45153348062E9213D669402</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38C1E017813E26D237DE62553831C387</key>
+		<key>12AC35F9C569FA2A4543EFEDD802D2C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7D769F51C3861ADB4BB5039D448A30EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B652AF4B80FD0D18F113F3A80D91EAB3</key>
+		<key>A4491943F5183F43B46FAC707A4CF84C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAC475DCCCB0B0AFFFDEE302252A40AB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE93392C80D45AE8768EDBA0C493C1A8</key>
+		<key>A7FE6AC4581EEBEA0AC75AB7BAF6CFAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

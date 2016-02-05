@@ -24,6 +24,9 @@
 	NSManagedObjectContext *managedObjectContext;
 	NSFetchRequest *fetchRequest;
 	NSInteger currentSegmentedIndex;
+	
+	UISwipeGestureRecognizer *leftSwipeGesture;
+	UISwipeGestureRecognizer *rightSwipeGesture;
 }
 
 - (void)viewDidLoad {
@@ -41,11 +44,18 @@
 	
 	[self setupSearchController];
 	
-	[self.segmentedControl setTintColor:[UIColor brownColor]];
 	[self.navigationController.navigationBar setTranslucent:NO];
 	[self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
 	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Pixel"] forBarMetrics:UIBarMetricsDefault];
+	
+	leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+	[leftSwipeGesture setDirection:UISwipeGestureRecognizerDirectionLeft];
+	[self.view addGestureRecognizer:leftSwipeGesture];
+	
+	rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+	[rightSwipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
+	[self.view addGestureRecognizer:rightSwipeGesture];
 	
 }
 
@@ -55,6 +65,10 @@
 	
 	// If connected to internet...
 	//	[self fetchEvents];
+	
+	if (self.guillotineMenuController) {
+		// Uhh, hide the line?
+	}
 	
 }
 
@@ -111,8 +125,8 @@
 	self.searchController.delegate = self;
 	self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
 	self.searchController.searchBar.delegate = self;
-	self.searchController.searchBar.backgroundColor = GLOBAL_BACK_COLOR;
-	self.searchController.searchBar.tintColor = GLOBAL_TINT_COLOR;
+	self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
+	self.searchController.searchBar.tintColor = [UIColor blackColor];
 	self.searchController.dimsBackgroundDuringPresentation = NO;
 	self.definesPresentationContext = YES;
 	self.tableView.tableHeaderView = self.searchController.searchBar;
@@ -138,16 +152,46 @@
 			[self filterEventsForSearchString:self.searchController.searchBar.text andScopeBarTitle:[segmentedControl titleForSegmentAtIndex:index]];
 		else
 			[self filterEventsForSelectedSegmentTitle:[segmentedControl titleForSegmentAtIndex:index]];
+		currentSegmentedIndex = index;
 		[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 			self.tableView.layer.transform = CATransform3DIdentity;
 			self.tableView.alpha = 1.f;
 		} completion:nil];
 	}];
 	
-	currentSegmentedIndex = index;
-	
 }
 
+#pragma mark - Swipe gesture handler
+
+- (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
+	
+	NSInteger direction = 1;
+	NSInteger index = currentSegmentedIndex;
+	NSInteger newIndex = (index == 0)?3:(index - 1);
+	
+	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+		direction = -1;
+		newIndex = (index == 3)?0:(index + 1);
+	}
+	
+	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		self.tableView.layer.transform = CATransform3DMakeTranslation(- direction * (SWdith + 40), 0, 0);
+		self.tableView.alpha = 0.5;
+	} completion:^(BOOL finished) {
+		self.tableView.layer.transform = CATransform3DMakeTranslation(direction * (SWdith + 40), 0, 0);
+		self.segmentedControl.selectedSegmentIndex = newIndex;
+		if (self.searchController.isActive && self.searchController.searchBar.text.length > 0)
+			[self filterEventsForSearchString:self.searchController.searchBar.text andScopeBarTitle:[self.segmentedControl titleForSegmentAtIndex:newIndex]];
+		else
+			[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:newIndex]];
+		currentSegmentedIndex = newIndex;
+		[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+			self.tableView.layer.transform = CATransform3DIdentity;
+			self.tableView.alpha = 1.f;
+		} completion:nil];
+	}];
+	
+}
 
 #pragma mark - Table view data source
 

@@ -34,9 +34,27 @@
         self.viewControllers    = [vCs copy];
         self.menuTitles         = [titles copy];
         self.imagesTitles       = [imgTitles copy];
+		
+		for (id object in self.viewControllers) {
+			UIViewController *viewController;
+			if ([object isKindOfClass:[UINavigationController class]])
+				viewController = [((UINavigationController *)object).viewControllers firstObject];
+			else if ([object isKindOfClass:[UITableViewController class]])
+				viewController = ((UITableViewController *)object);
+			else if ([object isKindOfClass:[UICollectionViewController class]])
+				viewController = ((UICollectionViewController *)object);
+			else if ([object isKindOfClass:[UIPageViewController class]])
+				viewController = ((UIPageViewController *)object);
+			else
+				viewController = ((UIViewController *)object);
+			if ([viewController respondsToSelector:NSSelectorFromString(@"guillotineMenuController")]) {
+				[viewController setValue:self forKey:@"guillotineMenuController"];
+			}
+		}
+		
+		self.menuStyle = TGLGuillotineMenuStyleTable;
         
         self.menuColor = GLOBAL_BACK_COLOR;
-        
         
         screenW = [[UIScreen mainScreen] bounds].size.width;
         screenH = [[UIScreen mainScreen] bounds].size.height;
@@ -67,7 +85,6 @@
     UINavigationBar* navBar = self.navigationController.navigationBar;
     [navBar setTranslucent:YES];
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor darkTextColor]};
-    [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
     
     // - Setup Menu

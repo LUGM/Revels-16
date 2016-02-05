@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TGLGuillotineMenu.h"
 
 @interface EventsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) TGLGuillotineMenu *guillotineMenuController;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "TGLGuillotineMenu.h"
 
 @interface CategoriesTableViewController : UITableViewController
+
+//@property (nonatomic, strong) TGLGuillotineMenu *guillotineMenuController;
 
 @end

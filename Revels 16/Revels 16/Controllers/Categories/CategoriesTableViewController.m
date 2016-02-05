@@ -10,11 +10,14 @@
 #import "CategoriesTableViewCell.h"
 #import "EventByCategoryViewController.h"
 #import <KWTransition/KWTransition.h>
+#import <PullToRefreshCoreText/UIScrollView+PullToRefreshCoreText.h>
 #import "REVCategory.h"
+#import "ShapeWordView.h"
 
 @interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) KWTransition *transition;
+@property (nonatomic, strong) ShapeWordView *shapeWordView;
 
 @end
 
@@ -36,6 +39,7 @@
 //	[self fetchCategories];
 	
 	self.transition = [KWTransition manager];
+	
 }
 
 - (void)fetchCategories {

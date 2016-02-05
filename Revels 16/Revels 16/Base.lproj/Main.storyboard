@@ -319,12 +319,21 @@
                                             <action selector="segmentedControlValueChanged:" destination="TLd-QF-2p5" eventType="valueChanged" id="eu5-KN-ffW"/>
                                         </connections>
                                     </segmentedControl>
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7s-fl-2i7">
+                                        <rect key="frame" x="0.0" y="43" width="600" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ahW-Gu-el7"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058823529409" green="0.96862745098039216" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="r7s-fl-2i7" secondAttribute="bottom" id="62v-Eq-9lo"/>
                                     <constraint firstItem="R8r-ZB-QRj" firstAttribute="top" secondItem="MnK-lC-yyn" secondAttribute="top" constant="8" id="6jY-kz-irE"/>
                                     <constraint firstAttribute="bottom" secondItem="R8r-ZB-QRj" secondAttribute="bottom" constant="8" id="UfW-4s-Uh2"/>
+                                    <constraint firstItem="r7s-fl-2i7" firstAttribute="leading" secondItem="MnK-lC-yyn" secondAttribute="leading" id="hGK-ZP-hgs"/>
                                     <constraint firstAttribute="height" constant="44" id="jEk-dZ-T9F"/>
+                                    <constraint firstAttribute="trailing" secondItem="r7s-fl-2i7" secondAttribute="trailing" id="mdj-lG-wjq"/>
                                     <constraint firstAttribute="trailing" secondItem="R8r-ZB-QRj" secondAttribute="trailing" constant="8" id="ucf-Af-jxQ"/>
                                     <constraint firstItem="R8r-ZB-QRj" firstAttribute="leading" secondItem="MnK-lC-yyn" secondAttribute="leading" constant="8" id="zza-FB-61x"/>
                                 </constraints>
@@ -523,8 +532,8 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="rPH-6B-mZX"/>
                                             <exclude reference="S1t-sf-bMd"/>
+                                            <exclude reference="rPH-6B-mZX"/>
                                             <exclude reference="4zX-RD-vYg"/>
                                         </mask>
                                     </variation>
@@ -626,8 +635,8 @@
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="yw9-5C-D07"/>
                                                     <exclude reference="ekm-og-AGs"/>
+                                                    <exclude reference="yw9-5C-D07"/>
                                                 </mask>
                                             </variation>
                                         </button>
@@ -716,9 +725,9 @@
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="hqO-Xr-LJD"/>
-                                            <exclude reference="dPv-k7-w2n"/>
-                                            <exclude reference="AM8-Jo-V82"/>
                                             <exclude reference="4L0-1S-Dcl"/>
+                                            <exclude reference="AM8-Jo-V82"/>
+                                            <exclude reference="dPv-k7-w2n"/>
                                             <exclude reference="8dO-0y-3Xc"/>
                                             <exclude reference="Cc3-Nv-fYS"/>
                                             <exclude reference="0dS-de-9CY"/>
@@ -870,8 +879,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQv-BL-la3">
-                                <rect key="frame" x="257" y="289" width="87" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="160" y="264" width="281.5" height="71"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1287,7 +1296,7 @@
             </objects>
             <point key="canvasLocation" x="454" y="3357"/>
         </scene>
-        <!--Events-->
+        <!--Events by Categories-->
         <scene sceneID="kQW-3R-YT1">
             <objects>
                 <viewController storyboardIdentifier="EventsByCVC" id="jvK-nq-H89" customClass="EventByCategoryViewController" sceneMemberID="viewController">
@@ -1599,13 +1608,22 @@
                                             <action selector="segmentedControlValueChanged:" destination="jvK-nq-H89" eventType="valueChanged" id="mhb-2U-26d"/>
                                         </connections>
                                     </segmentedControl>
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-v7-YEc">
+                                        <rect key="frame" x="0.0" y="43" width="600" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="loL-4b-yjf"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="9Ar-43-qfI"/>
+                                    <constraint firstAttribute="trailing" secondItem="OoP-v7-YEc" secondAttribute="trailing" id="B9Z-c4-bpv"/>
+                                    <constraint firstAttribute="bottom" secondItem="OoP-v7-YEc" secondAttribute="bottom" id="CId-8V-aSf"/>
                                     <constraint firstAttribute="bottom" secondItem="5wD-4P-eJt" secondAttribute="bottom" constant="8" id="I0l-Ai-Dhh"/>
                                     <constraint firstItem="5wD-4P-eJt" firstAttribute="leading" secondItem="GbD-ub-0jT" secondAttribute="leading" constant="8" id="TTj-Uw-iqg"/>
                                     <constraint firstItem="5wD-4P-eJt" firstAttribute="top" secondItem="GbD-ub-0jT" secondAttribute="top" constant="8" id="URO-4Y-Tmx"/>
+                                    <constraint firstItem="OoP-v7-YEc" firstAttribute="leading" secondItem="GbD-ub-0jT" secondAttribute="leading" id="gqf-my-gCd"/>
                                     <constraint firstAttribute="trailing" secondItem="5wD-4P-eJt" secondAttribute="trailing" constant="8" id="zDg-e5-094"/>
                                 </constraints>
                             </view>
@@ -1621,7 +1639,14 @@
                             <constraint firstItem="yIQ-Hr-7xT" firstAttribute="leading" secondItem="1fP-iL-9St" secondAttribute="leadingMargin" constant="-20" id="j59-aN-9Ul"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="Tu9-Ed-D69"/>
+                    <navigationItem key="navigationItem" title="Events by Categories" id="Tu9-Ed-D69">
+                        <barButtonItem key="leftBarButtonItem" image="crossMark.png" id="Zme-dM-M0t">
+                            <connections>
+                                <action selector="dismissSelf:" destination="jvK-nq-H89" id="Ywi-Jx-qen"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="info.png" id="YS8-VD-9ad"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="5wD-4P-eJt" id="5AH-eq-F0w"/>
                         <outlet property="tableView" destination="yIQ-Hr-7xT" id="MUi-OW-8x9"/>
@@ -1657,12 +1682,15 @@
         <image name="call" width="44" height="44"/>
         <image name="comments" width="30" height="30"/>
         <image name="contact" width="44" height="44"/>
+        <image name="crossMark.png" width="32" height="32"/>
         <image name="date" width="44" height="44"/>
         <image name="dateAlter" width="44" height="44"/>
         <image name="favs" width="30" height="30"/>
         <image name="favsEmpty" width="44" height="44"/>
+        <image name="info.png" width="27" height="28"/>
         <image name="location" width="44" height="44"/>
         <image name="team" width="44" height="44"/>
         <image name="time" width="44" height="44"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -22,6 +22,9 @@
 	NSManagedObjectContext *managedObjectContext;
 	NSFetchRequest *fetchRequest;
 	NSInteger currentSegmentedIndex;
+	
+	UISwipeGestureRecognizer *leftSwipeGesture;
+	UISwipeGestureRecognizer *rightSwipeGesture;
 }
 
 - (void)viewDidLoad {
@@ -41,18 +44,25 @@
 	
 	[self fetchFilteredEvents];
 	
-	[self.segmentedControl setTintColor:[UIColor brownColor]];
+	[self.segmentedControl setTintColor:[UIColor blackColor]];
 	[self.navigationController.navigationBar setTranslucent:NO];
 	[self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
 	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Pixel"] forBarMetrics:UIBarMetricsDefault];
 	
-	UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSelf:)];
-	self.navigationItem.leftBarButtonItem = dismissButton;
+	self.navigationItem.title = self.category.name;
 	
+	leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+	[leftSwipeGesture setDirection:UISwipeGestureRecognizerDirectionLeft];
+	[self.view addGestureRecognizer:leftSwipeGesture];
+	
+	rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+	[rightSwipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
+	[self.view addGestureRecognizer:rightSwipeGesture];
+
 }
 
-- (void)dismissSelf:(id)sender {
+- (IBAction)dismissSelf:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -97,7 +107,34 @@
 	
 }
 
+#pragma mark - Swipe gesture handler
 
+- (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
+	
+	NSInteger direction = 1;
+	NSInteger index = currentSegmentedIndex;
+	NSInteger newIndex = (index == 0)?3:(index - 1);
+	
+	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+		direction = -1;
+		newIndex = (index == 3)?0:(index + 1);
+	}
+	
+	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		self.tableView.layer.transform = CATransform3DMakeTranslation(- direction * (SWdith + 40), 0, 0);
+		self.tableView.alpha = 0.5;
+	} completion:^(BOOL finished) {
+		self.tableView.layer.transform = CATransform3DMakeTranslation(direction * (SWdith + 40), 0, 0);
+		self.segmentedControl.selectedSegmentIndex = newIndex;
+		[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:newIndex]];
+		currentSegmentedIndex = newIndex;
+		[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+			self.tableView.layer.transform = CATransform3DIdentity;
+			self.tableView.alpha = 1.f;
+		} completion:nil];
+	}];
+	
+}
 
 #pragma mark - Table view data source
 
