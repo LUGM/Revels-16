@@ -40,12 +40,12 @@
 	if (dict && [dict isKindOfClass:[NSDictionary class]]) {
 		
 		event.uid = [NSString stringWithFormat:@"%@", dict[@"id"]];
-		event.name = [NSString stringWithFormat:@"%@", dict[@"event_name"]];
-		event.eid = [NSString stringWithFormat:@"%@", dict[@"event_id"]];
+		event.name = [NSString stringWithFormat:@"%@", dict[@"ename"]];
+		event.eid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
 		event.detail = [NSString stringWithFormat:@"%@", dict[@"description"]];
 		event.maxTeamNo = [NSString stringWithFormat:@"%@", dict[@"event_max_team_number"]];
-		event.categoryName = [NSString stringWithFormat:@"%@", dict[@"cat_name"]];
-		event.catID = [NSString stringWithFormat:@"%@", dict[@"cat_id"]];
+		event.categoryName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
+		event.catID = [NSString stringWithFormat:@"%@", dict[@"cid"]];
 		event.isFavourite = NO;
 		event.venue = [NSString stringWithFormat:@"%@", dict[@"venue"]];
 		event.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];

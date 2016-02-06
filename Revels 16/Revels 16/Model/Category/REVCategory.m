@@ -18,22 +18,22 @@
 		
 		if (dict && [dict isKindOfClass:[NSDictionary class]]) {
 			
-			if ([dict valueForKey:@"categoryName"])
-				self.name = [NSString stringWithFormat:@"%@", dict[@"categoryName"]];
+			if ([dict valueForKey:@"cname"])
+				self.name = [NSString stringWithFormat:@"%@", dict[@"cname"]];
 			
-			if ([dict valueForKey:@"description"])
-				self.detail = [NSString stringWithFormat:@"%@", dict[@"description"]];
+			if ([dict valueForKey:@"cdesc"])
+				self.detail = [NSString stringWithFormat:@"%@", dict[@"cdesc"]];
 			
 			if ([dict valueForKey:@"imageName"])
 				self.imageName = [NSString stringWithFormat:@"%@", dict[@"imageName"]];
 			else
-				self.imageName = [NSString stringWithFormat:@"%@", [dict[@"categoryName"] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+				self.imageName = [NSString stringWithFormat:@"%@", [dict[@"cname"] stringByReplacingOccurrencesOfString:@" " withString:@""]];
 			
-			if ([dict valueForKey:@"categoryType"])
-				self.type = [NSString stringWithFormat:@"%@", dict[@"categoryType"]];
+			if ([dict valueForKey:@"cntctname"])
+				self.type = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
 			
-			if ([dict valueForKey:@"categoryID"])
-				self.uid = [NSString stringWithFormat:@"%@", dict[@"categoryID"]];
+			if ([dict valueForKey:@"cid"])
+				self.uid = [NSString stringWithFormat:@"%@", dict[@"cid"]];
 			
 		}
 	}

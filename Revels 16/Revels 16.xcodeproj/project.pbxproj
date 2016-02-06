@@ -536,7 +536,7 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = HN3SCP8A52;
+						DevelopmentTeam = 9P257W983B;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -777,6 +777,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Revels 16/PrefixHeader.pch";
@@ -796,6 +797,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Revels 16/PrefixHeader.pch";

@@ -36,7 +36,7 @@
 	[self fetchSavedCategories];
 	
 	// Check for connection
-//	[self fetchCategories];
+	[self fetchCategories];
 	
 	self.transition = [KWTransition manager];
 	
@@ -46,45 +46,87 @@
 	
 	SVHUD_SHOW;
 	
-	NSURL *URL = [NSURL URLWithString:@"http://api.techtatva.in/categories"];
-	
-	ASMutableURLRequest *request = [ASMutableURLRequest getRequestWithURL:URL];
-	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		
-		if (error) {
-			SVHUD_FAILURE(@"Failed");
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self fetchSavedCategories];
+    NSURL *categoriesUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
+    
+    ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:categoriesUrl];
+    NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"LUGbatchof2017", @"nid"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    [postRequest setHTTPBody:postData];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error)
+        {
+            SVHUD_FAILURE(@"Failed");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self fetchSavedCategories];
             });
-		}
-		
-		PRINT_RESPONSE_HEADERS_AND_CODE;
-		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		
-		if (statusCode == 200) {
-			
-			id catJSON = [jsonData valueForKey:@"data"];
-			if (catJSON) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					categories = [REVCategory getArrayFromJSONData:catJSON];
-					[dataManager saveObject:catJSON toDocumentsFile:@"categories.dat"];
-					[self.tableView reloadData];
-				});
-			}
-		}
-		else {
-			
-			SVHUD_FAILURE(@"Failed");
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self fetchSavedCategories];
-			});
-		}
-		
-		SVHUD_HIDE;
-		
-	}] resume];
+        }
+        
+        PRINT_RESPONSE_HEADERS_AND_CODE
+        
+        id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        NSLog(@"%@", jsonData);
+        
+        if (statusCode == 200)
+        {
+            id categoryJson = [jsonData valueForKey:@"data"];
+            if (categoryJson)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                categories = [REVCategory getArrayFromJSONData:categoryJson];
+                					[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
+                [self.tableView reloadData];
+                });
+            }
+        }
+        else
+        {
+            SVHUD_FAILURE(@"Failed");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self fetchSavedCategories];
+            });
+        }
+        
+        SVHUD_HIDE;
+        
+    }] resume];
+	
+//	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//		
+//		if (error) {
+//			SVHUD_FAILURE(@"Failed");
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				[self fetchSavedCategories];
+//            });
+//		}
+//		
+//		PRINT_RESPONSE_HEADERS_AND_CODE;
+//		
+//		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+//		
+//		if (statusCode == 200) {
+//			
+//			id catJSON = [jsonData valueForKey:@"data"];
+//			if (catJSON) {
+//				dispatch_async(dispatch_get_main_queue(), ^{
+//					categories = [REVCategory getArrayFromJSONData:catJSON];
+//					[dataManager saveObject:catJSON toDocumentsFile:@"categories.dat"];
+//					[self.tableView reloadData];
+//				});
+//			}
+//		}
+//		else {
+//			
+//			SVHUD_FAILURE(@"Failed");
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				[self fetchSavedCategories];
+//			});
+//		}
+//		
+//		SVHUD_HIDE;
+//		
+//	}] resume];
 	
 }
 

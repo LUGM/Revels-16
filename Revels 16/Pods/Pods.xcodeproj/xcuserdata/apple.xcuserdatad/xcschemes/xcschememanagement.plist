@@ -9,10 +9,25 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>DGActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>KWTransition.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Pods-Revels 16.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+		<key>PullToRefreshCoreText.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
@@ -32,7 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>035DE58DF45153348062E9213D669402</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0E320758E279BE308E1C866662667E5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>12AC35F9C569FA2A4543EFEDD802D2C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +82,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7D769F51C3861ADB4BB5039D448A30EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8C53F7C7B3C4D306A859E6EDAC392D98</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>935A7E52B6D8B7E37EAEA138EDC52155</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>942DED555E510862CAE5AA33C6784FC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4491943F5183F43B46FAC707A4CF84C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7FE6AC4581EEBEA0AC75AB7BAF6CFAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

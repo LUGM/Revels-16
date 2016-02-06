@@ -64,7 +64,7 @@
 	[self fetchLocalEvents];
 	
 	// If connected to internet...
-	//	[self fetchEvents];
+		[self fetchEvents];
 	
 	if (self.guillotineMenuController) {
 		// Uhh, hide the line?
@@ -81,11 +81,14 @@
 	
 	SVHUD_SHOW;
 	
-	NSURL *eventsURL = [NSURL URLWithString:@"http://schedule.techtatva.in/"];
+    NSURL *eventsUrl = [NSURL URLWithString:@"http://schedule.mitportals.in"];
+    
+    ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+    NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"revels16Dastaan", @"ceid"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    [postRequest setHTTPBody:postData];
 	
-	ASMutableURLRequest *request = [ASMutableURLRequest getRequestWithURL:eventsURL];
-	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
 		if (error) {
 			// Fetch local data?
@@ -96,6 +99,7 @@
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
 		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        NSLog(@"%@", jsonData);
 		
 		if (error == nil && statusCode == 200) {
 			NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData valueForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
