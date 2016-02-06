@@ -49,7 +49,8 @@
     NSURL *categoriesUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
     
     ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:categoriesUrl];
-    NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"LUGbatchof2017", @"nid"];
+//    NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
+	NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"LUGbatchof2017", @"nid"];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     [postRequest setHTTPBody:postData];
@@ -66,8 +67,8 @@
         PRINT_RESPONSE_HEADERS_AND_CODE
         
         id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        NSLog(@"%@", jsonData);
-        
+//        NSLog(@"%@", jsonData);
+		
         if (statusCode == 200)
         {
             id categoryJson = [jsonData valueForKey:@"data"];
@@ -75,7 +76,7 @@
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                 categories = [REVCategory getArrayFromJSONData:categoryJson];
-                					[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
+				[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
                 [self.tableView reloadData];
                 });
             }

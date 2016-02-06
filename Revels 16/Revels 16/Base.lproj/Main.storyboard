@@ -877,26 +877,6 @@
                     <view key="view" contentMode="scaleToFill" id="fSg-oO-WEj" customClass="DAHexagonalView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Anuraag" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-Pn-WF3">
-                                <rect key="frame" x="28" y="261" width="64" height="64"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Avikant" translatesAutoresizingMaskIntoConstraints="NO" id="mOf-0F-IWE">
-                                <rect key="frame" x="28" y="408" width="64" height="64"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Kartik" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-qY-XUR">
-                                <rect key="frame" x="155" y="482" width="64" height="64"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Saketh" translatesAutoresizingMaskIntoConstraints="NO" id="uGd-Kh-GPy">
-                                <rect key="frame" x="283" y="261" width="64" height="64"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Sorte" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-Xb-pca">
-                                <rect key="frame" x="155" y="187" width="64" height="64"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Yash" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-PA-n0A">
-                                <rect key="frame" x="283" y="408" width="64" height="64"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Developers" id="Jhf-hQ-ZrF"/>
@@ -904,7 +884,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUp-A4-EMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="1887"/>
+            <point key="canvasLocation" x="2443.5" y="1886.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BHF-mg-uZB">
@@ -1649,12 +1629,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events by Categories" id="Tu9-Ed-D69">
-                        <barButtonItem key="leftBarButtonItem" image="crossMark.png" id="Zme-dM-M0t">
+                        <barButtonItem key="leftBarButtonItem" image="crossButton" id="Zme-dM-M0t">
                             <connections>
                                 <action selector="dismissSelf:" destination="jvK-nq-H89" id="Ywi-Jx-qen"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="info.png" id="YS8-VD-9ad"/>
+                        <barButtonItem key="rightBarButtonItem" image="infoButton" id="YS8-VD-9ad"/>
                     </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="5wD-4P-eJt" id="5AH-eq-F0w"/>
@@ -1687,22 +1667,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Anuraag" width="64" height="64"/>
-        <image name="Avikant" width="64" height="64"/>
-        <image name="Kartik" width="64" height="64"/>
-        <image name="Saketh" width="64" height="64"/>
-        <image name="Sorte" width="64" height="64"/>
-        <image name="Yash" width="64" height="64"/>
         <image name="aboutIcon" width="60" height="60"/>
         <image name="call" width="44" height="44"/>
         <image name="comments" width="30" height="30"/>
         <image name="contact" width="44" height="44"/>
-        <image name="crossMark.png" width="32" height="32"/>
+        <image name="crossButton" width="30" height="30"/>
         <image name="date" width="44" height="44"/>
         <image name="dateAlter" width="44" height="44"/>
         <image name="favs" width="30" height="30"/>
         <image name="favsEmpty" width="44" height="44"/>
-        <image name="info.png" width="27" height="28"/>
+        <image name="infoButton" width="30" height="30"/>
         <image name="location" width="44" height="44"/>
         <image name="team" width="44" height="44"/>
         <image name="time" width="44" height="44"/>

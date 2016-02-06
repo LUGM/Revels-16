@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSString *imageName;
-@property (nonatomic, strong) NSString *type;
+//@property (nonatomic, strong) NSString *type;
 
 - (instancetype)initWithDict:(id)dict;
 

@@ -12,6 +12,6 @@ IB_DESIGNABLE
 
 @interface DAHexagonalView : UIView
 
-
+- (void)animatePath;
 
 @end

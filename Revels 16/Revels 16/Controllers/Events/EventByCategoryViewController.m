@@ -37,6 +37,8 @@
 	self.selectedIndexPath = nil;
 	currentSegmentedIndex = 0;
 	
+	// Add fetch events code (all if not present)...
+	
 	managedObjectContext = [AppDelegate managedObjectContext];
 	fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"REVEvent"];
 	if (self.category)

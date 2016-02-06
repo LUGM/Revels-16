@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DAHexagonalView.h"
 
 @interface DevelopersViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet DAHexagonalView *hexagonalView;
 
 @end

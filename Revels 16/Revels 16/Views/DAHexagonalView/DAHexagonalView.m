@@ -17,7 +17,29 @@
 #define HEXSIDE (HEXWIDTH / 1.732)
 #define HEXHEIGHT (HEXSIDE * 2)
 
-@implementation DAHexagonalView
+@implementation DAHexagonalView {
+	CAShapeLayer *shapeLayerTriangleOne;
+	CAShapeLayer *shapeLayerTriangleTwo;
+}
+
+- (void)awakeFromNib {
+	if (!shapeLayerTriangleOne) {
+		shapeLayerTriangleOne = [CAShapeLayer layer];
+		shapeLayerTriangleOne.frame = self.bounds;
+		shapeLayerTriangleOne.strokeColor = [[UIColor darkGrayColor] CGColor];
+		shapeLayerTriangleOne.lineWidth = 1;
+		shapeLayerTriangleOne.fillColor = [[UIColor clearColor] CGColor];
+		[self.layer addSublayer:shapeLayerTriangleOne];
+	}
+	if (!shapeLayerTriangleTwo) {
+		shapeLayerTriangleTwo = [CAShapeLayer layer];
+		shapeLayerTriangleTwo.frame = self.bounds;
+		shapeLayerTriangleTwo.strokeColor = [[UIColor darkGrayColor] CGColor];
+		shapeLayerTriangleTwo.lineWidth = 1;
+		shapeLayerTriangleTwo.fillColor = [[UIColor clearColor] CGColor];
+		[self.layer addSublayer:shapeLayerTriangleTwo];
+	}
+}
 
 - (void)drawRect:(CGRect)rect {
 	
@@ -57,7 +79,7 @@
 	[bezierPath1 closePath];
 	
 	[UIColor.darkGrayColor setStroke];
-	[bezierPath1 stroke];
+//	[bezierPath1 stroke];
 	
 	UIBezierPath *bezierPath2 = [UIBezierPath bezierPath];
 	[bezierPath2 moveToPoint:hexPoints[1]];
@@ -66,7 +88,7 @@
 	[bezierPath2 closePath];
 	
 	[UIColor.darkGrayColor setStroke];
-	[bezierPath2 stroke];
+//	[bezierPath2 stroke];
 	
 	[GLOBAL_BACK_COLOR setFill];
 	
@@ -80,8 +102,55 @@
 	UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CENTER radius:48.f startAngle:0.f endAngle:2 * M_PI clockwise:YES];
 	[circlePath fill];
 	[circlePath stroke];
+
 	
 }
 
+- (void)animatePath {
+	
+	CGPoint hexPoints[6] = {
+		CGPointMake(CENTER.x, CENTER.y - HEXSIDE),
+		CGPointMake(CENTER.x - HEXWIDTH/2, CENTER.y - HEXSIDE/2),
+		CGPointMake(CENTER.x - HEXWIDTH/2, CENTER.y + HEXSIDE/2),
+		CGPointMake(CENTER.x, CENTER.y + HEXSIDE),
+		CGPointMake(CENTER.x + HEXWIDTH/2, CENTER.y + HEXSIDE/2),
+		CGPointMake(CENTER.x + HEXWIDTH/2, CENTER.y - HEXSIDE/2)
+	};
+	
+	UIBezierPath *bezierPath1 = [UIBezierPath bezierPath];
+	[bezierPath1 setLineWidth:1.f];
+	[bezierPath1 moveToPoint:hexPoints[2]];
+	[bezierPath1 addLineToPoint:hexPoints[0]];
+	[bezierPath1 addLineToPoint:hexPoints[4]];
+	[bezierPath1 closePath];
+	
+	UIBezierPath *bezierPath2 = [UIBezierPath bezierPath];
+	[bezierPath2 moveToPoint:hexPoints[5]];
+	[bezierPath2 addLineToPoint:hexPoints[3]];
+	[bezierPath2 addLineToPoint:hexPoints[1]];
+	[bezierPath2 closePath];
+	
+	CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+	pathAnimation.duration = 2.5f;
+	pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+	pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+	pathAnimation.repeatCount = 10;
+	pathAnimation.autoreverses = YES;
+	
+	CABasicAnimation *pathAnimation2 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+	pathAnimation2.duration = 2.5f;
+	pathAnimation2.fromValue = [NSNumber numberWithFloat:0.0f];
+	pathAnimation2.toValue = [NSNumber numberWithFloat:1.0f];
+	pathAnimation2.repeatCount = 10;
+	pathAnimation2.autoreverses = YES;
+	
+	shapeLayerTriangleOne.path = bezierPath1.CGPath;
+	[shapeLayerTriangleOne addAnimation:pathAnimation forKey:@"strokeEnd"];
+	
+	shapeLayerTriangleTwo.path = bezierPath2.CGPath;
+	[shapeLayerTriangleTwo addAnimation:pathAnimation2 forKey:@"strokeEnd"];
+	
+	
+}
 
 @end

@@ -28,9 +28,9 @@
 				self.imageName = [NSString stringWithFormat:@"%@", dict[@"imageName"]];
 			else
 				self.imageName = [NSString stringWithFormat:@"%@", [dict[@"cname"] stringByReplacingOccurrencesOfString:@" " withString:@""]];
-			
-			if ([dict valueForKey:@"cntctname"])
-				self.type = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
+//			
+//			if ([dict valueForKey:@"cntctname"])
+//				self.type = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
 			
 			if ([dict valueForKey:@"cid"])
 				self.uid = [NSString stringWithFormat:@"%@", dict[@"cid"]];
