@@ -126,8 +126,7 @@
 	
 	if (self.menuStyle == TGLGuillotineMenuStyleCollection) {
 		 UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-		menuCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(40, 80, screenW - 80, screenH - 164) collectionViewLayout:layout];
-		menuCollectionView.center = self.view.center;
+		menuCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(40, 80, screenW - 80, screenH - 80) collectionViewLayout:layout];
 		menuCollectionView.backgroundColor = [UIColor clearColor];
 		menuCollectionView.delegate = self;
 		menuCollectionView.dataSource = self;

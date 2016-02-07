@@ -36,8 +36,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #define GLOBAL_BACK_COLOR UIColorFromRGBWithAlpha(0xf9f7f3, 1.f)
 #define GLOBAL_TINT_COLOR UIColorFromRGBWithAlpha(0xb9cf32, 1.f)
 
-#define SHOW_ALERT_IN_MAIN_QUEUE(alertMessage) dispatch_async(dispatch_get_main_queue(), ^{ SHOW_ALERT(alertMessage) });
-
 #define PRINT_RESPONSE_HEADERS_AND_CODE long statusCode = (long)[(NSHTTPURLResponse *)response statusCode]; if ([response isKindOfClass:[NSHTTPURLResponse class]]) { printf("\nResponse HTTP Status code: %ld\n", statusCode);  }
 
 #endif /* PrefixHeader_pch */

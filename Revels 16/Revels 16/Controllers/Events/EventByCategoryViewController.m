@@ -16,6 +16,8 @@
 
 @end
 
+static NSInteger fetchCount = 0;
+
 @implementation EventByCategoryViewController {
 	NSMutableArray *events;
 	NSMutableArray *filteredEvents;
@@ -75,6 +77,86 @@
 	if (error)
 		NSLog(@"Error in fetching: %@", error.localizedDescription);
 	[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:currentSegmentedIndex]];
+	
+	if (filteredEvents.count < 1 && fetchCount < 3) {
+		// Refetch...
+		[self fetchEvents];
+		fetchCount++;
+	}
+	if (fetchCount == 3) {
+		SVHUD_FAILURE(@"Failed!");
+		// Display more information as toast?
+		[self dismissSelf:nil];
+	}
+}
+
+- (void)fetchEvents {
+	
+	SVHUD_SHOW;
+	
+	NSURL *eventsUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
+	
+	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+	NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
+	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	[postRequest setHTTPBody:postData];
+	
+	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		
+		if (error) {
+			SVHUD_FAILURE(@"Error!");
+			return;
+		}
+		
+		PRINT_RESPONSE_HEADERS_AND_CODE;
+		
+		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+		
+		if (error == nil && statusCode == 200) {
+			NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self fetchEventSchedule];
+				events = [NSMutableArray arrayWithArray:evnts];
+			});
+		}
+		
+	}] resume];
+	
+}
+
+- (void)fetchEventSchedule {
+	
+	NSURL *eventsUrl = [NSURL URLWithString:@"http://schedule.mitportals.in"];
+	
+	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+	NSString *post = [NSString stringWithFormat:@"secret=%@", @"revels16Dastaan"];
+	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	[postRequest setHTTPBody:postData];
+	
+	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		
+		if (error) {
+			// Fetch local data?
+			SVHUD_FAILURE(@"Error!");
+			return;
+		}
+		
+		PRINT_RESPONSE_HEADERS_AND_CODE;
+		
+		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+		
+		if (error == nil && statusCode == 200) {
+			NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				events = [NSMutableArray arrayWithArray:evnts];
+				[self fetchFilteredEvents];
+			});
+		}
+		
+		SVHUD_HIDE;
+		
+	}] resume];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,12 +195,12 @@
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
 	
-	NSInteger direction = 1;
+	NSInteger direction = -1;
 	NSInteger index = currentSegmentedIndex;
 	NSInteger newIndex = (index == 0)?3:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
-		direction = -1;
+		direction = 1;
 		newIndex = (index == 3)?0:(index + 1);
 	}
 	

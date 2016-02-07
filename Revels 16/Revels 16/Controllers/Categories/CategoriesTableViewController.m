@@ -49,23 +49,24 @@
     NSURL *categoriesUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
     
     ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:categoriesUrl];
-//    NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
+//  NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
 	NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"LUGbatchof2017", @"nid"];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     [postRequest setHTTPBody:postData];
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error)
-        {
+		
+		if (error) {
             SVHUD_FAILURE(@"Failed");
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self fetchSavedCategories];
             });
+			return;
         }
         
         PRINT_RESPONSE_HEADERS_AND_CODE
-        
+		
         id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 //        NSLog(@"%@", jsonData);
 		
@@ -92,42 +93,6 @@
         SVHUD_HIDE;
         
     }] resume];
-	
-//	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//		
-//		if (error) {
-//			SVHUD_FAILURE(@"Failed");
-//			dispatch_async(dispatch_get_main_queue(), ^{
-//				[self fetchSavedCategories];
-//            });
-//		}
-//		
-//		PRINT_RESPONSE_HEADERS_AND_CODE;
-//		
-//		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//		
-//		if (statusCode == 200) {
-//			
-//			id catJSON = [jsonData valueForKey:@"data"];
-//			if (catJSON) {
-//				dispatch_async(dispatch_get_main_queue(), ^{
-//					categories = [REVCategory getArrayFromJSONData:catJSON];
-//					[dataManager saveObject:catJSON toDocumentsFile:@"categories.dat"];
-//					[self.tableView reloadData];
-//				});
-//			}
-//		}
-//		else {
-//			
-//			SVHUD_FAILURE(@"Failed");
-//			dispatch_async(dispatch_get_main_queue(), ^{
-//				[self fetchSavedCategories];
-//			});
-//		}
-//		
-//		SVHUD_HIDE;
-//		
-//	}] resume];
 	
 }
 

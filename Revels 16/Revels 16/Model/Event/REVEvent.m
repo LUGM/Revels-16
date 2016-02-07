@@ -144,7 +144,7 @@
 				fevent.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
 				
 				NSDateFormatter *formatter = [NSDateFormatter new];
-				[formatter setDateFormat:@"d-M-yy h:mm A"];
+				[formatter setDateFormat:@"d-M-yy h:mm a"];
 				fevent.startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"strttime"]]];
 				fevent.endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"endtime"]]];
 				

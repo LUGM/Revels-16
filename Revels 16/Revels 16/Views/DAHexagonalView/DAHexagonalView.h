@@ -7,11 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 IB_DESIGNABLE
 
+@protocol DAHexagonalViewDelegate <NSObject>
+
+- (void)hexagonalViewButtonPressedAtIndex:(NSInteger)index;
+- (void)finishedAllAnimationsDoSomethingAwesome;
+
+@end
+
 @interface DAHexagonalView : UIView
 
+@property (nonatomic, strong) NSMutableArray *startPoints;
+@property (nonatomic, strong) NSMutableArray *entryPoints;
+@property (nonatomic, strong) NSMutableArray *hexPoints;
+@property (nonatomic, strong) NSMutableArray *exitPoints;
+
+@property (nonatomic, strong) NSMutableArray <UIImage *> *images;
+
+@property (nonatomic, weak) id<DAHexagonalViewDelegate> delegate;
+
 - (void)animatePath;
+
+- (void)removeAllAnimations;
 
 @end

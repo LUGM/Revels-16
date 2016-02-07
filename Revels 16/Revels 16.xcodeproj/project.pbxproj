@@ -27,6 +27,8 @@
 		59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13C11C608ED200679C49 /* DMSlideTransition.m */; };
 		59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13CE1C60DE1200679C49 /* REVCategory.m */; };
 		59BA13D41C60E28500679C49 /* DADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13D31C60E28500679C49 /* DADataManager.m */; };
+		59BE4C701C66FB05004D28B7 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */; };
+		59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BE4C981C67548E004D28B7 /* QuartzCore.framework */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
 		59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */; };
 		59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */; };
@@ -85,6 +87,9 @@
 		59BA13CE1C60DE1200679C49 /* REVCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVCategory.m; path = Model/Category/REVCategory.m; sourceTree = "<group>"; };
 		59BA13D21C60E28500679C49 /* DADataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADataManager.h; path = Model/DADataManager/DADataManager.h; sourceTree = "<group>"; };
 		59BA13D31C60E28500679C49 /* DADataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADataManager.m; path = Model/DADataManager/DADataManager.m; sourceTree = "<group>"; };
+		59BE4C6E1C66FB05004D28B7 /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
+		59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
+		59BE4C981C67548E004D28B7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		59F7B2661C5F64CE00471695 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59F7B2A41C5F746A00471695 /* EventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsListViewController.h; path = Controllers/Events/EventsListViewController.h; sourceTree = "<group>"; };
 		59F7B2A51C5F746A00471695 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsListViewController.m; path = Controllers/Events/EventsListViewController.m; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */,
 				59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */,
 				EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */,
 			);
@@ -265,6 +271,7 @@
 		596F91DB1C5F1B3A000CBD48 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				59BE4C6D1C66FB05004D28B7 /* CAAnimation+Blocks */,
 				59130F5E1C64A58C00A45854 /* ShapeWordView */,
 				59BA13BD1C608ED200679C49 /* DMCustomTransitions */,
 				59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */,
@@ -367,6 +374,16 @@
 				59BA13D31C60E28500679C49 /* DADataManager.m */,
 			);
 			name = "Data Manager";
+			sourceTree = "<group>";
+		};
+		59BE4C6D1C66FB05004D28B7 /* CAAnimation+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				59BE4C6E1C66FB05004D28B7 /* CAAnimation+Blocks.h */,
+				59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */,
+			);
+			name = "CAAnimation+Blocks";
+			path = "Libraries/CAAnimation+Blocks";
 			sourceTree = "<group>";
 		};
 		59F7B2A31C5F744B00471695 /* Events */ = {
@@ -496,6 +513,7 @@
 		9D4BA4DDFB93C96C01B29C17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59BE4C981C67548E004D28B7 /* QuartzCore.framework */,
 				59F7B2D01C5FC9BE00471695 /* ImageIO.framework */,
 				A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */,
 			);
@@ -536,7 +554,7 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 9P257W983B;
+						DevelopmentTeam = HN3SCP8A52;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -660,6 +678,7 @@
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
 				5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */,
 				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
+				59BE4C701C66FB05004D28B7 /* CAAnimation+Blocks.m in Sources */,
 				59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */,
 				59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */,
 				59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */,
