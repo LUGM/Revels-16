@@ -16,6 +16,8 @@
 
 @implementation InstagramRootViewController {
 	Reachability *reachability;
+	UIPanGestureRecognizer *panGestureRecognizer;
+	UISwipeGestureRecognizer *swipeGesture;
 }
 
 - (void)viewDidLoad {
@@ -56,6 +58,13 @@
 	
 	reachability = [Reachability reachabilityWithHostName:@"http://www.google.com"];
 	
+//	panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+//	[self.view addGestureRecognizer:panGestureRecognizer];
+	
+	swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+	swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
+	[self.view addGestureRecognizer:swipeGesture];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,6 +88,19 @@
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Gesture recognizers
+
+- (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
+	[self dismissController:nil];
+}
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)recognizer {
+	
+	CGPoint location = [recognizer locationInView:self.view];
+	
+	self.view.transform = CGAffineTransformMakeTranslation(0, location.y);
+	
+}
 
 #pragma mark - Page view controller data source
 
@@ -116,7 +138,7 @@
 	InstagramDetailViewController *idvc = [pageViewController.viewControllers firstObject];
 	NSInteger index = idvc.pageIndex;
 	InstagramData *instaData = [self.instagramObjects objectAtIndex:index];
-	[[SDWebImageDownloader sharedDownloader] downloadImageWithURL:instaData.lowResURL options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+	[[SDWebImageDownloader sharedDownloader] downloadImageWithURL:instaData.thumbnailURL options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			self.backgroundImageView.image = [image applyDarkEffect];
 		});

@@ -95,6 +95,9 @@
     
     [self presentController:[self.viewControllers objectAtIndex:0]];
     self.navigationItem.title = [self.menuTitles objectAtIndex:0];
+	
+	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+	
 }
 
 - (void)setupMenu {
@@ -534,6 +537,39 @@
     [self.currentViewController.view removeFromSuperview];
     
     [self.currentViewController removeFromParentViewController];
+}
+
+#pragma mark - Navigation bar handlers
+
+- (void)hideNavBarShadow {
+	[self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Pixel"] forBarMetrics:UIBarMetricsDefault];
+}
+
+- (void)showNavBarShadow {
+	[self.navigationController.navigationBar setShadowImage:nil];
+	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];
+	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+}
+
+#pragma mark - Navigation bar buttons
+
+- (void)setRightNavBarButton:(UIBarButtonItem *)barButton andDelegate:(id<TGLRightNavButtonDelegate>)delegate {
+	self.rightButtonDelegate = delegate;
+	[barButton setTarget:self];
+	[barButton setAction:@selector(barButtonPressed:)];
+	self.navigationItem.rightBarButtonItem = barButton;
+}
+
+- (void)removeRightNavBarButtonAndDelegate:(id<TGLRightNavButtonDelegate>)delegate {
+	self.navigationItem.rightBarButtonItem = nil;
+	self.rightButtonDelegate = nil;
+}
+
+- (void)barButtonPressed:(id)sender {
+	if ([self.rightButtonDelegate respondsToSelector:@selector(guillotineMenuDidPressRightButton)])
+		[self.rightButtonDelegate guillotineMenuDidPressRightButton];
 }
 
 @end

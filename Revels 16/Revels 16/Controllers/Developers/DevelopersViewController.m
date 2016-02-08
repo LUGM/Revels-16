@@ -42,6 +42,8 @@
 
 - (void)hexagonalViewButtonPressedAtIndex:(NSInteger)index {
 	
+	// Add a developer detail view
+	
 	if (index == 10)
 		NSLog(@"Revels logo pressed");
 	
@@ -59,9 +61,22 @@
 	
 }
 
+- (void)finishedDeveloperAnimations {
+	
+	printf("\n\n | | | DRAW TEXT | | |\n\n");
+	
+	CGFloat bottomTextSize = (SWdith > 360)?22.f:18.f;
+	
+	[self.hexagonalView drawTopText:@"REVELS'16" withAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:50.0]}];
+	[self.hexagonalView drawBottomText:@"DAASTAN | Everybody has a Story" withAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:bottomTextSize]}];
+	
+}
+
 - (void)finishedAllAnimationsDoSomethingAwesome {
+	
 	printf("\n\n | | | DO AWESOME SHIZZ | | |\n\n");
 	// Like make some magic happen
+	
 }
 
 /*

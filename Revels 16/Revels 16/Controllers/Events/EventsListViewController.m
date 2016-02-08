@@ -10,7 +10,7 @@
 #import "EventsTableViewCell.h"
 #import "REVEvent.h"
 
-@interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate>
+@interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, TGLRightNavButtonDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
@@ -27,6 +27,8 @@
 	
 	UISwipeGestureRecognizer *leftSwipeGesture;
 	UISwipeGestureRecognizer *rightSwipeGesture;
+	
+	UIBarButtonItem *searchButton;
 }
 
 - (void)viewDidLoad {
@@ -57,6 +59,8 @@
 	[rightSwipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
 	[self.view addGestureRecognizer:rightSwipeGesture];
 	
+	searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:nil];
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -68,7 +72,17 @@
 		[self fetchEvents];
 	
 	if (self.guillotineMenuController) {
-		// Uhh, hide the line?
+		[self.guillotineMenuController hideNavBarShadow];
+		[self.guillotineMenuController setRightNavBarButton:searchButton andDelegate:self];
+	}
+	
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	
+	if (self.guillotineMenuController) {
+		[self.guillotineMenuController showNavBarShadow];
+		[self.guillotineMenuController removeRightNavBarButtonAndDelegate:self];
 	}
 	
 }
@@ -99,18 +113,15 @@
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
 		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//        NSLog(@"%@", jsonData);
 		
 		if (error == nil && statusCode == 200) {
 			NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
 			dispatch_async(dispatch_get_main_queue(), ^{
+				// Now that we have the  events data, get the shedule
 				[self fetchEventSchedule];
 				events = [NSMutableArray arrayWithArray:evnts];
-//				[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex]];
 			});
 		}
-		
-//		SVHUD_HIDE;
 		
 	}] resume];
 	
@@ -136,7 +147,6 @@
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
 		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//		NSLog(@"%@", jsonData);
 		
 		if (error == nil && statusCode == 200) {
 			NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
@@ -382,6 +392,7 @@
 		self.extendedNavBarViewConstraint.constant = 40.f;
 	}];
 	self.tableView.tableHeaderView = nil;
+	[self.guillotineMenuController removeRightNavBarButtonAndDelegate:self];
 }
 
 - (void)didDismissSearchController:(UISearchController *)searchController {
@@ -389,6 +400,7 @@
 		self.extendedNavBarViewConstraint.constant = 0.f;
 	}];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
+	[self.guillotineMenuController setRightNavBarButton:searchButton andDelegate:self];
 }
 
 #pragma mark - Search bar delegate
@@ -403,6 +415,16 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
 	[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex]];
 }
+
+#pragma mark - Guillotine right nav bar button delegate
+
+- (void)guillotineMenuDidPressRightButton {
+	[self.tableView scrollRectToVisible:self.tableView.tableHeaderView.frame animated:NO];
+	[self.searchController setActive:YES];
+	[self.searchController.searchBar becomeFirstResponder];
+	[self.guillotineMenuController removeRightNavBarButtonAndDelegate:self];
+}
+
 
 
 

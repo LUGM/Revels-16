@@ -14,7 +14,9 @@
 
 @end
 
-@implementation InstagramDetailViewController
+@implementation InstagramDetailViewController {
+//	UIPanGestureRecognizer *panGestureRecognizer;
+}
 
 - (void)viewDidLoad {
 	
@@ -39,6 +41,10 @@
 	self.captionTextLabel.text = self.instaData.captionText;
 	
 	self.crossButton.backgroundColor = [UIColor clearColor];
+	
+//	panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+//	panGestureRecognizer.delegate = self;
+//	[self.view addGestureRecognizer:panGestureRecognizer];
 
 }
 
@@ -50,6 +56,16 @@
 
 - (IBAction)dismissSelf:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Pan gesture recognizer
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)recognizer {
+	
+	CGPoint location = [recognizer locationInView:self.view];
+	
+	self.view.transform = CGAffineTransformMakeTranslation(0, location.y);
+	
 }
 
 /*

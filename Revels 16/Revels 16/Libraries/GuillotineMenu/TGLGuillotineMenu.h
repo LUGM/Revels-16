@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol TGLGuillotineMenuDelegate;
+@protocol TGLRightNavButtonDelegate;
 
 typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
 	TGLGuillotineMenuStyleTable,
@@ -60,6 +61,7 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
 @property (nonatomic) TGLGuillotineMenuStyle menuStyle;
 
 @property (nonatomic, weak) id<TGLGuillotineMenuDelegate> delegate;
+@property (nonatomic, weak) id<TGLRightNavButtonDelegate> rightButtonDelegate;
 
 
 // -Init method
@@ -74,6 +76,12 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
 - (void)openMenu;
 - (void)dismissMenu;
 
+- (void)hideNavBarShadow;
+- (void)showNavBarShadow;
+
+- (void)setRightNavBarButton:(UIBarButtonItem *)barButton andDelegate:(id<TGLRightNavButtonDelegate>)delegate;
+- (void)removeRightNavBarButtonAndDelegate:(id<TGLRightNavButtonDelegate>)delegate;
+
 @end
 
 @protocol TGLGuillotineMenuDelegate <NSObject>
@@ -81,5 +89,11 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
 - (void)menuDidOpen;
 - (void)menuDidClose;
 - (void)selectedMenuItemAtIndex:(NSInteger)index;
+
+@end
+
+@protocol TGLRightNavButtonDelegate <NSObject>
+
+- (void)guillotineMenuDidPressRightButton;
 
 @end

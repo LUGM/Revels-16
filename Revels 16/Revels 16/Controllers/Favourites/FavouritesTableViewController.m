@@ -34,11 +34,6 @@
 	fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"REVEvent"];
 	[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"favourite == 1"]];
 	
-	[self.navigationController.navigationBar setTranslucent:NO];
-	[self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
-	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Pixel"] forBarMetrics:UIBarMetricsDefault];
-	
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -8,6 +8,7 @@
 
 #import "DAHexagonalView.h"
 #import "CAAnimation+Blocks.h"
+#import <CoreText/CoreText.h>
 
 #define WIDTH self.bounds.size.width
 #define HEIGHT self.bounds.size.height
@@ -29,8 +30,12 @@
 	NSMutableArray <CAKeyframeAnimation *> *imageAnimations;
 	NSMutableArray <CALayer *> *imageLayers;
 	NSMutableArray <UIBezierPath *> *imagePaths;
+	
+	CALayer *topTextLayer, *bottomTextLayer;
 
 }
+
+#pragma mark -
 
 - (void)layoutSubviews {
 	
@@ -148,6 +153,18 @@
 		imagePaths = [NSMutableArray arrayWithObjects:imagePath0, imagePath1, imagePath2, imagePath3, nil];
 	}
 	
+	if (!topTextLayer) {
+		topTextLayer = [CALayer layer];
+		topTextLayer.frame = CGRectMake(0, 44, WIDTH, [self.hexPoints[0] CGPointValue].y - 44 - 10);
+		[self.layer addSublayer:topTextLayer];
+	}
+	
+	if (!bottomTextLayer) {
+		bottomTextLayer = [CALayer layer];
+		bottomTextLayer.frame = CGRectMake(0, [self.hexPoints[3] CGPointValue].y + 20, WIDTH, HEIGHT - [self.hexPoints[3] CGPointValue].y - 20);
+		[self.layer addSublayer:bottomTextLayer];
+	}
+	
 }
 
 - (void)awakeFromNib {
@@ -184,8 +201,10 @@
 			[imageLayers addObject:movingLayer];
 		}
 	}
-
+	
 }
+
+#pragma mark -
 
 - (void)drawRect:(CGRect)rect {
 	
@@ -200,14 +219,16 @@
 	[circlePath fill];
 	[circlePath stroke];
 
-	[UIColor.lightGrayColor setFill];
-	[UIColor.darkGrayColor setStroke];
-	
-//	for (NSInteger i = 0; i < 6; ++i) {
-//		UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:[self.entryPoints[i] CGPointValue] radius:4.f startAngle:0.f endAngle:2 * M_PI clockwise:YES];
-//		[circlePath fill];
-//		[circlePath stroke];
-//	}
+	if (WIDTH > 360) {
+		[UIColor.lightGrayColor setFill];
+		[UIColor.darkGrayColor setStroke];
+		
+		for (NSInteger i = 0; i < 6; ++i) {
+			UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:[self.entryPoints[i] CGPointValue] radius:4.f startAngle:0.f endAngle:2 * M_PI clockwise:YES];
+			[circlePath fill];
+			[circlePath stroke];
+		}
+	}
 	
 	[GLOBAL_BACK_COLOR setFill];
 	[UIColor.lightGrayColor setStroke];
@@ -219,6 +240,8 @@
 	}
 	
 }
+
+#pragma mark - Animate paths and views
 
 - (void)animatePath {
 	
@@ -232,7 +255,7 @@
 			pathAnimation.autoreverses = YES;
 			pathAnimation.removedOnCompletion = NO;
 			pathAnimation.fillMode = kCAFillModeForwards;
-			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
 			[animations addObject:pathAnimation];
 		}
 	}
@@ -247,10 +270,10 @@
 		imageAnimations = [NSMutableArray new];
 		for (NSInteger  i = 0; i < 4; ++i) {
 			CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-			pathAnimation.duration = 3.8f;
+			pathAnimation.duration = 4.8f;
 			pathAnimation.removedOnCompletion = YES;
 			pathAnimation.path = imagePaths[i].CGPath;
-			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 			[pathAnimation setCompletion:^(BOOL finished) {
 				UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 				[button setBackgroundImage:self.images[i] forState:UIControlStateNormal];
@@ -270,7 +293,7 @@
 		[imageLayers[i] addAnimation:imageAnimations[i] forKey:@"movingAnimation"];
 	}
 	
-	UIButton *buttonK = [UIButton buttonWithType:UIButtonTypeCustom];
+	UIButton *buttonK = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
 	[buttonK setBackgroundImage:[UIImage imageNamed:@"Kartik"] forState:UIControlStateNormal];
 	[buttonK setFrame:CGRectMake(0, 0, 64, 64)];
 	[buttonK setCenter:[self.hexPoints[3] CGPointValue]];
@@ -278,9 +301,8 @@
 	[buttonK addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self addSubview:buttonK];
 	
-	UIButton *buttonS = [UIButton buttonWithType:UIButtonTypeCustom];
+	UIButton *buttonS = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
 	[buttonS setBackgroundImage:[UIImage imageNamed:@"Sorte"] forState:UIControlStateNormal];
-	[buttonS setFrame:CGRectMake(0, 0, 64, 64)];
 	[buttonS setCenter:[self.hexPoints[0] CGPointValue]];
 	[buttonS setTag:5];
 	[buttonS addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -309,6 +331,8 @@
 		buttonS.transform = CGAffineTransformIdentity;
 		buttonS.alpha = 1.0;
 	} completion:^(BOOL finished) {
+		if ([self.delegate respondsToSelector:@selector(finishedDeveloperAnimations)])
+			[self.delegate finishedDeveloperAnimations];
 		[UIView animateWithDuration:1.2 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			buttonLUGM.transform = CGAffineTransformIdentity;
 			buttonLUGM.alpha = 1.0;
@@ -319,6 +343,8 @@
 	}];
 	
 }
+
+#pragma mark - Remove all animations and subviews
 
 - (void)removeAllAnimations {
 	NSArray *subviews = self.subviews;
@@ -331,14 +357,127 @@
 	}
 }
 
+#pragma mark - Button actions
+
 - (void)imageButtonPressed:(id)sender {
-//	NSLog(@"Button pressed: %li", [sender tag]);
 	if ([self.delegate respondsToSelector:@selector(hexagonalViewButtonPressedAtIndex:)]) {
 		[self.delegate hexagonalViewButtonPressedAtIndex:[sender tag]];
 	}
 }
 
-#pragma mark - CAAnimationDelegate
+#pragma mark - Text drawing
+
+- (void)drawTopText:(NSString *)text withAttributes:(NSDictionary *)attributes {
+	
+	[topTextLayer removeAllAnimations];
+	
+	NSArray *sublayers = topTextLayer.sublayers;
+	for (NSInteger i = 0; i < sublayers.count; ++i)
+		[sublayers[i] removeAllAnimations];
+	
+	UIBezierPath *path = [self bezierPathForText:text andAttributes:attributes];
+						  
+	CAShapeLayer *pathLayer = [CAShapeLayer layer];
+	pathLayer.frame = topTextLayer.bounds;
+	pathLayer.bounds = CGPathGetBoundingBox(path.CGPath);
+	pathLayer.geometryFlipped = YES;
+	pathLayer.path = path.CGPath;
+	pathLayer.fillColor = nil;
+	pathLayer.strokeColor = [[UIColor blackColor] CGColor];
+	pathLayer.lineWidth = 0.8f;
+	pathLayer.lineJoin = kCALineJoinBevel;
+	
+	[pathLayer removeAllAnimations];
+	
+	[topTextLayer addSublayer:pathLayer];
+	
+	CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+	pathAnimation.duration = 6.0;
+	pathAnimation.fromValue = @0.f;
+	pathAnimation.toValue = @1.f;
+	pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	
+	[pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+}
+
+- (void)drawBottomText:(NSString *)text withAttributes:(NSDictionary *)attributes {
+	
+	[bottomTextLayer removeAllAnimations];
+	
+	NSArray *sublayers = bottomTextLayer.sublayers;
+	for (NSInteger i = 0; i < sublayers.count; ++i)
+		[sublayers[i] removeAllAnimations];
+	
+	UIBezierPath *path = [self bezierPathForText:text andAttributes:attributes];
+	
+	CAShapeLayer *pathLayer = [CAShapeLayer layer];
+	pathLayer.frame = bottomTextLayer.bounds;
+	pathLayer.bounds = CGPathGetBoundingBox(path.CGPath);
+	pathLayer.geometryFlipped = YES;
+	pathLayer.path = path.CGPath;
+	pathLayer.fillColor = nil;
+	pathLayer.strokeColor = [[UIColor blackColor] CGColor];
+	pathLayer.lineWidth = 0.4f;
+	pathLayer.lineJoin = kCALineJoinRound;
+	
+	[pathLayer removeAllAnimations];
+	
+	[bottomTextLayer addSublayer:pathLayer];
+	
+	CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+	pathAnimation.duration = 6.0;
+	pathAnimation.fromValue = @0.f;
+	pathAnimation.toValue = @1.f;
+	pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	
+	[pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+}
+
+#pragma mark - Bezier path for text
+
+- (UIBezierPath *)bezierPathForText:(NSString *)text andAttributes:(NSDictionary *)attributes {
+	
+	UIBezierPath *path = [UIBezierPath bezierPath];
+	
+	CGMutablePathRef letters = CGPathCreateMutable();
+	
+	NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+	
+	CTLineRef line = CTLineCreateWithAttributedString((CFAttributedStringRef)attrString);
+	
+	CFArrayRef runArray = CTLineGetGlyphRuns(line);
+	
+	for (CFIndex runIndex = 0; runIndex < CFArrayGetCount(runArray); runIndex++) {
+
+		CTRunRef run = (CTRunRef)CFArrayGetValueAtIndex(runArray, runIndex);
+		CTFontRef runFont = CFDictionaryGetValue(CTRunGetAttributes(run), NSFontAttributeName);
+		
+		for (CFIndex runGlyphIndex = 0; runGlyphIndex < CTRunGetGlyphCount(run); runGlyphIndex++) {
+			
+			CFRange thisGlyphRange = CFRangeMake(runGlyphIndex, 1);
+			CGGlyph glyph;
+			CGPoint position;
+			CTRunGetGlyphs(run, thisGlyphRange, &glyph);
+			CTRunGetPositions(run, thisGlyphRange, &position);
+			
+			{
+				CGPathRef letter = CTFontCreatePathForGlyph(runFont, glyph, NULL);
+				CGAffineTransform t = CGAffineTransformMakeTranslation(position.x, position.y);
+				CGPathAddPath(letters, &t, letter);
+				CGPathRelease(letter);
+			}
+		}
+	}
+	
+	CFRelease(line);
+	
+	[path moveToPoint:CGPointZero];
+	[path appendPath:[UIBezierPath bezierPathWithCGPath:letters]];
+	
+	CGPathRelease(letters);
+	
+	return path;
+}
 
 
 @end

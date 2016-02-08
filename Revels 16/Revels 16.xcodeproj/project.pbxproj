@@ -239,12 +239,12 @@
 		596F91D81C5F191E000CBD48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				596F91D71C5F191A000CBD48 /* Categories */,
+				59F7B2A31C5F744B00471695 /* Events */,
 				59F7B2BD1C5F800300471695 /* Instagram */,
 				59F7B2B51C5F7D2A00471695 /* Developers */,
 				59F7B2B11C5F7ACA00471695 /* About */,
 				59F7B2AA1C5F78D800471695 /* Favourites */,
-				59F7B2A31C5F744B00471695 /* Events */,
-				596F91D71C5F191A000CBD48 /* Categories */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -337,13 +337,13 @@
 			name = "Parallax Instagram";
 			sourceTree = "<group>";
 		};
-		59BA13BB1C608AE800679C49 /* Version 2 */ = {
+		59BA13BB1C608AE800679C49 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
 				59BA13AC1C60764D00679C49 /* InstagramV2ViewController.h */,
 				59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */,
 			);
-			name = "Version 2";
+			name = Collection;
 			sourceTree = "<group>";
 		};
 		59BA13BC1C608AEB00679C49 /* Detail */ = {
@@ -455,9 +455,9 @@
 		59F7B2BD1C5F800300471695 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				59BA13BB1C608AE800679C49 /* Collection */,
 				59FE79381C625A1700EC61A0 /* Page Root */,
 				59BA13BC1C608AEB00679C49 /* Detail */,
-				59BA13BB1C608AE800679C49 /* Version 2 */,
 			);
 			name = Instagram;
 			sourceTree = "<group>";

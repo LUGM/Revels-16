@@ -52,6 +52,7 @@
 	[self fetchFilteredEvents];
 	
 	[self.segmentedControl setTintColor:[UIColor blackColor]];
+	
 	[self.navigationController.navigationBar setTranslucent:NO];
 	[self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
 	[self.navigationController.navigationBar setBackgroundColor:GLOBAL_BACK_COLOR];

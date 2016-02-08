@@ -14,6 +14,7 @@ IB_DESIGNABLE
 @protocol DAHexagonalViewDelegate <NSObject>
 
 - (void)hexagonalViewButtonPressedAtIndex:(NSInteger)index;
+- (void)finishedDeveloperAnimations;
 - (void)finishedAllAnimationsDoSomethingAwesome;
 
 @end
@@ -32,5 +33,8 @@ IB_DESIGNABLE
 - (void)animatePath;
 
 - (void)removeAllAnimations;
+
+- (void)drawTopText:(NSString *)text withAttributes:(NSDictionary *)attributes;
+- (void)drawBottomText:(NSString *)text withAttributes:(NSDictionary *)attributes;
 
 @end
