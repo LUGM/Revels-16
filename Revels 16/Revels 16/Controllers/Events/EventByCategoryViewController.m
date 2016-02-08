@@ -8,6 +8,7 @@
 
 #import "EventByCategoryViewController.h"
 #import "EventsTableViewCell.h"
+#import "EventHeaderTableViewCell.h"
 #import "REVEvent.h"
 
 @interface EventByCategoryViewController () 
@@ -15,8 +16,6 @@
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
 @end
-
-static NSInteger fetchCount = 0;
 
 @implementation EventByCategoryViewController {
 	NSMutableArray *events;
@@ -27,6 +26,10 @@ static NSInteger fetchCount = 0;
 	
 	UISwipeGestureRecognizer *leftSwipeGesture;
 	UISwipeGestureRecognizer *rightSwipeGesture;
+	
+	BOOL headerViewShown;
+	
+	NSInteger fetchCount;
 }
 
 - (void)viewDidLoad {
@@ -39,7 +42,7 @@ static NSInteger fetchCount = 0;
 	self.selectedIndexPath = nil;
 	currentSegmentedIndex = 0;
 	
-	// Add fetch events code (all if not present)...
+	fetchCount = 0;
 	
 	managedObjectContext = [AppDelegate managedObjectContext];
 	fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"REVEvent"];
@@ -63,6 +66,8 @@ static NSInteger fetchCount = 0;
 	rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
 	[rightSwipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
 	[self.view addGestureRecognizer:rightSwipeGesture];
+	
+	headerViewShown = (SWdith > 360);
 
 }
 
@@ -78,12 +83,17 @@ static NSInteger fetchCount = 0;
 		NSLog(@"Error in fetching: %@", error.localizedDescription);
 	[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:currentSegmentedIndex]];
 	
-	if (filteredEvents.count < 1 && fetchCount < 3) {
-		// Refetch...
-		[self fetchEvents];
+	if (filteredEvents.count < 1 && fetchCount < 2) {
+		Reachability *reachability = [Reachability reachabilityForInternetConnection];
+		if ([reachability isReachable])
+			[self fetchEvents];
+		else {
+			SVHUD_FAILURE(@"No Connection!")
+			[self dismissSelf:nil];
+		}
 		fetchCount++;
 	}
-	if (fetchCount == 3) {
+	if (fetchCount == 2) {
 		SVHUD_FAILURE(@"Failed!");
 		// Display more information as toast?
 		[self dismissSelf:nil];
@@ -136,7 +146,6 @@ static NSInteger fetchCount = 0;
 	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
 		if (error) {
-			// Fetch local data?
 			SVHUD_FAILURE(@"Error!");
 			return;
 		}
@@ -190,6 +199,12 @@ static NSInteger fetchCount = 0;
 	currentSegmentedIndex = index;
 	
 }
+
+- (IBAction)toggleHeaderView:(id)sender {
+	headerViewShown = !headerViewShown;
+	[self.tableView reloadData];
+}
+
 
 #pragma mark - Swipe gesture handler
 
@@ -245,7 +260,7 @@ static NSInteger fetchCount = 0;
 		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
 	cell.eventNameLabel.text = event.name;
-	cell.categoryNameLabel.text = event.categoryName;
+	cell.categoryNameLabel.text = event.detail;
 	
 	[cell.infoButton setTag:indexPath.row];
 	[cell.infoButton addTarget:self action:@selector(infoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -294,6 +309,34 @@ static NSInteger fetchCount = 0;
 	if ([indexPath compare:self.selectedIndexPath] == NSOrderedSame)
 		return 228.f;
 	return 60.f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+	EventHeaderTableViewCell *cell = (EventHeaderTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"eventsCellHeader"];
+	
+	if (cell == nil)
+		cell = [[EventHeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCellHeader"];
+	
+	cell.categoryDescriptionLabel.text = self.category.detail;
+//	cell.categoryImageView.image = [UIImage imageNamed:self.category.imageName];
+	cell.categoryImageView.image = [UIImage imageNamed:@"eventsIcon"];
+	
+	NSDateFormatter *formatter = [NSDateFormatter new];
+	[formatter setDateFormat:@"EEE, MMMM dd, yyyy"];
+	
+	REVEvent *event = [filteredEvents firstObject];
+	if (event)
+		cell.dayDateLabel.text = [formatter stringFromDate:event.startDate];
+	else
+		cell.dayDateLabel.text = [self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex];
+	
+	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//	CGRect rect = [self.category.detail boundingRectWithSize:CGSizeMake(SWdith - 120, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.f]} context:nil];
+	return headerViewShown * 80.f;
 }
 
 #pragma mark - Cell button actions

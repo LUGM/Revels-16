@@ -29,6 +29,8 @@
 		59BA13D41C60E28500679C49 /* DADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13D31C60E28500679C49 /* DADataManager.m */; };
 		59BE4C701C66FB05004D28B7 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */; };
 		59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BE4C981C67548E004D28B7 /* QuartzCore.framework */; };
+		59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */; };
+		59E086561C686DA80029EFED /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E086551C686DA80029EFED /* Reachability.m */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
 		59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */; };
 		59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */; };
@@ -90,6 +92,10 @@
 		59BE4C6E1C66FB05004D28B7 /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
 		59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
 		59BE4C981C67548E004D28B7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		59E086501C685A8A0029EFED /* EventHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventHeaderTableViewCell.h; path = Views/Cells/EventHeaderTableViewCell.h; sourceTree = "<group>"; };
+		59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventHeaderTableViewCell.m; path = Views/Cells/EventHeaderTableViewCell.m; sourceTree = "<group>"; };
+		59E086541C686DA80029EFED /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		59E086551C686DA80029EFED /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		59F7B2661C5F64CE00471695 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59F7B2A41C5F746A00471695 /* EventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsListViewController.h; path = Controllers/Events/EventsListViewController.h; sourceTree = "<group>"; };
 		59F7B2A51C5F746A00471695 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsListViewController.m; path = Controllers/Events/EventsListViewController.m; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 		596F91DB1C5F1B3A000CBD48 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				59E086531C686DA80029EFED /* Reachability */,
 				59BE4C6D1C66FB05004D28B7 /* CAAnimation+Blocks */,
 				59130F5E1C64A58C00A45854 /* ShapeWordView */,
 				59BA13BD1C608ED200679C49 /* DMCustomTransitions */,
@@ -315,6 +322,8 @@
 			children = (
 				59F7B2A71C5F74DB00471695 /* EventsTableViewCell.h */,
 				59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */,
+				59E086501C685A8A0029EFED /* EventHeaderTableViewCell.h */,
+				59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -384,6 +393,16 @@
 			);
 			name = "CAAnimation+Blocks";
 			path = "Libraries/CAAnimation+Blocks";
+			sourceTree = "<group>";
+		};
+		59E086531C686DA80029EFED /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				59E086541C686DA80029EFED /* Reachability.h */,
+				59E086551C686DA80029EFED /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Libraries/Reachability;
 			sourceTree = "<group>";
 		};
 		59F7B2A31C5F744B00471695 /* Events */ = {
@@ -666,12 +685,14 @@
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */,
+				59E086561C686DA80029EFED /* Reachability.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
 				59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
 				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
+				59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */,
 				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
 				59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */,

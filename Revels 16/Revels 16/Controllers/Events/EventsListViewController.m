@@ -63,7 +63,8 @@
 	
 	[self fetchLocalEvents];
 	
-	// If connected to internet...
+	Reachability *reachability = [Reachability reachabilityForInternetConnection];
+	if ([reachability isReachable])
 		[self fetchEvents];
 	
 	if (self.guillotineMenuController) {

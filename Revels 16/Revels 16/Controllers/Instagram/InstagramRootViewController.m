@@ -14,7 +14,9 @@
 
 @end
 
-@implementation InstagramRootViewController
+@implementation InstagramRootViewController {
+	Reachability *reachability;
+}
 
 - (void)viewDidLoad {
 	
@@ -51,6 +53,9 @@
 	verticalMotionEffectBg.minimumRelativeValue = @(10);
 	verticalMotionEffectBg.maximumRelativeValue = @(-10);
 	[self.backgroundImageView addMotionEffect:verticalMotionEffectBg];
+	
+	reachability = [Reachability reachabilityWithHostName:@"http://www.google.com"];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +70,7 @@
 	InstagramData *instaData = [self.instagramObjects objectAtIndex:index];
 	idvc.instaData = instaData;
 	idvc.pageIndex = index;
+	idvc.reachability = reachability;
 	
 	return idvc;
 }

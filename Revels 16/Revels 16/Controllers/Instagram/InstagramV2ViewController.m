@@ -40,7 +40,13 @@
 	
 	nextURL = [NSURL URLWithString:URLString];
 	
-	[self fetchImages];
+	Reachability *reachability = [Reachability reachabilityForInternetConnection];
+	if ([reachability isReachable])
+		[self fetchImages];
+	else {
+		SVHUD_FAILURE(@"Network error!");
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}
 	
 	self.transition = [KWTransition manager];
 	

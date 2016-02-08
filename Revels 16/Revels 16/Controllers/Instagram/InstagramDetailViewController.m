@@ -22,7 +22,13 @@
     // Do any additional setup after loading the view.
 	
 	// Change to highRes if wifi
-	[self.foregroundImageView sd_setImageWithURL:self.instaData.lowResURL placeholderImage:[UIImage imageNamed:@"image01.jpg"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+	
+	NSURL *imageURL = self.instaData.lowResURL;
+	
+	if (self.reachability.currentReachabilityStatus == ReachableViaWiFi)
+		imageURL = self.instaData.highResURL;
+	
+	[self.foregroundImageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"RevelsLogo"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //		self.backgroundImageView.image = [image applyDarkEffect];
 	}];
 	

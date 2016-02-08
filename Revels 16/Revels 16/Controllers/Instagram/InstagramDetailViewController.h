@@ -15,6 +15,8 @@
 
 @property (nonatomic) NSUInteger pageIndex;
 
+@property (nonatomic) Reachability *reachability;
+
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *foregroundImageView;
 

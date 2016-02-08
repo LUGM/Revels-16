@@ -36,7 +36,9 @@
 	[self fetchSavedCategories];
 	
 	// Check for connection
-	[self fetchCategories];
+	Reachability *reachability = [Reachability reachabilityForInternetConnection];
+	if ([reachability isReachable])
+		[self fetchCategories];
 	
 	self.transition = [KWTransition manager];
 	

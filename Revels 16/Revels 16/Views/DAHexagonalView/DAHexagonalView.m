@@ -97,28 +97,28 @@
 		[entryPath0 addLineToPoint:entpts[3]];
 		[entryPath0 addLineToPoint:hexpts[1]];
 		[entryPath0 addLineToPoint:hexpts[3]];
-		[entryPath0 addLineToPoint:extpts[1]];
+//		[entryPath0 addLineToPoint:extpts[1]];
 
 		UIBezierPath *entryPath1 = [UIBezierPath bezierPath];
 		[entryPath1 moveToPoint:strpts[1]];
 		[entryPath1 addLineToPoint:entpts[1]];
 		[entryPath1 addLineToPoint:hexpts[2]];
 		[entryPath1 addLineToPoint:hexpts[0]];
-		[entryPath1 addLineToPoint:extpts[0]];
+//		[entryPath1 addLineToPoint:extpts[0]];
 		
 		UIBezierPath *entryPath2 = [UIBezierPath bezierPath];
 		[entryPath2 moveToPoint:strpts[2]];
 		[entryPath2 addLineToPoint:entpts[0]];
 		[entryPath2 addLineToPoint:hexpts[4]];
 		[entryPath2 addLineToPoint:hexpts[0]];
-		[entryPath2 addLineToPoint:extpts[3]];
+//		[entryPath2 addLineToPoint:extpts[3]];
 		
 		UIBezierPath *entryPath3 = [UIBezierPath bezierPath];
 		[entryPath3 moveToPoint:strpts[3]];
 		[entryPath3 addLineToPoint:entpts[4]];
 		[entryPath3 addLineToPoint:hexpts[5]];
 		[entryPath3 addLineToPoint:hexpts[3]];
-		[entryPath3 addLineToPoint:extpts[2]];
+//		[entryPath3 addLineToPoint:extpts[2]];
 		
 		entryPaths = [NSMutableArray arrayWithObjects:entryPath0, entryPath1, entryPath2, entryPath3, nil];
 	}
@@ -229,7 +229,6 @@
 			pathAnimation.duration = 5.f;
 			pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
 			pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-//			pathAnimation.repeatCount = 10;
 			pathAnimation.autoreverses = YES;
 			pathAnimation.removedOnCompletion = NO;
 			pathAnimation.fillMode = kCAFillModeForwards;
@@ -248,7 +247,7 @@
 		imageAnimations = [NSMutableArray new];
 		for (NSInteger  i = 0; i < 4; ++i) {
 			CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-			pathAnimation.duration = 2.7f;
+			pathAnimation.duration = 3.8f;
 			pathAnimation.removedOnCompletion = YES;
 			pathAnimation.path = imagePaths[i].CGPath;
 			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -260,6 +259,7 @@
 				[button setTag:i];
 				[button addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 				[self addSubview:button];
+//				[imageLayers[i] removeFromSuperlayer];
 			}];
 			[imageAnimations addObject:pathAnimation];
 		}
@@ -303,13 +303,13 @@
 	buttonLUGM.transform = CGAffineTransformMakeScale(0, 0);
 	buttonLUGM.alpha = 0.0;
 	
-	[UIView animateWithDuration:1.2 delay:5.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
+	[UIView animateWithDuration:1.2 delay:4.8 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		buttonK.transform = CGAffineTransformIdentity;
 		buttonK.alpha = 1.0;
 		buttonS.transform = CGAffineTransformIdentity;
 		buttonS.alpha = 1.0;
 	} completion:^(BOOL finished) {
-		[UIView animateWithDuration:1.2 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		[UIView animateWithDuration:1.2 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			buttonLUGM.transform = CGAffineTransformIdentity;
 			buttonLUGM.alpha = 1.0;
 		} completion:^(BOOL finished) {

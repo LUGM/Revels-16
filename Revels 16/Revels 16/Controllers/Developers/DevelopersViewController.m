@@ -24,10 +24,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+//	[super viewWillAppear:animated];
 	[self.hexagonalView animatePath];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
+//	[super viewWillDisappear:animated];
 	[self.hexagonalView removeAllAnimations];
 }
 
