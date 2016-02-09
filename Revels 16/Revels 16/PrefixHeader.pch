@@ -19,6 +19,7 @@
 #import "ASMutableURLRequest.h"
 #import "DADataManager.h"
 #import "Reachability.h"
+#import "Colours.h"
 
 #define SWdith [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height

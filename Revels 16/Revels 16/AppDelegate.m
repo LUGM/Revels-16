@@ -20,8 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
-//	[Chameleon setGlobalThemeUsingPrimaryColor:GLOBAL_BACK_COLOR withSecondaryColor:GLOBAL_BACK_COLOR andContentStyle:UIContentStyleContrast];
-	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	
 	UINavigationController *ctvc = [storyboard instantiateViewControllerWithIdentifier:@"CategoriesVCNav"];

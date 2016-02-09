@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vYZ-6M-Cnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HlH-9Z-7qo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xSm-EB-3eg">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventsCell" rowHeight="60" id="BAq-bM-7EJ" customClass="EventsTableViewCell">
@@ -165,13 +165,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Contact name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJ6-pa-gBT">
-                                                    <rect key="frame" x="56" y="182.5" width="488" height="32"/>
+                                                    <rect key="frame" x="56" y="182" width="488" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlE-Li-x2t">
-                                                    <rect key="frame" x="552" y="182.5" width="32" height="32"/>
+                                                    <rect key="frame" x="552" y="182" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="GBE-CV-V1t"/>
                                                         <constraint firstAttribute="height" constant="32" id="OXn-uT-WTg"/>
@@ -378,17 +378,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RMT-YH-g8j">
-                                            <rect key="frame" x="74" y="30" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="74" y="29" width="31.5" height="22.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G9C-Vx-lSl">
-                                            <rect key="frame" x="523.5" y="30" width="41.5" height="19.5"/>
+                                            <rect key="frame" x="522" y="30" width="43" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="dateAlter" id="s48-Cu-nym">
@@ -410,10 +410,11 @@
             </objects>
             <point key="canvasLocation" x="1156" y="444"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Categories-->
         <scene sceneID="lvB-yJ-OxP">
             <objects>
                 <navigationController storyboardIdentifier="CategoriesVCNav" automaticallyAdjustsScrollViewInsets="NO" id="vYZ-6M-Cnv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Categories" image="categoriesIcon" id="Yyx-by-ys8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yO0-UG-HsF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -428,10 +429,11 @@
             </objects>
             <point key="canvasLocation" x="454" y="444"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Events-->
         <scene sceneID="8Rs-AY-tbV">
             <objects>
                 <navigationController storyboardIdentifier="EventsVCNav" automaticallyAdjustsScrollViewInsets="NO" id="k0t-MQ-EFF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="eventsIcon" id="Q5c-FB-77P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3QC-8h-AIk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -828,12 +830,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cen-sf-tyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="1887"/>
+            <point key="canvasLocation" x="1156" y="2711"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="WPL-QY-lbz">
+            <objects>
+                <tabBarController id="HlH-9Z-7qo" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="2rJ-8V-fAC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vYZ-6M-Cnv" kind="relationship" relationship="viewControllers" id="4r3-Ep-ynV"/>
+                        <segue destination="k0t-MQ-EFF" kind="relationship" relationship="viewControllers" id="OPs-sN-GlO"/>
+                        <segue destination="eJD-wB-heR" kind="relationship" relationship="viewControllers" id="kR1-kB-DEq"/>
+                        <segue destination="qis-pH-N0L" kind="relationship" relationship="viewControllers" id="XGe-pt-v5r"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l3f-Gc-Qcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-464" y="1887"/>
+        </scene>
+        <!--About Us-->
         <scene sceneID="VoR-vW-XHy">
             <objects>
                 <navigationController storyboardIdentifier="AboutVCNav" automaticallyAdjustsScrollViewInsets="NO" id="qis-pH-N0L" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="About Us" image="aboutIcon" id="MJt-5S-gAl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8ca-au-2xf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -846,7 +869,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0s-mB-qNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="1887"/>
+            <point key="canvasLocation" x="454" y="2711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gdR-h1-Nse">
@@ -864,7 +887,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQt-K5-GzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="1887"/>
+            <point key="canvasLocation" x="1882" y="2711"/>
         </scene>
         <!--Developers-->
         <scene sceneID="h7k-Cl-Ldd">
@@ -875,69 +898,18 @@
                         <viewControllerLayoutGuide type="bottom" id="whZ-Fd-ECk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fSg-oO-WEj" customClass="DAHexagonalView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Developers" id="Jhf-hQ-ZrF"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="hexagonalView" destination="fSg-oO-WEj" id="SgB-Xv-HUe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUp-A4-EMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2443.5" y="1886.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="BHF-mg-uZB">
-            <objects>
-                <navigationController storyboardIdentifier="InstagramVCNav" automaticallyAdjustsScrollViewInsets="NO" id="dzC-36-ZzB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DPn-Qf-wsT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="grE-SP-aPb" kind="relationship" relationship="rootViewController" id="hUQ-Km-equ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J5n-iX-GU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="454" y="2625"/>
-        </scene>
-        <!--Instagram View Controller-->
-        <scene sceneID="XeV-Ec-j33">
-            <objects>
-                <collectionViewController storyboardIdentifier="InstagramVC" id="grE-SP-aPb" customClass="InstagramViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bf4-ch-F4O">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6SC-r7-mmM">
-                            <size key="itemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="E5t-0q-lRu">
-                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="grE-SP-aPb" id="HvI-4q-iYc"/>
-                            <outlet property="delegate" destination="grE-SP-aPb" id="UBP-bb-fue"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="Qx1-Pq-ubj"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ukP-pt-ASc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1156" y="2625"/>
+            <point key="canvasLocation" x="2584" y="2711"/>
         </scene>
         <!--InstagramV2 View Controller-->
         <scene sceneID="AaJ-rU-oEH">
@@ -952,7 +924,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-NR-Qr9">
-                                <rect key="frame" x="8" y="20" width="584" height="580"/>
+                                <rect key="frame" x="8" y="20" width="584" height="531"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lwb-bk-zhx">
                                     <size key="itemSize" width="175" height="175"/>
@@ -1065,7 +1037,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc6-Sb-DP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="3357"/>
+            <point key="canvasLocation" x="1156" y="1919"/>
         </scene>
         <!--Instagram Detail View Controller-->
         <scene sceneID="Wd3-4R-uKu">
@@ -1199,7 +1171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYC-K1-uAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="2645"/>
+            <point key="canvasLocation" x="2704" y="1939"/>
         </scene>
         <!--Instagram Root View Controller-->
         <scene sceneID="hsg-RT-HKB">
@@ -1254,7 +1226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0jh-3G-nVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1739" y="2645"/>
+            <point key="canvasLocation" x="1762" y="1939"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="hJH-nZ-vhf">
@@ -1265,12 +1237,13 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDQ-BS-CoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2155" y="2645"/>
+            <point key="canvasLocation" x="2231" y="1939"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Instagram-->
         <scene sceneID="KRd-ss-ZJV">
             <objects>
                 <navigationController storyboardIdentifier="InstagramV2VCNav" automaticallyAdjustsScrollViewInsets="NO" id="eJD-wB-heR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Instagram" image="instagramLogo" id="j7D-ng-aGJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0kf-na-mNp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1283,7 +1256,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fN-x5-V9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="3357"/>
+            <point key="canvasLocation" x="454" y="1919"/>
         </scene>
         <!--Events by Categories-->
         <scene sceneID="kQW-3R-YT1">
@@ -1585,10 +1558,17 @@
                                                     <rect key="frame" x="16" y="8" width="64.5" height="64.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="nQJ-GJ-LVb" secondAttribute="height" multiplier="1:1" id="T4X-E8-NRh"/>
+                                                        <constraint firstAttribute="height" constant="64" id="fHy-HR-clW"/>
+                                                        <constraint firstAttribute="width" constant="64" id="iEg-Jo-Hq0"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="T4X-E8-NRh"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-34-Rjy">
-                                                    <rect key="frame" x="88" y="34" width="504" height="38"/>
+                                                    <rect key="frame" x="88" y="32" width="504" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="WXd-mY-IIG"/>
                                                         <constraint firstAttribute="height" constant="38" id="zv5-zc-ZeD"/>
@@ -1599,6 +1579,7 @@
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="WXd-mY-IIG"/>
+                                                            <exclude reference="zv5-zc-ZeD"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
@@ -1629,6 +1610,8 @@
                                                 <constraint firstItem="OAc-pa-W6b" firstAttribute="centerY" secondItem="gNf-rv-Z0v" secondAttribute="centerY" id="3V3-Dv-fsf"/>
                                                 <constraint firstAttribute="topMargin" secondItem="gNf-rv-Z0v" secondAttribute="top" id="5GG-D0-d5P"/>
                                                 <constraint firstItem="PTu-34-Rjy" firstAttribute="top" secondItem="gNf-rv-Z0v" secondAttribute="bottom" constant="8" id="Ykf-x5-x8F"/>
+                                                <constraint firstItem="PTu-34-Rjy" firstAttribute="top" secondItem="nQJ-GJ-LVb" secondAttribute="top" constant="24" id="a01-ju-ccG"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PTu-34-Rjy" secondAttribute="bottom" id="b7b-0r-t63"/>
                                                 <constraint firstItem="PTu-34-Rjy" firstAttribute="leading" secondItem="nQJ-GJ-LVb" secondAttribute="trailing" constant="8" id="bSE-z6-g8v"/>
                                                 <constraint firstItem="OAc-pa-W6b" firstAttribute="top" secondItem="gNf-rv-Z0v" secondAttribute="top" id="baK-Kq-Ck1"/>
                                                 <constraint firstItem="PTu-34-Rjy" firstAttribute="bottom" secondItem="nQJ-GJ-LVb" secondAttribute="bottom" id="hu6-j4-oZK"/>
@@ -1641,8 +1624,10 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="ia6-em-do0"/>
                                                     <exclude reference="1xh-ww-hRK"/>
                                                     <exclude reference="Ykf-x5-x8F"/>
+                                                    <exclude reference="hu6-j4-oZK"/>
                                                     <exclude reference="2ud-cc-iSC"/>
                                                     <exclude reference="baK-Kq-Ck1"/>
                                                     <exclude reference="zuC-ez-txH"/>
@@ -1754,14 +1739,17 @@
     <resources>
         <image name="aboutIcon" width="60" height="60"/>
         <image name="call" width="44" height="44"/>
+        <image name="categoriesIcon" width="60" height="60"/>
         <image name="comments" width="30" height="30"/>
         <image name="contact" width="44" height="44"/>
         <image name="crossButton" width="30" height="30"/>
         <image name="date" width="44" height="44"/>
         <image name="dateAlter" width="44" height="44"/>
+        <image name="eventsIcon" width="60" height="60"/>
         <image name="favs" width="30" height="30"/>
         <image name="favsEmpty" width="44" height="44"/>
         <image name="infoButton" width="30" height="30"/>
+        <image name="instagramLogo" width="60" height="60"/>
         <image name="location" width="44" height="44"/>
         <image name="team" width="44" height="44"/>
         <image name="time" width="44" height="44"/>

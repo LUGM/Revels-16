@@ -84,7 +84,8 @@
     
     UINavigationBar* navBar = self.navigationController.navigationBar;
     [navBar setTranslucent:YES];
-    navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor darkTextColor]};
+    navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor darkTextColor], NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f]};
+	navBar.tintColor = [UIColor blackColor];
     [navBar setShadowImage:[[UIImage alloc] init]];
     
     // - Setup Menu
@@ -95,8 +96,6 @@
     
     [self presentController:[self.viewControllers objectAtIndex:0]];
     self.navigationItem.title = [self.menuTitles objectAtIndex:0];
-	
-	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 	
 }
 
@@ -226,7 +225,7 @@
             [self.menuButton.layer addAnimation: rota forKey: @"rotation"];
             oldAngle = currentAngle;
             
-            self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithWhite:0.0 alpha:((-degrees)/90)]};
+			self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithWhite:0.0 alpha:((-degrees)/90)], NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f]};
         }
     };
     

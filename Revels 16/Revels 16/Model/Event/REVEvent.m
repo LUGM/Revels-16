@@ -82,13 +82,10 @@
 				if (fevent != nil) {
 					// Update existing...
 					printf("Updating : %s\n", [dict[@"eid"] UTF8String]);
-					fevent.uid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
 					fevent.name = [NSString stringWithFormat:@"%@", dict[@"ename"]];
-					fevent.eid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
 					fevent.detail = [NSString stringWithFormat:@"%@", dict[@"edesc"]];
 					fevent.maxTeamNo = [NSString stringWithFormat:@"%@", dict[@"emaxteamsize"]];
 					fevent.categoryName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
-					fevent.catID = [NSString stringWithFormat:@"%@", dict[@"cid"]];
 //					fevent.venue = [NSString stringWithFormat:@"%@", dict[@"venue"]];
 //					fevent.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
 					fevent.contactName = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];

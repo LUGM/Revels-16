@@ -11,7 +11,14 @@
 		59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F611C64A58C00A45854 /* ARCGPathFromString.m */; };
 		59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */; };
 		59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F651C64A58C00A45854 /* ShapeWordView.m */; };
+		592AE8241C69037B00256BDA /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE8231C69037B00256BDA /* Colours.m */; };
 		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
+		596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */; };
+		596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596A7BEE1C6A1EF400EB74B1 /* DeveloperDetailView.xib */; };
+		596A7BF41C6A42E900EB74B1 /* AvenirCondensedHand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 596A7BF11C6A42E900EB74B1 /* AvenirCondensedHand.ttf */; };
+		596A7BF51C6A42E900EB74B1 /* LeagueGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 596A7BF21C6A42E900EB74B1 /* LeagueGothic.otf */; };
+		596A7BF61C6A42E900EB74B1 /* PixelCalculon.otf in Resources */ = {isa = PBXBuildFile; fileRef = 596A7BF31C6A42E900EB74B1 /* PixelCalculon.otf */; };
+		596A7BFC1C6A520D00EB74B1 /* UnderlinedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A7BFB1C6A520D00EB74B1 /* UnderlinedLabel.m */; };
 		596F91BE1C5F18F9000CBD48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F91BD1C5F18F9000CBD48 /* main.m */; };
 		596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F91C01C5F18F9000CBD48 /* AppDelegate.m */; };
 		596F91C71C5F18F9000CBD48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596F91C51C5F18F9000CBD48 /* Main.storyboard */; };
@@ -59,8 +66,18 @@
 		59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+TextPaths.m"; sourceTree = "<group>"; };
 		59130F641C64A58C00A45854 /* ShapeWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeWordView.h; sourceTree = "<group>"; };
 		59130F651C64A58C00A45854 /* ShapeWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeWordView.m; sourceTree = "<group>"; };
+		592AE8221C69037B00256BDA /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
+		592AE8231C69037B00256BDA /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
 		5962B05C1C650EA6009290B2 /* DAHexagonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAHexagonalView.h; path = Views/DAHexagonalView/DAHexagonalView.h; sourceTree = "<group>"; };
 		5962B05D1C650EA6009290B2 /* DAHexagonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAHexagonalView.m; path = Views/DAHexagonalView/DAHexagonalView.m; sourceTree = "<group>"; };
+		596A7BE91C6A1ED400EB74B1 /* DeveloperDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeveloperDetailView.h; path = Views/DeveloperDetail/DeveloperDetailView.h; sourceTree = "<group>"; };
+		596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeveloperDetailView.m; path = Views/DeveloperDetail/DeveloperDetailView.m; sourceTree = "<group>"; };
+		596A7BEE1C6A1EF400EB74B1 /* DeveloperDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeveloperDetailView.xib; path = Views/DeveloperDetail/DeveloperDetailView.xib; sourceTree = "<group>"; };
+		596A7BF11C6A42E900EB74B1 /* AvenirCondensedHand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AvenirCondensedHand.ttf; sourceTree = "<group>"; };
+		596A7BF21C6A42E900EB74B1 /* LeagueGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeagueGothic.otf; sourceTree = "<group>"; };
+		596A7BF31C6A42E900EB74B1 /* PixelCalculon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PixelCalculon.otf; sourceTree = "<group>"; };
+		596A7BFA1C6A520D00EB74B1 /* UnderlinedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderlinedLabel.h; sourceTree = "<group>"; };
+		596A7BFB1C6A520D00EB74B1 /* UnderlinedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderlinedLabel.m; sourceTree = "<group>"; };
 		596F91B91C5F18F9000CBD48 /* Revels 16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revels 16.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		596F91BD1C5F18F9000CBD48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596F91BF1C5F18F9000CBD48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +183,16 @@
 			path = ARCGPathFromString;
 			sourceTree = "<group>";
 		};
+		592AE8211C69037B00256BDA /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				592AE8221C69037B00256BDA /* Colours.h */,
+				592AE8231C69037B00256BDA /* Colours.m */,
+			);
+			name = Color;
+			path = Libraries/Color;
+			sourceTree = "<group>";
+		};
 		5962B05B1C650E86009290B2 /* HexagonalDevView */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +200,36 @@
 				5962B05D1C650EA6009290B2 /* DAHexagonalView.m */,
 			);
 			name = HexagonalDevView;
+			sourceTree = "<group>";
+		};
+		596A7BE81C6A1EB200EB74B1 /* DevDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				596A7BE91C6A1ED400EB74B1 /* DeveloperDetailView.h */,
+				596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */,
+				596A7BEE1C6A1EF400EB74B1 /* DeveloperDetailView.xib */,
+			);
+			name = DevDetailView;
+			sourceTree = "<group>";
+		};
+		596A7BF01C6A42E900EB74B1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				596A7BF11C6A42E900EB74B1 /* AvenirCondensedHand.ttf */,
+				596A7BF21C6A42E900EB74B1 /* LeagueGothic.otf */,
+				596A7BF31C6A42E900EB74B1 /* PixelCalculon.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		596A7BF91C6A520D00EB74B1 /* UnderlinedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				596A7BFA1C6A520D00EB74B1 /* UnderlinedLabel.h */,
+				596A7BFB1C6A520D00EB74B1 /* UnderlinedLabel.m */,
+			);
+			name = UnderlinedLabel;
+			path = Views/UnderlinedLabel;
 			sourceTree = "<group>";
 		};
 		596F91B01C5F18F9000CBD48 = {
@@ -214,6 +271,7 @@
 				59F7B2661C5F64CE00471695 /* PrefixHeader.pch */,
 				596F91D01C5F18F9000CBD48 /* Info.plist */,
 				596F91BD1C5F18F9000CBD48 /* main.m */,
+				596A7BF01C6A42E900EB74B1 /* Fonts */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -252,9 +310,11 @@
 		596F91D91C5F1927000CBD48 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				596A7BE81C6A1EB200EB74B1 /* DevDetailView */,
 				5962B05B1C650E86009290B2 /* HexagonalDevView */,
 				59FE79191C61B3D900EC61A0 /* ExtendedBarView */,
 				59FE79391C62670200EC61A0 /* Cross Button */,
+				596A7BF91C6A520D00EB74B1 /* UnderlinedLabel */,
 				596F92101C5F3698000CBD48 /* Cells */,
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
@@ -277,6 +337,7 @@
 		596F91DB1C5F1B3A000CBD48 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				592AE8211C69037B00256BDA /* Color */,
 				59E086531C686DA80029EFED /* Reachability */,
 				59BE4C6D1C66FB05004D28B7 /* CAAnimation+Blocks */,
 				59130F5E1C64A58C00A45854 /* ShapeWordView */,
@@ -608,9 +669,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */,
 				596F91CF1C5F18F9000CBD48 /* LaunchScreen.storyboard in Resources */,
 				596F91CC1C5F18F9000CBD48 /* Assets.xcassets in Resources */,
+				596A7BF41C6A42E900EB74B1 /* AvenirCondensedHand.ttf in Resources */,
+				596A7BF51C6A42E900EB74B1 /* LeagueGothic.otf in Resources */,
 				596F91C71C5F18F9000CBD48 /* Main.storyboard in Resources */,
+				596A7BF61C6A42E900EB74B1 /* PixelCalculon.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,15 +738,18 @@
 				596F91CA1C5F18F9000CBD48 /* Revels_16.xcdatamodeld in Sources */,
 				596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
+				596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */,
 				59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
 				59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */,
 				59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */,
 				59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */,
 				596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */,
+				592AE8241C69037B00256BDA /* Colours.m in Sources */,
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
 				596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */,
 				59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */,
+				596A7BFC1C6A520D00EB74B1 /* UnderlinedLabel.m in Sources */,
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */,

@@ -33,6 +33,7 @@
 	
 	CALayer *topTextLayer, *bottomTextLayer;
 
+	BOOL drawsHex;
 }
 
 #pragma mark -
@@ -169,6 +170,8 @@
 
 - (void)awakeFromNib {
 	
+	drawsHex = NO;
+	
 	if (!self.images) {
 		self.images = [@[[UIImage imageNamed:@"Avikant"],
 						 [UIImage imageNamed:@"Anuraag"],
@@ -210,7 +213,22 @@
 	
 	[super drawRect:rect];
 	
-	[GLOBAL_BACK_COLOR setFill];
+	if (drawsHex) {
+		[UIColor.darkGrayColor setStroke];
+		UIBezierPath *hexPath = [UIBezierPath bezierPath];
+		[hexPath setLineWidth:1.f];
+		[hexPath moveToPoint:[self.hexPoints[0] CGPointValue]];
+		[hexPath addLineToPoint:[self.hexPoints[2] CGPointValue]];
+		[hexPath addLineToPoint:[self.hexPoints[4] CGPointValue]];
+		[hexPath addLineToPoint:[self.hexPoints[0] CGPointValue]];
+		[hexPath moveToPoint:[self.hexPoints[3] CGPointValue]];
+		[hexPath addLineToPoint:[self.hexPoints[1] CGPointValue]];
+		[hexPath addLineToPoint:[self.hexPoints[5] CGPointValue]];
+		[hexPath addLineToPoint:[self.hexPoints[3] CGPointValue]];
+		[hexPath stroke];
+	}
+	
+	[[UIColor antiqueWhiteColor] setFill];
 	[UIColor.lightGrayColor setStroke];
 	
 	CGFloat bigCircleRadius = (WIDTH > 360.f)?60.f:48.f;
@@ -220,20 +238,19 @@
 	[circlePath stroke];
 
 	if (WIDTH > 360) {
-		[UIColor.lightGrayColor setFill];
 		[UIColor.darkGrayColor setStroke];
-		
 		for (NSInteger i = 0; i < 6; ++i) {
+			[[UIColor honeydewColor] setFill];
 			UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:[self.entryPoints[i] CGPointValue] radius:4.f startAngle:0.f endAngle:2 * M_PI clockwise:YES];
 			[circlePath fill];
 			[circlePath stroke];
 		}
 	}
-	
-	[GLOBAL_BACK_COLOR setFill];
+
 	[UIColor.lightGrayColor setStroke];
 	
 	for (NSInteger i = 0; i < 6; ++i) {
+		[[UIColor babyBlueColor] setFill];
 		UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:[self.hexPoints[i] CGPointValue] radius:32.f startAngle:0.f endAngle:2 * M_PI clockwise:YES];
 		[circlePath fill];
 		[circlePath stroke];
@@ -255,7 +272,7 @@
 			pathAnimation.autoreverses = YES;
 			pathAnimation.removedOnCompletion = NO;
 			pathAnimation.fillMode = kCAFillModeForwards;
-			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 			[animations addObject:pathAnimation];
 		}
 	}
@@ -270,10 +287,10 @@
 		imageAnimations = [NSMutableArray new];
 		for (NSInteger  i = 0; i < 4; ++i) {
 			CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-			pathAnimation.duration = 4.8f;
+			pathAnimation.duration = 3.4f;
 			pathAnimation.removedOnCompletion = YES;
 			pathAnimation.path = imagePaths[i].CGPath;
-			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 			[pathAnimation setCompletion:^(BOOL finished) {
 				UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 				[button setBackgroundImage:self.images[i] forState:UIControlStateNormal];
@@ -296,14 +313,14 @@
 	UIButton *buttonK = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
 	[buttonK setBackgroundImage:[UIImage imageNamed:@"Kartik"] forState:UIControlStateNormal];
 	[buttonK setFrame:CGRectMake(0, 0, 64, 64)];
-	[buttonK setCenter:[self.hexPoints[3] CGPointValue]];
+	[buttonK setCenter:[self.hexPoints[0] CGPointValue]];
 	[buttonK setTag:4];
 	[buttonK addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self addSubview:buttonK];
 	
 	UIButton *buttonS = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
 	[buttonS setBackgroundImage:[UIImage imageNamed:@"Sorte"] forState:UIControlStateNormal];
-	[buttonS setCenter:[self.hexPoints[0] CGPointValue]];
+	[buttonS setCenter:[self.hexPoints[3] CGPointValue]];
 	[buttonS setTag:5];
 	[buttonS addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self addSubview:buttonS];
@@ -324,6 +341,11 @@
 	
 	buttonLUGM.transform = CGAffineTransformMakeScale(0, 0);
 	buttonLUGM.alpha = 0.0;
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		drawsHex = YES;
+		[self setNeedsDisplay];
+	});
 	
 	[UIView animateWithDuration:1.2 delay:4.8 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		buttonK.transform = CGAffineTransformIdentity;
@@ -355,6 +377,12 @@
 	for (NSInteger i = 0; i < sublayers.count; ++i) {
 		[sublayers[i] removeAllAnimations];
 	}
+	sublayers = topTextLayer.sublayers;
+	for (NSInteger i = 0; i < sublayers.count; ++i)
+		[sublayers[i] removeFromSuperlayer];
+	sublayers = bottomTextLayer.sublayers;
+	for (NSInteger i = 0; i < sublayers.count; ++i)
+		[sublayers[i] removeFromSuperlayer];
 }
 
 #pragma mark - Button actions
@@ -396,8 +424,33 @@
 	pathAnimation.fromValue = @0.f;
 	pathAnimation.toValue = @1.f;
 	pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-	
+
 	[pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+	
+	/*
+	
+	CAShapeLayer *featherPathLayer = [CAShapeLayer layer];
+	featherPathLayer.fillColor = nil;
+	featherPathLayer.strokeColor = nil;
+	featherPathLayer.contents = (id)[UIImage imageNamed:@"feather"].CGImage;
+	featherPathLayer.geometryFlipped = YES;
+	featherPathLayer.bounds = featherPathLayer.frame = CGRectMake(0, 0, 30, 30);
+	featherPathLayer.anchorPoint = CGPointMake(0, 0);
+	
+	[featherPathLayer removeAllAnimations];
+	
+	[topTextLayer addSublayer:featherPathLayer];
+	
+	CAKeyframeAnimation *penAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+	penAnimation.duration = 6.0;
+	penAnimation.path = pathLayer.path;
+	penAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	[penAnimation setCompletion:^(BOOL finished) {
+		[featherPathLayer removeFromSuperlayer];
+	}];
+	[featherPathLayer addAnimation:penAnimation forKey:@"penAnimation"];
+	 
+	 */
 }
 
 - (void)drawBottomText:(NSString *)text withAttributes:(NSDictionary *)attributes {

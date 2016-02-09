@@ -30,6 +30,9 @@
 	BOOL headerViewShown;
 	
 	NSInteger fetchCount;
+	
+	UITapGestureRecognizer *sectionTapGesture;
+	CGFloat headerHeight;
 }
 
 - (void)viewDidLoad {
@@ -69,6 +72,9 @@
 	[self.view addGestureRecognizer:rightSwipeGesture];
 	
 	headerViewShown = (SWdith > 360);
+	
+	sectionTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+	headerHeight = 80.f;
 
 }
 
@@ -211,12 +217,12 @@
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
 	
-	NSInteger direction = -1;
+	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
 	NSInteger newIndex = (index == 0)?3:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
-		direction = 1;
+		direction = -1;
 		newIndex = (index == 3)?0:(index + 1);
 	}
 	
@@ -301,7 +307,10 @@
 		self.selectedIndexPath = nil;
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+	});
 	
 	[tableView endUpdates];
 }
@@ -326,6 +335,8 @@
 	NSDateFormatter *formatter = [NSDateFormatter new];
 	[formatter setDateFormat:@"EEE, MMMM dd, yyyy"];
 	
+	[cell addGestureRecognizer:sectionTapGesture];
+	
 	REVEvent *event = [filteredEvents firstObject];
 	if (event)
 		cell.dayDateLabel.text = [formatter stringFromDate:event.startDate];
@@ -335,9 +346,21 @@
 	return cell;
 }
 
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+	[self.tableView beginUpdates];
+	if (headerHeight == 80.f)
+		headerHeight = 160.f;
+	else
+		headerHeight = 80.f;
+	[self.tableView endUpdates];
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.tableView reloadData];
+	});
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //	CGRect rect = [self.category.detail boundingRectWithSize:CGSizeMake(SWdith - 120, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.f]} context:nil];
-	return headerViewShown * 80.f;
+	return headerViewShown * headerHeight;
 }
 
 #pragma mark - Cell button actions

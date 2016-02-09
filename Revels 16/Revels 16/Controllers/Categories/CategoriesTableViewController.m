@@ -24,6 +24,8 @@
 @implementation CategoriesTableViewController {
 	NSMutableArray <REVCategory *> *categories;
 	DADataManager *dataManager;
+	
+	NSArray <UIColor *> *cellBackgroundColors;
 }
 
 - (void)viewDidLoad {
@@ -41,6 +43,8 @@
 		[self fetchCategories];
 	
 	self.transition = [KWTransition manager];
+	
+	cellBackgroundColors = @[[UIColor antiqueWhiteColor], [UIColor robinEggColor], [UIColor honeydewColor], [UIColor paleRoseColor], [UIColor beigeColor], [UIColor ghostWhiteColor], [UIColor babyBlueColor], [UIColor paleGreenColor], [UIColor palePurpleColor], [UIColor buttermilkColor]];
 	
 }
 
@@ -138,6 +142,8 @@
 	
 	cell.textLabel.text = category.name;
 	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", category.uid];
+	
+	cell.backgroundColor = [cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count];
     
     return cell;
 }
@@ -151,20 +157,15 @@
 	UINavigationController *navC = [self.storyboard instantiateViewControllerWithIdentifier:@"EventsByCVCNav"];
 	EventByCategoryViewController *ebcvc = [navC.viewControllers firstObject];
 	
-//	EventByCategoryViewController *ebcvc = [self.storyboard instantiateViewControllerWithIdentifier:@"EventsByCVC"];
-	
 	ebcvc.category = category;
 	
-	self.transition.style = KWTransitionStylePushUp;
+	self.transition.style = KWTransitionStyleUp;
 	
 	[navC setTransitioningDelegate:self];
-//	[ebcvc setTransitioningDelegate:self];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	[self.navigationController presentViewController:navC animated:YES completion:nil];
-//	[self.navigationController presentViewController:ebcvc animated:YES completion:nil];
-//	[self.navigationController pushViewController:ebcvc animated:YES];
 	
 }
 

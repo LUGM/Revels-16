@@ -216,12 +216,12 @@
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
 	
-	NSInteger direction = -1;
+	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
 	NSInteger newIndex = (index == 0)?3:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
-		direction = 1;
+		direction = -1;
 		newIndex = (index == 3)?0:(index + 1);
 	}
 	
@@ -309,7 +309,10 @@
 		self.selectedIndexPath = nil;
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+	});
 	
 	[tableView endUpdates];
 }
