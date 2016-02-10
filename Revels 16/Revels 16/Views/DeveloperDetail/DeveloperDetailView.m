@@ -61,12 +61,14 @@
 
 - (void)dismissFromView:(UIView *)superview {
 	
-	[UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-		self.layer.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
-//		self.alpha = 0.0;
-		self.center = lastAnchorPoint;
+	self.layer.transform = CATransform3DIdentity;
+	self.alpha = 1.0;
+	
+	[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+		self.layer.transform = CATransform3DMakeScale(0, 0, 0);
+		self.alpha = 0.5;
 	} completion:^(BOOL finished) {
-		[self removeFromSuperview];
+//		[self removeFromSuperview];
 	}];
 	
 }

@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
-
 @interface UnderlinedLabel : UILabel
 
 @property IBInspectable BOOL drawsUnderline;

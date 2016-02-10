@@ -214,18 +214,23 @@
 	[super drawRect:rect];
 	
 	if (drawsHex) {
-		[UIColor.darkGrayColor setStroke];
-		UIBezierPath *hexPath = [UIBezierPath bezierPath];
-		[hexPath setLineWidth:1.f];
-		[hexPath moveToPoint:[self.hexPoints[0] CGPointValue]];
-		[hexPath addLineToPoint:[self.hexPoints[2] CGPointValue]];
-		[hexPath addLineToPoint:[self.hexPoints[4] CGPointValue]];
-		[hexPath addLineToPoint:[self.hexPoints[0] CGPointValue]];
-		[hexPath moveToPoint:[self.hexPoints[3] CGPointValue]];
-		[hexPath addLineToPoint:[self.hexPoints[1] CGPointValue]];
-		[hexPath addLineToPoint:[self.hexPoints[5] CGPointValue]];
-		[hexPath addLineToPoint:[self.hexPoints[3] CGPointValue]];
-		[hexPath stroke];
+		[[UIColor oliveColor] setStroke];
+		UIBezierPath *hexPath1 = [UIBezierPath bezierPath];
+		[hexPath1 setLineWidth:0.5f];
+		[hexPath1 moveToPoint:[self.hexPoints[0] CGPointValue]];
+		[hexPath1 addLineToPoint:[self.hexPoints[2] CGPointValue]];
+		[hexPath1 addLineToPoint:[self.hexPoints[4] CGPointValue]];
+		[hexPath1 addLineToPoint:[self.hexPoints[0] CGPointValue]];
+		[hexPath1 stroke];
+		
+		[[UIColor pastelBlueColor] setStroke];
+		UIBezierPath *hexPath2 = [UIBezierPath bezierPath];
+		[hexPath2 setLineWidth:0.5f];
+		[hexPath2 moveToPoint:[self.hexPoints[3] CGPointValue]];
+		[hexPath2 addLineToPoint:[self.hexPoints[1] CGPointValue]];
+		[hexPath2 addLineToPoint:[self.hexPoints[5] CGPointValue]];
+		[hexPath2 addLineToPoint:[self.hexPoints[3] CGPointValue]];
+		[hexPath2 stroke];
 	}
 	
 	[[UIColor antiqueWhiteColor] setFill];
@@ -369,17 +374,24 @@
 #pragma mark - Remove all animations and subviews
 
 - (void)removeAllAnimations {
+	
+	drawsHex = NO;
+	[self setNeedsDisplay];
+	
 	NSArray *subviews = self.subviews;
 	for (NSInteger i = 0; i < subviews.count; ++i) {
 		[subviews[i] removeFromSuperview];
 	}
+	
 	NSArray *sublayers = self.layer.sublayers;
 	for (NSInteger i = 0; i < sublayers.count; ++i) {
 		[sublayers[i] removeAllAnimations];
 	}
+	
 	sublayers = topTextLayer.sublayers;
 	for (NSInteger i = 0; i < sublayers.count; ++i)
 		[sublayers[i] removeFromSuperlayer];
+	
 	sublayers = bottomTextLayer.sublayers;
 	for (NSInteger i = 0; i < sublayers.count; ++i)
 		[sublayers[i] removeFromSuperlayer];

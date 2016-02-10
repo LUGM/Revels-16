@@ -28,6 +28,7 @@
 		596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92051C5F35F7000CBD48 /* TGLGuillotineMenu.m */; };
 		596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */; };
 		596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */; };
+		5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989871C1C6AFF030042148B /* EasterEggViewController.m */; };
 		59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */; };
 		59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */; };
 		59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13BF1C608ED200679C49 /* DMBaseTransition.m */; };
@@ -93,6 +94,8 @@
 		596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewController.m; path = Controllers/Categories/CategoriesTableViewController.m; sourceTree = "<group>"; };
 		596F92111C5F36B4000CBD48 /* CategoriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewCell.h; path = Views/Cells/CategoriesTableViewCell.h; sourceTree = "<group>"; };
 		596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewCell.m; path = Views/Cells/CategoriesTableViewCell.m; sourceTree = "<group>"; };
+		5989871B1C6AFF030042148B /* EasterEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasterEggViewController.h; path = "Controllers/Easter Egg/EasterEggViewController.h"; sourceTree = "<group>"; };
+		5989871C1C6AFF030042148B /* EasterEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasterEggViewController.m; path = "Controllers/Easter Egg/EasterEggViewController.m"; sourceTree = "<group>"; };
 		59BA13AC1C60764D00679C49 /* InstagramV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramV2ViewController.h; path = Controllers/Instagram/InstagramV2ViewController.h; sourceTree = "<group>"; };
 		59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramV2ViewController.m; path = Controllers/Instagram/InstagramV2ViewController.m; sourceTree = "<group>"; };
 		59BA13B61C6079B600679C49 /* ParallaxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParallaxCollectionViewCell.h; path = Views/Cells/ParallaxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 				59F7B2B51C5F7D2A00471695 /* Developers */,
 				59F7B2B11C5F7ACA00471695 /* About */,
 				59F7B2AA1C5F78D800471695 /* Favourites */,
+				5989871A1C6AFED40042148B /* Easter Egg */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -367,6 +371,15 @@
 				59BA13B11C60795E00679C49 /* Categories */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		5989871A1C6AFED40042148B /* Easter Egg */ = {
+			isa = PBXGroup;
+			children = (
+				5989871B1C6AFF030042148B /* EasterEggViewController.h */,
+				5989871C1C6AFF030042148B /* EasterEggViewController.m */,
+			);
+			name = "Easter Egg";
 			sourceTree = "<group>";
 		};
 		59BA13B11C60795E00679C49 /* Categories */ = {
@@ -740,6 +753,7 @@
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
 				596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */,
 				59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */,
+				5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
 				59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */,
 				59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */,

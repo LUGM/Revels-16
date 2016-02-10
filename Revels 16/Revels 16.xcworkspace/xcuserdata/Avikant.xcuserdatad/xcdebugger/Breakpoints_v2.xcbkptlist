@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Views/DAHexagonalView/DAHexagonalView.m"
-            timestampString = "476716608.236362"
+            timestampString = "476772644.03975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "-animatePath"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Views/DAHexagonalView/DAHexagonalView.m"
-            timestampString = "476716608.236362"
+            timestampString = "476772644.03975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "-animatePath"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Views/DAHexagonalView/DAHexagonalView.m"
-            timestampString = "476716608.236362"
+            timestampString = "476775305.449652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "-drawTopText:withAttributes:"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,13 +490,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Revels 16/Views/DeveloperDetail/DeveloperDetailView.m"
-            timestampString = "476731667.130589"
+            timestampString = "476772202.868472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-dismissFromView:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revels 16/Controllers/Developers/DevelopersViewController.m"
+            timestampString = "476775484.053924"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-hexagonalViewButtonPressedAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revels 16/Controllers/Developers/DevelopersViewController.m"
+            timestampString = "476776408.56398"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "@implementation DevelopersViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

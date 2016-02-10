@@ -6,6 +6,18 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="AvenirCondensedHand.ttf">
+            <string>AvenirCondensedHand</string>
+        </mutableArray>
+        <mutableArray key="LeagueGothic.otf">
+            <string>LeagueGothic-Regular</string>
+        </mutableArray>
+        <mutableArray key="PixelCalculon.otf">
+            <string>PixelCalculon</string>
+            <string>PixelCalculon</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Events-->
         <scene sceneID="Zae-B4-kQJ">
@@ -889,6 +901,88 @@
             </objects>
             <point key="canvasLocation" x="1882" y="2711"/>
         </scene>
+        <!--Easter Egg View Controller-->
+        <scene sceneID="vU9-KJ-Jmg">
+            <objects>
+                <viewController storyboardIdentifier="EasterEggVC" id="XdH-5u-Gnw" customClass="EasterEggViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EvW-k7-kPl"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Xp-Hz-o1E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="grV-kh-Czr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Linux Users Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-i2-oeo">
+                                <rect key="frame" x="20" y="503" width="560" height="41"/>
+                                <fontDescription key="fontDescription" name="PixelCalculon" family="Pixel Calculon" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manipal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-s9-zhu">
+                                <rect key="frame" x="240" y="552" width="120.5" height="28"/>
+                                <fontDescription key="fontDescription" name="PixelCalculon" family="Pixel Calculon" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE DOWN TO GO BACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-9m-cdl" customClass="UnderlinedLabel">
+                                <rect key="frame" x="226" y="28" width="149.5" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="KPg-dp-sAZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LeagueGothic-Regular" family="League Gothic" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsUnderline" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LUGM" translatesAutoresizingMaskIntoConstraints="NO" id="FtS-Fy-jdC">
+                                <rect key="frame" x="180" y="180" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Bw4-Ab-1GI"/>
+                                    <constraint firstAttribute="height" constant="240" id="Lws-Pq-Rnv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P5r-iv-0gl">
+                                <rect key="frame" x="20" y="68" width="560" height="104"/>
+                                <string key="text">"There must be some kind of way out of here, "Said the joker to the thief,"There's too much confusion, I can't get no relief."</string>
+                                <fontDescription key="fontDescription" name="AvenirCondensedHand" family="AvenirCondensedHand" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="P5r-iv-0gl" secondAttribute="trailing" id="1gC-Gr-25V"/>
+                            <constraint firstItem="0Xp-Hz-o1E" firstAttribute="top" secondItem="Wgh-s9-zhu" secondAttribute="bottom" constant="20" id="2Zr-Ld-OKX"/>
+                            <constraint firstItem="FtS-Fy-jdC" firstAttribute="centerX" secondItem="grV-kh-Czr" secondAttribute="centerX" id="2gl-Sh-Igb"/>
+                            <constraint firstItem="Wgh-s9-zhu" firstAttribute="centerX" secondItem="grV-kh-Czr" secondAttribute="centerX" id="4Zh-mV-Izv"/>
+                            <constraint firstItem="Wgh-s9-zhu" firstAttribute="top" secondItem="QWu-i2-oeo" secondAttribute="bottom" constant="8" id="9DC-Pd-fwc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="P5r-iv-0gl" secondAttribute="leading" id="9Vb-qV-TQf"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="QWu-i2-oeo" secondAttribute="leading" id="AEB-DX-boG"/>
+                            <constraint firstItem="Gsm-9m-cdl" firstAttribute="centerX" secondItem="grV-kh-Czr" secondAttribute="centerX" id="FN5-gF-E2J"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QWu-i2-oeo" secondAttribute="trailing" id="ZHX-27-Uqp"/>
+                            <constraint firstItem="Gsm-9m-cdl" firstAttribute="top" secondItem="EvW-k7-kPl" secondAttribute="bottom" constant="8" id="cha-dE-oTp"/>
+                            <constraint firstItem="FtS-Fy-jdC" firstAttribute="centerY" secondItem="grV-kh-Czr" secondAttribute="centerY" id="dnQ-qi-GeU"/>
+                            <constraint firstItem="FtS-Fy-jdC" firstAttribute="top" secondItem="P5r-iv-0gl" secondAttribute="bottom" constant="8" id="hMi-y0-Y2y"/>
+                            <constraint firstItem="P5r-iv-0gl" firstAttribute="top" secondItem="Gsm-9m-cdl" secondAttribute="bottom" constant="8" id="ha2-aL-CSx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="goBackLabel" destination="Gsm-9m-cdl" id="V9z-4m-PnC"/>
+                        <outlet property="lugImageView" destination="FtS-Fy-jdC" id="g1u-LW-IQZ"/>
+                        <outlet property="lugLabel" destination="QWu-i2-oeo" id="KN1-jY-Aqb"/>
+                        <outlet property="manipalLabel" destination="Wgh-s9-zhu" id="04f-Fp-lPc"/>
+                        <outlet property="quoteLabel" destination="P5r-iv-0gl" id="0Ai-8b-Cuf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hck-af-jUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3302" y="2711"/>
+        </scene>
         <!--Developers-->
         <scene sceneID="h7k-Cl-Ldd">
             <objects>
@@ -1737,6 +1831,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LUGM" width="240" height="240"/>
         <image name="aboutIcon" width="60" height="60"/>
         <image name="call" width="44" height="44"/>
         <image name="categoriesIcon" width="60" height="60"/>
