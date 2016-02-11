@@ -8,9 +8,10 @@
 
 #import "EventsListViewController.h"
 #import "EventsTableViewCell.h"
+#import "EventInfoView.h"
 #import "REVEvent.h"
 
-@interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, TGLRightNavButtonDelegate>
+@interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, EKEventViewDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
@@ -28,7 +29,10 @@
 	UISwipeGestureRecognizer *leftSwipeGesture;
 	UISwipeGestureRecognizer *rightSwipeGesture;
 	
-	UIBarButtonItem *searchButton;
+	EventInfoView *eventInfoView;
+	UITapGestureRecognizer *tapGestureRecognizer;
+	
+	NSArray <UIColor *> *cellBackgroundColors;
 }
 
 - (void)viewDidLoad {
@@ -59,7 +63,10 @@
 	[rightSwipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
 	[self.view addGestureRecognizer:rightSwipeGesture];
 	
-	searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:nil];
+	eventInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EventInfoView" owner:self options:nil] firstObject];
+	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+	
+	cellBackgroundColors = [UIColor revelsColors];
 	
 }
 
@@ -73,7 +80,6 @@
 	
 	if (self.guillotineMenuController) {
 		[self.guillotineMenuController hideNavBarShadow];
-		[self.guillotineMenuController setRightNavBarButton:searchButton andDelegate:self];
 	}
 	
 }
@@ -82,7 +88,6 @@
 	
 	if (self.guillotineMenuController) {
 		[self.guillotineMenuController showNavBarShadow];
-		[self.guillotineMenuController removeRightNavBarButtonAndDelegate:self];
 	}
 	
 }
@@ -294,6 +299,8 @@
 	[cell.phoneButton setTag:indexPath.row];
 	[cell.phoneButton addTarget:self action:@selector(phoneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	
+	cell.backgroundColor = [cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count];
+	
 	return cell;
 }
 
@@ -326,11 +333,15 @@
 #pragma mark - Cell button actions
 
 - (void)infoButtonPressed:(id)sender {
-//	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
 	
-//	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
 	
-	// Show awesome alert...
+	[eventInfoView fillUsingEvent:event];
+	[eventInfoView showInView:self.navigationController.view];
+	
+	[self.view addGestureRecognizer:tapGestureRecognizer];
+	
 }
 
 
@@ -349,14 +360,42 @@
 }
 
 - (void)timeButtonPressed:(id)sender {
-	// Prompt adding an event
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
-	NSLog(@"Time tapped for row: %li", indexPath.row);
+	
+	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	
+	EKEventStore *ekEventStore = [[EKEventStore alloc] init];
+	EKEvent *ekEvent = [EKEvent eventWithEventStore:ekEventStore];
+	
+	if (!([EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] == EKAuthorizationStatusAuthorized)) {
+		[ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+			if (!granted) {
+				SVHUD_FAILURE(@"Access denied!");
+				return;
+			}
+		}];
+	}
+	
+	ekEvent.title = event.name;
+	ekEvent.startDate = event.startDate;
+	ekEvent.endDate = event.endDate;
+	ekEvent.location = event.venue;
+	
+	[ekEvent setCalendar:[ekEventStore defaultCalendarForNewEvents]];
+	
+	EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
+	eventViewController.event = ekEvent;
+	eventViewController.allowsEditing = YES;
+	eventViewController.delegate = self;
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:eventViewController];
+	[self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)phoneButtonPressed:(id)sender {
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
-	NSLog(@"Phone tapped for row: %li", indexPath.row);
+	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", event.contactPhone]];
+	[[UIApplication sharedApplication] openURL:phoneURL];
 }
 
 #pragma mark - Filtering
@@ -395,7 +434,6 @@
 		self.extendedNavBarViewConstraint.constant = 40.f;
 	}];
 	self.tableView.tableHeaderView = nil;
-	[self.guillotineMenuController removeRightNavBarButtonAndDelegate:self];
 }
 
 - (void)didDismissSearchController:(UISearchController *)searchController {
@@ -403,7 +441,6 @@
 		self.extendedNavBarViewConstraint.constant = 0.f;
 	}];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
-	[self.guillotineMenuController setRightNavBarButton:searchButton andDelegate:self];
 }
 
 #pragma mark - Search bar delegate
@@ -419,17 +456,29 @@
 	[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex]];
 }
 
-#pragma mark - Guillotine right nav bar button delegate
+#pragma mark - Tap gesture handler
 
-- (void)guillotineMenuDidPressRightButton {
-	[self.tableView scrollRectToVisible:self.tableView.tableHeaderView.frame animated:NO];
-	[self.searchController setActive:YES];
-	[self.searchController.searchBar becomeFirstResponder];
-	[self.guillotineMenuController removeRightNavBarButtonAndDelegate:self];
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+	
+	[eventInfoView dismiss];
+	[self.view removeGestureRecognizer:tapGestureRecognizer];
+	
 }
 
+#pragma mark - Event kit view delegate
 
-
+- (void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action {
+	
+	if (action == EKEventViewActionDone) {
+		SVHUD_SUCCESS(@"Event saved!");
+	}
+	else if (action == EKEventViewActionDeleted) {
+//		SVHUD_FAILURE(@"Event saving failed!");
+	}
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+	
+}
 
 /*
 #pragma mark - Navigation

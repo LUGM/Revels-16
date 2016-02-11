@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	EasterEggControllerX,
 	EasterEggControllerY,
 	EasterEggControllerZ,
+	EasterEggControllerF,
 };
 
 @interface DevelopersViewController () <DAHexagonalViewDelegate, UIViewControllerTransitioningDelegate>
@@ -71,6 +72,8 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 - (void)hexagonalViewButtonPressedAtIndex:(NSInteger)index {
 	
 	// Add a developer detail view
+	
+	devDetailView.actualCenter = self.hexagonalView.actualCenter;
 	
 	if (index == 10)
 		NSLog(@"Revels logo pressed");
@@ -150,6 +153,17 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	[self.view removeGestureRecognizer:tapGestureRecognizer];
 }
 
+#pragma mark - Force touch
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	
+	UITouch *touch = [touches anyObject];
+	if (touch.force > 2) {
+		[self presentEasterEggController:EasterEggControllerF];
+	}
+	
+}
+
 #pragma mark - Navigation
 
 - (void)presentEasterEggController:(EasterEggController)easterEggController {
@@ -169,6 +183,10 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	else if (easterEggController == EasterEggControllerZ) {
 		eevc.lugText = @"Linux Users Group Z";
 		eevc.backgroundColor = [UIColor babyBlueColor];
+	}
+	else if (easterEggController == EasterEggControllerF) {
+		eevc.lugText = @"Linux Users Group";
+		eevc.backgroundColor = [UIColor lightCreamColor];
 	}
 	
 	self.transition.style = KWTransitionStyleUp;

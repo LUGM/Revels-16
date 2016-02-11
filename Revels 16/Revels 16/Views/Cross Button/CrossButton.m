@@ -11,7 +11,9 @@
 #define WIDTH self.frame.size.width
 #define HEIGHT self.frame.size.height
 
-@implementation CrossButton
+@implementation CrossButton {
+	UIBezierPath *beizerPath;
+}
 
 - (void)drawRect:(CGRect)rect {
 	
@@ -38,28 +40,30 @@
 	CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
 	CGContextFillRect(context, self.frame);
 	
-	UIBezierPath *beizerPath = [UIBezierPath bezierPath];
-	[beizerPath moveToPoint:edgePoints[0][0]];
-	[beizerPath addLineToPoint:centerPoints[0]];
-	[beizerPath addLineToPoint:edgePoints[0][1]];
-	if (self.pointyEdges)
-		[beizerPath addLineToPoint:borderPoints[1]];
-	[beizerPath addLineToPoint:edgePoints[1][0]];
-	[beizerPath addLineToPoint:centerPoints[1]];
-	[beizerPath addLineToPoint:edgePoints[1][1]];
-	if (self.pointyEdges)
-		[beizerPath addLineToPoint:borderPoints[2]];
-	[beizerPath addLineToPoint:edgePoints[2][0]];
-	[beizerPath addLineToPoint:centerPoints[2]];
-	[beizerPath addLineToPoint:edgePoints[2][1]];
-	if (self.pointyEdges)
-		[beizerPath addLineToPoint:borderPoints[3]];
-	[beizerPath addLineToPoint:edgePoints[3][0]];
-	[beizerPath addLineToPoint:centerPoints[3]];
-	[beizerPath addLineToPoint:edgePoints[3][1]];
-	if (self.pointyEdges)
-		[beizerPath addLineToPoint:borderPoints[0]];
-	[beizerPath closePath];
+	if (!beizerPath) {
+		beizerPath = [UIBezierPath bezierPath];
+		[beizerPath moveToPoint:edgePoints[0][0]];
+		[beizerPath addLineToPoint:centerPoints[0]];
+		[beizerPath addLineToPoint:edgePoints[0][1]];
+		if (self.pointyEdges)
+			[beizerPath addLineToPoint:borderPoints[1]];
+		[beizerPath addLineToPoint:edgePoints[1][0]];
+		[beizerPath addLineToPoint:centerPoints[1]];
+		[beizerPath addLineToPoint:edgePoints[1][1]];
+		if (self.pointyEdges)
+			[beizerPath addLineToPoint:borderPoints[2]];
+		[beizerPath addLineToPoint:edgePoints[2][0]];
+		[beizerPath addLineToPoint:centerPoints[2]];
+		[beizerPath addLineToPoint:edgePoints[2][1]];
+		if (self.pointyEdges)
+			[beizerPath addLineToPoint:borderPoints[3]];
+		[beizerPath addLineToPoint:edgePoints[3][0]];
+		[beizerPath addLineToPoint:centerPoints[3]];
+		[beizerPath addLineToPoint:edgePoints[3][1]];
+		if (self.pointyEdges)
+			[beizerPath addLineToPoint:borderPoints[0]];
+		[beizerPath closePath];
+	}
 	
 	[self.fillColor setFill];
 	[beizerPath fill];

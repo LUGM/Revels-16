@@ -13,11 +13,12 @@
 #define WIDTH self.bounds.size.width
 #define HEIGHT self.bounds.size.height
 #define ORIGIN self.bounds.origin
-#define CENTER CGPointMake(self.center.x, self.center.y + 33)
 
-#define HEXWIDTH (WIDTH - 120)
-#define HEXSIDE (HEXWIDTH / sqrt(3))
-#define HEXHEIGHT (HEXSIDE * 2)
+//#define CENTER CGPointMake(self.center.x, self.center.y + 33)
+
+//#define HEXWIDTH (WIDTH - 120)
+//#define HEXSIDE (HEXWIDTH / sqrt(3))
+//#define HEXHEIGHT (HEXSIDE * 2)
 
 @implementation DAHexagonalView {
 
@@ -34,11 +35,28 @@
 	CALayer *topTextLayer, *bottomTextLayer;
 
 	BOOL drawsHex;
+	
+	CGPoint CENTER;
+	CGFloat HEXWIDTH, HEXSIDE, HEXHEIGHT;
 }
 
 #pragma mark -
 
 - (void)layoutSubviews {
+	
+	if (WIDTH < 360) {
+		CENTER = CGPointMake(self.center.x, self.center.y + 60);
+		HEXWIDTH = WIDTH - 80;
+	}
+	else {
+		CENTER = CGPointMake(self.center.x, self.center.y + 33);
+		HEXWIDTH = WIDTH - 120;
+	}
+	
+	HEXSIDE = (HEXWIDTH / sqrt(3));
+	HEXHEIGHT = (HEXSIDE * 2);
+	
+	self.actualCenter = CENTER;
 	
 	CGPoint strpts[4] = {
 		CGPointMake(CENTER.x + (2 * sqrt(3) * HEXWIDTH)/3, CENTER.y - 2 * HEXWIDTH),
@@ -171,6 +189,18 @@
 - (void)awakeFromNib {
 	
 	drawsHex = NO;
+	
+	if (WIDTH < 360) {
+		CENTER = CGPointMake(self.center.x, self.center.y + 60);
+		HEXWIDTH = WIDTH - 80;
+	}
+	else {
+		CENTER = CGPointMake(self.center.x, self.center.y + 33);
+		HEXWIDTH = WIDTH - 120;
+	}
+	
+	HEXSIDE = (HEXWIDTH / sqrt(3));
+	HEXHEIGHT = (HEXSIDE * 2);
 	
 	if (!self.images) {
 		self.images = [@[[UIImage imageNamed:@"Avikant"],

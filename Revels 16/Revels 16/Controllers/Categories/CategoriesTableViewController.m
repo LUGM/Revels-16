@@ -44,7 +44,7 @@
 	
 	self.transition = [KWTransition manager];
 	
-	cellBackgroundColors = @[[UIColor antiqueWhiteColor], [UIColor robinEggColor], [UIColor honeydewColor], [UIColor paleRoseColor], [UIColor beigeColor], [UIColor ghostWhiteColor], [UIColor babyBlueColor], [UIColor paleGreenColor], [UIColor palePurpleColor], [UIColor buttermilkColor]];
+	cellBackgroundColors = [UIColor revelsColors];
 	
 }
 
@@ -141,7 +141,7 @@
 	REVCategory *category = [categories objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = category.name;
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", category.uid];
+//	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", category.uid];
 	
 	cell.backgroundColor = [cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count];
     

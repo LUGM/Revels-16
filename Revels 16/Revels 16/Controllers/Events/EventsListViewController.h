@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 #import "TGLGuillotineMenu.h"
 
 @interface EventsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

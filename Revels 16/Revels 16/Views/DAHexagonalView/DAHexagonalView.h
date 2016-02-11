@@ -26,6 +26,8 @@ IB_DESIGNABLE
 @property (nonatomic, strong) NSMutableArray *hexPoints;
 @property (nonatomic, strong) NSMutableArray *exitPoints;
 
+@property (nonatomic) CGPoint actualCenter;
+
 @property (nonatomic, strong) NSMutableArray <UIImage *> *images;
 
 @property (nonatomic, weak) id<DAHexagonalViewDelegate> delegate;

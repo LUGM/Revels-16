@@ -92,6 +92,7 @@ typedef NS_ENUM(NSInteger, ColorComparison) {
     ColorComparisonBlue
 };
 
++ (NSArray <UIColor *> *)revelsColors;
 
 #pragma mark - Color from Hex/RGBA/HSBA/CIE_LAB/CMYK
 /**

@@ -26,7 +26,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentsCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *captionTextLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *crossButton;
-
 
 @end

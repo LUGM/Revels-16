@@ -54,7 +54,7 @@
 	[UIView animateWithDuration:0.6 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:1.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.layer.transform = CATransform3DIdentity;
 		self.alpha = 1.0;
-		self.center = CGPointMake(superview.center.x, superview.center.y + 33);
+		self.center = self.actualCenter;
 	} completion:nil];
 	
 }

@@ -29,6 +29,9 @@
 		596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */; };
 		596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */; };
 		5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989871C1C6AFF030042148B /* EasterEggViewController.m */; };
+		59A7CE911C6CA1E4001682F3 /* RoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7CE901C6CA1E4001682F3 /* RoundedLabel.m */; };
+		59A7CE951C6CB6F1001682F3 /* EventInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7CE941C6CB6F1001682F3 /* EventInfoView.m */; };
+		59A7CE971C6CB700001682F3 /* EventInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A7CE961C6CB700001682F3 /* EventInfoView.xib */; };
 		59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */; };
 		59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */; };
 		59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13BF1C608ED200679C49 /* DMBaseTransition.m */; };
@@ -96,6 +99,11 @@
 		596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewCell.m; path = Views/Cells/CategoriesTableViewCell.m; sourceTree = "<group>"; };
 		5989871B1C6AFF030042148B /* EasterEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasterEggViewController.h; path = "Controllers/Easter Egg/EasterEggViewController.h"; sourceTree = "<group>"; };
 		5989871C1C6AFF030042148B /* EasterEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasterEggViewController.m; path = "Controllers/Easter Egg/EasterEggViewController.m"; sourceTree = "<group>"; };
+		59A7CE8F1C6CA1E4001682F3 /* RoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabel.h; sourceTree = "<group>"; };
+		59A7CE901C6CA1E4001682F3 /* RoundedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedLabel.m; sourceTree = "<group>"; };
+		59A7CE931C6CB6F1001682F3 /* EventInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventInfoView.h; path = Views/EventInfoView/EventInfoView.h; sourceTree = "<group>"; };
+		59A7CE941C6CB6F1001682F3 /* EventInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventInfoView.m; path = Views/EventInfoView/EventInfoView.m; sourceTree = "<group>"; };
+		59A7CE961C6CB700001682F3 /* EventInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventInfoView.xib; path = Views/EventInfoView/EventInfoView.xib; sourceTree = "<group>"; };
 		59BA13AC1C60764D00679C49 /* InstagramV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramV2ViewController.h; path = Controllers/Instagram/InstagramV2ViewController.h; sourceTree = "<group>"; };
 		59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramV2ViewController.m; path = Controllers/Instagram/InstagramV2ViewController.m; sourceTree = "<group>"; };
 		59BA13B61C6079B600679C49 /* ParallaxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParallaxCollectionViewCell.h; path = Views/Cells/ParallaxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -225,13 +233,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		596A7BF91C6A520D00EB74B1 /* UnderlinedLabel */ = {
+		596A7BF91C6A520D00EB74B1 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
 				596A7BFA1C6A520D00EB74B1 /* UnderlinedLabel.h */,
 				596A7BFB1C6A520D00EB74B1 /* UnderlinedLabel.m */,
+				59A7CE8F1C6CA1E4001682F3 /* RoundedLabel.h */,
+				59A7CE901C6CA1E4001682F3 /* RoundedLabel.m */,
 			);
-			name = UnderlinedLabel;
+			name = Labels;
 			path = Views/UnderlinedLabel;
 			sourceTree = "<group>";
 		};
@@ -302,10 +312,10 @@
 			children = (
 				596F91D71C5F191A000CBD48 /* Categories */,
 				59F7B2A31C5F744B00471695 /* Events */,
-				59F7B2BD1C5F800300471695 /* Instagram */,
-				59F7B2B51C5F7D2A00471695 /* Developers */,
-				59F7B2B11C5F7ACA00471695 /* About */,
 				59F7B2AA1C5F78D800471695 /* Favourites */,
+				59F7B2BD1C5F800300471695 /* Instagram */,
+				59F7B2B11C5F7ACA00471695 /* About */,
+				59F7B2B51C5F7D2A00471695 /* Developers */,
 				5989871A1C6AFED40042148B /* Easter Egg */,
 			);
 			name = Controllers;
@@ -314,11 +324,12 @@
 		596F91D91C5F1927000CBD48 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				59A7CE921C6CB6DC001682F3 /* EventInfoView */,
 				596A7BE81C6A1EB200EB74B1 /* DevDetailView */,
 				5962B05B1C650E86009290B2 /* HexagonalDevView */,
 				59FE79191C61B3D900EC61A0 /* ExtendedBarView */,
-				59FE79391C62670200EC61A0 /* Cross Button */,
-				596A7BF91C6A520D00EB74B1 /* UnderlinedLabel */,
+				59FE79391C62670200EC61A0 /* Buttons */,
+				596A7BF91C6A520D00EB74B1 /* Labels */,
 				596F92101C5F3698000CBD48 /* Cells */,
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
@@ -380,6 +391,16 @@
 				5989871C1C6AFF030042148B /* EasterEggViewController.m */,
 			);
 			name = "Easter Egg";
+			sourceTree = "<group>";
+		};
+		59A7CE921C6CB6DC001682F3 /* EventInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				59A7CE931C6CB6F1001682F3 /* EventInfoView.h */,
+				59A7CE941C6CB6F1001682F3 /* EventInfoView.m */,
+				59A7CE961C6CB700001682F3 /* EventInfoView.xib */,
+			);
+			name = EventInfoView;
 			sourceTree = "<group>";
 		};
 		59BA13B11C60795E00679C49 /* Categories */ = {
@@ -584,13 +605,13 @@
 			name = "Page Root";
 			sourceTree = "<group>";
 		};
-		59FE79391C62670200EC61A0 /* Cross Button */ = {
+		59FE79391C62670200EC61A0 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				59FE793A1C62670200EC61A0 /* CrossButton.h */,
 				59FE793B1C62670200EC61A0 /* CrossButton.m */,
 			);
-			name = "Cross Button";
+			name = Buttons;
 			path = "Views/Cross Button";
 			sourceTree = "<group>";
 		};
@@ -685,6 +706,7 @@
 				596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */,
 				596F91CF1C5F18F9000CBD48 /* LaunchScreen.storyboard in Resources */,
 				596F91CC1C5F18F9000CBD48 /* Assets.xcassets in Resources */,
+				59A7CE971C6CB700001682F3 /* EventInfoView.xib in Resources */,
 				596A7BF41C6A42E900EB74B1 /* AvenirCondensedHand.ttf in Resources */,
 				596A7BF51C6A42E900EB74B1 /* LeagueGothic.otf in Resources */,
 				596F91C71C5F18F9000CBD48 /* Main.storyboard in Resources */,
@@ -774,6 +796,7 @@
 				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
+				59A7CE951C6CB6F1001682F3 /* EventInfoView.m in Sources */,
 				59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */,
 				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
@@ -783,6 +806,7 @@
 				59F7B2CF1C5FBDF700471695 /* InstagramData.m in Sources */,
 				59BE4C701C66FB05004D28B7 /* CAAnimation+Blocks.m in Sources */,
 				59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */,
+				59A7CE911C6CA1E4001682F3 /* RoundedLabel.m in Sources */,
 				59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */,
 				59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */,
 			);

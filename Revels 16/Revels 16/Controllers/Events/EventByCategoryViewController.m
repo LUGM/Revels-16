@@ -9,9 +9,10 @@
 #import "EventByCategoryViewController.h"
 #import "EventsTableViewCell.h"
 #import "EventHeaderTableViewCell.h"
+#import "EventInfoView.h"
 #import "REVEvent.h"
 
-@interface EventByCategoryViewController () 
+@interface EventByCategoryViewController () <EKEventViewDelegate>
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
@@ -33,6 +34,11 @@
 	
 	UITapGestureRecognizer *sectionTapGesture;
 	CGFloat headerHeight;
+	
+	NSArray <UIColor *> *cellBackgroundColors;
+	
+	EventInfoView *eventInfoView;
+	UITapGestureRecognizer *tapGestureRecognizer;
 }
 
 - (void)viewDidLoad {
@@ -75,6 +81,11 @@
 	
 	sectionTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
 	headerHeight = 80.f;
+	
+	eventInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EventInfoView" owner:self options:nil] firstObject];
+	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewTap:)];
+	
+	cellBackgroundColors = [UIColor revelsColors];
 
 }
 
@@ -292,6 +303,8 @@
 	[cell.phoneButton setTag:indexPath.row];
 	[cell.phoneButton addTarget:self action:@selector(phoneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	
+	cell.backgroundColor = [cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count];
+	
 	return cell;
 }
 
@@ -366,11 +379,13 @@
 #pragma mark - Cell button actions
 
 - (void)infoButtonPressed:(id)sender {
-	//	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
+	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
 	
-	//	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	[eventInfoView fillUsingEvent:event];
+	[eventInfoView showInView:self.navigationController.view];
 	
-	// Show awesome alert...
+	[self.view addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)favsButtonPressed:(id)sender {
@@ -388,14 +403,42 @@
 }
 
 - (void)timeButtonPressed:(id)sender {
-	// Prompt adding an event
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
-	NSLog(@"Time tapped for row: %li", indexPath.row);
+	
+	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	
+	EKEventStore *ekEventStore = [[EKEventStore alloc] init];
+	EKEvent *ekEvent = [EKEvent eventWithEventStore:ekEventStore];
+	
+	if (!([EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] == EKAuthorizationStatusAuthorized)) {
+		[ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+			if (!granted) {
+				SVHUD_FAILURE(@"Access denied!");
+				return;
+			}
+		}];
+	}
+	
+	ekEvent.title = event.name;
+	ekEvent.startDate = event.startDate;
+	ekEvent.endDate = event.endDate;
+	ekEvent.location = event.venue;
+	
+	[ekEvent setCalendar:[ekEventStore defaultCalendarForNewEvents]];
+	
+	EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
+	eventViewController.event = ekEvent;
+	eventViewController.allowsEditing = YES;
+	eventViewController.delegate = self;
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:eventViewController];
+	[self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)phoneButtonPressed:(id)sender {
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
-	NSLog(@"Phone tapped for row: %li", indexPath.row);
+	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
+	NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", event.contactPhone]];
+	[[UIApplication sharedApplication] openURL:phoneURL];
 }
 
 #pragma mark - Filtering
@@ -404,6 +447,30 @@
 	filteredEvents = [NSMutableArray arrayWithArray:events];
 	[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", segmentTitle]];
 	[self.tableView reloadData];
+}
+
+#pragma mark - Tap gesture handler
+
+- (void)handleViewTap:(UITapGestureRecognizer *)recognizer {
+	
+	[eventInfoView dismiss];
+	[self.view removeGestureRecognizer:tapGestureRecognizer];
+	
+}
+
+#pragma mark - Event kit view delegate
+
+- (void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action {
+	
+	if (action == EKEventViewActionDone) {
+		SVHUD_SUCCESS(@"Event saved!");
+	}
+	else if (action == EKEventViewActionDeleted) {
+//		SVHUD_FAILURE(@"Event saving failed!");
+	}
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+	
 }
 
 /*
