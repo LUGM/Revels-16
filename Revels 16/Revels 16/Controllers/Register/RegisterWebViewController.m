@@ -7,6 +7,7 @@
 //
 
 #import "RegisterWebViewController.h"
+#import "Reachability.h"
 
 @interface RegisterWebViewController () <WKNavigationDelegate, UIScrollViewDelegate>
 
@@ -49,6 +50,14 @@
 	
 	[self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 	[self.webView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:nil];
+	
+	Reachability *reachability = [Reachability reachabilityForInternetConnection];
+	if (![reachability isReachable]) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			SVHUD_FAILURE(@"No Connection!");
+			[self dismissAction:nil];
+		});
+	}
 	
 }
 

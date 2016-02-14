@@ -529,9 +529,10 @@
 	featherPathLayer.fillColor = nil;
 	featherPathLayer.strokeColor = nil;
 	featherPathLayer.contents = (id)[UIImage imageNamed:@"feather"].CGImage;
+	featherPathLayer.path = path.CGPath;
 	featherPathLayer.geometryFlipped = YES;
-	featherPathLayer.bounds = featherPathLayer.frame = CGRectMake(0, 0, 30, 30);
-	featherPathLayer.anchorPoint = CGPointMake(0, 0);
+	featherPathLayer.bounds = featherPathLayer.frame = CGRectMake(30, 30, 30, 30);
+	featherPathLayer.anchorPoint = CGPointMake(-1, -1);
 	
 	[featherPathLayer removeAllAnimations];
 	
@@ -539,7 +540,7 @@
 	
 	CAKeyframeAnimation *penAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
 	penAnimation.duration = 6.0;
-	penAnimation.path = pathLayer.path;
+	penAnimation.path = featherPathLayer.path;
 	penAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 	[penAnimation setCompletion:^(BOOL finished) {
 		[featherPathLayer removeFromSuperlayer];
@@ -547,6 +548,7 @@
 	[featherPathLayer addAnimation:penAnimation forKey:@"penAnimation"];
 	 
 	 */
+	
 }
 
 - (void)drawBottomText:(NSString *)text withAttributes:(NSDictionary *)attributes {

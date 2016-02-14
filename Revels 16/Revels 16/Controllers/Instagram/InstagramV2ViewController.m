@@ -32,6 +32,14 @@
 	
 	instagramObjects = [NSMutableArray new];
 	
+	[self refreshAction:nil];
+	
+	self.transition = [KWTransition manager];
+	
+}
+
+- (IBAction)refreshAction:(id)sender {
+	
 	SVHUD_SHOW;
 	
 	NSString *URLString = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=fd6b3100174e42d7aa7d546574e01c76", kTagToSearch];
@@ -46,9 +54,8 @@
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}
 	
-	self.transition = [KWTransition manager];
-	
 }
+
 
 - (void)fetchImages {
 	

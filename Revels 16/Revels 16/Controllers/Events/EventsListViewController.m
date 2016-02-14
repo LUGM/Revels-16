@@ -71,17 +71,21 @@
 	
 	[self fetchLocalEvents];
 	
-	self.refreshButton.enabled = NO;
-	Reachability *reachability = [Reachability reachabilityForInternetConnection];
-	if ([reachability isReachable]) {
-		[self fetchEvents];
-		self.refreshButton.enabled = YES;
-	}
+	[self refreshAction:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
 	
 }
 
 - (IBAction)refreshAction:(id)sender {
-	[self fetchEvents];
+	Reachability *reachability = [Reachability reachabilityForInternetConnection];
+	if ([reachability isReachable]) {
+		[self fetchEvents];
+	}
+	else {
+		SVHUD_FAILURE(@"No connection!");
+	}
 }
 
 - (void)didReceiveMemoryWarning {

@@ -85,7 +85,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Event name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Iz-yj-a07">
-                                                    <rect key="frame" x="16" y="8" width="492" height="19.5"/>
+                                                    <rect key="frame" x="16" y="8" width="492" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -155,7 +155,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Event name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGH-Dm-BmR">
-                                                    <rect key="frame" x="16" y="8" width="492" height="19.5"/>
+                                                    <rect key="frame" x="16" y="8" width="492" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -366,7 +366,13 @@
                             <constraint firstItem="xSm-EB-3eg" firstAttribute="leading" secondItem="PdT-zR-lOK" secondAttribute="leadingMargin" constant="-20" id="p9P-Rp-zxU"/>
                             <constraint firstItem="xSm-EB-3eg" firstAttribute="top" secondItem="MnK-lC-yyn" secondAttribute="bottom" id="sQZ-ZN-GNm"/>
                             <constraint firstItem="MnK-lC-yyn" firstAttribute="leading" secondItem="PdT-zR-lOK" secondAttribute="leadingMargin" constant="-20" id="sZE-2s-jRz"/>
+                            <constraint firstItem="MnK-lC-yyn" firstAttribute="top" secondItem="Q5O-tW-cZB" secondAttribute="bottom" id="v6r-YH-w59"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XNo-mP-759"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="L3c-2i-SA6">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ziR-CF-lJ6">
@@ -1277,7 +1283,13 @@ Said the joker to the thief,
                             <constraint firstAttribute="trailingMargin" secondItem="Fpc-NR-Qr9" secondAttribute="trailing" constant="-12" id="mbl-45-cmI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="#Revels16" id="dGE-nC-QeZ"/>
+                    <navigationItem key="navigationItem" title="#Revels16" id="dGE-nC-QeZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="neO-cS-0Oy">
+                            <connections>
+                                <action selector="refreshAction:" destination="Dwy-M3-qwt" id="2Gd-wZ-uxg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Fpc-NR-Qr9" id="di1-P1-GKb"/>
                     </connections>

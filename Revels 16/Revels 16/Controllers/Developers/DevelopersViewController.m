@@ -36,7 +36,6 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
     // Do any additional setup after loading the view.
 	
 //	self.hexagonalView = (DAHexagonalView *)self.view;
-	self.hexagonalView.delegate = self;
 	
 	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackground:)];
 	
@@ -51,6 +50,8 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 
 - (void)viewDidAppear:(BOOL)animated {
 	
+	self.hexagonalView.delegate = self;
+	
 	[self.hexagonalView animatePath];
 	
 }
@@ -60,6 +61,8 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	[self.hexagonalView removeAllAnimations];
 	
 	[motionManager stopAccelerometerUpdates];
+	
+	self.hexagonalView.delegate = nil;
 	
 }
 
@@ -80,32 +83,32 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 		NSLog(@"Revels logo pressed");
 	
 	else if (index == 0) {
-		[devDetailView setPersonName:@"Avikant Saini" personDetail:@"iOS Developer\nDu kan om du vil!" personImage:[UIImage imageNamed:@"Avikant"]];
+		[devDetailView setPersonName:@"Avikant Saini" personDetail:@"iOS Developer\nIf I wanted a warm fuzzy feeling,\nI’d antialias my graphics!" personImage:[UIImage imageNamed:@"Avikant"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[1] CGPointValue]];
 	}
 	
 	else if (index == 3) {
-		[devDetailView setPersonName:@"Yash Kumar Lal" personDetail:@"iOS Developer\nIngen kan ta ditt valg!" personImage:[UIImage imageNamed:@"Yash"]];
+		[devDetailView setPersonName:@"Yash Kumar Lal" personDetail:@"iOS Developer\nUnix is user friendly.\nIt’s just selective about\nwho its friends are." personImage:[UIImage imageNamed:@"Yash"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[5] CGPointValue]];
 	}
 	
 	else if (index == 1) {
-		[devDetailView setPersonName:@"Anuraag Baishya" personDetail:@"Android Developer\nBare plante tvil!" personImage:[UIImage imageNamed:@"Anuraag"]];
+		[devDetailView setPersonName:@"Anuraag Baishya" personDetail:@"Android Developer\nStudent by day.\nDeveloper by night." personImage:[UIImage imageNamed:@"Anuraag"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[2] CGPointValue]];
 	}
 	
 	else if (index == 2) {
-		[devDetailView setPersonName:@"Saketh Kaparthi" personDetail:@"Android Developer\nDet er så mange veier å gå" personImage:[UIImage imageNamed:@"Saketh"]];
+		[devDetailView setPersonName:@"Saketh Kaparthi" personDetail:@"Android Developer\nPenguins love cold,\nthey wont survive the sun." personImage:[UIImage imageNamed:@"Saketh"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[4] CGPointValue]];
 	}
 	
 	else if (index == 4) {
-		[devDetailView setPersonName:@"Kartik Arora" personDetail:@"Category Head\nMange mål som kan nåes om du våger!" personImage:[UIImage imageNamed:@"Kartik"]];
+		[devDetailView setPersonName:@"Kartik Arora" personDetail:@"Category Head\nBugs come in through open Windows." personImage:[UIImage imageNamed:@"Kartik"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[0] CGPointValue]];
 	}
 	
 	else if (index == 5) {
-		[devDetailView setPersonName:@"Shubham Sorte" personDetail:@"Ultimate Bitcher\nÅ tro på at du har det som skal til" personImage:[UIImage imageNamed:@"Sorte"]];
+		[devDetailView setPersonName:@"Shubham Sorte" personDetail:@"Coordinater\nMac users swear by their Mac,\nPC users swear at their PC" personImage:[UIImage imageNamed:@"Sorte"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[3] CGPointValue]];
 	}
 	
@@ -175,17 +178,17 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	
 	if (easterEggController == EasterEggControllerX) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"There'll be no strings to bind your hands,\nNot if my love can't bind your heart,\nAnd there's no need to take a stand.";
+		eevc.quote = @"In a world without fences and walls,\nwho needs Gates and Windows?";
 		eevc.backgroundColor = [UIColor paleGreenColor];
 	}
 	else if (easterEggController == EasterEggControllerY) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"For it was I who chose to start,\nI see no need to take me home,\nI'm old enough to face the dawn.";
+		eevc.quote = @"Computers are like air conditioners\nthey stop working when you open Windows.";
 		eevc.backgroundColor = [UIColor palePurpleColor];
 	}
 	else if (easterEggController == EasterEggControllerZ) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"Maybe the sun's light will be dim,\nAnd it won't matter anyhow,\nIf morning's echo says we've sinned.";
+		eevc.quote = @"Microsoft is not the answer,\nMicrosoft is the question\nNO is the answer.";
 		eevc.backgroundColor = [UIColor babyBlueColor];
 	}
 	else if (easterEggController == EasterEggControllerF) {

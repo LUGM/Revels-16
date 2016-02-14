@@ -45,8 +45,6 @@
 	
 	cellBackgroundColors = [UIColor revelsColors];
 	
-	
-	
 }
 
 
@@ -165,12 +163,13 @@
 	ebcvc.category = category;
 	
 	self.transition.style = KWTransitionStyleUp;
-	
-	[navC setTransitioningDelegate:self];
+
+	// No idea why the frak was this animation was causing autolayout problems after dismissing the view.
+//	[navC setTransitioningDelegate:self];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	[self.navigationController presentViewController:navC animated:YES completion:nil];
+	[self.tabBarController presentViewController:navC animated:YES completion:nil];
 	
 }
 

@@ -21,20 +21,14 @@
 - (void)willMoveToWindow:(UIWindow *)newWindow
 {
     // Use the layer shadow to draw a one pixel hairline under this view.
+	[self.layer setShadowOffset:CGSizeMake(0, 1.0f/UIScreen.mainScreen.scale)];
+	[self.layer setShadowRadius:0];
 	
-	UIBezierPath *bezierPath = [UIBezierPath bezierPath];
-	[bezierPath setLineWidth:1.0];
-	[bezierPath moveToPoint:CGPointMake(0, self.bounds.size.height - 1)];
-	[bezierPath addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height - 1)];
-//	[UIColor.whiteColor setFill];
-//	[UIColor.blackColor setStroke];
-//	[bezierPath stroke];
-	
-	self.layer.shadowPath = bezierPath.CGPath;
-	self.layer.shadowColor = [UIColor blackColor].CGColor;
-	self.layer.shadowOffset = CGSizeZero;
-	self.layer.shadowOpacity = 1.f;
-	self.layer.shadowRadius = 1.0f;
+	// UINavigationBar's hairline is adaptive, its properties change with
+	// the contents it overlies.  You may need to experiment with these
+	// values to best match your content.
+	[self.layer setShadowColor:[UIColor blackColor].CGColor];
+	[self.layer setShadowOpacity:0.25f];
 	
 }
 

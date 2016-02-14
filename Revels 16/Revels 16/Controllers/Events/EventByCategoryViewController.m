@@ -128,9 +128,9 @@
 	
 	SVHUD_SHOW;
 	
-	NSURL *eventsUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
+	NSURL *eventsURL = [NSURL URLWithString:@"http://api.mitportals.in"];
 	
-	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsURL];
 	NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
 	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 	[postRequest setHTTPBody:postData];
@@ -160,9 +160,9 @@
 
 - (void)fetchEventSchedule {
 	
-	NSURL *eventsUrl = [NSURL URLWithString:@"http://schedule.mitportals.in"];
+	NSURL *eventsURL = [NSURL URLWithString:@"http://schedule.mitportals.in"];
 	
-	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsURL];
 	NSString *post = [NSString stringWithFormat:@"secret=%@", @"revels16Dastaan"];
 	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 	[postRequest setHTTPBody:postData];
