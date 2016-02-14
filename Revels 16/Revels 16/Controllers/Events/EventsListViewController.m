@@ -223,11 +223,11 @@
 	
 	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
-	NSInteger newIndex = (index == 0)?3:(index - 1);
+	NSInteger newIndex = (index == 0)?4:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
 		direction = -1;
-		newIndex = (index == 3)?0:(index + 1);
+		newIndex = (index == 4)?0:(index + 1);
 	}
 	
 	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -319,6 +319,7 @@
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+		[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 	});
 	
 	[tableView endUpdates];
@@ -341,7 +342,7 @@
 	[eventInfoView showInView:self.navigationController.view];
 	
 	[self.view addGestureRecognizer:tapGestureRecognizer];
-	
+
 }
 
 
@@ -402,13 +403,17 @@
 
 - (void)filterEventsForSelectedSegmentTitle:(NSString *)segmentTitle {
 	filteredEvents = [NSMutableArray arrayWithArray:events];
-	[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", segmentTitle]];
+	if (self.segmentedControl.selectedSegmentIndex != 4)
+		[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", segmentTitle]];
 	[self.tableView reloadData];
 }
 
 - (void)filterEventsForSearchString:(NSString *)searchString andScopeBarTitle:(NSString *)scopeTitle {
 	filteredEvents = [NSMutableArray arrayWithArray:events];
-	[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"name contains[cd] %@ AND day == %@", searchString, scopeTitle]];
+	if (self.segmentedControl.selectedSegmentIndex != 4)
+		[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"(name contains[cd] %@ OR categoryName contains[cd] %@) AND day == %@", searchString, searchString, scopeTitle]];
+	else
+		[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"name contains[cd] %@  OR categoryName contains[cd] %@", searchString, searchString]];
 	[self.tableView reloadData];
 }
 
@@ -429,6 +434,9 @@
 
 #pragma mark - Search controller delegate
 
+// Comment the folowing if not using Yalantis
+
+
 - (void)didPresentSearchController:(UISearchController *)searchController {
 	[UIView animateWithDuration:0.3 animations:^{
 		self.extendedNavBarViewConstraint.constant = 40.f;
@@ -442,6 +450,7 @@
 	}];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
 }
+
 
 #pragma mark - Search bar delegate
 

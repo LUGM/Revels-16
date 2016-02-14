@@ -28,6 +28,7 @@
 		596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92051C5F35F7000CBD48 /* TGLGuillotineMenu.m */; };
 		596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */; };
 		596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */; };
+		598189EE1C70527900F9AB1D /* EventHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598189ED1C70527900F9AB1D /* EventHeaderTableViewCell.xib */; };
 		5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989871C1C6AFF030042148B /* EasterEggViewController.m */; };
 		59A7CE911C6CA1E4001682F3 /* RoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7CE901C6CA1E4001682F3 /* RoundedLabel.m */; };
 		59A7CE951C6CB6F1001682F3 /* EventInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7CE941C6CB6F1001682F3 /* EventInfoView.m */; };
@@ -97,6 +98,7 @@
 		596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewController.m; path = Controllers/Categories/CategoriesTableViewController.m; sourceTree = "<group>"; };
 		596F92111C5F36B4000CBD48 /* CategoriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewCell.h; path = Views/Cells/CategoriesTableViewCell.h; sourceTree = "<group>"; };
 		596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewCell.m; path = Views/Cells/CategoriesTableViewCell.m; sourceTree = "<group>"; };
+		598189ED1C70527900F9AB1D /* EventHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventHeaderTableViewCell.xib; path = Views/Cells/EventHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		5989871B1C6AFF030042148B /* EasterEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasterEggViewController.h; path = "Controllers/Easter Egg/EasterEggViewController.h"; sourceTree = "<group>"; };
 		5989871C1C6AFF030042148B /* EasterEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasterEggViewController.m; path = "Controllers/Easter Egg/EasterEggViewController.m"; sourceTree = "<group>"; };
 		59A7CE8F1C6CA1E4001682F3 /* RoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabel.h; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */,
 				59E086501C685A8A0029EFED /* EventHeaderTableViewCell.h */,
 				59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */,
+				598189ED1C70527900F9AB1D /* EventHeaderTableViewCell.xib */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				59A7CE971C6CB700001682F3 /* EventInfoView.xib in Resources */,
 				596A7BF41C6A42E900EB74B1 /* AvenirCondensedHand.ttf in Resources */,
 				596A7BF51C6A42E900EB74B1 /* LeagueGothic.otf in Resources */,
+				598189EE1C70527900F9AB1D /* EventHeaderTableViewCell.xib in Resources */,
 				596F91C71C5F18F9000CBD48 /* Main.storyboard in Resources */,
 				596A7BF61C6A42E900EB74B1 /* PixelCalculon.otf in Resources */,
 			);

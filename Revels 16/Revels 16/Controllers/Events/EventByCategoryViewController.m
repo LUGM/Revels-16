@@ -15,6 +15,8 @@
 @interface EventByCategoryViewController () <EKEventViewDelegate>
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toggleHeaderButton;
+
 
 @end
 
@@ -77,7 +79,11 @@
 	[rightSwipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
 	[self.view addGestureRecognizer:rightSwipeGesture];
 	
-	headerViewShown = (SWdith > 360);
+	headerViewShown = NO;
+	if (SWdith > 360) {
+		headerViewShown = YES;
+		self.navigationItem.rightBarButtonItem = nil;
+	}
 	
 	sectionTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
 	headerHeight = 80.f;
@@ -114,7 +120,7 @@
 	if (fetchCount == 2) {
 		SVHUD_FAILURE(@"Failed!");
 		// Display more information as toast?
-		[self dismissSelf:nil];
+//		[self dismissSelf:nil];
 	}
 }
 
@@ -230,11 +236,11 @@
 	
 	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
-	NSInteger newIndex = (index == 0)?3:(index - 1);
+	NSInteger newIndex = (index == 0)?4:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
 		direction = -1;
-		newIndex = (index == 3)?0:(index + 1);
+		newIndex = (index == 4)?0:(index + 1);
 	}
 	
 	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -323,6 +329,7 @@
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//		[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 	});
 	
 	[tableView endUpdates];
@@ -336,10 +343,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	
-	EventHeaderTableViewCell *cell = (EventHeaderTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"eventsCellHeader"];
-	
-	if (cell == nil)
-		cell = [[EventHeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCellHeader"];
+	EventHeaderTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EventHeaderTableViewCell" owner:self options:nil] firstObject];
 	
 	cell.categoryDescriptionLabel.text = self.category.detail;
 //	cell.categoryImageView.image = [UIImage imageNamed:self.category.imageName];
@@ -348,13 +352,17 @@
 	NSDateFormatter *formatter = [NSDateFormatter new];
 	[formatter setDateFormat:@"EEE, MMMM dd, yyyy"];
 	
-	[cell addGestureRecognizer:sectionTapGesture];
+	[cell.contentView addGestureRecognizer:sectionTapGesture];
 	
-	REVEvent *event = [filteredEvents firstObject];
-	if (event)
-		cell.dayDateLabel.text = [formatter stringFromDate:event.startDate];
-	else
-		cell.dayDateLabel.text = [self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex];
+	if (self.segmentedControl.selectedSegmentIndex == 4)
+		cell.dayDateLabel.text = @"March 9 - 13, 2016";
+	else {
+		REVEvent *event = [filteredEvents firstObject];
+		if (event)
+			cell.dayDateLabel.text = [formatter stringFromDate:event.startDate];
+		else
+			cell.dayDateLabel.text = [self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex];
+	}
 	
 	return cell;
 }
@@ -373,6 +381,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //	CGRect rect = [self.category.detail boundingRectWithSize:CGSizeMake(SWdith - 120, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.f]} context:nil];
+//	return rect.size.height + 32.f;
 	return headerViewShown * headerHeight;
 }
 
@@ -445,7 +454,8 @@
 
 - (void)filterEventsForSelectedSegmentTitle:(NSString *)segmentTitle {
 	filteredEvents = [NSMutableArray arrayWithArray:events];
-	[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", segmentTitle]];
+	if (self.segmentedControl.selectedSegmentIndex != 4)
+		[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", segmentTitle]];
 	[self.tableView reloadData];
 }
 

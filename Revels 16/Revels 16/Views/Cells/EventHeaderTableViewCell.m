@@ -38,12 +38,18 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	shadowPath = [UIBezierPath bezierPath];
-	[shadowPath setLineWidth:1.f];
-	[shadowPath moveToPoint:CGPointMake(0, self.bounds.size.height - 0.5)];
-	[shadowPath addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height - 0.5)];
+	
+	if (!shadowPath) {
+		shadowPath = [UIBezierPath bezierPath];
+		[shadowPath setLineWidth:1.f];
+		[shadowPath moveToPoint:CGPointMake(0, self.bounds.size.height - 0.5)];
+		[shadowPath addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height - 0.5)];
+	}
+	
 	[UIColor.lightGrayColor setStroke];
 	[shadowPath stroke];
+	
+	[super drawRect:rect];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

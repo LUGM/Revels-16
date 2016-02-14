@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
+	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	
 	UINavigationController *ctvc = [storyboard instantiateViewControllerWithIdentifier:@"CategoriesVCNav"];
@@ -45,6 +46,12 @@
 	self.window.rootViewController = navController;
 	self.window.backgroundColor = [UIColor blackColor];
 	[self.window makeKeyAndVisible];
+	
+	 
+	[[UISegmentedControl appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:13.f], NSForegroundColorAttributeName: [UIColor darkTextColor]} forState:UIControlStateNormal];
+	[[UISegmentedControl appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:13.f], NSForegroundColorAttributeName: [UIColor lightTextColor]} forState:UIControlStateHighlighted];
+	
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f], NSForegroundColorAttributeName: [UIColor darkTextColor]}];
 	
 	return YES;
 }

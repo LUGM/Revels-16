@@ -45,11 +45,17 @@ static CGFloat (^RAD)(CGFloat) = ^CGFloat (CGFloat degree){
 #pragma mark - Revels colors
 
 + (NSArray<UIColor *> *)revelsColors {
-	NSArray *colors = @[[UIColor colorFromHexString:@"#f3c3da"],
-						[UIColor colorFromHexString:@"#d7d4fa"],
-						[UIColor colorFromHexString:@"#c3adeb"],
-						[UIColor colorFromHexString:@"#ddcaef"],
-						[UIColor colorFromHexString:@"#c0f9d4"]];
+//	NSArray *colors = @[[UIColor colorFromHexString:@"#f3c3da"],
+//						[UIColor colorFromHexString:@"#d7d4fa"],
+//						[UIColor colorFromHexString:@"#c3adeb"],
+//						[UIColor colorFromHexString:@"#ddcaef"],
+//						[UIColor colorFromHexString:@"#c0f9d4"]];
+	NSArray *colors = @[[UIColor colorFromHexString:@"#C3E2D5"],
+						[UIColor colorFromHexString:@"#B0E57C"],
+						[UIColor colorFromHexString:@"#FCF3BC"],
+						[UIColor colorFromHexString:@"#F3D5BD"],
+						[UIColor colorFromHexString:@"#C7E1BA"]];
+
 	return colors;
 }
 

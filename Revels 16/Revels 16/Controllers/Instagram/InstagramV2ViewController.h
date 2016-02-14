@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kTagToSearch @"deadpool"
+#define kTagToSearch @"TechTatva15"
 
 @interface InstagramV2ViewController : UIViewController
 

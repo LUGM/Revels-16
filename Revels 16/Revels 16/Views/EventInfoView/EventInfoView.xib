@@ -96,8 +96,8 @@
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="YOZ-3j-dh2"/>
                                     <exclude reference="5c7-2Z-E1c"/>
+                                    <exclude reference="YOZ-3j-dh2"/>
                                 </mask>
                             </variation>
                             <connections>

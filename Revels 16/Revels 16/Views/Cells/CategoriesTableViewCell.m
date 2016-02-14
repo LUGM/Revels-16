@@ -8,11 +8,34 @@
 
 #import "CategoriesTableViewCell.h"
 
+//#define WIDTH self.bounds.size.width
+//#define HEIGHT self.bounds.size.height
+
 @implementation CategoriesTableViewCell
+//{
+//	UIBezierPath *bezierPath;
+//}
 
 - (void)awakeFromNib {
     // Initialization code
 }
+
+/*
+- (void)drawRect:(CGRect)rect {
+	
+	[super drawRect:rect];
+	
+	if (!bezierPath) {
+		bezierPath = [UIBezierPath bezierPath];
+		[bezierPath setLineWidth:0.5];
+		[bezierPath moveToPoint:CGPointMake(0, HEIGHT - 0.5)];
+		[bezierPath addLineToPoint:CGPointMake(WIDTH, HEIGHT - 0.5)];
+	}
+	[[UIColor darkGrayColor] setStroke];
+	[bezierPath stroke];
+	
+}
+*/
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

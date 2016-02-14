@@ -76,30 +76,45 @@
 			
 			if (dict && [dict isKindOfClass:[NSDictionary class]]) {
 			
-				NSString *eid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
-				NSString *cid = [NSString stringWithFormat:@"%@", dict[@"cid"]];
-				REVEvent *fevent = [[fetchedEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"eid == %@ AND catID == %@", eid, cid]] firstObject];
-				if (fevent != nil) {
-					// Update existing...
-					printf("Updating : %s\n", [dict[@"eid"] UTF8String]);
-					fevent.name = [NSString stringWithFormat:@"%@", dict[@"ename"]];
-					fevent.detail = [NSString stringWithFormat:@"%@", dict[@"edesc"]];
-					fevent.maxTeamNo = [NSString stringWithFormat:@"%@", dict[@"emaxteamsize"]];
-					fevent.categoryName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
-//					fevent.venue = [NSString stringWithFormat:@"%@", dict[@"venue"]];
-//					fevent.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
-					fevent.contactName = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
-					fevent.contactPhone = [NSString stringWithFormat:@"%@", dict[@"cntctno"]];
+				NSString *eid, *cid;
+				
+				@try {
+					eid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
+					cid = [NSString stringWithFormat:@"%@", dict[@"cid"]];
+				}
+				@catch (NSException *exception) {
+					NSLog(@"Exception: %@", exception.description);
+				}
+				@finally {
 					
-//					NSDateFormatter *formatter = [NSDateFormatter new];
-//					[formatter setDateFormat:@"d-MMM HH:mm"];
-//					fevent.startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"start_time"]]];
-//					fevent.endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"end_time"]]];
+					REVEvent *fevent = [[fetchedEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"eid == %@ AND catID == %@", eid, cid]] firstObject];
+					if (fevent != nil) {
+						// Update existing...
+						printf("Updating : %s\n", [dict[@"eid"] UTF8String]);
+						
+						@try {
+							fevent.name = [NSString stringWithFormat:@"%@", dict[@"ename"]];
+							fevent.detail = [NSString stringWithFormat:@"%@", dict[@"edesc"]];
+							fevent.maxTeamNo = [NSString stringWithFormat:@"%@", dict[@"emaxteamsize"]];
+							fevent.categoryName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
+							fevent.contactName = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
+							fevent.contactPhone = [NSString stringWithFormat:@"%@", dict[@"cntctno"]];
+						}
+						@catch (NSException *exception) {
+							NSLog(@"Exception: %@", exception.description);
+						}
+						@finally {
+							
+						}
+					}
+					
+					else {
+						printf("Inserting : %s\n", [dict[@"eid"] UTF8String]);
+						[REVEvent createNewEventWithDict:dict inEntity:[NSEntityDescription entityForName:@"REVEvent" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+					}
+					
 				}
-				else {
-					printf("Inserting : %s\n", [dict[@"eid"] UTF8String]);
-					[REVEvent createNewEventWithDict:dict inEntity:[NSEntityDescription entityForName:@"REVEvent" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-				}
+				
 			}
 		}
 		if (![context save:&error]) {

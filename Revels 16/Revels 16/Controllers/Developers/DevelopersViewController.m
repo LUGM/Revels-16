@@ -173,19 +173,23 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	EasterEggViewController *eevc = [self.storyboard instantiateViewControllerWithIdentifier:@"EasterEggVC"];
 	
 	if (easterEggController == EasterEggControllerX) {
-		eevc.lugText = @"Linux Users Group X";
+		eevc.lugText = @"Linux Users Group";
+		eevc.quote = @"There'll be no strings to bind your hands,\nNot if my love can't bind your heart,\nAnd there's no need to take a stand.";
 		eevc.backgroundColor = [UIColor paleGreenColor];
 	}
 	else if (easterEggController == EasterEggControllerY) {
-		eevc.lugText = @"Linux Users Group Y";
+		eevc.lugText = @"Linux Users Group";
+		eevc.quote = @"For it was I who chose to start,\nI see no need to take me home,\nI'm old enough to face the dawn.";
 		eevc.backgroundColor = [UIColor palePurpleColor];
 	}
 	else if (easterEggController == EasterEggControllerZ) {
-		eevc.lugText = @"Linux Users Group Z";
+		eevc.lugText = @"Linux Users Group";
+		eevc.quote = @"Maybe the sun's light will be dim,\nAnd it won't matter anyhow,\nIf morning's echo says we've sinned.";
 		eevc.backgroundColor = [UIColor babyBlueColor];
 	}
 	else if (easterEggController == EasterEggControllerF) {
 		eevc.lugText = @"Linux Users Group";
+		eevc.quote = @"Well, it was what I wanted now,\nAnd if we're  victims of the night,\nI won't be blinded by the light.";
 		eevc.backgroundColor = [UIColor lightCreamColor];
 	}
 	
