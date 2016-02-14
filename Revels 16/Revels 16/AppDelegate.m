@@ -20,7 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
+	/*
 	
+	// RIP Yalantis
+	 
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	
 	UINavigationController *ctvc = [storyboard instantiateViewControllerWithIdentifier:@"CategoriesVCNav"];
@@ -47,11 +50,22 @@
 	self.window.backgroundColor = [UIColor blackColor];
 	[self.window makeKeyAndVisible];
 	
+	 */
 	 
 	[[UISegmentedControl appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:13.f], NSForegroundColorAttributeName: [UIColor darkTextColor]} forState:UIControlStateNormal];
 	[[UISegmentedControl appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:13.f], NSForegroundColorAttributeName: [UIColor lightTextColor]} forState:UIControlStateHighlighted];
 	
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f], NSForegroundColorAttributeName: [UIColor darkTextColor]}];
+	
+	[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:15.0f], NSForegroundColorAttributeName:[UIColor blackColor]}];
+	
+	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
+	
+	[[UITabBarItem appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:11.0f], NSForegroundColorAttributeName:[UIColor blackColor]}
+											 forState:UIControlStateSelected];
+	
+	[[UITabBarItem appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:11.0f], NSForegroundColorAttributeName:[UIColor lightGrayColor]}
+											 forState:UIControlStateNormal];
 	
 	return YES;
 }

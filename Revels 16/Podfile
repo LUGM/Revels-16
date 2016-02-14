@@ -9,7 +9,7 @@ pod 'SVProgressHUD'
 pod 'SDWebImage', '~>3.7'
 pod 'KWTransition'
 pod 'DGActivityIndicatorView'
-pod 'PullToRefreshCoreText', '~> 0.2'
+pod 'CBStoreHouseRefreshControl'
 
 end
 

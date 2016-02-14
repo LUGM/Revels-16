@@ -52,6 +52,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 - (void)viewDidAppear:(BOOL)animated {
 	
 	[self.hexagonalView animatePath];
+	
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -199,6 +200,11 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	[self presentViewController:eevc animated:YES completion:nil];
 	
 }
+
+- (IBAction)dismissAction:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - View controller animated transistioning
 

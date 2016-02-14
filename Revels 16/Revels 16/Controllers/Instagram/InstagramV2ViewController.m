@@ -12,7 +12,6 @@
 #import "InstagramDetailViewController.h"
 #import "InstagramRootViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "DMSlideTransition.h"
 #import <KWTransition/KWTransition.h>
 
 @interface InstagramV2ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate>
@@ -24,7 +23,6 @@
 @implementation InstagramV2ViewController {
 	NSMutableArray *instagramObjects;
 	NSURL *nextURL;
-	DMSlideTransition *slideTransistion;
 	NSIndexPath *lastIndexPath;
 }
 
@@ -132,12 +130,6 @@
 	irvc.instagramObjects = instagramObjects;
 	irvc.presentationIndex = indexPath.row;
 	
-//	if (!slideTransistion)
-//		slideTransistion = [[DMSlideTransition alloc] init];
-//	[slideTransistion setBackgroundColor:[UIColor blackColor]];
-//	[irvc setTransitioningDelegate:slideTransistion];
-	
-//	self.transition.style = KWTransitionStylePushUp;
 	self.transition.style = KWTransitionStyleFadeBackOver;
 	
 	[irvc setTransitioningDelegate:self];

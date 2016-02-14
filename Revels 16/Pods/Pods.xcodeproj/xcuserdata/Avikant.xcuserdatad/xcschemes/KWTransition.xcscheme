@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'AE18BA4EF08533A0163105C2'
+               BlueprintIdentifier = '36235B742085BE6A243B15AE'
                BlueprintName = 'KWTransition'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libKWTransition.a'>

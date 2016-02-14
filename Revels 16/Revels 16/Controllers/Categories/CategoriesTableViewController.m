@@ -10,7 +10,6 @@
 #import "CategoriesTableViewCell.h"
 #import "EventByCategoryViewController.h"
 #import <KWTransition/KWTransition.h>
-#import <PullToRefreshCoreText/UIScrollView+PullToRefreshCoreText.h>
 #import "REVCategory.h"
 #import "ShapeWordView.h"
 
@@ -40,15 +39,19 @@
 	// Check for connection
 	Reachability *reachability = [Reachability reachabilityForInternetConnection];
 	if ([reachability isReachable])
-		[self fetchCategories];
+		[self fetchCategories:nil];
 	
 	self.transition = [KWTransition manager];
 	
 	cellBackgroundColors = [UIColor revelsColors];
 	
+	
+	
 }
 
-- (void)fetchCategories {
+
+
+- (IBAction)fetchCategories:(id)sender {
 	
 	SVHUD_SHOW;
 	
@@ -85,6 +88,7 @@
                 categories = [REVCategory getArrayFromJSONData:categoryJson];
 				[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
                 [self.tableView reloadData];
+				[self.refreshControl endRefreshing];
                 });
             }
         }
@@ -93,6 +97,7 @@
             SVHUD_FAILURE(@"Failed");
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self fetchSavedCategories];
+				[self.refreshControl endRefreshing];
             });
         }
         

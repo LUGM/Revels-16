@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *extendedNavBarViewConstraint;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @end
 
@@ -68,28 +69,19 @@
 	
 	cellBackgroundColors = [UIColor revelsColors];
 	
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	
 	[self fetchLocalEvents];
 	
+	self.refreshButton.enabled = NO;
 	Reachability *reachability = [Reachability reachabilityForInternetConnection];
-	if ([reachability isReachable])
+	if ([reachability isReachable]) {
 		[self fetchEvents];
-	
-	if (self.guillotineMenuController) {
-		[self.guillotineMenuController hideNavBarShadow];
+		self.refreshButton.enabled = YES;
 	}
 	
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-	
-	if (self.guillotineMenuController) {
-		[self.guillotineMenuController showNavBarShadow];
-	}
-	
+- (IBAction)refreshAction:(id)sender {
+	[self fetchEvents];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -432,10 +424,10 @@
 	}
 }
 
-#pragma mark - Search controller delegate
-
+/*
 // Comment the folowing if not using Yalantis
 
+#pragma mark - Search controller delegate
 
 - (void)didPresentSearchController:(UISearchController *)searchController {
 	[UIView animateWithDuration:0.3 animations:^{
@@ -450,7 +442,7 @@
 	}];
 	self.tableView.tableHeaderView = self.searchController.searchBar;
 }
-
+*/
 
 #pragma mark - Search bar delegate
 

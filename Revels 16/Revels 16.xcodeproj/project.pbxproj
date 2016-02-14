@@ -29,14 +29,17 @@
 		596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F920E1C5F3651000CBD48 /* CategoriesTableViewController.m */; };
 		596F92131C5F36B4000CBD48 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */; };
 		598189EE1C70527900F9AB1D /* EventHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598189ED1C70527900F9AB1D /* EventHeaderTableViewCell.xib */; };
+		598189F31C707F2E00F9AB1D /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598189F21C707F2E00F9AB1D /* ResultsTableViewController.m */; };
+		598189F91C70810300F9AB1D /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598189F81C70810300F9AB1D /* MoreViewController.m */; };
+		598189FD1C7081FF00F9AB1D /* RegisterWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598189FC1C7081FF00F9AB1D /* RegisterWebViewController.m */; };
+		59818A021C709A4E00F9AB1D /* MoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59818A011C709A4E00F9AB1D /* MoreCollectionViewCell.m */; };
+		59818A041C70D5BE00F9AB1D /* Refreshing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59818A031C70D5BE00F9AB1D /* Refreshing.plist */; };
 		5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989871C1C6AFF030042148B /* EasterEggViewController.m */; };
 		59A7CE911C6CA1E4001682F3 /* RoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7CE901C6CA1E4001682F3 /* RoundedLabel.m */; };
 		59A7CE951C6CB6F1001682F3 /* EventInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7CE941C6CB6F1001682F3 /* EventInfoView.m */; };
 		59A7CE971C6CB700001682F3 /* EventInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A7CE961C6CB700001682F3 /* EventInfoView.xib */; };
 		59BA13AE1C60764D00679C49 /* InstagramV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */; };
 		59BA13B81C6079B600679C49 /* ParallaxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */; };
-		59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13BF1C608ED200679C49 /* DMBaseTransition.m */; };
-		59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13C11C608ED200679C49 /* DMSlideTransition.m */; };
 		59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13CE1C60DE1200679C49 /* REVCategory.m */; };
 		59BA13D41C60E28500679C49 /* DADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13D31C60E28500679C49 /* DADataManager.m */; };
 		59BE4C701C66FB05004D28B7 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */; };
@@ -99,6 +102,15 @@
 		596F92111C5F36B4000CBD48 /* CategoriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesTableViewCell.h; path = Views/Cells/CategoriesTableViewCell.h; sourceTree = "<group>"; };
 		596F92121C5F36B4000CBD48 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesTableViewCell.m; path = Views/Cells/CategoriesTableViewCell.m; sourceTree = "<group>"; };
 		598189ED1C70527900F9AB1D /* EventHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventHeaderTableViewCell.xib; path = Views/Cells/EventHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		598189F11C707F2E00F9AB1D /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsTableViewController.h; path = Controllers/Results/ResultsTableViewController.h; sourceTree = "<group>"; };
+		598189F21C707F2E00F9AB1D /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = Controllers/Results/ResultsTableViewController.m; sourceTree = "<group>"; };
+		598189F71C70810300F9AB1D /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = Controllers/More/MoreViewController.h; sourceTree = "<group>"; };
+		598189F81C70810300F9AB1D /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = Controllers/More/MoreViewController.m; sourceTree = "<group>"; };
+		598189FB1C7081FF00F9AB1D /* RegisterWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterWebViewController.h; path = Controllers/Register/RegisterWebViewController.h; sourceTree = "<group>"; };
+		598189FC1C7081FF00F9AB1D /* RegisterWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterWebViewController.m; path = Controllers/Register/RegisterWebViewController.m; sourceTree = "<group>"; };
+		59818A001C709A4E00F9AB1D /* MoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCollectionViewCell.h; path = Views/Cells/MoreCollectionViewCell.h; sourceTree = "<group>"; };
+		59818A011C709A4E00F9AB1D /* MoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCollectionViewCell.m; path = Views/Cells/MoreCollectionViewCell.m; sourceTree = "<group>"; };
+		59818A031C70D5BE00F9AB1D /* Refreshing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Refreshing.plist; path = Libraries/Other/Refreshing.plist; sourceTree = "<group>"; };
 		5989871B1C6AFF030042148B /* EasterEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasterEggViewController.h; path = "Controllers/Easter Egg/EasterEggViewController.h"; sourceTree = "<group>"; };
 		5989871C1C6AFF030042148B /* EasterEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasterEggViewController.m; path = "Controllers/Easter Egg/EasterEggViewController.m"; sourceTree = "<group>"; };
 		59A7CE8F1C6CA1E4001682F3 /* RoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabel.h; sourceTree = "<group>"; };
@@ -110,10 +122,6 @@
 		59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramV2ViewController.m; path = Controllers/Instagram/InstagramV2ViewController.m; sourceTree = "<group>"; };
 		59BA13B61C6079B600679C49 /* ParallaxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParallaxCollectionViewCell.h; path = Views/Cells/ParallaxCollectionViewCell.h; sourceTree = "<group>"; };
 		59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParallaxCollectionViewCell.m; path = Views/Cells/ParallaxCollectionViewCell.m; sourceTree = "<group>"; };
-		59BA13BE1C608ED200679C49 /* DMBaseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseTransition.h; sourceTree = "<group>"; };
-		59BA13BF1C608ED200679C49 /* DMBaseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBaseTransition.m; sourceTree = "<group>"; };
-		59BA13C01C608ED200679C49 /* DMSlideTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSlideTransition.h; sourceTree = "<group>"; };
-		59BA13C11C608ED200679C49 /* DMSlideTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSlideTransition.m; sourceTree = "<group>"; };
 		59BA13C71C60D98C00679C49 /* Revels 16.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Revels 16.entitlements"; sourceTree = "<group>"; };
 		59BA13CD1C60DE1200679C49 /* REVCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVCategory.h; path = Model/Category/REVCategory.h; sourceTree = "<group>"; };
 		59BA13CE1C60DE1200679C49 /* REVCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVCategory.m; path = Model/Category/REVCategory.m; sourceTree = "<group>"; };
@@ -273,7 +281,7 @@
 				596F91DB1C5F1B3A000CBD48 /* Libraries */,
 				596F91D61C5F1913000CBD48 /* App Delegate */,
 				596F91DA1C5F1931000CBD48 /* Model */,
-				596F91D91C5F1927000CBD48 /* VIews */,
+				596F91D91C5F1927000CBD48 /* Views */,
 				596F91D81C5F191E000CBD48 /* Controllers */,
 				596F91BC1C5F18F9000CBD48 /* Supporting Files */,
 			);
@@ -286,6 +294,7 @@
 				59F7B2661C5F64CE00471695 /* PrefixHeader.pch */,
 				596F91D01C5F18F9000CBD48 /* Info.plist */,
 				596F91BD1C5F18F9000CBD48 /* main.m */,
+				59818A031C70D5BE00F9AB1D /* Refreshing.plist */,
 				596A7BF01C6A42E900EB74B1 /* Fonts */,
 			);
 			name = "Supporting Files";
@@ -314,16 +323,14 @@
 			children = (
 				596F91D71C5F191A000CBD48 /* Categories */,
 				59F7B2A31C5F744B00471695 /* Events */,
-				59F7B2AA1C5F78D800471695 /* Favourites */,
 				59F7B2BD1C5F800300471695 /* Instagram */,
-				59F7B2B11C5F7ACA00471695 /* About */,
-				59F7B2B51C5F7D2A00471695 /* Developers */,
-				5989871A1C6AFED40042148B /* Easter Egg */,
+				598189EF1C707F0B00F9AB1D /* Results */,
+				598189F41C7080CA00F9AB1D /* More */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		596F91D91C5F1927000CBD48 /* VIews */ = {
+		596F91D91C5F1927000CBD48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				59A7CE921C6CB6DC001682F3 /* EventInfoView */,
@@ -336,7 +343,7 @@
 				596F91C51C5F18F9000CBD48 /* Main.storyboard */,
 				596F91CD1C5F18F9000CBD48 /* LaunchScreen.storyboard */,
 			);
-			name = VIews;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		596F91DA1C5F1931000CBD48 /* Model */ = {
@@ -358,7 +365,6 @@
 				59E086531C686DA80029EFED /* Reachability */,
 				59BE4C6D1C66FB05004D28B7 /* CAAnimation+Blocks */,
 				59130F5E1C64A58C00A45854 /* ShapeWordView */,
-				59BA13BD1C608ED200679C49 /* DMCustomTransitions */,
 				59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */,
 				59F7B2B91C5F7E4900471695 /* ASMutableURLRequest */,
 				596F92031C5F35F7000CBD48 /* GuillotineMenu */,
@@ -379,11 +385,52 @@
 		596F92101C5F3698000CBD48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				598189FE1C709A2F00F9AB1D /* More */,
 				59BA13B51C60797100679C49 /* Parallax Instagram */,
 				59BA13B31C60796800679C49 /* Events */,
 				59BA13B11C60795E00679C49 /* Categories */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		598189EF1C707F0B00F9AB1D /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				598189F11C707F2E00F9AB1D /* ResultsTableViewController.h */,
+				598189F21C707F2E00F9AB1D /* ResultsTableViewController.m */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
+		598189F41C7080CA00F9AB1D /* More */ = {
+			isa = PBXGroup;
+			children = (
+				598189F71C70810300F9AB1D /* MoreViewController.h */,
+				598189F81C70810300F9AB1D /* MoreViewController.m */,
+				59F7B2B11C5F7ACA00471695 /* About */,
+				598189F51C7080E100F9AB1D /* Register */,
+				59F7B2AA1C5F78D800471695 /* Favourites */,
+				59F7B2B51C5F7D2A00471695 /* Developers */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		598189F51C7080E100F9AB1D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				598189FB1C7081FF00F9AB1D /* RegisterWebViewController.h */,
+				598189FC1C7081FF00F9AB1D /* RegisterWebViewController.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		598189FE1C709A2F00F9AB1D /* More */ = {
+			isa = PBXGroup;
+			children = (
+				59818A001C709A4E00F9AB1D /* MoreCollectionViewCell.h */,
+				59818A011C709A4E00F9AB1D /* MoreCollectionViewCell.m */,
+			);
+			name = More;
 			sourceTree = "<group>";
 		};
 		5989871A1C6AFED40042148B /* Easter Egg */ = {
@@ -451,18 +498,6 @@
 				59F7B2D31C5FD04000471695 /* InstagramDetailViewController.m */,
 			);
 			name = Detail;
-			sourceTree = "<group>";
-		};
-		59BA13BD1C608ED200679C49 /* DMCustomTransitions */ = {
-			isa = PBXGroup;
-			children = (
-				59BA13BE1C608ED200679C49 /* DMBaseTransition.h */,
-				59BA13BF1C608ED200679C49 /* DMBaseTransition.m */,
-				59BA13C01C608ED200679C49 /* DMSlideTransition.h */,
-				59BA13C11C608ED200679C49 /* DMSlideTransition.m */,
-			);
-			name = DMCustomTransitions;
-			path = Libraries/DMCustomTransitions;
 			sourceTree = "<group>";
 		};
 		59BA13C81C60DD9D00679C49 /* Categories */ = {
@@ -537,6 +572,7 @@
 			children = (
 				59F7B2B61C5F7D7400471695 /* DevelopersViewController.h */,
 				59F7B2B71C5F7D7400471695 /* DevelopersViewController.m */,
+				5989871A1C6AFED40042148B /* Easter Egg */,
 			);
 			name = Developers;
 			sourceTree = "<group>";
@@ -707,6 +743,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */,
+				59818A041C70D5BE00F9AB1D /* Refreshing.plist in Resources */,
 				596F91CF1C5F18F9000CBD48 /* LaunchScreen.storyboard in Resources */,
 				596F91CC1C5F18F9000CBD48 /* Assets.xcassets in Resources */,
 				59A7CE971C6CB700001682F3 /* EventInfoView.xib in Resources */,
@@ -776,6 +813,8 @@
 				59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */,
 				596F91CA1C5F18F9000CBD48 /* Revels_16.xcdatamodeld in Sources */,
 				596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */,
+				598189F31C707F2E00F9AB1D /* ResultsTableViewController.m in Sources */,
+				598189FD1C7081FF00F9AB1D /* RegisterWebViewController.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
 				596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */,
 				59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */,
@@ -783,7 +822,6 @@
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
 				59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */,
 				59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */,
-				59BA13C31C608ED200679C49 /* DMSlideTransition.m in Sources */,
 				596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */,
 				592AE8241C69037B00256BDA /* Colours.m in Sources */,
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
@@ -791,14 +829,15 @@
 				59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */,
 				596A7BFC1C6A520D00EB74B1 /* UnderlinedLabel.m in Sources */,
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
+				598189F91C70810300F9AB1D /* MoreViewController.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */,
 				59E086561C686DA80029EFED /* Reachability.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
-				59BA13C21C608ED200679C49 /* DMBaseTransition.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
 				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
+				59818A021C709A4E00F9AB1D /* MoreCollectionViewCell.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
 				59A7CE951C6CB6F1001682F3 /* EventInfoView.m in Sources */,
 				59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */,

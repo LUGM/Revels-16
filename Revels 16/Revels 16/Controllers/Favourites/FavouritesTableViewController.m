@@ -45,10 +45,8 @@
 	eventInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EventInfoView" owner:self options:nil] firstObject];
 	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
 	
-}
-
-- (void)viewDidAppear:(BOOL)animated {
 	[self fetchFavourites];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -239,5 +237,13 @@
 	[self dismissViewControllerAnimated:YES completion:nil];
 	
 }
+
+
+#pragma mark - Navigation
+
+- (IBAction)dismissAction:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

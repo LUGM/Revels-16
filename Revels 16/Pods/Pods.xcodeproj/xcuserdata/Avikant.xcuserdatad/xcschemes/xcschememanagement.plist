@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CBStoreHouseRefreshControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DGActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -15,11 +20,6 @@
 			<false/>
 		</dict>
 		<key>Pods-Revels 16.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PullToRefreshCoreText.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,17 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>035DE58DF45153348062E9213D669402</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>12AC35F9C569FA2A4543EFEDD802D2C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D769F51C3861ADB4BB5039D448A30EA</key>
+		<key>16744EBC82B5B6CC4A017E34D4F1C292</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F7236A5DC0FE62AF851AA75DE08F9D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4491943F5183F43B46FAC707A4CF84C</key>
+		<key>ADC8B724B52E2DFA9769F12883064F0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7FE6AC4581EEBEA0AC75AB7BAF6CFAB</key>
+		<key>FA25BF9F7B95BFCAFD52D537D16B6924</key>
 		<dict>
 			<key>primary</key>
 			<true/>
