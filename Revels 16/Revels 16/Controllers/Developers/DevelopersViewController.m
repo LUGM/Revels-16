@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	}
 	
 	else if (index == 2) {
-		[devDetailView setPersonName:@"Saketh Kaparthi" personDetail:@"Android Developer\nPenguins love cold,\nthey wont survive the sun." personImage:[UIImage imageNamed:@"Saketh"]];
+		[devDetailView setPersonName:@"Saketh Kaparthi" personDetail:@"Android Developer\nPenguins love cold,\nthey won't survive the sun." personImage:[UIImage imageNamed:@"Saketh"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[4] CGPointValue]];
 	}
 	
@@ -108,7 +108,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	}
 	
 	else if (index == 5) {
-		[devDetailView setPersonName:@"Shubham Sorte" personDetail:@"Coordinater\nMac users swear by their Mac,\nPC users swear at their PC" personImage:[UIImage imageNamed:@"Sorte"]];
+		[devDetailView setPersonName:@"Shubham Sorte" personDetail:@"Coordinator\nMac users swear by their Mac,\nPC users swear at their PC" personImage:[UIImage imageNamed:@"Sorte"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[3] CGPointValue]];
 	}
 	
@@ -183,7 +183,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	}
 	else if (easterEggController == EasterEggControllerY) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"Computers are like air conditioners\nthey stop working when you open Windows.";
+		eevc.quote = @"Unix is user friendly.\nIt’s just selective about who its friends are.";
 		eevc.backgroundColor = [UIColor palePurpleColor];
 	}
 	else if (easterEggController == EasterEggControllerZ) {
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	}
 	else if (easterEggController == EasterEggControllerF) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"Well, it was what I wanted now,\nAnd if we're  victims of the night,\nI won't be blinded by the light.";
+		eevc.quote = @"Computers are like air conditioners\nthey stop working when you open Windows.";
 		eevc.backgroundColor = [UIColor lightCreamColor];
 	}
 	
