@@ -375,6 +375,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="L3c-2i-SA6">
+                        <barButtonItem key="leftBarButtonItem" image="44favouritesIcon" id="8Dg-xk-1s7">
+                            <connections>
+                                <action selector="favsAction:" destination="TLd-QF-2p5" id="kAN-D7-zo8"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ziR-CF-lJ6">
                             <connections>
                                 <action selector="refreshAction:" destination="TLd-QF-2p5" id="tYJ-xT-s84"/>
@@ -410,14 +415,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RMT-YH-g8j">
-                                            <rect key="frame" x="74" y="0.0" width="491" height="79.5"/>
+                                            <rect key="frame" x="90" y="0.0" width="475" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="dateAlter" id="s48-Cu-nym">
-                                            <rect key="frame" x="15" y="17" width="44" height="44"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="eventsIcon" id="s48-Cu-nym">
+                                            <rect key="frame" x="15" y="9" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -879,61 +884,230 @@
             </objects>
             <point key="canvasLocation" x="2584" y="4802"/>
         </scene>
-        <!--About-->
+        <!--About Revels-->
         <scene sceneID="Khm-zA-M9H">
             <objects>
                 <tableViewController storyboardIdentifier="AboutVC" id="pxa-Q7-8SF" customClass="AboutTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="yVM-dQ-K6h">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yVM-dQ-K6h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="gJB-TH-esh">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="VW3-Oj-5jT">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="VW3-Oj-5jT">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VW3-Oj-5jT" id="Dg7-sy-L5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3q-ju-iNP">
-                                                    <rect key="frame" x="8" y="2" width="584" height="284"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">About Revels... Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RevelsCutout" translatesAutoresizingMaskIntoConstraints="NO" id="FOx-eW-9PA">
+                                                    <rect key="frame" x="8" y="0.0" width="140" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="WRm-Nd-LBZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wp7-JA-ITb">
+                                                    <rect key="frame" x="156" y="2" width="203" height="116"/>
+                                                    <string key="text">Revels is one of the most awaited cultural and sports festival in the south circuit amongst the engineering colleges and is widely regarded as the largest event in Karnataka. </string>
+                                                    <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="n3q-ju-iNP" secondAttribute="trailing" id="30L-ko-Lmk"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="n3q-ju-iNP" secondAttribute="leading" id="PCL-ui-Bz0"/>
-                                                <constraint firstItem="n3q-ju-iNP" firstAttribute="top" secondItem="Dg7-sy-L5e" secondAttribute="topMargin" constant="-6" id="Q8e-kc-TCk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="n3q-ju-iNP" secondAttribute="bottom" constant="6" id="kQ4-kG-MQZ"/>
+                                                <constraint firstItem="wp7-JA-ITb" firstAttribute="top" secondItem="Dg7-sy-L5e" secondAttribute="topMargin" constant="-6" id="GTF-d7-wfz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wp7-JA-ITb" secondAttribute="bottom" constant="-6" id="Yyd-5c-Ukr"/>
+                                                <constraint firstItem="wp7-JA-ITb" firstAttribute="leading" secondItem="FOx-eW-9PA" secondAttribute="trailing" constant="8" id="jM5-bP-zc6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wp7-JA-ITb" secondAttribute="trailing" constant="8" id="lsI-pm-48h"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="FOx-eW-9PA" firstAttribute="leading" secondItem="VW3-Oj-5jT" secondAttribute="leading" constant="8" id="Dm0-bw-jRN"/>
+                                            <constraint firstItem="FOx-eW-9PA" firstAttribute="top" secondItem="VW3-Oj-5jT" secondAttribute="top" id="bet-em-5k7"/>
+                                            <constraint firstAttribute="bottom" secondItem="FOx-eW-9PA" secondAttribute="bottom" id="uC8-Fh-mbL"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="112" id="i6J-l7-TKW">
+                                        <rect key="frame" x="0.0" y="184" width="375" height="112"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i6J-l7-TKW" id="cUt-kB-i29">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ls-7h-XeE">
+                                                    <rect key="frame" x="16" y="6" width="343" height="104"/>
+                                                    <string key="text">This year, we plan to stop at nothing, and make this fest not just a success, but an enduring part of every participant’s life. We attempt to provide the participants a platform where they can pursue their passion, perceive it, believe in it and achieve their goals.</string>
+                                                    <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9Ls-7h-XeE" secondAttribute="bottom" constant="-6" id="S46-Pa-Boa"/>
+                                                <constraint firstItem="9Ls-7h-XeE" firstAttribute="top" secondItem="cUt-kB-i29" secondAttribute="topMargin" constant="-2" id="kqz-Vh-UUe"/>
+                                                <constraint firstItem="9Ls-7h-XeE" firstAttribute="leading" secondItem="cUt-kB-i29" secondAttribute="leadingMargin" constant="8" id="lbV-CH-dsG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9Ls-7h-XeE" secondAttribute="trailing" constant="8" id="qwK-oC-DNE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="x68-fm-jF8">
+                                        <rect key="frame" x="0.0" y="296" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x68-fm-jF8" id="4w0-zf-22F">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hPy-pk-0QY">
+                                                    <rect key="frame" x="16" y="2" width="343" height="56"/>
+                                                    <string key="text">Revels’16 presents the theme of the fest
+“Dastaan | Everybody has a story”</string>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hPy-pk-0QY" secondAttribute="bottom" constant="-6" id="9E3-lA-g7j"/>
+                                                <constraint firstItem="hPy-pk-0QY" firstAttribute="leading" secondItem="4w0-zf-22F" secondAttribute="leadingMargin" constant="8" id="F9t-L9-Obg"/>
+                                                <constraint firstItem="hPy-pk-0QY" firstAttribute="top" secondItem="4w0-zf-22F" secondAttribute="topMargin" constant="-6" id="OjC-mp-cKA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hPy-pk-0QY" secondAttribute="trailing" constant="8" id="Yef-jn-cpU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="WJb-O3-HAR">
+                                        <rect key="frame" x="0.0" y="356" width="375" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WJb-O3-HAR" id="jgU-Qe-M5j">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z0v-P0-Gp2">
+                                                    <rect key="frame" x="16" y="2" width="343" height="176"/>
+                                                    <string key="text">Everyone you meet has a part to play in your story. When you look at a person, any person, remember that everyone has a story, everyone has gone through something, something that might inspire you. While some may take a chapter, others a paragraph and most will be no more than scribbled notes in the margins and you’ll reach somewhere which will become so integral to your life that you’ll put that name in the title - 
+“Revels’16”</string>
+                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="z0v-P0-Gp2" secondAttribute="bottom" constant="-6" id="H9j-Ex-Sfj"/>
+                                                <constraint firstItem="z0v-P0-Gp2" firstAttribute="leading" secondItem="jgU-Qe-M5j" secondAttribute="leadingMargin" constant="8" id="RI3-ij-hrS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="z0v-P0-Gp2" secondAttribute="trailing" constant="8" id="gfd-In-uVh"/>
+                                                <constraint firstItem="z0v-P0-Gp2" firstAttribute="top" secondItem="jgU-Qe-M5j" secondAttribute="topMargin" constant="-6" id="znj-aa-sqq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="96" id="e9Z-BH-nOd">
+                                        <rect key="frame" x="0.0" y="536" width="375" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e9Z-BH-nOd" id="PxX-wm-mXR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W6U-Hn-bgr">
+                                                    <rect key="frame" x="16" y="6" width="343" height="84"/>
+                                                    <string key="text">Live your sorrow, Live your pain, Live your laughter, Live revels ’16 because in the end, what we will be left with is a “Dastaan”, a story created at Manipal, a story that would make all the difference.</string>
+                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="W6U-Hn-bgr" firstAttribute="leading" secondItem="PxX-wm-mXR" secondAttribute="leadingMargin" constant="8" id="5ki-lu-Ux3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="W6U-Hn-bgr" secondAttribute="bottom" constant="-2" id="lTp-4F-pLZ"/>
+                                                <constraint firstItem="W6U-Hn-bgr" firstAttribute="top" secondItem="PxX-wm-mXR" secondAttribute="topMargin" constant="-2" id="rb8-qG-Zee"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="W6U-Hn-bgr" secondAttribute="trailing" constant="8" id="wtr-t9-Ptz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="pRW-1X-pWL">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="JaT-hw-n1c">
-                                        <rect key="frame" x="0.0" y="435" width="600" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="JaT-hw-n1c">
+                                        <rect key="frame" x="0.0" y="632" width="375" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JaT-hw-n1c" id="yDP-ut-In3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5s-83-Exx">
-                                                    <rect key="frame" x="273" y="15" width="55" height="30"/>
-                                                    <state key="normal" title="Contact"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ER-Hd-fob">
+                                                    <rect key="frame" x="172" y="58" width="30" height="30"/>
+                                                    <state key="normal" image="44More"/>
+                                                    <connections>
+                                                        <action selector="sharesheetAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="iRf-Vf-P6m"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swd-uB-TZp">
+                                                    <rect key="frame" x="210" y="53" width="40" height="40"/>
+                                                    <state key="normal" image="syoutube"/>
+                                                    <connections>
+                                                        <action selector="youtubeAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="uV0-Kg-ijc"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-OB-rO8">
+                                                    <rect key="frame" x="124" y="53" width="40" height="40"/>
+                                                    <state key="normal" image="sinstagram"/>
+                                                    <connections>
+                                                        <action selector="instagramAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="Hnt-2r-ari"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0d-8I-mZe">
+                                                    <rect key="frame" x="258" y="77" width="40" height="40"/>
+                                                    <state key="normal" image="ssafari"/>
+                                                    <connections>
+                                                        <action selector="browserAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="Tgm-W9-ATW"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPA-bG-gUx">
+                                                    <rect key="frame" x="258" y="29" width="40" height="40"/>
+                                                    <state key="normal" image="stwitter"/>
+                                                    <connections>
+                                                        <action selector="twitterAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="a07-qH-Dvk"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKE-W9-aSq">
+                                                    <rect key="frame" x="76" y="29" width="40" height="40"/>
+                                                    <state key="normal" image="sfacebook"/>
+                                                    <connections>
+                                                        <action selector="facebookAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="Dag-LN-vkr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K72-SF-A6u">
+                                                    <rect key="frame" x="76" y="77" width="40" height="40"/>
+                                                    <state key="normal" image="ssnapchat"/>
+                                                    <connections>
+                                                        <action selector="snapchatAction:" destination="pxa-Q7-8SF" eventType="touchUpInside" id="gyV-Ts-qix"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="D5s-83-Exx" firstAttribute="centerX" secondItem="yDP-ut-In3" secondAttribute="centerX" id="G8m-ZK-ndW"/>
-                                                <constraint firstItem="D5s-83-Exx" firstAttribute="centerY" secondItem="yDP-ut-In3" secondAttribute="centerY" id="bq3-fq-qLJ"/>
+                                                <constraint firstItem="swd-uB-TZp" firstAttribute="centerY" secondItem="5ER-Hd-fob" secondAttribute="centerY" id="2fX-Dk-rsN"/>
+                                                <constraint firstItem="LPA-bG-gUx" firstAttribute="leading" secondItem="swd-uB-TZp" secondAttribute="trailing" constant="8" id="46L-em-KJ5"/>
+                                                <constraint firstItem="swd-uB-TZp" firstAttribute="leading" secondItem="5ER-Hd-fob" secondAttribute="trailing" constant="8" id="4SQ-bM-AkE"/>
+                                                <constraint firstItem="5ER-Hd-fob" firstAttribute="centerX" secondItem="yDP-ut-In3" secondAttribute="centerX" id="CtE-h6-IhZ"/>
+                                                <constraint firstItem="LPA-bG-gUx" firstAttribute="centerY" secondItem="swd-uB-TZp" secondAttribute="centerY" constant="-24" id="D7v-QT-AGf"/>
+                                                <constraint firstItem="Hzs-OB-rO8" firstAttribute="leading" secondItem="fKE-W9-aSq" secondAttribute="trailing" constant="8" id="EJ5-C8-GhV"/>
+                                                <constraint firstItem="Hzs-OB-rO8" firstAttribute="leading" secondItem="K72-SF-A6u" secondAttribute="trailing" constant="8" id="GsN-LZ-xfZ"/>
+                                                <constraint firstItem="fKE-W9-aSq" firstAttribute="centerY" secondItem="Hzs-OB-rO8" secondAttribute="centerY" constant="-24" id="Ogh-Ub-IXm"/>
+                                                <constraint firstItem="j0d-8I-mZe" firstAttribute="leading" secondItem="swd-uB-TZp" secondAttribute="trailing" constant="8" id="XB2-lD-763"/>
+                                                <constraint firstItem="j0d-8I-mZe" firstAttribute="centerY" secondItem="swd-uB-TZp" secondAttribute="centerY" constant="24" id="Ylg-XC-JA0"/>
+                                                <constraint firstItem="K72-SF-A6u" firstAttribute="centerY" secondItem="Hzs-OB-rO8" secondAttribute="centerY" constant="24" id="nja-Np-Rvc"/>
+                                                <constraint firstItem="5ER-Hd-fob" firstAttribute="leading" secondItem="Hzs-OB-rO8" secondAttribute="trailing" constant="8" id="w5J-6Q-b3C"/>
+                                                <constraint firstItem="Hzs-OB-rO8" firstAttribute="centerY" secondItem="5ER-Hd-fob" secondAttribute="centerY" id="xvi-fr-Et8"/>
+                                                <constraint firstItem="5ER-Hd-fob" firstAttribute="centerY" secondItem="yDP-ut-In3" secondAttribute="centerY" id="yhX-2K-48p"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -943,17 +1117,19 @@
                             <outlet property="delegate" destination="pxa-Q7-8SF" id="V7R-jF-cFr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="About" id="bFg-ug-pp3">
+                    <navigationItem key="navigationItem" title="About Revels" id="bFg-ug-pp3">
                         <barButtonItem key="leftBarButtonItem" image="crossButton" id="SLs-uq-Lbf">
                             <connections>
                                 <action selector="dismissAction:" destination="pxa-Q7-8SF" id="JmX-8Q-AVE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="800"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cen-sf-tyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="3355"/>
+            <point key="canvasLocation" x="2584.5" y="3280"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WPL-QY-lbz">
@@ -1016,6 +1192,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8ca-au-2xf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2251,13 +2429,19 @@ Said the joker to the thief,
         <image name="contact" width="44" height="44"/>
         <image name="crossButton" width="30" height="30"/>
         <image name="date" width="44" height="44"/>
-        <image name="dateAlter" width="44" height="44"/>
         <image name="developersIcon" width="60" height="60"/>
+        <image name="eventsIcon" width="60" height="60"/>
         <image name="favsEmpty" width="44" height="44"/>
         <image name="infoButton" width="30" height="30"/>
         <image name="location" width="44" height="44"/>
         <image name="save" width="40" height="40"/>
+        <image name="sfacebook" width="40" height="40"/>
         <image name="share" width="40" height="40"/>
+        <image name="sinstagram" width="40" height="40"/>
+        <image name="ssafari" width="40" height="40"/>
+        <image name="ssnapchat" width="40" height="40"/>
+        <image name="stwitter" width="40" height="40"/>
+        <image name="syoutube" width="40" height="40"/>
         <image name="team" width="44" height="44"/>
         <image name="time" width="44" height="44"/>
     </resources>

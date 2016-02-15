@@ -88,7 +88,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	}
 	
 	else if (index == 3) {
-		[devDetailView setPersonName:@"Yash Kumar Lal" personDetail:@"iOS Developer\nUnix is user friendly.\nIt’s just selective about\nwho its friends are." personImage:[UIImage imageNamed:@"Yash"]];
+		[devDetailView setPersonName:@"Yash Kumar Lal" personDetail:@"iOS Developer\nWalking Contradiction." personImage:[UIImage imageNamed:@"Yash"]];
 		[devDetailView showInView:self.view animatedFromAnchorPoint:[self.hexagonalView.hexPoints[5] CGPointValue]];
 	}
 	

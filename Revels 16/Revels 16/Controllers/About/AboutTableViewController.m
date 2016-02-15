@@ -29,12 +29,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Sharing
+
+- (IBAction)facebookAction:(id)sender {
+}
+
+- (IBAction)twitterAction:(id)sender {
+}
+
+- (IBAction)instagramAction:(id)sender {
+}
+
+- (IBAction)youtubeAction:(id)sender {
+}
+
+- (IBAction)snapchatAction:(id)sender {
+}
+
+- (IBAction)browserAction:(id)sender {
+}
+
+- (IBAction)sharesheetAction:(id)sender {
+}
+
+
 #pragma mark - Table view data source
 
 #pragma mark - Table view delegate
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+	return NO;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - Navigation

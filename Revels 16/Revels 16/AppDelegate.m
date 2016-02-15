@@ -33,10 +33,6 @@
 	UINavigationController *atvc = [storyboard instantiateViewControllerWithIdentifier:@"AboutVCNav"];
 	UINavigationController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DevelopersVCNav"];
 	
-	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
-	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];
-	[SVProgressHUD setForegroundColor:[UIColor blackColor]];
-	
 	NSArray *vcArray = @[ctvc, evc, ftvc, ivc, atvc, dvc];
 	NSArray *titles  = @[@"Categories", @"Events", @"Favourites", @"#Revels16", @"About Us", @"Developers"];
 	NSArray *images  = @[@"categoriesIcon", @"eventsIcon", @"favouritesIcon", @"instagramLogo", @"aboutIcon", @"developersIcon"];
@@ -51,6 +47,10 @@
 	[self.window makeKeyAndVisible];
 	
 	 */
+	
+	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];
+	[SVProgressHUD setForegroundColor:[UIColor blackColor]];
 	 
 	[[UISegmentedControl appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:13.f], NSForegroundColorAttributeName: [UIColor darkTextColor]} forState:UIControlStateNormal];
 	[[UISegmentedControl appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:13.f], NSForegroundColorAttributeName: [UIColor lightTextColor]} forState:UIControlStateHighlighted];

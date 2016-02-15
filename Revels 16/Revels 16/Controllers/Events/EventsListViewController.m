@@ -7,16 +7,18 @@
 //
 
 #import "EventsListViewController.h"
+#import <KWTransition/KWTransition.h>
 #import "EventsTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
 
-@interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, EKEventViewDelegate>
+@interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, EKEventViewDelegate, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *extendedNavBarViewConstraint;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+@property (nonatomic, strong) KWTransition *transition;
 
 @end
 
@@ -66,6 +68,8 @@
 	
 	eventInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EventInfoView" owner:self options:nil] firstObject];
 	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+	
+	self.transition = [KWTransition manager];
 	
 	cellBackgroundColors = [UIColor revelsColors];
 	
@@ -485,14 +489,34 @@
 	
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)favsAction:(id)sender {
+	
+	UINavigationController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"FavouritesVCNav"];
+	
+	self.transition.style = KWTransitionStyleFadeBackOver;
+	
+	[navc setTransitioningDelegate:self];
+	
+	[self.navigationController presentViewController:navc animated:YES completion:nil];
+	
 }
-*/
+
+
+#pragma mark - View controller animated transistioning
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+																   presentingController:(UIViewController *)presenting
+																	   sourceController:(UIViewController *)source {
+	self.transition.action = KWTransitionStepPresent;
+	return self.transition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+	self.transition.action = KWTransitionStepDismiss;
+	return self.transition;
+}
+
 
 @end
