@@ -12,12 +12,12 @@
 
 @interface EventInfoView : UIView
 
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-
 @property (weak, nonatomic) IBOutlet UnderlinedLabel *eventNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *eventDetailsTextView;
 @property (weak, nonatomic) IBOutlet UILabel *eventDateTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
+
+@property (weak, nonatomic) UIColor *bgColor;
 
 - (IBAction)timeAction:(id)sender;
 - (IBAction)phoneAction:(id)sender;

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F161C63612100A45854 /* EventByCategoryViewController.m */; };
-		59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F611C64A58C00A45854 /* ARCGPathFromString.m */; };
-		59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */; };
-		59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F651C64A58C00A45854 /* ShapeWordView.m */; };
 		592AE8241C69037B00256BDA /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE8231C69037B00256BDA /* Colours.m */; };
 		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
 		596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */; };
@@ -44,6 +41,7 @@
 		59BA13D41C60E28500679C49 /* DADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA13D31C60E28500679C49 /* DADataManager.m */; };
 		59BE4C701C66FB05004D28B7 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */; };
 		59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BE4C981C67548E004D28B7 /* QuartzCore.framework */; };
+		59CDF9FF1C72E85B00F41D72 /* UINavigationItem+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CDF9FE1C72E85B00F41D72 /* UINavigationItem+Loading.m */; };
 		59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */; };
 		59E086561C686DA80029EFED /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E086551C686DA80029EFED /* Reachability.m */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
@@ -68,12 +66,6 @@
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
 		59130F151C63612100A45854 /* EventByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventByCategoryViewController.h; path = Controllers/Events/EventByCategoryViewController.h; sourceTree = "<group>"; };
 		59130F161C63612100A45854 /* EventByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventByCategoryViewController.m; path = Controllers/Events/EventByCategoryViewController.m; sourceTree = "<group>"; };
-		59130F601C64A58C00A45854 /* ARCGPathFromString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCGPathFromString.h; sourceTree = "<group>"; };
-		59130F611C64A58C00A45854 /* ARCGPathFromString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCGPathFromString.m; sourceTree = "<group>"; };
-		59130F621C64A58C00A45854 /* UIBezierPath+TextPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+TextPaths.h"; sourceTree = "<group>"; };
-		59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+TextPaths.m"; sourceTree = "<group>"; };
-		59130F641C64A58C00A45854 /* ShapeWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeWordView.h; sourceTree = "<group>"; };
-		59130F651C64A58C00A45854 /* ShapeWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeWordView.m; sourceTree = "<group>"; };
 		592AE8221C69037B00256BDA /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
 		592AE8231C69037B00256BDA /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
 		5962B05C1C650EA6009290B2 /* DAHexagonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAHexagonalView.h; path = Views/DAHexagonalView/DAHexagonalView.h; sourceTree = "<group>"; };
@@ -130,6 +122,8 @@
 		59BE4C6E1C66FB05004D28B7 /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
 		59BE4C6F1C66FB05004D28B7 /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
 		59BE4C981C67548E004D28B7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		59CDF9FD1C72E85B00F41D72 /* UINavigationItem+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Loading.h"; sourceTree = "<group>"; };
+		59CDF9FE1C72E85B00F41D72 /* UINavigationItem+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Loading.m"; sourceTree = "<group>"; };
 		59E086501C685A8A0029EFED /* EventHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventHeaderTableViewCell.h; path = Views/Cells/EventHeaderTableViewCell.h; sourceTree = "<group>"; };
 		59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventHeaderTableViewCell.m; path = Views/Cells/EventHeaderTableViewCell.m; sourceTree = "<group>"; };
 		59E086541C686DA80029EFED /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -182,28 +176,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		59130F5E1C64A58C00A45854 /* ShapeWordView */ = {
-			isa = PBXGroup;
-			children = (
-				59130F5F1C64A58C00A45854 /* ARCGPathFromString */,
-				59130F641C64A58C00A45854 /* ShapeWordView.h */,
-				59130F651C64A58C00A45854 /* ShapeWordView.m */,
-			);
-			name = ShapeWordView;
-			path = Libraries/ShapeWordView;
-			sourceTree = "<group>";
-		};
-		59130F5F1C64A58C00A45854 /* ARCGPathFromString */ = {
-			isa = PBXGroup;
-			children = (
-				59130F601C64A58C00A45854 /* ARCGPathFromString.h */,
-				59130F611C64A58C00A45854 /* ARCGPathFromString.m */,
-				59130F621C64A58C00A45854 /* UIBezierPath+TextPaths.h */,
-				59130F631C64A58C00A45854 /* UIBezierPath+TextPaths.m */,
-			);
-			path = ARCGPathFromString;
-			sourceTree = "<group>";
-		};
 		592AE8211C69037B00256BDA /* Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,10 +333,10 @@
 		596F91DB1C5F1B3A000CBD48 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				59CDF9FC1C72E85B00F41D72 /* UINavigationItem+Loading */,
 				592AE8211C69037B00256BDA /* Color */,
 				59E086531C686DA80029EFED /* Reachability */,
 				59BE4C6D1C66FB05004D28B7 /* CAAnimation+Blocks */,
-				59130F5E1C64A58C00A45854 /* ShapeWordView */,
 				59F7B2D91C5FD4BD00471695 /* UIImage+ImageEffects */,
 				59F7B2B91C5F7E4900471695 /* ASMutableURLRequest */,
 				596F92031C5F35F7000CBD48 /* GuillotineMenu */,
@@ -526,6 +498,16 @@
 			);
 			name = "CAAnimation+Blocks";
 			path = "Libraries/CAAnimation+Blocks";
+			sourceTree = "<group>";
+		};
+		59CDF9FC1C72E85B00F41D72 /* UINavigationItem+Loading */ = {
+			isa = PBXGroup;
+			children = (
+				59CDF9FD1C72E85B00F41D72 /* UINavigationItem+Loading.h */,
+				59CDF9FE1C72E85B00F41D72 /* UINavigationItem+Loading.m */,
+			);
+			name = "UINavigationItem+Loading";
+			path = "Libraries/UINavigationItem+Loading";
 			sourceTree = "<group>";
 		};
 		59E086531C686DA80029EFED /* Reachability */ = {
@@ -707,7 +689,7 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 9P257W983B;
+						DevelopmentTeam = HN3SCP8A52;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -817,11 +799,10 @@
 				598189FD1C7081FF00F9AB1D /* RegisterWebViewController.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
 				596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */,
-				59130F681C64A58C00A45854 /* ShapeWordView.m in Sources */,
 				5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
-				59130F661C64A58C00A45854 /* ARCGPathFromString.m in Sources */,
 				59F7B2B81C5F7D7400471695 /* DevelopersViewController.m in Sources */,
+				59CDF9FF1C72E85B00F41D72 /* UINavigationItem+Loading.m in Sources */,
 				596F91C11C5F18F9000CBD48 /* AppDelegate.m in Sources */,
 				592AE8241C69037B00256BDA /* Colours.m in Sources */,
 				59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */,
@@ -831,7 +812,6 @@
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				598189F91C70810300F9AB1D /* MoreViewController.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
-				59130F671C64A58C00A45854 /* UIBezierPath+TextPaths.m in Sources */,
 				59E086561C686DA80029EFED /* Reachability.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
@@ -974,7 +954,7 @@
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.MITRevels-16";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.Revels-16";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -996,7 +976,7 @@
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.MITRevels-16";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.Revels-16";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

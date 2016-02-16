@@ -12,36 +12,54 @@
 	REVEvent *evnt;
 }
 
+
 /*
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 	
 	[super drawRect:rect];
 	
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
+//	CGContextRef ctx = UIGraphicsGetCurrentContext();
+//	
+//	size_t gradLocationsNum = 2;
+//	CGFloat gradLocations[2] = {0.0f, 1.0f};
+//	CGFloat gradColors[8] = {0.7f, 0.8f, 0.6f, 0.2f, 0.2f, 0.0f, 0.0f, 0.5f};
+//	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+//	CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNum);
+//	CGColorSpaceRelease(colorSpace);
+//	
+//	CGPoint gradCenter= CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+//	float gradRadius = self.bounds.size.width;
+//	
+//	CGContextDrawRadialGradient (ctx, gradient, gradCenter, 0, gradCenter, gradRadius, kCGGradientDrawsAfterEndLocation);
+//	
+//	CGGradientRelease(gradient);
 	
-	size_t gradLocationsNum = 2;
-	CGFloat gradLocations[2] = {0.0f, 1.0f};
-	CGFloat gradColors[8] = {0.7f, 0.8f, 0.6f, 0.2f, 0.2f, 0.0f, 0.0f, 0.5f};
-	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNum);
-	CGColorSpaceRelease(colorSpace);
+	UIBezierPath *bgPath = [UIBezierPath bezierPathWithRect:self.bounds];
+	[[UIColor clearColor] setFill];
+	[bgPath fill];
 	
-	CGPoint gradCenter= CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-	float gradRadius = MIN(self.bounds.size.width , self.bounds.size.height) ;
+	UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:16.f];
+//	[bezierPath moveToPoint:CGPointMake(0, self.bounds.size.height - 1)];
+//	[bezierPath addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height - 1)];
+	[bezierPath setLineWidth:1.5];
 	
-	CGContextDrawRadialGradient (ctx, gradient, gradCenter, 0, gradCenter, gradRadius, kCGGradientDrawsAfterEndLocation);
+	if (!self.bgColor)
+		self.bgColor = [[UIColor revelsColors] objectAtIndex:arc4random_uniform((int)[UIColor revelsColors].count)];
 	
-	CGGradientRelease(gradient);
+	[self.bgColor setFill];
+	[bezierPath fill];
 	
+	[[UIColor darkGrayColor] setStroke];
+	[bezierPath stroke];
+
+//	self.layer.cornerRadius = 16.f;
 }
 */
 
+
 - (void)awakeFromNib {
-	
 	self.bounds = CGRectMake(0, 0, SWdith - 32, SWdith - 32);
-	self.contentView.frame = self.bounds;
-	
 }
 
 - (void)fillUsingEvent:(REVEvent *)event {
@@ -72,8 +90,9 @@
 	[superview addSubview:self];
 	
 	self.bounds = CGRectMake(0, 0, SWdith - 32, SWdith - 32);
-	self.contentView.frame = self.bounds;
 	self.center = superview.center;
+	
+	[self setNeedsDisplay];
 	
 	self.alpha = 0.0;
 	
@@ -81,7 +100,7 @@
 	transform = CATransform3DTranslate(transform, 0, superview.bounds.size.height/1.5, 0);
 	
 	self.layer.transform = transform;
-//	self.layer.cornerRadius = 12.f;
+	self.layer.cornerRadius = 12.f;
 	
 	[UIView animateWithDuration:0.6 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:1.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.layer.transform = CATransform3DIdentity;

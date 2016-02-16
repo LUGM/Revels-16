@@ -27,7 +27,7 @@
 			if ([dict valueForKey:@"imageName"])
 				self.imageName = [NSString stringWithFormat:@"%@", dict[@"imageName"]];
 			else
-				self.imageName = [NSString stringWithFormat:@"%@", [dict[@"cname"] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+				self.imageName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
 //			
 //			if ([dict valueForKey:@"cntctname"])
 //				self.type = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];

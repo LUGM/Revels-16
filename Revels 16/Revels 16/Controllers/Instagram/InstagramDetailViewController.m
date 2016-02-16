@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsLabelBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagsLabelHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *commentsHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *saveButtonHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
@@ -55,8 +56,9 @@
 	
 	if (SHeight < 500.f) {
 		self.commentsHeightConstraint.constant = 30.f;
+		self.saveButtonHeightConstraint.constant = 30.f;
 		self.tagsLabelBottomConstraint.constant = 8.f;
-		self.tagsLabelHeightConstraint.constant = 30.f;
+		self.tagsLabelHeightConstraint.constant = 44.f;
 	}
 
 }

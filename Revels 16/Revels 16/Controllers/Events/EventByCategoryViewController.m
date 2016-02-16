@@ -346,8 +346,7 @@
 	EventHeaderTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EventHeaderTableViewCell" owner:self options:nil] firstObject];
 	
 	cell.categoryDescriptionLabel.text = self.category.detail;
-//	cell.categoryImageView.image = [UIImage imageNamed:self.category.imageName];
-	cell.categoryImageView.image = [UIImage imageNamed:@"eventsIcon"];
+	cell.categoryImageView.image = [UIImage imageNamed:self.category.imageName];
 	
 	NSDateFormatter *formatter = [NSDateFormatter new];
 	[formatter setDateFormat:@"EEE, MMMM dd, yyyy"];
@@ -392,6 +391,7 @@
 	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
 	
 	[eventInfoView fillUsingEvent:event];
+	[eventInfoView setBackgroundColor:[cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count]];
 	[eventInfoView showInView:self.navigationController.view];
 	
 	[self.view addGestureRecognizer:tapGestureRecognizer];

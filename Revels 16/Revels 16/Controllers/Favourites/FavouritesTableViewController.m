@@ -151,6 +151,7 @@
 	REVEvent *event = [events objectAtIndex:indexPath.row];
 	
 	[eventInfoView fillUsingEvent:event];
+	[eventInfoView setBackgroundColor:[cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count]];
 	[eventInfoView showInView:self.navigationController.view];
 	
 	[self.view addGestureRecognizer:tapGestureRecognizer];

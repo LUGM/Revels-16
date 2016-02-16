@@ -157,7 +157,6 @@
                     </variation>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Mky-WK-brj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AAA-m7-xSM"/>
                 <constraint firstAttribute="trailing" secondItem="Mky-WK-brj" secondAttribute="trailing" id="CcL-H5-a0J"/>
@@ -181,7 +180,6 @@
             </variation>
             <connections>
                 <outlet property="contactNameLabel" destination="fHT-6D-AFq" id="aYn-q1-prv"/>
-                <outlet property="contentView" destination="faR-LF-PMe" id="A8H-0P-ibB"/>
                 <outlet property="eventDateTimeLabel" destination="z3F-l9-yHb" id="esB-97-BNJ"/>
                 <outlet property="eventDetailsTextView" destination="9cb-iC-ffV" id="RJc-VQ-TG0"/>
                 <outlet property="eventNameLabel" destination="ZkN-ZA-zpg" id="zLE-Zl-i3H"/>

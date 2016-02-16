@@ -51,10 +51,10 @@ static CGFloat (^RAD)(CGFloat) = ^CGFloat (CGFloat degree){
 //						[UIColor colorFromHexString:@"#ddcaef"],
 //						[UIColor colorFromHexString:@"#c0f9d4"]];
 	NSArray *colors = @[[UIColor colorFromHexString:@"#C3E2D5"],
-						[UIColor colorFromHexString:@"#B0E57C"],
+						[UIColor colorFromHexString:@"#C7E1BA"],
 						[UIColor colorFromHexString:@"#FCF3BC"],
-						[UIColor colorFromHexString:@"#F3D5BD"],
-						[UIColor colorFromHexString:@"#C7E1BA"]];
+						[UIColor colorFromHexString:@"#CAD7E1"],
+						[UIColor colorFromHexString:@"#F3D5BD"]];
 
 	return colors;
 }

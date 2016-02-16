@@ -7,6 +7,7 @@
 //
 
 #import "AboutTableViewController.h"
+#import "RegisterWebViewController.h"
 
 @interface AboutTableViewController ()
 
@@ -32,41 +33,45 @@
 #pragma mark - Sharing
 
 - (IBAction)facebookAction:(id)sender {
-    NSString *facebookUrlString = @"https://www.facebook.com/mitrevels/";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:facebookUrlString]];
+    if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"fb://page/mitrevels/"]])
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://facebook.com/mitrevels/"]];
 }
 
 - (IBAction)twitterAction:(id)sender {
-    NSString *twitterUrlString = [NSString stringWithFormat:@"https:/www.twitter.com/revelsmit/"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterUrlString]];
+	if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=mitrevels/"]])
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.twitter.com/revelsmit/"]];
 }
 
 - (IBAction)instagramAction:(id)sender {
-    NSString *instagramUrlString = [NSString stringWithFormat:@"https:/www.instagram.com/revelsmit/"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:instagramUrlString]];
+	if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"instagram://user?username=revelsmit"]])
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.instagram.com/revelsmit/"]];
 }
 
 - (IBAction)youtubeAction:(id)sender {
-    NSString *youtubeUrlString = [NSString stringWithFormat:@"http:/www.bit.do/revelsyoutube"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:youtubeUrlString]];
+	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"youtube://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw"]])
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"youtube://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw"]];
+	else
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtube.com/user/UC9gwWd47a0q042qwEgutjWw"]];
 }
 
 - (IBAction)snapchatAction:(id)sender {
-    NSString *snapchatUrlString = [NSString stringWithFormat:@"http:/www.snapchat.com/add/revelsmit/"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:snapchatUrlString]];
+	if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"snapchat://add/revelsmit"]])
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.snapchat.com/add/revelsmit/"]];
 }
 
 - (IBAction)browserAction:(id)sender {
-    NSString *websiteUrlString = [NSString stringWithFormat:@"http://www.mitrevels.in"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:websiteUrlString]];
+	UINavigationController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterVCNav"];
+	RegisterWebViewController *wvc = [navc.viewControllers firstObject];
+	wvc.passedTitle = @"MIT Revels";
+	wvc.passedURL = [NSURL URLWithString:@"http://www.mitrevels.in"];
+	[self presentViewController:navc animated:YES completion:nil];
 }
 
 - (IBAction)sharesheetAction:(id)sender {
-    NSString *websiteUrlString = [NSString stringWithFormat:@"http://www.mitrevels.in"];
-    NSURL *urlToShare = [NSURL URLWithString:websiteUrlString];
+    NSURL *urlToShare = [NSURL URLWithString:@"http://www.mitrevels.in"];
     NSString *textToShare = @"Revels is one of the most awaited cultural and sports festival in the south circuit amongst the engineering colleges and is widely regarded as the largest event in Karnataka.";
-    UIImage *imageToShare = [UIImage imageNamed:@"RevelsCircle"];
-    NSArray *activityItems = @[imageToShare, textToShare, urlToShare];
+//    UIImage *imageToShare = [UIImage imageNamed:@"RevelsCircle"];
+    NSArray *activityItems = @[textToShare, urlToShare];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     [self presentViewController:activityVC animated:YES completion:nil];
 }

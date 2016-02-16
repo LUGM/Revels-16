@@ -11,12 +11,10 @@
 #import "EventByCategoryViewController.h"
 #import <KWTransition/KWTransition.h>
 #import "REVCategory.h"
-#import "ShapeWordView.h"
 
 @interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) KWTransition *transition;
-@property (nonatomic, strong) ShapeWordView *shapeWordView;
 
 @end
 
@@ -145,6 +143,8 @@
 	
 	cell.textLabel.text = category.name;
 //	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", category.uid];
+	
+	cell.imageView.image = [UIImage imageNamed:category.imageName];
 	
 	cell.backgroundColor = [cellBackgroundColors objectAtIndex:indexPath.row % cellBackgroundColors.count];
     

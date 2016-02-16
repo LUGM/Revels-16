@@ -8,6 +8,7 @@
 
 #import "RegisterWebViewController.h"
 #import "Reachability.h"
+#import "UINavigationItem+Loading.h"
 
 @interface RegisterWebViewController () <WKNavigationDelegate, UIScrollViewDelegate>
 
@@ -45,6 +46,8 @@
 	[self.webView loadRequest:request];
 	self.navigationItem.title = pageTitle;
 	
+	[self.navigationItem startAnimatingAt:ANNavBarLoaderPositionRight];
+	
 	self.backwardBarButton.enabled = NO;
 	self.forewardBackButton.enabled = NO;
 	
@@ -81,6 +84,7 @@
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
 	[_progressView setProgress:0.0 animated:NO];
+	[self.navigationItem stopAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
