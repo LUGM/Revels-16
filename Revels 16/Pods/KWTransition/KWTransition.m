@@ -164,7 +164,7 @@
 			CGPoint fromVCCenterOffScreen = fromVC.view.center;
 			fromVCCenterOffScreen.y = fromScale * fromVCCenterOffScreen.y;
 			
-			[UIView animateKeyframesWithDuration:.8f delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+			[UIView animateKeyframesWithDuration:.6f delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
 				[UIView addKeyframeWithRelativeStartTime:0.f relativeDuration:.3f animations:^{
 					CATransform3D t = CATransform3DIdentity;
 					t.m34 = 1.0/ -500;
@@ -179,7 +179,7 @@
 				}];
 			} completion:nil];
 			
-			[UIView animateWithDuration:.5f delay:.5f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+			[UIView animateWithDuration:.4f delay:.4f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
 				toVC.view.center = inView.center;
 			} completion:^(__unused BOOL finished) {
 				[transitionContext completeTransition:YES];

@@ -87,12 +87,12 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="H9o-NX-jjS"/>
-                        <exclude reference="hhI-Kn-sh6"/>
-                        <exclude reference="I5q-hn-90s"/>
                         <exclude reference="AWT-Wa-f7e"/>
-                        <exclude reference="xQW-Fm-zPA"/>
+                        <exclude reference="I5q-hn-90s"/>
+                        <exclude reference="hhI-Kn-sh6"/>
                         <exclude reference="8rd-Yg-JGI"/>
                         <exclude reference="KU4-yk-PvL"/>
+                        <exclude reference="xQW-Fm-zPA"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

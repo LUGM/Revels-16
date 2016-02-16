@@ -12,11 +12,16 @@
 #import <KWTransition/KWTransition.h>
 
 typedef NS_ENUM(NSUInteger, EasterEggController) {
-	EasterEggControllerX,
-	EasterEggControllerY,
-	EasterEggControllerZ,
-	EasterEggControllerF,
+	EasterEggControllerX = 1,
+	EasterEggControllerY = 2,
+	EasterEggControllerZ = 3,
+	EasterEggControllerF = 4,
 };
+
+typedef struct EasterEggPosition {
+	EasterEggController pos1;
+	EasterEggController pos2;
+} EasterEggPos_t;
 
 @interface DevelopersViewController () <DAHexagonalViewDelegate, UIViewControllerTransitioningDelegate>
 
@@ -29,6 +34,8 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	UITapGestureRecognizer *tapGestureRecognizer;
 	
 	CMMotionManager *motionManager;
+	
+	EasterEggPos_t eePos;
 }
 
 - (void)viewDidLoad {
@@ -45,6 +52,9 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	motionManager.deviceMotionUpdateInterval = 1.0/20.0;
 	
 	self.transition = [KWTransition manager];
+	
+	eePos.pos1 = 0;
+	eePos.pos2 = 0;
 
 }
 
@@ -125,21 +135,42 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	
 	// Start listening to motion
 	
+	eePos.pos1 = 0;
+	eePos.pos2 = 0;
+	
 	[motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData * _Nullable accelerometerData, NSError * _Nullable error) {
 		
 		if (fabs(accelerometerData.acceleration.x) > 2) {
 //			printf("Acceletation.x = %.3f\n", accelerometerData.acceleration.x);
-			[self presentEasterEggController:EasterEggControllerX];
+//			[self presentEasterEggController:EasterEggControllerX];
+			if (eePos.pos1 == EasterEggControllerZ) {
+				eePos.pos2 = EasterEggControllerX;
+				[self presentEasterEggController:EasterEggControllerX];
+			}
+			else
+				eePos.pos1 = EasterEggControllerX;
 		}
 		
 		if (fabs(accelerometerData.acceleration.y) > 2) {
 //			printf("Acceletation.y = %.3f\n", accelerometerData.acceleration.y);
-			[self presentEasterEggController:EasterEggControllerY];
+//			[self presentEasterEggController:EasterEggControllerY];
+			if (eePos.pos1 == EasterEggControllerX) {
+				eePos.pos2 = EasterEggControllerY;
+				[self presentEasterEggController:EasterEggControllerY];
+			}
+			else
+				eePos.pos1 = EasterEggControllerY;
 		}
 		
 		if (fabs(accelerometerData.acceleration.z) > 2) {
 //			printf("Acceletation.z = %.3f\n", accelerometerData.acceleration.z);
-			[self presentEasterEggController:EasterEggControllerZ];
+//			[self presentEasterEggController:EasterEggControllerZ];
+			if (eePos.pos1 == EasterEggControllerY) {
+				eePos.pos2 = EasterEggControllerZ;
+				[self presentEasterEggController:EasterEggControllerZ];
+			}
+			else
+				eePos.pos1 = EasterEggControllerZ;
 		}
 		
 	}];
@@ -157,6 +188,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	[self.view removeGestureRecognizer:tapGestureRecognizer];
 }
 
+/*
 #pragma mark - Force touch
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -167,6 +199,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	}
 	
 }
+ */
 
 #pragma mark - Navigation
 
@@ -178,22 +211,18 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 	
 	if (easterEggController == EasterEggControllerX) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"In a world without fences and walls,\nwho needs Gates and Windows?";
 		eevc.backgroundColor = [UIColor paleGreenColor];
 	}
 	else if (easterEggController == EasterEggControllerY) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"Unix is user friendly.\nIt’s just selective about who its friends are.";
 		eevc.backgroundColor = [UIColor palePurpleColor];
 	}
 	else if (easterEggController == EasterEggControllerZ) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"Microsoft is not the answer,\nMicrosoft is the question\nNO is the answer.";
 		eevc.backgroundColor = [UIColor babyBlueColor];
 	}
 	else if (easterEggController == EasterEggControllerF) {
 		eevc.lugText = @"Linux Users Group";
-		eevc.quote = @"Computers are like air conditioners\nthey stop working when you open Windows.";
 		eevc.backgroundColor = [UIColor lightCreamColor];
 	}
 	

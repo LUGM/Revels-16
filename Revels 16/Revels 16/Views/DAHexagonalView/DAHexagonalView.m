@@ -355,7 +355,7 @@
 		animations = [NSMutableArray new];
 		for (NSInteger i = 0; i < 4; ++i) {
 			CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-			pathAnimation.duration = 5.f;
+			pathAnimation.duration = 3.5f;
 			pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
 			pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
 			pathAnimation.autoreverses = YES;
@@ -376,7 +376,7 @@
 		imageAnimations = [NSMutableArray new];
 		for (NSInteger  i = 0; i < 4; ++i) {
 			CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-			pathAnimation.duration = 3.4f;
+			pathAnimation.duration = 2.3f;
 			pathAnimation.removedOnCompletion = YES;
 			pathAnimation.path = imagePaths[i].CGPath;
 			pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -430,13 +430,13 @@
 	
 	buttonLUGM.transform = CGAffineTransformMakeScale(0, 0);
 	buttonLUGM.alpha = 0.0;
-	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		drawsHex = YES;
 		[self setNeedsDisplay];
 	});
 	
-	[UIView animateWithDuration:1.2 delay:4.8 options:UIViewAnimationOptionCurveEaseOut animations:^{
+	[UIView animateWithDuration:0.8 delay:3.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		buttonK.transform = CGAffineTransformIdentity;
 		buttonK.alpha = 1.0;
 		buttonS.transform = CGAffineTransformIdentity;
@@ -444,7 +444,7 @@
 	} completion:^(BOOL finished) {
 		if ([self.delegate respondsToSelector:@selector(finishedDeveloperAnimations)])
 			[self.delegate finishedDeveloperAnimations];
-		[UIView animateWithDuration:1.2 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		[UIView animateWithDuration:0.8 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			buttonLUGM.transform = CGAffineTransformIdentity;
 			buttonLUGM.alpha = 1.0;
 		} completion:^(BOOL finished) {
@@ -516,7 +516,7 @@
 	[topTextLayer addSublayer:pathLayer];
 	
 	CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-	pathAnimation.duration = 6.0;
+	pathAnimation.duration = 3.5f;
 	pathAnimation.fromValue = @0.f;
 	pathAnimation.toValue = @1.f;
 	pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -576,7 +576,7 @@
 	[bottomTextLayer addSublayer:pathLayer];
 	
 	CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-	pathAnimation.duration = 6.0;
+	pathAnimation.duration = 3.5f;
 	pathAnimation.fromValue = @0.f;
 	pathAnimation.toValue = @1.f;
 	pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];

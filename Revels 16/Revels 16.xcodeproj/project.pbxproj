@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5910A8EC1C737DC00063249F /* REVResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8EB1C737DC00063249F /* REVResult.m */; };
+		5910A8F71C73980D0063249F /* ResultsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5910A8F61C73980D0063249F /* ResultsHeaderView.xib */; };
+		5910A8FD1C7399880063249F /* ResultsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8FC1C7399880063249F /* ResultsHeaderView.m */; };
+		5910A9021C739E850063249F /* AboutBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A9011C739E850063249F /* AboutBackgroundView.m */; };
 		59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F161C63612100A45854 /* EventByCategoryViewController.m */; };
 		592AE8241C69037B00256BDA /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE8231C69037B00256BDA /* Colours.m */; };
 		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
@@ -64,6 +68,13 @@
 
 /* Begin PBXFileReference section */
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
+		5910A8EA1C737DC00063249F /* REVResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVResult.h; path = Model/Result/REVResult.h; sourceTree = "<group>"; };
+		5910A8EB1C737DC00063249F /* REVResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVResult.m; path = Model/Result/REVResult.m; sourceTree = "<group>"; };
+		5910A8F61C73980D0063249F /* ResultsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultsHeaderView.xib; path = Views/Cells/ResultsHeaderView.xib; sourceTree = "<group>"; };
+		5910A8FB1C7399880063249F /* ResultsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsHeaderView.h; path = Views/Cells/ResultsHeaderView.h; sourceTree = "<group>"; };
+		5910A8FC1C7399880063249F /* ResultsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsHeaderView.m; path = Views/Cells/ResultsHeaderView.m; sourceTree = "<group>"; };
+		5910A9001C739E850063249F /* AboutBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutBackgroundView.h; path = "Views/About Backgroun/AboutBackgroundView.h"; sourceTree = "<group>"; };
+		5910A9011C739E850063249F /* AboutBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutBackgroundView.m; path = "Views/About Backgroun/AboutBackgroundView.m"; sourceTree = "<group>"; };
 		59130F151C63612100A45854 /* EventByCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventByCategoryViewController.h; path = Controllers/Events/EventByCategoryViewController.h; sourceTree = "<group>"; };
 		59130F161C63612100A45854 /* EventByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventByCategoryViewController.m; path = Controllers/Events/EventByCategoryViewController.m; sourceTree = "<group>"; };
 		592AE8221C69037B00256BDA /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
@@ -176,6 +187,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5910A8E81C737DA20063249F /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				5910A8EA1C737DC00063249F /* REVResult.h */,
+				5910A8EB1C737DC00063249F /* REVResult.m */,
+			);
+			name = Result;
+			sourceTree = "<group>";
+		};
+		5910A8EF1C738F670063249F /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				5910A8FB1C7399880063249F /* ResultsHeaderView.h */,
+				5910A8FC1C7399880063249F /* ResultsHeaderView.m */,
+				5910A8F61C73980D0063249F /* ResultsHeaderView.xib */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
+		5910A8FE1C739E5C0063249F /* About Background View */ = {
+			isa = PBXGroup;
+			children = (
+				5910A9001C739E850063249F /* AboutBackgroundView.h */,
+				5910A9011C739E850063249F /* AboutBackgroundView.m */,
+			);
+			name = "About Background View";
+			sourceTree = "<group>";
+		};
 		592AE8211C69037B00256BDA /* Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +344,7 @@
 		596F91D91C5F1927000CBD48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5910A8FE1C739E5C0063249F /* About Background View */,
 				59A7CE921C6CB6DC001682F3 /* EventInfoView */,
 				596A7BE81C6A1EB200EB74B1 /* DevDetailView */,
 				5962B05B1C650E86009290B2 /* HexagonalDevView */,
@@ -324,6 +364,7 @@
 				59BA13D11C60E22900679C49 /* Data Manager */,
 				59BA13C81C60DD9D00679C49 /* Categories */,
 				59FE79221C61C6B600EC61A0 /* Event */,
+				5910A8E81C737DA20063249F /* Result */,
 				59F7B2CC1C5FBD2100471695 /* Instagram */,
 				596F91C81C5F18F9000CBD48 /* Revels_16.xcdatamodeld */,
 			);
@@ -357,6 +398,7 @@
 		596F92101C5F3698000CBD48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5910A8EF1C738F670063249F /* Results */,
 				598189FE1C709A2F00F9AB1D /* More */,
 				59BA13B51C60797100679C49 /* Parallax Instagram */,
 				59BA13B31C60796800679C49 /* Events */,
@@ -727,6 +769,7 @@
 				596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */,
 				59818A041C70D5BE00F9AB1D /* Refreshing.plist in Resources */,
 				596F91CF1C5F18F9000CBD48 /* LaunchScreen.storyboard in Resources */,
+				5910A8F71C73980D0063249F /* ResultsHeaderView.xib in Resources */,
 				596F91CC1C5F18F9000CBD48 /* Assets.xcassets in Resources */,
 				59A7CE971C6CB700001682F3 /* EventInfoView.xib in Resources */,
 				596A7BF41C6A42E900EB74B1 /* AvenirCondensedHand.ttf in Resources */,
@@ -795,6 +838,7 @@
 				59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */,
 				596F91CA1C5F18F9000CBD48 /* Revels_16.xcdatamodeld in Sources */,
 				596F920A1C5F35F7000CBD48 /* TGLGuillotineMenu.m in Sources */,
+				5910A9021C739E850063249F /* AboutBackgroundView.m in Sources */,
 				598189F31C707F2E00F9AB1D /* ResultsTableViewController.m in Sources */,
 				598189FD1C7081FF00F9AB1D /* RegisterWebViewController.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
@@ -814,6 +858,7 @@
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				59E086561C686DA80029EFED /* Reachability.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
+				5910A8FD1C7399880063249F /* ResultsHeaderView.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
 				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
@@ -823,6 +868,7 @@
 				59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */,
 				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
+				5910A8EC1C737DC00063249F /* REVResult.m in Sources */,
 				59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,
 				5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */,
