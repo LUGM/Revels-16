@@ -85,8 +85,7 @@
 }
 
 - (IBAction)facebookAction:(id)sender {
-	if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"fb://groups/lug2016/"]])
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/groups/lug2016/"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/LUGManipal/"]];
 }
 
 - (IBAction)websiteAction:(id)sender {
