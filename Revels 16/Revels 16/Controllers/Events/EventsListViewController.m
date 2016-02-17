@@ -12,7 +12,6 @@
 #import "EventsTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
-#import <Parse/Parse.h>
 
 @interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, EKEventViewDelegate, UIViewControllerTransitioningDelegate>
 

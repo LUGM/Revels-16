@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -28,7 +27,7 @@
 	
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f], NSForegroundColorAttributeName: [UIColor darkTextColor]}];
 	
-	[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:15.0f], NSForegroundColorAttributeName:[UIColor blackColor]}];
+//	[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:15.0f], NSForegroundColorAttributeName:[UIColor blackColor]}];
 	
 	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
 	[[UITabBar appearance] setBarTintColor:GLOBAL_BACK_COLOR];

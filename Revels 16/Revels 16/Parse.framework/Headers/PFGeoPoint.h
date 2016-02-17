@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class PFGeoPoint;
 
-typedef void(^PFGeoPointResultBlock)(PFGeoPoint *_Nullable geoPoint, NSError *_Nullable error);
+typedef void(^PFGeoPointResultBlock)(PFGeoPoint *__nullable geoPoint, NSError *__nullable error);
 
 /**
  `PFGeoPoint` may be used to embed a latitude / longitude point as the value for a key in a `PFObject`.
@@ -25,7 +25,7 @@ typedef void(^PFGeoPointResultBlock)(PFGeoPoint *_Nullable geoPoint, NSError *_N
 @interface PFGeoPoint : NSObject <NSCopying, NSCoding>
 
 ///--------------------------------------
-#pragma mark - Creating a Geo Point
+/// @name Creating a Geo Point
 ///--------------------------------------
 
 /**
@@ -63,7 +63,7 @@ typedef void(^PFGeoPointResultBlock)(PFGeoPoint *_Nullable geoPoint, NSError *_N
 + (void)geoPointForCurrentLocationInBackground:(nullable PFGeoPointResultBlock)resultBlock;
 
 ///--------------------------------------
-#pragma mark - Controlling Position
+/// @name Controlling Position
 ///--------------------------------------
 
 /**
@@ -77,7 +77,7 @@ typedef void(^PFGeoPointResultBlock)(PFGeoPoint *_Nullable geoPoint, NSError *_N
 @property (nonatomic, assign) double longitude;
 
 ///--------------------------------------
-#pragma mark - Calculating Distance
+/// @name Calculating Distance
 ///--------------------------------------
 
 /**

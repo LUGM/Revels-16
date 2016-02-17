@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 PF_OSX_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFProduct : PFObject<PFSubclassing>
 
 ///--------------------------------------
-#pragma mark - Product-specific Properties
+/// @name Product-specific Properties
 ///--------------------------------------
 
 /**

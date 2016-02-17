@@ -11,7 +11,6 @@
 #import "EventHeaderTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
-#import <Parse/Parse.h>
 
 @interface EventByCategoryViewController () <EKEventViewDelegate>
 

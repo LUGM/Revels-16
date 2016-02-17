@@ -10,7 +10,6 @@
 #import "ResultsHeaderView.h"
 #import "REVResult.h"
 #import "DADataManager.h"
-#import <Parse/Parse.h>
 
 @interface ResultsTableViewController () <UISearchResultsUpdating>
 
@@ -204,6 +203,12 @@
 	if (self.searchController.isActive)
 		return 0.f;
 	return 44.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+	if (section == [tableView numberOfSections] - 1)
+		return 10.f;
+	return 0.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

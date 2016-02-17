@@ -10,7 +10,6 @@
 #import "EventByCategoryViewController.h"
 #import <KWTransition/KWTransition.h>
 #import "REVCategory.h"
-#import <Parse/Parse.h>
 
 @interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate>
 

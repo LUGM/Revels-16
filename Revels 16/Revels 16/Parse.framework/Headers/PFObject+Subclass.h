@@ -11,7 +11,7 @@
 
 #import <Parse/PFObject.h>
 
-@class PFQuery<PFGenericObject : PFObject *>;
+@class PFQuery PF_GENERIC(PFGenericObject : PFObject *);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PFObject (Subclass)
 
 ///--------------------------------------
-#pragma mark - Methods for Subclasses
+/// @name Methods for Subclasses
 ///--------------------------------------
 
 /**

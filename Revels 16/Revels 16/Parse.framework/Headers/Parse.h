@@ -9,35 +9,22 @@
 
 #import <Foundation/Foundation.h>
 
-#import <Parse/ParseClientConfiguration.h>
 #import <Parse/PFACL.h>
 #import <Parse/PFAnalytics.h>
 #import <Parse/PFAnonymousUtils.h>
-#import <Parse/PFAnonymousUtils+Deprecated.h>
 #import <Parse/PFCloud.h>
-#import <Parse/PFCloud+Deprecated.h>
-#import <Parse/PFCloud+Synchronous.h>
 #import <Parse/PFConfig.h>
-#import <Parse/PFConfig+Synchronous.h>
 #import <Parse/PFConstants.h>
 #import <Parse/PFFile.h>
-#import <Parse/PFFile+Deprecated.h>
-#import <Parse/PFFile+Synchronous.h>
 #import <Parse/PFGeoPoint.h>
-#import <Parse/PFObject.h>
 #import <Parse/PFObject+Subclass.h>
-#import <Parse/PFObject+Synchronous.h>
-#import <Parse/PFObject+Deprecated.h>
+#import <Parse/PFObject.h>
 #import <Parse/PFQuery.h>
-#import <Parse/PFQuery+Synchronous.h>
-#import <Parse/PFQuery+Deprecated.h>
 #import <Parse/PFRelation.h>
 #import <Parse/PFRole.h>
 #import <Parse/PFSession.h>
 #import <Parse/PFSubclassing.h>
 #import <Parse/PFUser.h>
-#import <Parse/PFUser+Synchronous.h>
-#import <Parse/PFUser+Deprecated.h>
 #import <Parse/PFUserAuthenticationDelegate.h>
 
 #if TARGET_OS_IOS
@@ -45,8 +32,6 @@
 #import <Parse/PFInstallation.h>
 #import <Parse/PFNetworkActivityIndicatorManager.h>
 #import <Parse/PFPush.h>
-#import <Parse/PFPush+Synchronous.h>
-#import <Parse/PFPush+Deprecated.h>
 #import <Parse/PFProduct.h>
 #import <Parse/PFPurchase.h>
 
@@ -54,8 +39,6 @@
 
 #import <Parse/PFInstallation.h>
 #import <Parse/PFPush.h>
-#import <Parse/PFPush+Synchronous.h>
-#import <Parse/PFPush+Deprecated.h>
 
 #elif TARGET_OS_TV
 
@@ -72,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Parse : NSObject
 
 ///--------------------------------------
-#pragma mark - Connecting to Parse
+/// @name Connecting to Parse
 ///--------------------------------------
 
 /**
@@ -82,22 +65,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param clientKey The client key of your Parse application.
  */
 + (void)setApplicationId:(NSString *)applicationId clientKey:(NSString *)clientKey;
-
-/**
- Sets the configuration to be used for the Parse SDK.
-
- @note Re-setting the configuration after having previously sent requests through the SDK results in undefined behavior.
-
- @param configuration The new configuration to set for the SDK.
- */
-+ (void)initializeWithConfiguration:(ParseClientConfiguration *)configuration;
-
-/**
- Gets the current configuration in use by the Parse SDK.
-
- @return The current configuration in use by the SDK. Returns nil if the SDK has not been initialized yet.
- */
-+ (ParseClientConfiguration *)currentConfiguration;
 
 /**
  The current application id that was used to configure Parse framework.
@@ -110,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getClientKey;
 
 ///--------------------------------------
-#pragma mark - Enabling Local Datastore
+/// @name Enabling Local Datastore
 ///--------------------------------------
 
 /**
@@ -127,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isLocalDatastoreEnabled PF_TV_UNAVAILABLE;
 
 ///--------------------------------------
-#pragma mark - Enabling Extensions Data Sharing
+/// @name Enabling Extensions Data Sharing
 ///--------------------------------------
 
 /**
@@ -171,10 +138,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)containingApplicationBundleIdentifierForDataSharing PF_WATCH_UNAVAILABLE PF_TV_UNAVAILABLE;
 
-#if TARGET_OS_IOS
+#if PARSE_IOS_ONLY
 
 ///--------------------------------------
-#pragma mark - Configuring UI Settings
+/// @name Configuring UI Settings
 ///--------------------------------------
 
 /**
@@ -200,7 +167,7 @@ NS_ASSUME_NONNULL_BEGIN
 #endif
 
 ///--------------------------------------
-#pragma mark - Logging
+/// @name Logging
 ///--------------------------------------
 
 /**

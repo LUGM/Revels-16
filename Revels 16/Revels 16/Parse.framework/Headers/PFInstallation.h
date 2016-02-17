@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFInstallation : PFObject<PFSubclassing>
 
 ///--------------------------------------
-#pragma mark - Accessing the Current Installation
+/// @name Accessing the Current Installation
 ///--------------------------------------
 
 /**
@@ -53,7 +53,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFInstallation : PFObject<PFSu
 + (instancetype)currentInstallation;
 
 ///--------------------------------------
-#pragma mark - Installation Properties
+/// @name Installation Properties
 ///--------------------------------------
 
 /**
@@ -84,7 +84,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFInstallation : PFObject<PFSu
 /**
  The channels for the `PFInstallation`.
  */
-@property (nullable, nonatomic, copy) NSArray<NSString *> *channels;
+@property (nullable, nonatomic, copy) NSArray PF_GENERIC(NSString *)*channels;
 
 /**
  Sets the device token string property from an `NSData`-encoded token.
@@ -94,7 +94,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFInstallation : PFObject<PFSu
 - (void)setDeviceTokenFromData:(nullable NSData *)deviceTokenData;
 
 ///--------------------------------------
-#pragma mark - Querying for Installations
+/// @name Querying for Installations
 ///--------------------------------------
 
 /**

@@ -401,7 +401,7 @@
         <scene sceneID="Jff-11-prb">
             <objects>
                 <tableViewController storyboardIdentifier="CategoriesVC" id="d8k-kD-7dK" customClass="CategoriesTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="i3s-Fy-U5K">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="i3s-Fy-U5K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -411,18 +411,18 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MrL-vA-ffC" id="jGa-wJ-gF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RMT-YH-g8j">
-                                            <rect key="frame" x="90" y="0.0" width="475" height="79.5"/>
+                                            <rect key="frame" x="90" y="0.0" width="475" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="eventsIcon" id="s48-Cu-nym">
-                                            <rect key="frame" x="15" y="9" width="60" height="60"/>
+                                            <rect key="frame" x="15" y="10" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -454,11 +454,14 @@
             </objects>
             <point key="canvasLocation" x="1156" y="444"/>
         </scene>
-        <!--Categories-->
+        <!--Navigation Controller-->
         <scene sceneID="lvB-yJ-OxP">
             <objects>
                 <navigationController storyboardIdentifier="CategoriesVCNav" automaticallyAdjustsScrollViewInsets="NO" id="vYZ-6M-Cnv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categories" image="44categoriesIcon" id="Yyx-by-ys8"/>
+                    <tabBarItem key="tabBarItem" title="" image="44categoriesIcon" id="Yyx-by-ys8">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yO0-UG-HsF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -473,11 +476,13 @@
             </objects>
             <point key="canvasLocation" x="454" y="444"/>
         </scene>
-        <!--Events-->
+        <!--Navigation Controller-->
         <scene sceneID="8Rs-AY-tbV">
             <objects>
                 <navigationController storyboardIdentifier="EventsVCNav" automaticallyAdjustsScrollViewInsets="NO" id="k0t-MQ-EFF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="44eventIcon" id="Q5c-FB-77P"/>
+                    <tabBarItem key="tabBarItem" title="" image="44eventIcon" id="Q5c-FB-77P">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3QC-8h-AIk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1177,7 +1182,7 @@
                                             <rect key="frame" x="15" y="12" width="104" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Team ID: 222 Position: 2" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Iz8-ew-buu">
@@ -1408,7 +1413,7 @@ Said the joker to the thief,
                         <viewControllerLayoutGuide type="top" id="v6N-8g-A8r"/>
                         <viewControllerLayoutGuide type="bottom" id="ikO-yR-PII"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YkO-nx-KRW" customClass="InstaBackgroundView">
+                    <view key="view" contentMode="scaleToFill" id="YkO-nx-KRW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1519,7 +1524,7 @@ Said the joker to the thief,
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="Fpc-NR-Qr9" secondAttribute="leading" constant="12" id="4xV-9p-98w"/>
                             <constraint firstItem="Fpc-NR-Qr9" firstAttribute="top" secondItem="v6N-8g-A8r" secondAttribute="bottom" constant="-44" id="VFM-tu-UOe"/>
@@ -1830,11 +1835,13 @@ Said the joker to the thief,
             </objects>
             <point key="canvasLocation" x="2584" y="1939"/>
         </scene>
-        <!--Instafeed-->
+        <!--Navigation Controller-->
         <scene sceneID="KRd-ss-ZJV">
             <objects>
                 <navigationController storyboardIdentifier="InstagramV2VCNav" automaticallyAdjustsScrollViewInsets="NO" id="eJD-wB-heR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Instafeed" image="44instagramLogo" id="j7D-ng-aGJ"/>
+                    <tabBarItem key="tabBarItem" title="" image="44instagramLogo" id="j7D-ng-aGJ">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0kf-na-mNp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2235,11 +2242,13 @@ Said the joker to the thief,
             </objects>
             <point key="canvasLocation" x="1882" y="444"/>
         </scene>
-        <!--Results-->
+        <!--Navigation Controller-->
         <scene sceneID="aNO-hA-glj">
             <objects>
                 <navigationController storyboardIdentifier="ResultsVCNav" automaticallyAdjustsScrollViewInsets="NO" id="fNF-Yr-uBZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Results" image="44resultsIcon" id="TGW-Yt-IyZ"/>
+                    <tabBarItem key="tabBarItem" title="" image="44resultsIcon" id="TGW-Yt-IyZ">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tgs-Wm-ctR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2366,11 +2375,13 @@ Said the joker to the thief,
             </objects>
             <point key="canvasLocation" x="1156" y="3355"/>
         </scene>
-        <!--More-->
+        <!--Navigation Controller-->
         <scene sceneID="zho-BT-NYr">
             <objects>
                 <navigationController storyboardIdentifier="MoreVCNav" automaticallyAdjustsScrollViewInsets="NO" id="G9x-Mn-pG7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="More" image="44More" id="clC-jo-Wdi"/>
+                    <tabBarItem key="tabBarItem" title="" image="44More" id="clC-jo-Wdi">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x8g-DV-wAc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

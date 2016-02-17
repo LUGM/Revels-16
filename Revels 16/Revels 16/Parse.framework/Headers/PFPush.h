@@ -17,7 +17,7 @@
 PF_TV_UNAVAILABLE_WARNING
 PF_WATCH_UNAVAILABLE_WARNING
 
-@class PFQuery<PFGenericObject : PFObject *>;
+@class PFQuery PF_GENERIC(PFGenericObject : PFObject *);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,16 +27,16 @@ NS_ASSUME_NONNULL_BEGIN
  The preferred way of modifying or retrieving channel subscriptions is to use
  the `PFInstallation` class, instead of the class methods in `PFPush`.
  */
-PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
+PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject <NSCopying>
 
 ///--------------------------------------
-#pragma mark - Creating a Push Notification
+/// @name Creating a Push Notification
 ///--------------------------------------
 
 + (instancetype)push;
 
 ///--------------------------------------
-#pragma mark - Configuring a Push Notification
+/// @name Configuring a Push Notification
 ///--------------------------------------
 
 /**
@@ -53,7 +53,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  @param channels The array of channels to set for this push.
  Each channel name must start with a letter and contain only letters, numbers, dashes, and underscores.
  */
-- (void)setChannels:(nullable NSArray<NSString *> *)channels;
+- (void)setChannels:(nullable NSArray PF_GENERIC(NSString *)*)channels;
 
 /**
  Sets an installation query to which this push notification will be sent.
@@ -62,7 +62,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @param query The installation query to set for this push.
  */
-- (void)setQuery:(nullable PFQuery<PFInstallation *> *)query;
+- (void)setQuery:(nullable PFQuery PF_GENERIC(PFInstallation *)*)query;
 
 /**
  Sets an alert message for this push notification.
@@ -144,8 +144,22 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 @property (nullable, nonatomic, strong) NSDate *pushDate;
 
 ///--------------------------------------
-#pragma mark - Sending Push Notifications
+/// @name Sending Push Notifications
 ///--------------------------------------
+
+/**
+ *Synchronously* send a push message to a channel.
+
+ @param channel The channel to send to. The channel name must start with
+ a letter and contain only letters, numbers, dashes, and underscores.
+ @param message The message to send.
+ @param error Pointer to an `NSError` that will be set if necessary.
+
+ @return Returns whether the send succeeded.
+ */
++ (BOOL)sendPushMessageToChannel:(NSString *)channel
+                     withMessage:(NSString *)message
+                           error:(NSError **)error;
 
 /**
  *Asynchronously* send a push message to a channel.
@@ -156,7 +170,8 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSNumber *> *)sendPushMessageToChannelInBackground:(NSString *)channel withMessage:(NSString *)message;
++ (BFTask PF_GENERIC(NSNumber *)*)sendPushMessageToChannelInBackground:(NSString *)channel
+                                                           withMessage:(NSString *)message;
 
 /**
  *Asynchronously* sends a push message to a channel and calls the given block.
@@ -167,7 +182,39 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`
  */
-+ (void)sendPushMessageToChannelInBackground:(NSString *)channel withMessage:(NSString *)message block:(nullable PFBooleanResultBlock)block;
++ (void)sendPushMessageToChannelInBackground:(NSString *)channel
+                                 withMessage:(NSString *)message
+                                       block:(nullable PFBooleanResultBlock)block;
+
+/*
+ *Asynchronously* send a push message to a channel.
+
+ @param channel The channel to send to. The channel name must start with
+ a letter and contain only letters, numbers, dashes, and underscores.
+ @param message The message to send.
+ @param target The object to call selector on.
+ @param selector The selector to call.
+ It should have the following signature: `(void)callbackWithResult:(NSNumber *)result error:(NSError *)error`.
+ `error` will be `nil` on success and set if there was an error.
+ `[result boolValue]` will tell you whether the call succeeded or not.
+ */
++ (void)sendPushMessageToChannelInBackground:(NSString *)channel
+                                 withMessage:(NSString *)message
+                                      target:(__nullable id)target
+                                    selector:(__nullable SEL)selector;
+
+/**
+ Send a push message to a query.
+
+ @param query The query to send to. The query must be a `PFInstallation` query created with `PFInstallation.+query`.
+ @param message The message to send.
+ @param error Pointer to an NSError that will be set if necessary.
+
+ @return Returns whether the send succeeded.
+ */
++ (BOOL)sendPushMessageToQuery:(PFQuery PF_GENERIC(PFInstallation *)*)query
+                   withMessage:(NSString *)message
+                         error:(NSError **)error;
 
 /**
  *Asynchronously* send a push message to a query.
@@ -177,8 +224,8 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSNumber *> *)sendPushMessageToQueryInBackground:(PFQuery<PFInstallation *> *)query
-                                               withMessage:(NSString *)message;
++ (BFTask PF_GENERIC(NSNumber *)*)sendPushMessageToQueryInBackground:(PFQuery PF_GENERIC(PFInstallation *)*)query
+                                                         withMessage:(NSString *)message;
 
 /**
  *Asynchronously* sends a push message to a query and calls the given block.
@@ -189,15 +236,24 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`
  */
-+ (void)sendPushMessageToQueryInBackground:(PFQuery<PFInstallation *> *)query
++ (void)sendPushMessageToQueryInBackground:(PFQuery PF_GENERIC(PFInstallation *)*)query
                                withMessage:(NSString *)message
                                      block:(nullable PFBooleanResultBlock)block;
+
+/**
+ *Synchronously* send this push message.
+
+ @param error Pointer to an `NSError` that will be set if necessary.
+
+ @return Returns whether the send succeeded.
+ */
+- (BOOL)sendPush:(NSError **)error;
 
 /**
  *Asynchronously* send this push message.
  @return The task, that encapsulates the work being done.
  */
-- (BFTask<NSNumber *> *)sendPushInBackground;
+- (BFTask PF_GENERIC(NSNumber *)*)sendPushInBackground;
 
 /**
  *Asynchronously* send this push message and executes the given callback block.
@@ -206,6 +262,33 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
  */
 - (void)sendPushInBackgroundWithBlock:(nullable PFBooleanResultBlock)block;
+
+/*
+ *Asynchronously* send this push message and calls the given callback.
+
+ @param target The object to call selector on.
+ @param selector The selector to call.
+ It should have the following signature: `(void)callbackWithResult:(NSNumber *)result error:(NSError *)error`.
+ `error` will be `nil` on success and set if there was an error.
+ `[result boolValue]` will tell you whether the call succeeded or not.
+ */
+- (void)sendPushInBackgroundWithTarget:(__nullable id)target selector:(__nullable SEL)selector;
+
+/**
+ *Synchronously* send a push message with arbitrary data to a channel.
+
+ See the guide for information about the dictionary structure.
+
+ @param channel The channel to send to. The channel name must start with
+ a letter and contain only letters, numbers, dashes, and underscores.
+ @param data The data to send.
+ @param error Pointer to an NSError that will be set if necessary.
+
+ @return Returns whether the send succeeded.
+ */
++ (BOOL)sendPushDataToChannel:(NSString *)channel
+                     withData:(NSDictionary *)data
+                        error:(NSError **)error;
 
 /**
  *Asynchronously* send a push message with arbitrary data to a channel.
@@ -218,7 +301,8 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSNumber *> *)sendPushDataToChannelInBackground:(NSString *)channel withData:(NSDictionary *)data;
++ (BFTask PF_GENERIC(NSNumber *)*)sendPushDataToChannelInBackground:(NSString *)channel
+                                                           withData:(NSDictionary *)data;
 
 /**
  Asynchronously sends a push message with arbitrary data to a channel and calls the given block.
@@ -235,6 +319,41 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
                                  withData:(NSDictionary *)data
                                     block:(nullable PFBooleanResultBlock)block;
 
+/*
+ *Asynchronously* send a push message with arbitrary data to a channel.
+
+ See the guide for information about the dictionary structure.
+
+ @param channel The channel to send to. The channel name must start with
+ a letter and contain only letters, numbers, dashes, and underscores.
+ @param data The data to send.
+ @param target The object to call selector on.
+ @param selector The selector to call.
+ It should have the following signature: `(void)callbackWithResult:(NSNumber *)result error:(NSError *)error`.
+ `error` will be `nil` on success and set if there was an error.
+ `[result boolValue]` will tell you whether the call succeeded or not.
+ */
++ (void)sendPushDataToChannelInBackground:(NSString *)channel
+                                 withData:(NSDictionary *)data
+                                   target:(__nullable id)target
+                                 selector:(__nullable SEL)selector;
+
+/**
+ *Synchronously* send a push message with arbitrary data to a query.
+
+ See the guide for information about the dictionary structure.
+
+ @param query The query to send to. The query must be a `PFInstallation` query
+ created with `PFInstallation.+query`.
+ @param data The data to send.
+ @param error Pointer to an NSError that will be set if necessary.
+
+ @return Returns whether the send succeeded.
+ */
++ (BOOL)sendPushDataToQuery:(PFQuery PF_GENERIC(PFInstallation *)*)query
+                   withData:(NSDictionary *)data
+                      error:(NSError **)error;
+
 /**
  Asynchronously send a push message with arbitrary data to a query.
 
@@ -246,8 +365,8 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSNumber *> *)sendPushDataToQueryInBackground:(PFQuery<PFInstallation *> *)query
-                                               withData:(NSDictionary *)data;
++ (BFTask PF_GENERIC(NSNumber *)*)sendPushDataToQueryInBackground:(PFQuery PF_GENERIC(PFInstallation *)*)query
+                                                         withData:(NSDictionary *)data;
 
 /**
  *Asynchronously* sends a push message with arbitrary data to a query and calls the given block.
@@ -260,12 +379,12 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
  */
-+ (void)sendPushDataToQueryInBackground:(PFQuery<PFInstallation *> *)query
++ (void)sendPushDataToQueryInBackground:(PFQuery PF_GENERIC(PFInstallation *)*)query
                                withData:(NSDictionary *)data
                                   block:(nullable PFBooleanResultBlock)block;
 
 ///--------------------------------------
-#pragma mark - Handling Notifications
+/// @name Handling Notifications
 ///--------------------------------------
 
 /**
@@ -283,7 +402,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 + (void)handlePush:(nullable NSDictionary *)userInfo NS_AVAILABLE_IOS(3_0) PF_EXTENSION_UNAVAILABLE("");
 
 ///--------------------------------------
-#pragma mark - Managing Channel Subscriptions
+/// @name Managing Channel Subscriptions
 ///--------------------------------------
 
 /**
@@ -297,11 +416,20 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 + (void)storeDeviceToken:(id)deviceToken;
 
 /**
+ *Synchronously* get all the channels that this device is subscribed to.
+
+ @param error Pointer to an `NSError` that will be set if necessary.
+
+ @return Returns an `NSSet` containing all the channel names this device is subscribed to.
+ */
++ (nullable NSSet PF_GENERIC(NSString *)*)getSubscribedChannels:(NSError **)error;
+
+/**
  *Asynchronously* get all the channels that this device is subscribed to.
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSSet<NSString *> *> *)getSubscribedChannelsInBackground;
++ (BFTask PF_GENERIC(NSSet<NSString *> *)*)getSubscribedChannelsInBackground;
 
 /**
  *Asynchronously* get all the channels that this device is subscribed to.
@@ -309,6 +437,27 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  It should have the following argument signature: `^(NSSet *channels, NSError *error)`.
  */
 + (void)getSubscribedChannelsInBackgroundWithBlock:(PFSetResultBlock)block;
+
+/*
+ *Asynchronously* get all the channels that this device is subscribed to.
+
+ @param target The object to call selector on.
+ @param selector The selector to call.
+ It should have the following signature: `(void)callbackWithResult:(NSSet *)result error:(NSError *)error`.
+ `error` will be `nil` on success and set if there was an error.
+ */
++ (void)getSubscribedChannelsInBackgroundWithTarget:(id)target selector:(SEL)selector;
+
+/**
+ *Synchrnously* subscribes the device to a channel of push notifications.
+
+ @param channel The channel to subscribe to. The channel name must start with
+ a letter and contain only letters, numbers, dashes, and underscores.
+ @param error Pointer to an `NSError` that will be set if necessary.
+
+ @return Returns whether the subscribe succeeded.
+ */
++ (BOOL)subscribeToChannel:(NSString *)channel error:(NSError **)error;
 
 /**
  *Asynchronously* subscribes the device to a channel of push notifications.
@@ -318,7 +467,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSNumber *> *)subscribeToChannelInBackground:(NSString *)channel;
++ (BFTask PF_GENERIC(NSNumber *)*)subscribeToChannelInBackground:(NSString *)channel;
 
 /**
  *Asynchronously* subscribes the device to a channel of push notifications and calls the given block.
@@ -328,7 +477,33 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`
  */
-+ (void)subscribeToChannelInBackground:(NSString *)channel block:(nullable PFBooleanResultBlock)block;
++ (void)subscribeToChannelInBackground:(NSString *)channel
+                                 block:(nullable PFBooleanResultBlock)block;
+
+/*
+ *Asynchronously* subscribes the device to a channel of push notifications and calls the given callback.
+
+ @param channel The channel to subscribe to. The channel name must start with
+ a letter and contain only letters, numbers, dashes, and underscores.
+ @param target The object to call selector on.
+ @param selector The selector to call.
+ It should have the following signature: `(void)callbackWithResult:(NSNumber *)result error:(NSError *)error`.
+ `error` will be `nil` on success and set if there was an error.
+ `[result boolValue]` will tell you whether the call succeeded or not.
+ */
++ (void)subscribeToChannelInBackground:(NSString *)channel
+                                target:(nullable id)target
+                              selector:(nullable SEL)selector;
+
+/**
+ *Synchronously* unsubscribes the device to a channel of push notifications.
+
+ @param channel The channel to unsubscribe from.
+ @param error Pointer to an `NSError` that will be set if necessary.
+
+ @return Returns whether the unsubscribe succeeded.
+ */
++ (BOOL)unsubscribeFromChannel:(NSString *)channel error:(NSError **)error;
 
 /**
  *Asynchronously* unsubscribes the device from a channel of push notifications.
@@ -337,7 +512,7 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask<NSNumber *> *)unsubscribeFromChannelInBackground:(NSString *)channel;
++ (BFTask PF_GENERIC(NSNumber *)*)unsubscribeFromChannelInBackground:(NSString *)channel;
 
 /**
  *Asynchronously* unsubscribes the device from a channel of push notifications and calls the given block.
@@ -346,7 +521,22 @@ PF_TV_UNAVAILABLE PF_WATCH_UNAVAILABLE @interface PFPush : NSObject<NSCopying>
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
  */
-+ (void)unsubscribeFromChannelInBackground:(NSString *)channel block:(nullable PFBooleanResultBlock)block;
++ (void)unsubscribeFromChannelInBackground:(NSString *)channel
+                                     block:(nullable PFBooleanResultBlock)block;
+
+/*
+ *Asynchronously* unsubscribes the device from a channel of push notifications and calls the given callback.
+
+ @param channel The channel to unsubscribe from.
+ @param target The object to call selector on.
+ @param selector The selector to call.
+ It should have the following signature: `(void)callbackWithResult:(NSNumber *)result error:(NSError *)error`.
+ `error` will be `nil` on success and set if there was an error.
+ `[result boolValue]` will tell you whether the call succeeded or not.
+ */
++ (void)unsubscribeFromChannelInBackground:(NSString *)channel
+                                    target:(nullable id)target
+                                  selector:(nullable SEL)selector;
 
 @end
 

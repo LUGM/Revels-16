@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PFAnalytics : NSObject
 
 ///--------------------------------------
-#pragma mark - App-Open / Push Analytics
+/// @name App-Open / Push Analytics
 ///--------------------------------------
 
 /**
@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return Returns the task encapsulating the work being done.
  */
-+ (BFTask<NSNumber *> *)trackAppOpenedWithLaunchOptions:(nullable NSDictionary *)launchOptions;
++ (BFTask PF_GENERIC(NSNumber *)*)trackAppOpenedWithLaunchOptions:(nullable NSDictionary *)launchOptions;
 
 /**
  Tracks this application being launched.
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return Returns the task encapsulating the work being done.
  */
-+ (BFTask<NSNumber *> *)trackAppOpenedWithRemoteNotificationPayload:(nullable NSDictionary *)userInfo;
++ (BFTask PF_GENERIC(NSNumber *)*)trackAppOpenedWithRemoteNotificationPayload:(nullable NSDictionary *)userInfo;
 
 /**
  Tracks this application being launched. If this happened as the result of the
@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                           block:(nullable PFBooleanResultBlock)block;
 
 ///--------------------------------------
-#pragma mark - Custom Analytics
+/// @name Custom Analytics
 ///--------------------------------------
 
 /**
@@ -100,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return Returns the task encapsulating the work being done.
  */
-+ (BFTask<NSNumber *> *)trackEvent:(NSString *)name;
++ (BFTask PF_GENERIC(NSNumber *)*)trackEvent:(NSString *)name;
 
 /**
  Tracks the occurrence of a custom event. Parse will store a data point at the
@@ -134,8 +134,8 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return Returns the task encapsulating the work being done.
  */
-+ (BFTask<NSNumber *> *)trackEvent:(NSString *)name
-                        dimensions:(nullable NSDictionary<NSString *, NSString *> *)dimensions;
++ (BFTask PF_GENERIC(NSNumber *)*)trackEvent:(NSString *)name
+                                  dimensions:(nullable NSDictionary PF_GENERIC(NSString *, NSString *)*)dimensions;
 
 /**
  Tracks the occurrence of a custom event with additional dimensions. Parse will
@@ -159,7 +159,7 @@ NS_ASSUME_NONNULL_BEGIN
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`
  */
 + (void)trackEventInBackground:(NSString *)name
-                    dimensions:(nullable NSDictionary<NSString *, NSString *> *)dimensions
+                    dimensions:(nullable NSDictionary PF_GENERIC(NSString *, NSString *)*)dimensions
                          block:(nullable PFBooleanResultBlock)block;
 
 @end
