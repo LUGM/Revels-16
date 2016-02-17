@@ -12,6 +12,7 @@
 #import "EventsTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
+#import <Parse/Parse.h>
 
 @interface EventsListViewController () <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, EKEventViewDelegate, UIViewControllerTransitioningDelegate>
 
@@ -37,6 +38,9 @@
 	UITapGestureRecognizer *tapGestureRecognizer;
 	
 	NSArray <UIColor *> *cellBackgroundColors;
+    
+    NSString *finalEventsUrl;
+    NSString *finalCategoryUrl;
 }
 
 - (void)viewDidLoad {
@@ -103,70 +107,80 @@
 - (void)fetchEvents {
 	
 	SVHUD_SHOW;
-	
-    NSURL *eventsUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
     
-    ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
-    NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    [postRequest setHTTPBody:postData];
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        finalCategoryUrl = config[@"categories"];
 	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURL *eventsUrl = [NSURL URLWithString:finalCategoryUrl];
+    
+        ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+        NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        [postRequest setHTTPBody:postData];
+	
+        [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		if (error) {
-			SVHUD_FAILURE(@"Error!");
-			return;
-		}
+            if (error) {
+                SVHUD_FAILURE(@"Error!");
+                return;
+            }
 		
-		PRINT_RESPONSE_HEADERS_AND_CODE;
+            PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 		
-		if (error == nil && statusCode == 200) {
-			NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				// Now that we have the  events data, get the shedule
-				[self fetchEventSchedule];
-				events = [NSMutableArray arrayWithArray:evnts];
-			});
-		}
+            if (error == nil && statusCode == 200) {
+                NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // Now that we have the  events data, get the shedule
+                    [self fetchEventSchedule];
+                    events = [NSMutableArray arrayWithArray:evnts];
+                });
+            }
 		
-	}] resume];
+        }] resume];
+        
+    }];
 	
 }
 
 - (void)fetchEventSchedule {
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        finalEventsUrl = config[@"schedule"];
 	
-	NSURL *eventsUrl = [NSURL URLWithString:@"http://schedule.mitportals.in"];
+        NSURL *eventsUrl = [NSURL URLWithString:finalEventsUrl];
 	
-	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
-	NSString *post = [NSString stringWithFormat:@"secret=%@", @"revels16Dastaan"];
-	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-	[postRequest setHTTPBody:postData];
+        ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsUrl];
+        NSString *post = [NSString stringWithFormat:@"secret=%@", @"revels16Dastaan"];
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        [postRequest setHTTPBody:postData];
 	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		if (error) {
-			// Fetch local data?
-			SVHUD_FAILURE(@"Error!");
-			return;
-		}
+            if (error) {
+                // Fetch local data?
+                SVHUD_FAILURE(@"Error!");
+                return;
+            }
 		
-		PRINT_RESPONSE_HEADERS_AND_CODE;
+            PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 		
-		if (error == nil && statusCode == 200) {
-			NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				events = [NSMutableArray arrayWithArray:evnts];
-				[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex]];
-			});
-		}
+            if (error == nil && statusCode == 200) {
+                NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    events = [NSMutableArray arrayWithArray:evnts];
+                    [self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex]];
+                });
+            }
 		
-		SVHUD_HIDE;
+            SVHUD_HIDE;
 		
-	}] resume];
+        }] resume];
+        
+    }];
 	
 }
 

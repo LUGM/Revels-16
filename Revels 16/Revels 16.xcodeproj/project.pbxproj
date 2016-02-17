@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A64A131C74CF1C008B2170 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A111C74CF1C008B2170 /* Bolts.framework */; };
+		18A64A141C74CF1C008B2170 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A121C74CF1C008B2170 /* Parse.framework */; };
+		18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A161C74D148008B2170 /* SystemConfiguration.framework */; };
+		18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A181C74D152008B2170 /* CoreGraphics.framework */; };
+		18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */; };
+		18A64A1D1C74D1AB008B2170 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1C1C74D1AA008B2170 /* libsqlite3.tbd */; };
 		5910A8EC1C737DC00063249F /* REVResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8EB1C737DC00063249F /* REVResult.m */; };
 		5910A8F71C73980D0063249F /* ResultsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5910A8F61C73980D0063249F /* ResultsHeaderView.xib */; };
 		5910A8FD1C7399880063249F /* ResultsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8FC1C7399880063249F /* ResultsHeaderView.m */; };
@@ -67,6 +73,12 @@
 
 /* Begin PBXFileReference section */
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
+		18A64A111C74CF1C008B2170 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		18A64A121C74CF1C008B2170 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		18A64A161C74D148008B2170 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18A64A181C74D152008B2170 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		18A64A1C1C74D1AA008B2170 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5910A8EA1C737DC00063249F /* REVResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVResult.h; path = Model/Result/REVResult.h; sourceTree = "<group>"; };
 		5910A8EB1C737DC00063249F /* REVResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVResult.m; path = Model/Result/REVResult.m; sourceTree = "<group>"; };
 		5910A8F61C73980D0063249F /* ResultsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultsHeaderView.xib; path = Views/Cells/ResultsHeaderView.xib; sourceTree = "<group>"; };
@@ -176,15 +188,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A64A1D1C74D1AB008B2170 /* libsqlite3.tbd in Frameworks */,
+				18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */,
+				18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */,
+				18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */,
 				59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */,
 				59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */,
 				EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */,
+				18A64A131C74CF1C008B2170 /* Bolts.framework in Frameworks */,
+				18A64A141C74CF1C008B2170 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A64A151C74CF3F008B2170 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18A64A111C74CF1C008B2170 /* Bolts.framework */,
+				18A64A121C74CF1C008B2170 /* Parse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5910A8E81C737DA20063249F /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +323,7 @@
 			children = (
 				59BA13C71C60D98C00679C49 /* Revels 16.entitlements */,
 				596F91CB1C5F18F9000CBD48 /* Assets.xcassets */,
+				18A64A151C74CF3F008B2170 /* Frameworks */,
 				596F91DB1C5F1B3A000CBD48 /* Libraries */,
 				596F91D61C5F1913000CBD48 /* App Delegate */,
 				596F91DA1C5F1931000CBD48 /* Model */,
@@ -686,6 +714,10 @@
 		9D4BA4DDFB93C96C01B29C17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A64A1C1C74D1AA008B2170 /* libsqlite3.tbd */,
+				18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */,
+				18A64A181C74D152008B2170 /* CoreGraphics.framework */,
+				18A64A161C74D148008B2170 /* SystemConfiguration.framework */,
 				59BE4C981C67548E004D28B7 /* QuartzCore.framework */,
 				59F7B2D01C5FC9BE00471695 /* ImageIO.framework */,
 				A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */,
@@ -727,7 +759,7 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = HN3SCP8A52;
+						DevelopmentTeam = 9P257W983B;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -989,6 +1021,11 @@
 				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Revels",
+					16,
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Revels 16/PrefixHeader.pch";
@@ -1011,6 +1048,11 @@
 				CODE_SIGN_ENTITLEMENTS = "Revels 16/Revels 16.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Revels",
+					16,
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Revels 16/PrefixHeader.pch";

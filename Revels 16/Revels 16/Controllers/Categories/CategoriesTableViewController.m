@@ -10,6 +10,7 @@
 #import "EventByCategoryViewController.h"
 #import <KWTransition/KWTransition.h>
 #import "REVCategory.h"
+#import <Parse/Parse.h>
 
 @interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate>
 
@@ -22,6 +23,8 @@
 	DADataManager *dataManager;
 	
 	NSArray <UIColor *> *cellBackgroundColors;
+    
+    NSString *finalCategoryUrl;
 }
 
 - (void)viewDidLoad {
@@ -44,73 +47,76 @@
 	
 }
 
-
-
 - (IBAction)fetchCategories:(id)sender {
 	
 	SVHUD_SHOW;
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        finalCategoryUrl = config[@"categories"];
 	
-    NSURL *categoriesUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
+        NSURL *categoriesUrl = [NSURL URLWithString:@"http://api.mitportals.in"];
     
-    ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:categoriesUrl];
-//  NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
-	NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"LUGbatchof2017", @"nid"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:categoriesUrl];
+        //  NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
+        NSString *post = [NSString stringWithFormat:@"secret=%@&params=%@", @"LUGbatchof2017", @"nid"];
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
-    [postRequest setHTTPBody:postData];
+        [postRequest setHTTPBody:postData];
     
-    [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		if (error) {
-            SVHUD_FAILURE(@"Failed");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self fetchSavedCategories];
-				[self.refreshControl endRefreshing];
-            });
-			return;
-        }
+            if (error) {
+                SVHUD_FAILURE(@"Failed");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self fetchSavedCategories];
+                    [self.refreshControl endRefreshing];
+                });
+                return;
+            }
         
-        PRINT_RESPONSE_HEADERS_AND_CODE
+                PRINT_RESPONSE_HEADERS_AND_CODE
 		
-		@try {
-			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-			//        NSLog(@"%@", jsonData);
+            @try {
+                id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                //        NSLog(@"%@", jsonData);
 			
-			if (statusCode == 200)
-			{
-				id categoryJson = [jsonData valueForKey:@"data"];
-				if (categoryJson)
-				{
-					dispatch_async(dispatch_get_main_queue(), ^{
-						categories = [REVCategory getArrayFromJSONData:categoryJson];
-						[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
-						[self.tableView reloadData];
-						[self.refreshControl endRefreshing];
-					});
-				}
-			}
-			else
-			{
-				SVHUD_FAILURE(@"Failed");
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[self fetchSavedCategories];
-					[self.refreshControl endRefreshing];
-				});
-			}
-		}
-		@catch (NSException *exception) {
-			NSLog(@"Category parsing error: %@", exception.reason);
-			SVHUD_FAILURE(@"Failed");
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self fetchSavedCategories];
-				[self.refreshControl endRefreshing];
-			});
-		}
-		@finally {
-			SVHUD_HIDE;
-		}
+                if (statusCode == 200)
+                {
+                    id categoryJson = [jsonData valueForKey:@"data"];
+                    if (categoryJson)
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            categories = [REVCategory getArrayFromJSONData:categoryJson];
+                            [dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
+                            [self.tableView reloadData];
+                            [self.refreshControl endRefreshing];
+                        });
+                    }
+                }
+                else
+                {
+                    SVHUD_FAILURE(@"Failed");
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self fetchSavedCategories];
+                        [self.refreshControl endRefreshing];
+                    });
+                }
+            }
+            @catch (NSException *exception) {
+                NSLog(@"Category parsing error: %@", exception.reason);
+                SVHUD_FAILURE(@"Failed");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self fetchSavedCategories];
+                    [self.refreshControl endRefreshing];
+                });
+            }
+            @finally {
+            SVHUD_HIDE;
+            }
         
-    }] resume];
+        }] resume];
+        
+    }];
 	
 }
 

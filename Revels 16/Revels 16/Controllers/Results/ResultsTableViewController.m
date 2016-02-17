@@ -10,6 +10,7 @@
 #import "ResultsHeaderView.h"
 #import "REVResult.h"
 #import "DADataManager.h"
+#import <Parse/Parse.h>
 
 @interface ResultsTableViewController () <UISearchResultsUpdating>
 
@@ -28,6 +29,8 @@
 	DADataManager *dataManager;
 	
 	NSArray <UIColor *> *cellBackgroundColors;
+    
+    NSString *finalResultUrl;
 }
 
 - (void)viewDidLoad {
@@ -58,47 +61,52 @@
 - (IBAction)fetchResults:(id)sender {
 	
 	SVHUD_SHOW;
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        finalResultUrl = config[@"results"];
 	
-	NSURL *URL = [NSURL URLWithString:@"http://results.mitportals.in/public/results"];
+        NSURL *URL = [NSURL URLWithString:finalResultUrl];
 	
-	ASMutableURLRequest *request = [ASMutableURLRequest requestWithURL:URL];
+        ASMutableURLRequest *request = [ASMutableURLRequest requestWithURL:URL];
 	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		if (error) {
-			// Handle error;
-			SVHUD_FAILURE(@"No connection!");
-			[self fetchSavedResults];
-		}
+            if (error) {
+                // Handle error;
+                SVHUD_FAILURE(@"No connection!");
+                [self fetchSavedResults];
+            }
 		
-		PRINT_RESPONSE_HEADERS_AND_CODE;
+            PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		if (statusCode == 200) {
+            if (statusCode == 200) {
 			
-			@try {
-				id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-				id resultsJSON = [jsonData valueForKey:@"data"];
-				results = [REVResult getResultsFromJSONData:resultsJSON];
-				[dataManager saveObject:resultsJSON toDocumentsFile:@"results.dat"];
-				categories = [REVResult getCatResultsFromResults:results];
-			}
-			@catch (NSException *exception) {
-				NSLog(@"Results parsing error: %@", exception.reason);
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[self fetchSavedResults];
-				});
-			}
-			@finally {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[self.tableView reloadData];
-					[self.refreshControl endRefreshing];
-				});
-			}
-		}
+                @try {
+                    id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                    id resultsJSON = [jsonData valueForKey:@"data"];
+                    results = [REVResult getResultsFromJSONData:resultsJSON];
+                    [dataManager saveObject:resultsJSON toDocumentsFile:@"results.dat"];
+                    categories = [REVResult getCatResultsFromResults:results];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"Results parsing error: %@", exception.reason);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self fetchSavedResults];
+                    });
+                }
+                @finally {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                        [self.refreshControl endRefreshing];
+                    });
+                }
+            }
 		
-		SVHUD_HIDE;
+            SVHUD_HIDE;
 		
-	}] resume];
+        }] resume];
+        
+    }];
 	
 }
 

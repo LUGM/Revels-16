@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -45,6 +46,12 @@
 	UIMutableApplicationShortcutItem *resultsItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.da.revels.results" localizedTitle:@"Results"];
 	[resultsItem setIcon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"44resultsIcon"]];
 	[application setShortcutItems:@[catItem, eventsItem, instaItem, resultsItem]];
+    
+    // Parse init
+    [Parse setApplicationId:@"b4ySAS7cIdzpkfG78S61gsgXGnmejk7wC3VO4nOz"
+                  clientKey:@"o0U4wRrAgquQXj96F4fTx1C2LxUfyM3IobMJzyA0"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 	
 	return YES;
 }

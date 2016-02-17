@@ -11,6 +11,7 @@
 #import "EventHeaderTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
+#import <Parse/Parse.h>
 
 @interface EventByCategoryViewController () <EKEventViewDelegate>
 
@@ -42,6 +43,9 @@
 	
 	EventInfoView *eventInfoView;
 	UITapGestureRecognizer *tapGestureRecognizer;
+    
+    NSString *finalCategoryUrl;
+    NSString *finalEventsUrl;
 }
 
 - (void)viewDidLoad {
@@ -136,80 +140,89 @@
 - (void)fetchEvents {
 	
 	SVHUD_SHOW;
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        finalCategoryUrl = config[@"categories"];
 	
-	NSURL *eventsURL = [NSURL URLWithString:@"http://api.mitportals.in"];
+        NSURL *categoryUrl = [NSURL URLWithString:finalCategoryUrl];
 	
-	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsURL];
-	NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
-	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-	[postRequest setHTTPBody:postData];
+        ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:categoryUrl];
+        NSString *post = [NSString stringWithFormat:@"secret=%@", @"LUGbatchof2017"];
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        [postRequest setHTTPBody:postData];
 	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		if (error) {
-			SVHUD_FAILURE(@"Error!");
-			return;
-		}
+            if (error) {
+                SVHUD_FAILURE(@"Error!");
+                return;
+            }
 		
-		PRINT_RESPONSE_HEADERS_AND_CODE;
+            PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		@try {
-			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            @try {
+                id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 			
-			if (error == nil && statusCode == 200) {
-				NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
-				dispatch_async(dispatch_get_main_queue(), ^{
-					events = [NSMutableArray arrayWithArray:evnts];
-					[self fetchEventSchedule];
-				});
-			}
-		}
-		@catch (NSException *exception) {
-			NSLog(@"Events fetch error: %@", exception.reason);
-		}
+                if (error == nil && statusCode == 200) {
+                    NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        events = [NSMutableArray arrayWithArray:evnts];
+                        [self fetchEventSchedule];
+                    });
+                }
+            }
+            @catch (NSException *exception) {
+                NSLog(@"Events fetch error: %@", exception.reason);
+            }
 		
-		
-	}] resume];
+        }] resume];
+    
+    }];
 	
 }
 
 - (void)fetchEventSchedule {
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        finalEventsUrl = config[@"schedule"];
 	
-	NSURL *eventsURL = [NSURL URLWithString:@"http://schedule.mitportals.in"];
+        NSURL *eventsURL = [NSURL URLWithString:finalEventsUrl];
 	
-	ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsURL];
-	NSString *post = [NSString stringWithFormat:@"secret=%@", @"revels16Dastaan"];
-	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-	[postRequest setHTTPBody:postData];
+        ASMutableURLRequest *postRequest = [ASMutableURLRequest postRequestWithURL:eventsURL];
+        NSString *post = [NSString stringWithFormat:@"secret=%@", @"revels16Dastaan"];
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        [postRequest setHTTPBody:postData];
 	
-	[[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[NSURLSession sharedSession] dataTaskWithRequest:postRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		if (error) {
-			SVHUD_FAILURE(@"Error!");
-			return;
-		}
+            if (error) {
+                SVHUD_FAILURE(@"Error!");
+                return;
+            }
 		
-		PRINT_RESPONSE_HEADERS_AND_CODE;
+            PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		@try {
-			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            @try {
+                id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 			
-			if (error == nil && statusCode == 200) {
-				NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
-				dispatch_async(dispatch_get_main_queue(), ^{
-					events = [NSMutableArray arrayWithArray:evnts];
-					[self.refreshControl endRefreshing];
-					[self fetchFilteredEvents];
-				});
-			}
-		}
-		@catch (NSException *exception) {
-			NSLog(@"Event schedule fetch error: %@", exception.reason);
-		}
+                if (error == nil && statusCode == 200) {
+                    NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        events = [NSMutableArray arrayWithArray:evnts];
+                        [self.refreshControl endRefreshing];
+                        [self fetchFilteredEvents];
+                    });
+                }
+            }
+            @catch (NSException *exception) {
+                NSLog(@"Event schedule fetch error: %@", exception.reason);
+            }
 		
-		SVHUD_HIDE;
+            SVHUD_HIDE;
 		
-	}] resume];
+        }] resume];
+        
+    }];
 	
 }
 
