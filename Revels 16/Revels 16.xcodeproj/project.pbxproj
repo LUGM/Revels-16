@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18A64A131C74CF1C008B2170 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A111C74CF1C008B2170 /* Bolts.framework */; };
-		18A64A141C74CF1C008B2170 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A121C74CF1C008B2170 /* Parse.framework */; };
 		18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A161C74D148008B2170 /* SystemConfiguration.framework */; };
 		18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A181C74D152008B2170 /* CoreGraphics.framework */; };
 		18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */; };
@@ -68,13 +66,13 @@
 		59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79321C61C77700EC61A0 /* REVEvent.m */; };
 		59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79361C625A1000EC61A0 /* InstagramRootViewController.m */; };
 		59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE793B1C62670200EC61A0 /* CrossButton.m */; };
+		A36625A31C74E58D004F5D71 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36625A11C74E58D004F5D71 /* Bolts.framework */; };
+		A36625A41C74E58D004F5D71 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36625A21C74E58D004F5D71 /* Parse.framework */; };
 		EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
-		18A64A111C74CF1C008B2170 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		18A64A121C74CF1C008B2170 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		18A64A161C74D148008B2170 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18A64A181C74D152008B2170 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -179,6 +177,10 @@
 		59FE79361C625A1000EC61A0 /* InstagramRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramRootViewController.m; path = Controllers/Instagram/InstagramRootViewController.m; sourceTree = "<group>"; };
 		59FE793A1C62670200EC61A0 /* CrossButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossButton.h; sourceTree = "<group>"; };
 		59FE793B1C62670200EC61A0 /* CrossButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossButton.m; sourceTree = "<group>"; };
+		A36625A11C74E58D004F5D71 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../parse-library/Bolts.framework"; sourceTree = "<group>"; };
+		A36625A21C74E58D004F5D71 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../parse-library/Parse.framework"; sourceTree = "<group>"; };
+		A36625A51C74E605004F5D71 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		A36625A61C74E605004F5D71 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Revels 16.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2288AEFED249667A1BA3B48 /* Pods-Revels 16.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +190,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36625A31C74E58D004F5D71 /* Bolts.framework in Frameworks */,
+				A36625A41C74E58D004F5D71 /* Parse.framework in Frameworks */,
 				18A64A1D1C74D1AB008B2170 /* libsqlite3.tbd in Frameworks */,
 				18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */,
 				18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */,
@@ -195,8 +199,6 @@
 				59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */,
 				59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */,
 				EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */,
-				18A64A131C74CF1C008B2170 /* Bolts.framework in Frameworks */,
-				18A64A141C74CF1C008B2170 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +208,8 @@
 		18A64A151C74CF3F008B2170 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				18A64A111C74CF1C008B2170 /* Bolts.framework */,
-				18A64A121C74CF1C008B2170 /* Parse.framework */,
+				A36625A51C74E605004F5D71 /* Bolts.framework */,
+				A36625A61C74E605004F5D71 /* Parse.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -714,6 +716,8 @@
 		9D4BA4DDFB93C96C01B29C17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A36625A11C74E58D004F5D71 /* Bolts.framework */,
+				A36625A21C74E58D004F5D71 /* Parse.framework */,
 				18A64A1C1C74D1AA008B2170 /* libsqlite3.tbd */,
 				18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */,
 				18A64A181C74D152008B2170 /* CoreGraphics.framework */,
@@ -759,10 +763,10 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 9P257W983B;
+						DevelopmentTeam = M2TZJK2U6H;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -1025,6 +1029,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Revels",
 					16,
+					"$(PROJECT_DIR)/Revels",
+					16,
+					"$(PROJECT_DIR)/Revels",
+					16,
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1032,7 +1040,7 @@
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.Revels-16";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1052,6 +1060,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Revels",
 					16,
+					"$(PROJECT_DIR)/Revels",
+					16,
+					"$(PROJECT_DIR)/Revels",
+					16,
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1059,7 +1071,7 @@
 				INFOPLIST_FILE = "Revels 16/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LUG.Revels-16";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
