@@ -21,16 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The `PFQuery` class defines a query that is used to query for `PFObject`s.
  */
-@interface PFQuery PF_GENERIC(PFGenericObject : PFObject *) : NSObject<NSCopying>
+@interface PFQuery<PFGenericObject : PFObject *> : NSObject<NSCopying>
 
 ///--------------------------------------
-/// @name Blocks
+#pragma mark - Blocks
 ///--------------------------------------
 
-typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __nullable objects, NSError * __nullable error);
+typedef void (^PFQueryArrayResultBlock)(NSArray<PFGenericObject> *_Nullable objects, NSError * _Nullable error);
 
 ///--------------------------------------
-/// @name Creating a Query for a Class
+#pragma mark - Creating a Query for a Class
 ///--------------------------------------
 
 /**
@@ -79,7 +79,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 @property (nonatomic, strong) NSString *parseClassName;
 
 ///--------------------------------------
-/// @name Adding Basic Constraints
+#pragma mark - Adding Basic Constraints
 ///--------------------------------------
 
 /**
@@ -103,7 +103,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 
  @return The same instance of `PFQuery` as the receiver. This allows method chaining.
  */
-- (instancetype)selectKeys:(NSArray PF_GENERIC(NSString *)*)keys;
+- (instancetype)selectKeys:(NSArray<NSString *> *)keys;
 
 /**
  Add a constraint that requires a particular key exists.
@@ -221,7 +221,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 - (instancetype)whereKey:(NSString *)key containsAllObjectsInArray:(NSArray *)array;
 
 ///--------------------------------------
-/// @name Adding Location Constraints
+#pragma mark - Adding Location Constraints
 ///--------------------------------------
 
 /**
@@ -300,7 +300,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 - (instancetype)whereKey:(NSString *)key withinGeoBoxFromSouthwest:(PFGeoPoint *)southwest toNortheast:(PFGeoPoint *)northeast;
 
 ///--------------------------------------
-/// @name Adding String Constraints
+#pragma mark - Adding String Constraints
 ///--------------------------------------
 
 /**
@@ -369,7 +369,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 - (instancetype)whereKey:(NSString *)key hasSuffix:(nullable NSString *)suffix;
 
 ///--------------------------------------
-/// @name Adding Subqueries
+#pragma mark - Adding Subqueries
 ///--------------------------------------
 
 /**
@@ -379,7 +379,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 
  @return An instance of `PFQuery` that is the `or` of the passed in queries.
  */
-+ (instancetype)orQueryWithSubqueries:(NSArray PF_GENERIC(PFQuery *)*)queries;
++ (instancetype)orQueryWithSubqueries:(NSArray<PFQuery *> *)queries;
 
 /**
  Adds a constraint that requires that a key's value matches a value in another key
@@ -434,7 +434,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 - (instancetype)whereKey:(NSString *)key doesNotMatchQuery:(PFQuery *)query;
 
 ///--------------------------------------
-/// @name Sorting
+#pragma mark - Sorting
 ///--------------------------------------
 
 /**
@@ -493,60 +493,11 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 
  @return The same instance of `PFQuery` as the receiver. This allows method chaining.
  */
-- (instancetype)orderBySortDescriptors:(nullable NSArray PF_GENERIC(NSSortDescriptor *)*)sortDescriptors;
+- (instancetype)orderBySortDescriptors:(nullable NSArray<NSSortDescriptor *> *)sortDescriptors;
 
 ///--------------------------------------
-/// @name Getting Objects by ID
+#pragma mark - Getting Objects by ID
 ///--------------------------------------
-
-/**
- Returns a `PFObject` with a given class and id.
-
- @param objectClass The class name for the object that is being requested.
- @param objectId The id of the object that is being requested.
-
- @return The `PFObject` if found. Returns `nil` if the object isn't found, or if there was an error.
- */
-+ (nullable PFGenericObject)getObjectOfClass:(NSString *)objectClass
-                                    objectId:(NSString *)objectId PF_SWIFT_UNAVAILABLE;
-
-/**
- Returns a `PFObject` with a given class and id and sets an error if necessary.
-
- @param objectClass The class name for the object that is being requested.
- @param objectId The id of the object that is being requested.
- @param error Pointer to an `NSError` that will be set if necessary.
-
- @return The `PFObject` if found. Returns `nil` if the object isn't found, or if there was an `error`.
- */
-+ (nullable PFGenericObject)getObjectOfClass:(NSString *)objectClass
-                                    objectId:(NSString *)objectId
-                                       error:(NSError **)error;
-
-/**
- Returns a `PFObject` with the given id.
-
- @warning This method mutates the query.
- It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
- @param objectId The id of the object that is being requested.
-
- @return The `PFObject` if found. Returns nil if the object isn't found, or if there was an error.
- */
-- (nullable PFGenericObject)getObjectWithId:(NSString *)objectId PF_SWIFT_UNAVAILABLE;
-
-/**
- Returns a `PFObject` with the given id and sets an error if necessary.
-
- @warning This method mutates the query.
- It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
- @param objectId The id of the object that is being requested.
- @param error Pointer to an `NSError` that will be set if necessary.
-
- @return The `PFObject` if found. Returns nil if the object isn't found, or if there was an error.
- */
-- (nullable PFGenericObject)getObjectWithId:(NSString *)objectId error:(NSError **)error;
 
 /**
  Gets a `PFObject` asynchronously and calls the given block with the result.
@@ -558,7 +509,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 
  @return The task, that encapsulates the work being done.
  */
-- (BFTask PF_GENERIC(PFGenericObject) *)getObjectInBackgroundWithId:(NSString *)objectId;
+- (BFTask<PFGenericObject> *)getObjectInBackgroundWithId:(NSString *)objectId;
 
 /**
  Gets a `PFObject` asynchronously and calls the given block with the result.
@@ -571,43 +522,11 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
  The block should have the following argument signature: `^(NSArray *object, NSError *error)`
  */
 - (void)getObjectInBackgroundWithId:(NSString *)objectId
-                              block:(nullable void (^)(PFGenericObject __nullable object, NSError *__nullable error))block;
-
-/*
- Gets a `PFObject` asynchronously.
-
- This mutates the PFQuery. It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
- @param objectId The id of the object being requested.
- @param target The target for the callback selector.
- @param selector The selector for the callback.
- It should have the following signature: `(void)callbackWithResult:(id)result error:(NSError *)error`.
- Result will be `nil` if error is set and vice versa.
- */
-- (void)getObjectInBackgroundWithId:(NSString *)objectId
-                             target:(nullable id)target
-                           selector:(nullable SEL)selector;
+                              block:(nullable void (^)(PFGenericObject _Nullable object, NSError *_Nullable error))block;
 
 ///--------------------------------------
-/// @name Getting User Objects
+#pragma mark - Getting User Objects
 ///--------------------------------------
-
-/**
- Returns a `PFUser` with a given id.
-
- @param objectId The id of the object that is being requested.
-
- @return The PFUser if found. Returns nil if the object isn't found, or if there was an error.
- */
-+ (nullable PFUser *)getUserObjectWithId:(NSString *)objectId PF_SWIFT_UNAVAILABLE;
-
-/**
- Returns a PFUser with a given class and id and sets an error if necessary.
- @param objectId The id of the object that is being requested.
- @param error Pointer to an NSError that will be set if necessary.
- @result The PFUser if found. Returns nil if the object isn't found, or if there was an error.
- */
-+ (nullable PFUser *)getUserObjectWithId:(NSString *)objectId error:(NSError **)error;
 
 /**
  @deprecated Please use [PFUser query] instead.
@@ -615,31 +534,15 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 + (instancetype)queryForUser PARSE_DEPRECATED("Use [PFUser query] instead.");
 
 ///--------------------------------------
-/// @name Getting all Matches for a Query
+#pragma mark - Getting all Matches for a Query
 ///--------------------------------------
-
-/**
- Finds objects *synchronously* based on the constructed query.
-
- @return Returns an array of `PFObject` objects that were found.
- */
-- (nullable NSArray PF_GENERIC(PFGenericObject) *)findObjects PF_SWIFT_UNAVAILABLE;
-
-/**
- Finds objects *synchronously* based on the constructed query and sets an error if there was one.
-
- @param error Pointer to an `NSError` that will be set if necessary.
-
- @return Returns an array of `PFObject` objects that were found.
- */
-- (nullable NSArray PF_GENERIC(PFGenericObject) *)findObjects:(NSError **)error;
 
 /**
  Finds objects *asynchronously* and sets the `NSArray` of `PFObject` objects as a result of the task.
 
  @return The task, that encapsulates the work being done.
  */
-- (BFTask PF_GENERIC(NSArray<PFGenericObject> *)*)findObjectsInBackground;
+- (BFTask<NSArray<PFGenericObject> *> *)findObjectsInBackground;
 
 /**
  Finds objects *asynchronously* and calls the given block with the results.
@@ -649,39 +552,9 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
  */
 - (void)findObjectsInBackgroundWithBlock:(nullable PFQueryArrayResultBlock)block;
 
-/*
- Finds objects *asynchronously* and calls the given callback with the results.
-
- @param target The object to call the selector on.
- @param selector The selector to call.
- It should have the following signature: `(void)callbackWithResult:(id)result error:(NSError *)error`.
- Result will be `nil` if error is set and vice versa.
- */
-- (void)findObjectsInBackgroundWithTarget:(nullable id)target selector:(nullable SEL)selector;
-
 ///--------------------------------------
-/// @name Getting the First Match in a Query
+#pragma mark - Getting the First Match in a Query
 ///--------------------------------------
-
-/**
- Gets an object *synchronously* based on the constructed query.
-
- @warning This method mutates the query. It will reset the limit to `1`.
-
- @return Returns a `PFObject`, or `nil` if none was found.
- */
-- (nullable PFGenericObject)getFirstObject PF_SWIFT_UNAVAILABLE;
-
-/**
- Gets an object *synchronously* based on the constructed query and sets an error if any occurred.
-
- @warning This method mutates the query. It will reset the limit to `1`.
-
- @param error Pointer to an `NSError` that will be set if necessary.
-
- @return Returns a `PFObject`, or `nil` if none was found.
- */
-- (nullable PFGenericObject)getFirstObject:(NSError **)error;
 
 /**
  Gets an object *asynchronously* and sets it as a result of the task.
@@ -690,7 +563,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 
  @return The task, that encapsulates the work being done.
  */
-- (BFTask PF_GENERIC(PFGenericObject) *)getFirstObjectInBackground;
+- (BFTask<PFGenericObject> *)getFirstObjectInBackground;
 
 /**
  Gets an object *asynchronously* and calls the given block with the result.
@@ -702,47 +575,18 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
  `result` will be `nil` if `error` is set OR no object was found matching the query.
  `error` will be `nil` if `result` is set OR if the query succeeded, but found no results.
  */
-- (void)getFirstObjectInBackgroundWithBlock:(nullable void (^)(PFGenericObject __nullable object, NSError *__nullable error))block;
-
-/*
- Gets an object *asynchronously* and calls the given callback with the results.
-
- @warning This method mutates the query. It will reset the limit to `1`.
-
- @param target The object to call the selector on.
- @param selector The selector to call.
- It should have the following signature: `(void)callbackWithResult:(PFObject *)result error:(NSError *)error`.
- `result` will be `nil` if `error` is set OR no object was found matching the query.
- `error` will be `nil` if `result` is set OR if the query succeeded, but found no results.
- */
-- (void)getFirstObjectInBackgroundWithTarget:(nullable id)target selector:(nullable SEL)selector;
+- (void)getFirstObjectInBackgroundWithBlock:(nullable void (^)(PFGenericObject _Nullable object, NSError *_Nullable error))block;
 
 ///--------------------------------------
-/// @name Counting the Matches in a Query
+#pragma mark - Counting the Matches in a Query
 ///--------------------------------------
-
-/**
- Counts objects *synchronously* based on the constructed query.
-
- @return Returns the number of `PFObject` objects that match the query, or `-1` if there is an error.
- */
-- (NSInteger)countObjects PF_SWIFT_UNAVAILABLE;
-
-/**
- Counts objects *synchronously* based on the constructed query and sets an error if there was one.
-
- @param error Pointer to an `NSError` that will be set if necessary.
-
- @return Returns the number of `PFObject` objects that match the query, or `-1` if there is an error.
- */
-- (NSInteger)countObjects:(NSError **)error;
 
 /**
  Counts objects *asynchronously* and sets `NSNumber` with count as a result of the task.
 
  @return The task, that encapsulates the work being done.
  */
-- (BFTask PF_GENERIC(NSNumber *)*)countObjectsInBackground;
+- (BFTask<NSNumber *> *)countObjectsInBackground;
 
 /**
  Counts objects *asynchronously* and calls the given block with the counts.
@@ -752,17 +596,8 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
  */
 - (void)countObjectsInBackgroundWithBlock:(nullable PFIntegerResultBlock)block;
 
-/*
- Counts objects *asynchronously* and calls the given callback with the count.
-
- @param target The object to call the selector on.
- @param selector The selector to call.
- It should have the following signature: `(void)callbackWithResult:(NSNumber *)result error:(NSError *)error`.
- */
-- (void)countObjectsInBackgroundWithTarget:(nullable id)target selector:(nullable SEL)selector;
-
 ///--------------------------------------
-/// @name Cancelling a Query
+#pragma mark - Cancelling a Query
 ///--------------------------------------
 
 /**
@@ -771,7 +606,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 - (void)cancel;
 
 ///--------------------------------------
-/// @name Paginating Results
+#pragma mark - Paginating Results
 ///--------------------------------------
 
 /**
@@ -788,7 +623,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 @property (nonatomic, assign) NSInteger skip;
 
 ///--------------------------------------
-/// @name Controlling Caching Behavior
+#pragma mark - Controlling Caching Behavior
 ///--------------------------------------
 
 /**
@@ -812,7 +647,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 
  @result `YES` if there is a cached result for this query, otherwise `NO`.
  */
-- (BOOL)hasCachedResult;
+@property (nonatomic, assign, readonly) BOOL hasCachedResult;
 
 /**
  Clears the cached result for this query. If there is no cached result, this is a noop.
@@ -825,7 +660,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 + (void)clearAllCachedResults;
 
 ///--------------------------------------
-/// @name Query Source
+#pragma mark - Query Source
 ///--------------------------------------
 
 /**
@@ -877,7 +712,7 @@ typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * __
 - (instancetype)ignoreACLs;
 
 ///--------------------------------------
-/// @name Advanced Settings
+#pragma mark - Advanced Settings
 ///--------------------------------------
 
 /**

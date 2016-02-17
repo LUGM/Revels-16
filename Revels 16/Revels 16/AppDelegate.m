@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch
+    
+    [NSThread sleepForTimeInterval:2.0];
 	
 	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
 	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];

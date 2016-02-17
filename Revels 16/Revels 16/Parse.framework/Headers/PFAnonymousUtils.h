@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PFAnonymousUtils : NSObject
 
 ///--------------------------------------
-/// @name Creating an Anonymous User
+#pragma mark - Creating an Anonymous User
 ///--------------------------------------
 
 /**
@@ -45,27 +45,18 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask PF_GENERIC(PFUser *)*)logInInBackground;
++ (BFTask<PFUser *> *)logInInBackground;
 
 /**
- Creates an anonymous user.
+ Creates an anonymous user asynchronously and performs a provided block.
 
  @param block The block to execute when anonymous user creation is complete.
  It should have the following argument signature: `^(PFUser *user, NSError *error)`.
  */
 + (void)logInWithBlock:(nullable PFUserResultBlock)block;
 
-/*
- Creates an anonymous user.
-
- @param target Target object for the selector.
- @param selector The selector that will be called when the asynchronous request is complete.
- It should have the following signature: `(void)callbackWithUser:(PFUser *)user error:(NSError *)error`.
- */
-+ (void)logInWithTarget:(nullable id)target selector:(nullable SEL)selector;
-
 ///--------------------------------------
-/// @name Determining Whether a User is Anonymous
+#pragma mark - Determining Whether a User is Anonymous
 ///--------------------------------------
 
 /**

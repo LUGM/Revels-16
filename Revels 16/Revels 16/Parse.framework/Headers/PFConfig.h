@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class PFConfig;
 
-typedef void(^PFConfigResultBlock)(PFConfig *__nullable config, NSError *__nullable error);
+typedef void(^PFConfigResultBlock)(PFConfig *_Nullable config, NSError *_Nullable error);
 
 /**
  `PFConfig` is a representation of the remote configuration object.
@@ -26,7 +26,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *__nullable config, NSError *__nulla
 @interface PFConfig : NSObject
 
 ///--------------------------------------
-/// @name Current Config
+#pragma mark - Current Config
 ///--------------------------------------
 
 /**
@@ -39,31 +39,15 @@ typedef void(^PFConfigResultBlock)(PFConfig *__nullable config, NSError *__nulla
 + (PFConfig *)currentConfig;
 
 ///--------------------------------------
-/// @name Retrieving Config
+#pragma mark - Retrieving Config
 ///--------------------------------------
-
-/**
- Gets the `PFConfig` object *synchronously* from the server.
-
- @return Instance of `PFConfig` if the operation succeeded, otherwise `nil`.
- */
-+ (nullable PFConfig *)getConfig PF_SWIFT_UNAVAILABLE;
-
-/**
- Gets the `PFConfig` object *synchronously* from the server and sets an error if it occurs.
-
- @param error Pointer to an `NSError` that will be set if necessary.
-
- @return Instance of PFConfig if the operation succeeded, otherwise `nil`.
- */
-+ (nullable PFConfig *)getConfig:(NSError **)error;
 
 /**
  Gets the `PFConfig` *asynchronously* and sets it as a result of a task.
 
  @return The task, that encapsulates the work being done.
  */
-+ (BFTask PF_GENERIC(PFConfig *)*)getConfigInBackground;
++ (BFTask<PFConfig *> *)getConfigInBackground;
 
 /**
  Gets the `PFConfig` *asynchronously* and executes the given callback block.
@@ -74,7 +58,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *__nullable config, NSError *__nulla
 + (void)getConfigInBackgroundWithBlock:(nullable PFConfigResultBlock)block;
 
 ///--------------------------------------
-/// @name Parameters
+#pragma mark - Parameters
 ///--------------------------------------
 
 /**

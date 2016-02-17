@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1819B9831C74F52F00640E84 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1819B9811C74F52F00640E84 /* Bolts.framework */; };
+		1819B9841C74F52F00640E84 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1819B9821C74F52F00640E84 /* Parse.framework */; };
 		18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A161C74D148008B2170 /* SystemConfiguration.framework */; };
 		18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A181C74D152008B2170 /* CoreGraphics.framework */; };
 		18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */; };
@@ -20,8 +22,6 @@
 		5910A9201C749BE20063249F /* UnderlinedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A91E1C749BE20063249F /* UnderlinedLabel.m */; };
 		59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F161C63612100A45854 /* EventByCategoryViewController.m */; };
 		592AE8241C69037B00256BDA /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE8231C69037B00256BDA /* Colours.m */; };
-		5940EF741C74F28E0085DD0E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5940EF721C74F28E0085DD0E /* Bolts.framework */; };
-		5940EF751C74F28E0085DD0E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5940EF731C74F28E0085DD0E /* Parse.framework */; };
 		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
 		596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */; };
 		596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596A7BEE1C6A1EF400EB74B1 /* DeveloperDetailView.xib */; };
@@ -75,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
+		1819B9811C74F52F00640E84 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		1819B9821C74F52F00640E84 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		18A64A161C74D148008B2170 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18A64A181C74D152008B2170 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -96,8 +98,6 @@
 		59130F161C63612100A45854 /* EventByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventByCategoryViewController.m; path = Controllers/Events/EventByCategoryViewController.m; sourceTree = "<group>"; };
 		592AE8221C69037B00256BDA /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
 		592AE8231C69037B00256BDA /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
-		5940EF721C74F28E0085DD0E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		5940EF731C74F28E0085DD0E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5962B05C1C650EA6009290B2 /* DAHexagonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAHexagonalView.h; path = Views/DAHexagonalView/DAHexagonalView.h; sourceTree = "<group>"; };
 		5962B05D1C650EA6009290B2 /* DAHexagonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAHexagonalView.m; path = Views/DAHexagonalView/DAHexagonalView.m; sourceTree = "<group>"; };
 		596A7BE91C6A1ED400EB74B1 /* DeveloperDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeveloperDetailView.h; path = Views/DeveloperDetail/DeveloperDetailView.h; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 				18A64A1D1C74D1AB008B2170 /* libsqlite3.tbd in Frameworks */,
 				18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */,
 				18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */,
-				5940EF741C74F28E0085DD0E /* Bolts.framework in Frameworks */,
-				5940EF751C74F28E0085DD0E /* Parse.framework in Frameworks */,
+				1819B9831C74F52F00640E84 /* Bolts.framework in Frameworks */,
+				1819B9841C74F52F00640E84 /* Parse.framework in Frameworks */,
 				18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */,
 				59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */,
 				59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */,
@@ -212,8 +212,8 @@
 		18A64A151C74CF3F008B2170 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5940EF721C74F28E0085DD0E /* Bolts.framework */,
-				5940EF731C74F28E0085DD0E /* Parse.framework */,
+				1819B9811C74F52F00640E84 /* Bolts.framework */,
+				1819B9821C74F52F00640E84 /* Parse.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1041,6 +1041,8 @@
 					16,
 					"$(PROJECT_DIR)/Revels",
 					16,
+					"$(PROJECT_DIR)/Revels",
+					16,
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1066,6 +1068,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Revels",
+					16,
 					"$(PROJECT_DIR)/Revels",
 					16,
 					"$(PROJECT_DIR)/Revels",
