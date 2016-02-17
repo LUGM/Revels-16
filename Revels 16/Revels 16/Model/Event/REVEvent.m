@@ -39,23 +39,22 @@
 	
 	if (dict && [dict isKindOfClass:[NSDictionary class]]) {
 		
-		event.uid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
-		event.name = [NSString stringWithFormat:@"%@", dict[@"ename"]];
-		event.eid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
-		event.detail = [NSString stringWithFormat:@"%@", dict[@"edesc"]];
-		event.maxTeamNo = [NSString stringWithFormat:@"%@", dict[@"emaxteamsize"]];
-		event.categoryName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
-		event.catID = [NSString stringWithFormat:@"%@", dict[@"cid"]];
-		event.isFavourite = NO;
-//		event.venue = [NSString stringWithFormat:@"%@", dict[@"venue"]];
-//		event.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
-		event.contactName = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
-		event.contactPhone = [NSString stringWithFormat:@"%@", dict[@"cntctno"]];
-		
-//		NSDateFormatter *formatter = [NSDateFormatter new];
-//		[formatter setDateFormat:@"d-MMM HH:mm"];
-//		event.startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"start_time"]]];
-//		event.endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"end_time"]]];
+		@try {
+			event.uid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
+			event.name = [NSString stringWithFormat:@"%@", dict[@"ename"]];
+			event.eid = [NSString stringWithFormat:@"%@", dict[@"eid"]];
+			event.detail = [NSString stringWithFormat:@"%@", dict[@"edesc"]];
+			event.maxTeamNo = [NSString stringWithFormat:@"%@", dict[@"emaxteamsize"]];
+			event.categoryName = [NSString stringWithFormat:@"%@", dict[@"cname"]];
+			event.catID = [NSString stringWithFormat:@"%@", dict[@"cid"]];
+			event.isFavourite = NO;
+			event.contactName = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
+			event.contactPhone = [NSString stringWithFormat:@"%@", dict[@"cntctno"]];
+		}
+		@catch (NSException *exception) {
+			NSLog(@"Event parsing error: %@", exception.reason);
+		}
+	
 	}
 	
 	return event;
@@ -102,9 +101,6 @@
 						}
 						@catch (NSException *exception) {
 							NSLog(@"Exception: %@", exception.description);
-						}
-						@finally {
-							
 						}
 					}
 					

@@ -70,25 +70,30 @@
 		
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		
-		if (statusCode == 200) {
+		@try {
+			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 			
-			if ([jsonData valueForKeyPath:@"pagination.next_url"])
-				nextURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [jsonData valueForKeyPath:@"pagination.next_url"]]];
-			
-			id imagesJSON = [jsonData valueForKey:@"data"];
-			NSArray *imagesArray = [InstagramData getArrayFromJSONData:imagesJSON];
-			
-			[instagramObjects addObjectsFromArray:imagesArray];
-			
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self.collectionView reloadData];
-//				[self.collectionView reloadInputViews];
-				SVHUD_HIDE;
-				lastIndexPath = [NSIndexPath indexPathForRow:instagramObjects.count - 1 inSection:0];
-			});
-			
+			if (statusCode == 200) {
+				
+				if ([jsonData valueForKeyPath:@"pagination.next_url"])
+					nextURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [jsonData valueForKeyPath:@"pagination.next_url"]]];
+				
+				id imagesJSON = [jsonData valueForKey:@"data"];
+				NSArray *imagesArray = [InstagramData getArrayFromJSONData:imagesJSON];
+				
+				[instagramObjects addObjectsFromArray:imagesArray];
+				
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[self.collectionView reloadData];
+					//				[self.collectionView reloadInputViews];
+					SVHUD_HIDE;
+					lastIndexPath = [NSIndexPath indexPathForRow:instagramObjects.count - 1 inSection:0];
+				});
+				
+			}
+		}
+		@catch (NSException *exception) {
+			NSLog(@"Insta fetch error: %@", exception.reason);
 		}
 		
 	}] resume];

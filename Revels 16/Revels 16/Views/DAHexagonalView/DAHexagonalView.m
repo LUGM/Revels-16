@@ -405,6 +405,7 @@
 	[buttonK setCenter:[self.hexPoints[0] CGPointValue]];
 	[buttonK setTag:4];
 	[buttonK addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[buttonK setEnabled:NO];
 	[self addSubview:buttonK];
 	
 	UIButton *buttonS = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
@@ -412,6 +413,7 @@
 	[buttonS setCenter:[self.hexPoints[3] CGPointValue]];
 	[buttonS setTag:5];
 	[buttonS addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[buttonS setEnabled:NO];
 	[self addSubview:buttonS];
 	
 	buttonK.transform = CGAffineTransformMakeScale(0, 0);
@@ -420,20 +422,24 @@
 	buttonS.transform = CGAffineTransformMakeScale(0, 0);
 	buttonS.alpha = 0.0;
 	
-	UIButton *buttonLUGM = [UIButton buttonWithType:UIButtonTypeCustom];
-	[buttonLUGM setBackgroundImage:[UIImage imageNamed:@"RevelsCircle"] forState:UIControlStateNormal];
-	[buttonLUGM setFrame:CGRectMake(0, 0, 120, 120)];
-	[buttonLUGM setCenter:CENTER];
-	[buttonLUGM setTag:10];
-	[buttonLUGM addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-	[self addSubview:buttonLUGM];
+	UIButton *buttonC = [UIButton buttonWithType:UIButtonTypeCustom];
+	[buttonC setBackgroundImage:[UIImage imageNamed:@"RevelsCircle"] forState:UIControlStateNormal];
+	[buttonC setFrame:CGRectMake(0, 0, 120, 120)];
+	[buttonC setCenter:CENTER];
+	[buttonC setTag:10];
+	[buttonC addTarget:self action:@selector(imageButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[buttonC setEnabled:NO];
+	[self addSubview:buttonC];
 	
-	buttonLUGM.transform = CGAffineTransformMakeScale(0, 0);
-	buttonLUGM.alpha = 0.0;
+	buttonC.transform = CGAffineTransformMakeScale(0, 0);
+	buttonC.alpha = 0.0;
 
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		drawsHex = YES;
 		[self setNeedsDisplay];
+		[buttonK setEnabled:YES];
+		[buttonS setEnabled:YES];
+		[buttonC setEnabled:YES];
 	});
 	
 	[UIView animateWithDuration:0.8 delay:3.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -445,8 +451,8 @@
 		if ([self.delegate respondsToSelector:@selector(finishedDeveloperAnimations)])
 			[self.delegate finishedDeveloperAnimations];
 		[UIView animateWithDuration:0.8 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
-			buttonLUGM.transform = CGAffineTransformIdentity;
-			buttonLUGM.alpha = 1.0;
+			buttonC.transform = CGAffineTransformIdentity;
+			buttonC.alpha = 1.0;
 		} completion:^(BOOL finished) {
 			if ([self.delegate respondsToSelector:@selector(finishedAllAnimationsDoSomethingAwesome)])
 				[self.delegate finishedAllAnimationsDoSomethingAwesome];

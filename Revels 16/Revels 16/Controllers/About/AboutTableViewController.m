@@ -13,7 +13,9 @@
 
 @end
 
-@implementation AboutTableViewController
+@implementation AboutTableViewController {
+	Reachability *reachability;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,7 +24,8 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem.
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,48 +35,41 @@
 
 #pragma mark - Sharing
 
+- (void)openURLWithString:(NSString *)URLString backupURLString:(NSString *)backupURLString {
+	reachability = [Reachability reachabilityForInternetConnection];
+	if (reachability.isReachable) {
+		if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:URLString]])
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:URLString]];
+		else
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:backupURLString]];
+	}
+	else {
+		SVHUD_FAILURE(@"No connection!");
+	}
+}
+
 - (IBAction)facebookAction:(id)sender {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"https://www.facebook.com/mitrevels/"]])
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/mitrevels/"]];
-    else
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.facebook.com/mitrevels/"]];
+	[self openURLWithString:@"https://www.facebook.com/mitrevels/" backupURLString:@"https://www.facebook.com/mitrevels/"];
 }
 
 - (IBAction)twitterAction:(id)sender {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?screen_name=revelsmit/"]])
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=revelsmit/"]];
-    else
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.twitter.com/revelsmit/"]];
+	[self openURLWithString:@"twitter://user?screen_name=revelsmit/" backupURLString:@"https://www.twitter.com/revelsmit/"];
 }
 
 - (IBAction)instagramAction:(id)sender {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://user?username=revelsmit"]])
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"instagram://user?username=revelsmit"]];
-    else
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.instagram.com/revelsmit/"]];
+	[self openURLWithString:@"instagram://user?username=revelsmit" backupURLString:@"https://www.instagram.com/revelsmit/"];
 }
 
 - (IBAction)youtubeAction:(id)sender {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"youtube://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw"]])
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"youtube://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw"]];
-    else
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtube.com/user/UC9gwWd47a0q042qwEgutjWw"]];
+	[self openURLWithString:@"youtube://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw" backupURLString:@"http://www.youtube.com/user/UC9gwWd47a0q042qwEgutjWw"];
 }
 
 - (IBAction)snapchatAction:(id)sender {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"snapchat://add/revelsmit"]])
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"snapchat://add/revelsmit"]];
-    else
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.snapchat.com/add/revelsmit/"]];
+	[self openURLWithString:@"snapchat://add/revelsmit" backupURLString:@"http://www.snapchat.com/add/revelsmit/"];
 }
 
 - (IBAction)browserAction:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.mitrevels.in"]];
-//    UINavigationController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterVCNav"];
-//    RegisterWebViewController *wvc = [navc.viewControllers firstObject];
-//    wvc.passedTitle = @"MIT Revels";
-//    wvc.passedURL = [NSURL URLWithString:@"https://www.mitrevels.in"];
-//    [self presentViewController:navc animated:YES completion:nil];
+	[self openURLWithString:@"https://www.mitrevels.in" backupURLString:@"https://www.mitrevels.in"];
 }
 
 - (IBAction)sharesheetAction:(id)sender {

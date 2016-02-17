@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CBStoreHouseRefreshControl.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>DGActivityIndicatorView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>KWTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +27,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>12AC35F9C569FA2A4543EFEDD802D2C9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>16744EBC82B5B6CC4A017E34D4F1C292</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8F7236A5DC0FE62AF851AA75DE08F9D6</key>
+		<key>7ED7435F72CA25FFCCFDC57C43F24DB0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADC8B724B52E2DFA9769F12883064F0E</key>
+		<key>B9EB5CACDFE0AABBB8E793EC40386A72</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA25BF9F7B95BFCAFD52D537D16B6924</key>
+		<key>E3BA849BC6F109F29F0C2B76802E77B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

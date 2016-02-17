@@ -407,7 +407,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoriesCell" textLabel="RMT-YH-g8j" imageView="s48-Cu-nym" rowHeight="80" style="IBUITableViewCellStyleDefault" id="MrL-vA-ffC" customClass="CategoriesTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoriesCell" textLabel="RMT-YH-g8j" imageView="s48-Cu-nym" rowHeight="80" style="IBUITableViewCellStyleDefault" id="MrL-vA-ffC">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MrL-vA-ffC" id="jGa-wJ-gF7">
@@ -519,7 +519,7 @@
                         <viewControllerLayoutGuide type="top" id="yrp-l1-4Bd"/>
                         <viewControllerLayoutGuide type="bottom" id="xy2-xn-KOm"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZiW-NU-T6E">
+                    <view key="view" contentMode="scaleToFill" id="ZiW-NU-T6E" customClass="AboutBackgroundView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -564,6 +564,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="NEN-jj-C12" secondAttribute="trailing" constant="-20" id="U6T-bZ-mfx"/>
                             <constraint firstItem="1kq-rp-JmZ" firstAttribute="leading" secondItem="ZiW-NU-T6E" secondAttribute="leadingMargin" constant="-20" id="f18-OG-C7v"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="skewedBackground" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="McS-fO-MAr">
                         <barButtonItem key="leftBarButtonItem" image="crossButton" id="rKi-a9-zaz">
@@ -1177,7 +1180,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Team ID: 222 Position: 2" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Iz8-ew-buu">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Team ID: 222 Position: 2" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Iz8-ew-buu">
                                             <rect key="frame" x="409" y="12" width="176" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1260,7 +1263,7 @@
                         <viewControllerLayoutGuide type="top" id="EvW-k7-kPl"/>
                         <viewControllerLayoutGuide type="bottom" id="0Xp-Hz-o1E"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="grV-kh-Czr">
+                    <view key="view" contentMode="scaleToFill" id="grV-kh-Czr" customClass="AboutBackgroundView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1350,8 +1353,14 @@ Said the joker to the thief,
                             <constraint firstItem="n3k-ln-kXD" firstAttribute="centerY" secondItem="BbT-li-mKu" secondAttribute="centerY" id="pDP-JY-kez"/>
                             <constraint firstItem="QWu-i2-oeo" firstAttribute="top" secondItem="BbT-li-mKu" secondAttribute="bottom" constant="8" id="pbN-aF-2lD"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="skewedBackground" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="browserButton" destination="CNs-tT-ujm" id="St5-Tb-Zvi"/>
+                        <outlet property="facebookButton" destination="BbT-li-mKu" id="kfd-Ir-k2X"/>
+                        <outlet property="githubButton" destination="n3k-ln-kXD" id="rqF-CR-aOR"/>
                         <outlet property="goBackLabel" destination="Gsm-9m-cdl" id="V9z-4m-PnC"/>
                         <outlet property="lugImageView" destination="FtS-Fy-jdC" id="g1u-LW-IQZ"/>
                         <outlet property="lugLabel" destination="QWu-i2-oeo" id="KN1-jY-Aqb"/>
@@ -1399,7 +1408,7 @@ Said the joker to the thief,
                         <viewControllerLayoutGuide type="top" id="v6N-8g-A8r"/>
                         <viewControllerLayoutGuide type="bottom" id="ikO-yR-PII"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YkO-nx-KRW">
+                    <view key="view" contentMode="scaleToFill" id="YkO-nx-KRW" customClass="InstaBackgroundView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2333,6 +2342,9 @@ Said the joker to the thief,
                             <constraint firstAttribute="trailingMargin" secondItem="DCf-ot-BCh" secondAttribute="trailing" constant="-20" id="jvO-oy-cRL"/>
                             <constraint firstItem="4QL-zK-cAs" firstAttribute="top" secondItem="zGd-Ch-DKj" secondAttribute="bottom" constant="8" id="sti-Yt-G5D"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="skewedBackground" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="3mH-yL-W3W"/>

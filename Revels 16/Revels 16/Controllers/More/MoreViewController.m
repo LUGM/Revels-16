@@ -54,11 +54,6 @@
 	self.transition = [KWTransition manager];
 	
 	if (SHeight < 600) {
-		[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-		self.navigationController.navigationBar.shadowImage = [UIImage new];
-		self.navigationController.navigationBar.translucent = YES;
-		self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-		self.navigationController.view.backgroundColor = [UIColor clearColor];
 		self.revelsLogoTopConstraint.constant = -36;
 		self.collectionViewBottomConstraint.constant = 8;
 		self.collectionViewSpacingConstraint.constant = 0;
@@ -77,6 +72,30 @@
 		self.collectionViewBottomConstraint.constant = 8;
 		self.collectionViewSpacingConstraint.constant = 8;
 	}
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	self.navigationController.navigationBar.shadowImage = [UIImage new];
+	self.navigationController.navigationBar.translucent = YES;
+	self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+	self.navigationController.view.backgroundColor = [UIColor clearColor];
+	
+	self.tabBarController.tabBar.barTintColor = [UIColor clearColor];
+	self.tabBarController.tabBar.backgroundColor = [UIColor clearColor];
+	self.tabBarController.tabBar.backgroundImage = [UIImage new];
+	self.tabBarController.tabBar.shadowImage = [UIImage new];
+	
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	
+	self.tabBarController.tabBar.barTintColor = nil;
+	self.tabBarController.tabBar.backgroundColor = nil;
+	self.tabBarController.tabBar.backgroundImage = nil;
+	self.tabBarController.tabBar.shadowImage = nil;
 	
 }
 

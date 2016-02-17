@@ -8,9 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "TGLGuillotineMenu.h"
-
-@interface AppDelegate () <TGLGuillotineMenuDelegate>
+@interface AppDelegate ()
 
 @end
 
@@ -18,35 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
-	
-	/*
-	
-	// RIP Yalantis
-	 
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-	
-	UINavigationController *ctvc = [storyboard instantiateViewControllerWithIdentifier:@"CategoriesVCNav"];
-	UINavigationController *evc = [storyboard instantiateViewControllerWithIdentifier:@"EventsVCNav"];
-	UINavigationController *ftvc = [storyboard instantiateViewControllerWithIdentifier:@"FavouritesVCNav"];
-	UINavigationController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"InstagramV2VCNav"];
-	UINavigationController *atvc = [storyboard instantiateViewControllerWithIdentifier:@"AboutVCNav"];
-	UINavigationController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DevelopersVCNav"];
-	
-	NSArray *vcArray = @[ctvc, evc, ftvc, ivc, atvc, dvc];
-	NSArray *titles  = @[@"Categories", @"Events", @"Favourites", @"#Revels16", @"About Us", @"Developers"];
-	NSArray *images  = @[@"categoriesIcon", @"eventsIcon", @"favouritesIcon", @"instagramLogo", @"aboutIcon", @"developersIcon"];
-	
-	TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titles andImagesTitles:images andStyle:TGLGuillotineMenuStyleCollection];
-//	menuVC.delegate = self;
-	
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.window.rootViewController = navController;
-	self.window.backgroundColor = [UIColor blackColor];
-	[self.window makeKeyAndVisible];
-	
-	 */
+	// Override point for customization after application launch
 	
 	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
 	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];
@@ -60,12 +30,21 @@
 	[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:15.0f], NSForegroundColorAttributeName:[UIColor blackColor]}];
 	
 	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
+	[[UITabBar appearance] setBarTintColor:GLOBAL_BACK_COLOR];
 	
-	[[UITabBarItem appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:11.0f], NSForegroundColorAttributeName:[UIColor blackColor]}
-											 forState:UIControlStateSelected];
+	[[UITabBarItem appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:11.0f], NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateSelected];
 	
-	[[UITabBarItem appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:11.0f], NSForegroundColorAttributeName:[UIColor lightGrayColor]}
-											 forState:UIControlStateNormal];
+	[[UITabBarItem appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:11.0f], NSForegroundColorAttributeName:[UIColor lightGrayColor]} forState:UIControlStateNormal];
+	
+	UIMutableApplicationShortcutItem *catItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.da.revels.categories" localizedTitle:@"Categories"];
+	[catItem setIcon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"44categoriesIcon"]];
+	UIMutableApplicationShortcutItem *eventsItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.da.revels.events" localizedTitle:@"Events"];
+	[eventsItem setIcon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"44eventIcon"]];
+	UIMutableApplicationShortcutItem *instaItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.da.revels.instafeed" localizedTitle:@"Instafeed"];
+	[instaItem setIcon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"44instagramLogo"]];
+	UIMutableApplicationShortcutItem *resultsItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.da.revels.results" localizedTitle:@"Results"];
+	[resultsItem setIcon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"44resultsIcon"]];
+	[application setShortcutItems:@[catItem, eventsItem, instaItem, resultsItem]];
 	
 	return YES;
 }
@@ -94,18 +73,18 @@
 	[self saveContext];
 }
 
-#pragma mark - TGL Guillotine Menu Delegate
+#pragma mark - Handling force touch shortcuts
 
-- (void)selectedMenuItemAtIndex:(NSInteger)index {
-	NSLog(@"Selected menu item at index %ld", index);
-}
-
-- (void)menuDidOpen {
-	NSLog(@"Menu did Open");
-}
-
-- (void)menuDidClose {
-	NSLog(@"Menu did Close");
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+	UITabBarController *tabBarVC = (UITabBarController *)self.window.rootViewController;
+	if ([shortcutItem.type containsString:@"categories"])
+		tabBarVC.selectedIndex = 0;
+	else if ([shortcutItem.type containsString:@"events"])
+		tabBarVC.selectedIndex = 1;
+	else if ([shortcutItem.type containsString:@"instafeed"])
+		tabBarVC.selectedIndex = 2;
+	else if ([shortcutItem.type containsString:@"results"])
+		tabBarVC.selectedIndex = 3;
 }
 
 #pragma mark - Core Data stack

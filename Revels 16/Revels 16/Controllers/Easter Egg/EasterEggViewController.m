@@ -19,12 +19,20 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *githubButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *browserButton;
+
+
 @end
 
 @implementation EasterEggViewController {
 	UISwipeGestureRecognizer *swipeGesture;
+	UITapGestureRecognizer *tapGesture;
 	
 	NSArray *quotes;
+	
+	Reachability *reachability;
 }
 
 - (void)viewDidLoad {
@@ -69,37 +77,82 @@
 	swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
 	[self.view addGestureRecognizer:swipeGesture];
 	
+	if (self.ptype == PresentationTypeYZ) {
+		tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+		tapGesture.numberOfTapsRequired = 3;
+		tapGesture.numberOfTouchesRequired = 3;
+		[self.view addGestureRecognizer:tapGesture];
+	}
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self animateLUG];
+	});
+	
+}
+
+- (void)animateLUG {
+	[UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		self.lugImageView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+		self.lugImageView.alpha = 0.9;
+		if (self.ptype == PresentationTypeZX) {
+			self.lugLabel.transform = CGAffineTransformMakeScale(0.98, 0.98);
+			self.manipalLabel.transform = CGAffineTransformMakeScale(0.98, 0.98);
+		}
+		if (self.ptype == PresentationTypeXY) {
+			self.githubButton.transform = CGAffineTransformMakeTranslation(0, 5);
+			self.facebookButton.transform = CGAffineTransformMakeTranslation(0, -5);
+			self.browserButton.transform = CGAffineTransformMakeTranslation(0, 5);
+		}
+	} completion:^(BOOL finished) {
+		[UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+			self.lugImageView.transform = CGAffineTransformIdentity;
+			self.lugImageView.alpha = 1.f;
+			if (self.ptype == PresentationTypeZX) {
+				self.lugLabel.transform = CGAffineTransformIdentity;
+				self.manipalLabel.transform = CGAffineTransformIdentity;
+			}
+			if (self.ptype == PresentationTypeXY) {
+				self.githubButton.transform = CGAffineTransformIdentity;
+				self.facebookButton.transform = CGAffineTransformIdentity;
+				self.browserButton.transform = CGAffineTransformIdentity;
+			}
+		} completion:^(BOOL finished) {
+			[self animateLUG];
+		}];
+	}];
 }
 
 - (void)handleSwipe:(UISwipeGestureRecognizer *)recognizer {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+	[self openURLWithString:@"http://www.youtube.com/watch?v=gHi5VTnr9cg"];
+}
+
+#pragma mark - Social
+
+- (void)openURLWithString:(NSString *)URLString {
+	reachability = [Reachability reachabilityForInternetConnection];
+	if (reachability.isReachable) {
+		if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:URLString]])
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:URLString]];
+	}
+	else {
+		SVHUD_FAILURE(@"No connection!");
+	}
 }
 
 - (IBAction)githubAction:(id)sender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/LUGM"]];
+	[self openURLWithString:@"https://github.com/LUGM"];
 }
 
 - (IBAction)facebookAction:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/LUGManipal/"]];
+	[self openURLWithString:@"https://www.facebook.com/LUGManipal/"];
 }
 
 - (IBAction)websiteAction:(id)sender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.lugmanipal.org"]];
+	[self openURLWithString:@"http://www.lugmanipal.org"];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

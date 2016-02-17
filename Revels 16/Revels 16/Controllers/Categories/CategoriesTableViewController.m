@@ -7,7 +7,6 @@
 //
 
 #import "CategoriesTableViewController.h"
-#import "CategoriesTableViewCell.h"
 #import "EventByCategoryViewController.h"
 #import <KWTransition/KWTransition.h>
 #import "REVCategory.h"
@@ -66,38 +65,50 @@
             SVHUD_FAILURE(@"Failed");
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self fetchSavedCategories];
+				[self.refreshControl endRefreshing];
             });
 			return;
         }
         
         PRINT_RESPONSE_HEADERS_AND_CODE
 		
-        id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//        NSLog(@"%@", jsonData);
-		
-        if (statusCode == 200)
-        {
-            id categoryJson = [jsonData valueForKey:@"data"];
-            if (categoryJson)
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                categories = [REVCategory getArrayFromJSONData:categoryJson];
-				[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
-                [self.tableView reloadData];
+		@try {
+			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+			//        NSLog(@"%@", jsonData);
+			
+			if (statusCode == 200)
+			{
+				id categoryJson = [jsonData valueForKey:@"data"];
+				if (categoryJson)
+				{
+					dispatch_async(dispatch_get_main_queue(), ^{
+						categories = [REVCategory getArrayFromJSONData:categoryJson];
+						[dataManager saveObject:categoryJson toDocumentsFile:@"categories.dat"];
+						[self.tableView reloadData];
+						[self.refreshControl endRefreshing];
+					});
+				}
+			}
+			else
+			{
+				SVHUD_FAILURE(@"Failed");
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[self fetchSavedCategories];
+					[self.refreshControl endRefreshing];
+				});
+			}
+		}
+		@catch (NSException *exception) {
+			NSLog(@"Category parsing error: %@", exception.reason);
+			SVHUD_FAILURE(@"Failed");
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self fetchSavedCategories];
 				[self.refreshControl endRefreshing];
-                });
-            }
-        }
-        else
-        {
-            SVHUD_FAILURE(@"Failed");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self fetchSavedCategories];
-				[self.refreshControl endRefreshing];
-            });
-        }
-        
-        SVHUD_HIDE;
+			});
+		}
+		@finally {
+			SVHUD_HIDE;
+		}
         
     }] resume];
 	
@@ -107,12 +118,21 @@
 	
 	if ([dataManager fileExistsInDocuments:@"categories.dat"]) {
 		
-		id jsonData = [dataManager fetchJSONFromDocumentsFileName:@"categories.dat"];
-		
-		if (jsonData != nil) {
-			categories = [REVCategory getArrayFromJSONData:jsonData];
-			[self.tableView reloadData];
+		@try {
+			id jsonData = [dataManager fetchJSONFromDocumentsFileName:@"categories.dat"];
+			
+			if (jsonData != nil) {
+				categories = [REVCategory getArrayFromJSONData:jsonData];
+				[self.tableView reloadData];
+			}
 		}
+		@catch (NSException *exception) {
+			NSLog(@"Category local parsing error: %@", exception.reason);
+		}
+		@finally {
+			
+		}
+		
 	}
 	
 }
@@ -134,10 +154,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	CategoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoriesCell" forIndexPath:indexPath];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoriesCell" forIndexPath:indexPath];
 	
 	if (cell == nil)
-		cell = [[CategoriesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"categoriesCell"];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"categoriesCell"];
 	
 	REVCategory *category = [categories objectAtIndex:indexPath.row];
 	

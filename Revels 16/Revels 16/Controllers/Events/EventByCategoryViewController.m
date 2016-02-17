@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toggleHeaderButton;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 
 @end
@@ -93,6 +94,14 @@
 	
 	cellBackgroundColors = [UIColor revelsColors];
 
+	UITableViewController *tvc = [[UITableViewController alloc] init];
+	tvc.tableView = self.tableView;
+	
+	self.refreshControl = [[UIRefreshControl alloc] init];
+	[self.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
+	
+	tvc.refreshControl = self.refreshControl;
+	
 }
 
 - (IBAction)dismissSelf:(id)sender {
@@ -144,15 +153,21 @@
 		
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		
-		if (error == nil && statusCode == 200) {
-			NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self fetchEventSchedule];
-				events = [NSMutableArray arrayWithArray:evnts];
-			});
+		@try {
+			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+			
+			if (error == nil && statusCode == 200) {
+				NSMutableArray *evnts = [REVEvent getEventsFromJSONData:[jsonData objectForKey:@"data"] storeIntoManagedObjectContext:managedObjectContext];
+				dispatch_async(dispatch_get_main_queue(), ^{
+					events = [NSMutableArray arrayWithArray:evnts];
+					[self fetchEventSchedule];
+				});
+			}
 		}
+		@catch (NSException *exception) {
+			NSLog(@"Events fetch error: %@", exception.reason);
+		}
+		
 		
 	}] resume];
 	
@@ -176,14 +191,20 @@
 		
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		
-		if (error == nil && statusCode == 200) {
-			NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				events = [NSMutableArray arrayWithArray:evnts];
-				[self fetchFilteredEvents];
-			});
+		@try {
+			id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+			
+			if (error == nil && statusCode == 200) {
+				NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
+				dispatch_async(dispatch_get_main_queue(), ^{
+					events = [NSMutableArray arrayWithArray:evnts];
+					[self.refreshControl endRefreshing];
+					[self fetchFilteredEvents];
+				});
+			}
+		}
+		@catch (NSException *exception) {
+			NSLog(@"Event schedule fetch error: %@", exception.reason);
 		}
 		
 		SVHUD_HIDE;

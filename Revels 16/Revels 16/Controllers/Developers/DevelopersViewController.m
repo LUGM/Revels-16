@@ -212,14 +212,17 @@ typedef struct EasterEggPosition {
 	if (easterEggController == EasterEggControllerX) {
 		eevc.lugText = @"Linux Users Group";
 		eevc.backgroundColor = [UIColor paleGreenColor];
+		eevc.ptype = PresentationTypeXY;
 	}
 	else if (easterEggController == EasterEggControllerY) {
 		eevc.lugText = @"Linux Users Group";
 		eevc.backgroundColor = [UIColor palePurpleColor];
+		eevc.ptype = PresentationTypeYZ;
 	}
 	else if (easterEggController == EasterEggControllerZ) {
 		eevc.lugText = @"Linux Users Group";
 		eevc.backgroundColor = [UIColor babyBlueColor];
+		eevc.ptype = PresentationTypeZX;
 	}
 	else if (easterEggController == EasterEggControllerF) {
 		eevc.lugText = @"Linux Users Group";

@@ -73,11 +73,10 @@
 		
 		PRINT_RESPONSE_HEADERS_AND_CODE;
 		
-		id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		
 		if (statusCode == 200) {
 			
 			@try {
+				id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 				id resultsJSON = [jsonData valueForKey:@"data"];
 				results = [REVResult getResultsFromJSONData:resultsJSON];
 				[dataManager saveObject:resultsJSON toDocumentsFile:@"results.dat"];
@@ -85,6 +84,9 @@
 			}
 			@catch (NSException *exception) {
 				NSLog(@"Results parsing error: %@", exception.reason);
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[self fetchSavedResults];
+				});
 			}
 			@finally {
 				dispatch_async(dispatch_get_main_queue(), ^{
@@ -184,6 +186,10 @@
 	
 	return header;
 	
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+	return [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

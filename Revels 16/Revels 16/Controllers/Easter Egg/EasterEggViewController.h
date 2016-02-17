@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, PresentationType) {
+	PresentationTypeXY,
+	PresentationTypeYZ,
+	PresentationTypeZX,
+};
+
 @interface EasterEggViewController : UIViewController
+
+@property (nonatomic) PresentationType ptype;
 
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, strong) UIImage *centerImage;

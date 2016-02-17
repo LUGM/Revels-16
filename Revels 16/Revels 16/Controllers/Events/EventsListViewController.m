@@ -7,6 +7,7 @@
 //
 
 #import "EventsListViewController.h"
+#import "AboutBackgroundView.h"
 #import <KWTransition/KWTransition.h>
 #import "EventsTableViewCell.h"
 #import "EventInfoView.h"
@@ -76,6 +77,8 @@
 	[self fetchLocalEvents];
 	
 	[self refreshAction:nil];
+	
+//	self.tableView.backgroundView = [[AboutBackgroundView alloc] initWithFrame:self.view.bounds];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
