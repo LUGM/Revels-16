@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1819B9831C74F52F00640E84 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1819B9811C74F52F00640E84 /* Bolts.framework */; };
-		1819B9841C74F52F00640E84 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1819B9821C74F52F00640E84 /* Parse.framework */; };
 		18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A161C74D148008B2170 /* SystemConfiguration.framework */; };
 		18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A181C74D152008B2170 /* CoreGraphics.framework */; };
 		18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */; };
@@ -16,7 +14,6 @@
 		5910A8EC1C737DC00063249F /* REVResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8EB1C737DC00063249F /* REVResult.m */; };
 		5910A8F71C73980D0063249F /* ResultsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5910A8F61C73980D0063249F /* ResultsHeaderView.xib */; };
 		5910A8FD1C7399880063249F /* ResultsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8FC1C7399880063249F /* ResultsHeaderView.m */; };
-		5910A90A1C749B7F0063249F /* InstaBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A9091C749B7F0063249F /* InstaBackgroundView.m */; };
 		5910A90D1C749B890063249F /* AboutBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A90C1C749B890063249F /* AboutBackgroundView.m */; };
 		5910A91F1C749BE20063249F /* RoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A91C1C749BE20063249F /* RoundedLabel.m */; };
 		5910A9201C749BE20063249F /* UnderlinedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A91E1C749BE20063249F /* UnderlinedLabel.m */; };
@@ -68,15 +65,11 @@
 		59FE79341C61C77700EC61A0 /* REVEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79321C61C77700EC61A0 /* REVEvent.m */; };
 		59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE79361C625A1000EC61A0 /* InstagramRootViewController.m */; };
 		59FE793C1C62670200EC61A0 /* CrossButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FE793B1C62670200EC61A0 /* CrossButton.m */; };
-		A36625A31C74E58D004F5D71 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36625A11C74E58D004F5D71 /* Bolts.framework */; };
-		A36625A41C74E58D004F5D71 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36625A21C74E58D004F5D71 /* Parse.framework */; };
 		EA71DC15ED94DADB4D40D132 /* libPods-Revels 16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0014C87AD6BCC627A4D33296 /* Pods-Revels 16.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.release.xcconfig"; sourceTree = "<group>"; };
-		1819B9811C74F52F00640E84 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		1819B9821C74F52F00640E84 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		18A64A161C74D148008B2170 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18A64A181C74D152008B2170 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -86,8 +79,6 @@
 		5910A8F61C73980D0063249F /* ResultsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultsHeaderView.xib; path = Views/Cells/ResultsHeaderView.xib; sourceTree = "<group>"; };
 		5910A8FB1C7399880063249F /* ResultsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsHeaderView.h; path = Views/Cells/ResultsHeaderView.h; sourceTree = "<group>"; };
 		5910A8FC1C7399880063249F /* ResultsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsHeaderView.m; path = Views/Cells/ResultsHeaderView.m; sourceTree = "<group>"; };
-		5910A9081C749B7F0063249F /* InstaBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstaBackgroundView.h; path = "Views/Insta Background/InstaBackgroundView.h"; sourceTree = "<group>"; };
-		5910A9091C749B7F0063249F /* InstaBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstaBackgroundView.m; path = "Views/Insta Background/InstaBackgroundView.m"; sourceTree = "<group>"; };
 		5910A90B1C749B890063249F /* AboutBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutBackgroundView.h; path = "Views/About Background/AboutBackgroundView.h"; sourceTree = "<group>"; };
 		5910A90C1C749B890063249F /* AboutBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutBackgroundView.m; path = "Views/About Background/AboutBackgroundView.m"; sourceTree = "<group>"; };
 		5910A91B1C749BE20063249F /* RoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabel.h; sourceTree = "<group>"; };
@@ -192,13 +183,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A36625A31C74E58D004F5D71 /* Bolts.framework in Frameworks */,
-				A36625A41C74E58D004F5D71 /* Parse.framework in Frameworks */,
 				18A64A1D1C74D1AB008B2170 /* libsqlite3.tbd in Frameworks */,
 				18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */,
 				18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */,
-				1819B9831C74F52F00640E84 /* Bolts.framework in Frameworks */,
-				1819B9841C74F52F00640E84 /* Parse.framework in Frameworks */,
 				18A64A171C74D148008B2170 /* SystemConfiguration.framework in Frameworks */,
 				59BE4C991C67548E004D28B7 /* QuartzCore.framework in Frameworks */,
 				59F7B2D11C5FC9BF00471695 /* ImageIO.framework in Frameworks */,
@@ -209,15 +196,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18A64A151C74CF3F008B2170 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1819B9811C74F52F00640E84 /* Bolts.framework */,
-				1819B9821C74F52F00640E84 /* Parse.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		5910A8E81C737DA20063249F /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,15 +222,6 @@
 				5910A90C1C749B890063249F /* AboutBackgroundView.m */,
 			);
 			name = "About Background View";
-			sourceTree = "<group>";
-		};
-		5910A9031C7493560063249F /* Insta Background View */ = {
-			isa = PBXGroup;
-			children = (
-				5910A9081C749B7F0063249F /* InstaBackgroundView.h */,
-				5910A9091C749B7F0063249F /* InstaBackgroundView.m */,
-			);
-			name = "Insta Background View";
 			sourceTree = "<group>";
 		};
 		5910A91A1C749BE20063249F /* Labels */ = {
@@ -329,7 +298,6 @@
 			children = (
 				59BA13C71C60D98C00679C49 /* Revels 16.entitlements */,
 				596F91CB1C5F18F9000CBD48 /* Assets.xcassets */,
-				18A64A151C74CF3F008B2170 /* Frameworks */,
 				596F91DB1C5F1B3A000CBD48 /* Libraries */,
 				596F91D61C5F1913000CBD48 /* App Delegate */,
 				596F91DA1C5F1931000CBD48 /* Model */,
@@ -384,7 +352,6 @@
 		596F91D91C5F1927000CBD48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5910A9031C7493560063249F /* Insta Background View */,
 				5910A8FE1C739E5C0063249F /* About Background View */,
 				59A7CE921C6CB6DC001682F3 /* EventInfoView */,
 				596A7BE81C6A1EB200EB74B1 /* DevDetailView */,
@@ -875,7 +842,6 @@
 				598189F31C707F2E00F9AB1D /* ResultsTableViewController.m in Sources */,
 				598189FD1C7081FF00F9AB1D /* RegisterWebViewController.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
-				5910A90A1C749B7F0063249F /* InstaBackgroundView.m in Sources */,
 				596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */,
 				5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
@@ -1043,6 +1009,8 @@
 					16,
 					"$(PROJECT_DIR)/Revels",
 					16,
+					"$(PROJECT_DIR)/Revels",
+					16,
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1068,6 +1036,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Revels",
+					16,
 					"$(PROJECT_DIR)/Revels",
 					16,
 					"$(PROJECT_DIR)/Revels",

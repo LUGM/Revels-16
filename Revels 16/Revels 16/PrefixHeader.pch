@@ -14,6 +14,7 @@
 
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
 
 #import "AppDelegate.h"
 #import "ASMutableURLRequest.h"
