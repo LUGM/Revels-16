@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>CBStoreHouseRefreshControl.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -14,10 +24,20 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>KWTransition.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>7</integer>
+		</dict>
+		<key>Parse.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>Pods-Revels 16.xcscheme</key>
 		<dict>
@@ -67,6 +87,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>218B2561AF14F3542AFA3B30D0523618</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>234E664DAC1BA50285F3CCAFBF6F6928</key>
 		<dict>
 			<key>primary</key>
@@ -82,7 +107,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4CD92797A96766670A60AE5197C5FB82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6A8A864C8981D5F15E371232CF9E7203</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>736E57AD5AEFAAF68D47AE4E8FCB8F68</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9B916844F33E8D3CF7BC18CE424E9721</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A4491943F5183F43B46FAC707A4CF84C</key>
 		<dict>
 			<key>primary</key>
@@ -127,12 +167,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AD0EF7B817603848764E07952F0087BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>ADC8B724B52E2DFA9769F12883064F0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B9EB5CACDFE0AABBB8E793EC40386A72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0349D3391FAFE0FD6112394286B808C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

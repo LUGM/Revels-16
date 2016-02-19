@@ -8,6 +8,7 @@
 
 #import "AboutTableViewController.h"
 #import "RegisterWebViewController.h"
+#import <Parse/Parse.h>
 
 @interface AboutTableViewController ()
 
@@ -15,6 +16,8 @@
 
 @implementation AboutTableViewController {
 	Reachability *reachability;
+    
+    NSString *finalWebsiteUrl;
 }
 
 - (void)viewDidLoad {
@@ -69,7 +72,16 @@
 }
 
 - (IBAction)browserAction:(id)sender {
-	[self openURLWithString:@"http://www.mitrevels.in" backupURLString:@"http://www.mitrevels.in"];
+    
+    SVHUD_SHOW;
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+        
+        finalWebsiteUrl = config[@"mobile_website"];
+        SVHUD_HIDE;
+        [self openURLWithString:finalWebsiteUrl backupURLString:finalWebsiteUrl];
+        
+    }];
 }
 
 - (IBAction)sharesheetAction:(id)sender {
