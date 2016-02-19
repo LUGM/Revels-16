@@ -1,5 +1,6 @@
 PODS:
   - Bolts/Tasks (1.6.0)
+  - DZNEmptyDataSet (1.7.3)
   - KWTransition (0.0.4)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
@@ -9,6 +10,7 @@ PODS:
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
+  - DZNEmptyDataSet
   - KWTransition
   - Parse
   - SDWebImage (~> 3.7)
@@ -16,6 +18,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
+  DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   KWTransition: 72d59eef35ddb67769eb99a41317fa75c0444e1b
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461

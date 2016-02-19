@@ -17,8 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch
-    
-    [NSThread sleepForTimeInterval:2.0];
 	
 	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
 	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];
@@ -30,6 +28,9 @@
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f], NSForegroundColorAttributeName: [UIColor darkTextColor]}];
 	
 //	[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:15.0f], NSForegroundColorAttributeName:[UIColor blackColor]}];
+	
+//	UINavigationController *navc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"DevelopersVCNav"];
+//	self.window.rootViewController = navc;
 	
 	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
 	[[UITabBar appearance] setBarTintColor:GLOBAL_BACK_COLOR];

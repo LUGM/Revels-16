@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HlH-9Z-7qo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VLq-1y-edG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -1139,10 +1139,78 @@
             </objects>
             <point key="canvasLocation" x="2569.5" y="3255"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="dBL-c1-kxr">
+            <objects>
+                <viewController id="VLq-1y-edG" customClass="LaunchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LXy-yj-UFN"/>
+                        <viewControllerLayoutGuide type="bottom" id="qYx-Im-p7P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gqt-Wl-LYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="RevelsCutout" translatesAutoresizingMaskIntoConstraints="NO" id="qEH-I9-ZcD">
+                                <rect key="frame" x="27" y="257" width="320" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="2r4-pU-pdv"/>
+                                    <constraint firstAttribute="width" secondItem="qEH-I9-ZcD" secondAttribute="height" multiplier="1:1" id="9PM-ku-8YG"/>
+                                    <constraint firstAttribute="width" constant="320" id="D5Q-w9-LBQ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2r4-pU-pdv"/>
+                                        <exclude reference="9PM-ku-8YG"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="RevelsQuill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1G-ie-ttU">
+                                <rect key="frame" x="24" y="254" width="153" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="153" id="UV9-9d-QRc"/>
+                                    <constraint firstAttribute="width" constant="153" id="nEn-Bb-puL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="RevelsQuill" translatesAutoresizingMaskIntoConstraints="NO" id="JSL-TZ-nhL">
+                                <rect key="frame" x="37" y="183" width="300" height="300"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="JSL-TZ-nhL" firstAttribute="centerY" secondItem="gqt-Wl-LYZ" secondAttribute="centerY" id="1Go-yI-YXi"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="qEH-I9-ZcD" secondAttribute="leading" id="2yz-jV-nEY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qEH-I9-ZcD" secondAttribute="trailing" constant="-1" id="5NP-hR-W20"/>
+                            <constraint firstItem="Q1G-ie-ttU" firstAttribute="top" secondItem="qEH-I9-ZcD" secondAttribute="top" constant="-3" id="93q-CD-mpr"/>
+                            <constraint firstItem="Q1G-ie-ttU" firstAttribute="leading" secondItem="qEH-I9-ZcD" secondAttribute="leading" constant="-3" id="9YS-Fb-lgd"/>
+                            <constraint firstItem="qEH-I9-ZcD" firstAttribute="centerX" secondItem="gqt-Wl-LYZ" secondAttribute="centerX" id="E0f-br-GvF"/>
+                            <constraint firstItem="qEH-I9-ZcD" firstAttribute="centerY" secondItem="gqt-Wl-LYZ" secondAttribute="centerY" id="GRM-jh-KqH"/>
+                            <constraint firstItem="JSL-TZ-nhL" firstAttribute="centerX" secondItem="gqt-Wl-LYZ" secondAttribute="centerX" id="RAy-mO-Nz0"/>
+                            <constraint firstItem="qEH-I9-ZcD" firstAttribute="centerY" secondItem="gqt-Wl-LYZ" secondAttribute="centerY" id="qx7-2K-rVG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2yz-jV-nEY"/>
+                                <exclude reference="5NP-hR-W20"/>
+                                <exclude reference="qx7-2K-rVG"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="mainQuillImageView" destination="JSL-TZ-nhL" id="TR9-XT-fiF"/>
+                        <outlet property="miniQuillImageView" destination="Q1G-ie-ttU" id="jgG-zv-Oo8"/>
+                        <outlet property="revelsImageView" destination="qEH-I9-ZcD" id="XR7-Wb-IoR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sir-f6-P4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2569.5" y="3354.5"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WPL-QY-lbz">
             <objects>
-                <tabBarController id="HlH-9Z-7qo" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="HlH-9Z-7qo" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="2rJ-8V-fAC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2276,7 +2344,7 @@ Said the joker to the thief,
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-ot-BCh">
-                                <rect key="frame" x="0.0" y="163" width="600" height="380"/>
+                                <rect key="frame" x="0.0" y="170" width="600" height="373"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="It6-3H-nvd"/>
@@ -2289,7 +2357,7 @@ Said the joker to the thief,
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="moreCell" id="yi7-F1-zDf" customClass="MoreCollectionViewCell">
-                                        <rect key="frame" x="12" y="117.5" width="90" height="160"/>
+                                        <rect key="frame" x="12" y="114" width="90" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="160"/>
@@ -2336,8 +2404,12 @@ Said the joker to the thief,
                                     <outlet property="delegate" destination="JTZ-pi-38Q" id="W0V-Ww-4Qc"/>
                                 </connections>
                             </collectionView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="RevelsCutout" translatesAutoresizingMaskIntoConstraints="NO" id="4QL-zK-cAs">
-                                <rect key="frame" x="210" y="72" width="180" height="83"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="RevelsCutout" translatesAutoresizingMaskIntoConstraints="NO" id="4QL-zK-cAs">
+                                <rect key="frame" x="210" y="72" width="180" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="YQQ-Rw-F8s"/>
+                                    <constraint firstAttribute="height" constant="90" id="idX-jp-dme"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -2425,7 +2497,8 @@ Said the joker to the thief,
         <image name="44resultsIcon" width="30" height="30"/>
         <image name="LUGM" width="240" height="240"/>
         <image name="Left" width="12" height="24"/>
-        <image name="RevelsCutout" width="180" height="83"/>
+        <image name="RevelsCutout" width="320" height="153"/>
+        <image name="RevelsQuill" width="300" height="300"/>
         <image name="Right" width="13" height="24"/>
         <image name="call" width="44" height="44"/>
         <image name="contact" width="44" height="44"/>

@@ -69,11 +69,11 @@
 }
 
 - (IBAction)browserAction:(id)sender {
-	[self openURLWithString:@"https://www.mitrevels.in" backupURLString:@"https://www.mitrevels.in"];
+	[self openURLWithString:@"http://www.mitrevels.in" backupURLString:@"http://www.mitrevels.in"];
 }
 
 - (IBAction)sharesheetAction:(id)sender {
-    NSURL *urlToShare = [NSURL URLWithString:@"https://www.mitrevels.in"];
+    NSURL *urlToShare = [NSURL URLWithString:@"http://www.mitrevels.in"];
     NSString *textToShare = @"Revels is one of the most awaited cultural and sports festival in the south circuit amongst the engineering colleges and is widely regarded as the largest event in Karnataka.";
     //    UIImage *imageToShare = [UIImage imageNamed:@"RevelsCircle"];
     NSArray *activityItems = @[textToShare, urlToShare];

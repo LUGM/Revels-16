@@ -7,12 +7,13 @@
 //
 
 #import "EventByCategoryViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "EventsTableViewCell.h"
 #import "EventHeaderTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
 
-@interface EventByCategoryViewController () <EKEventViewDelegate>
+@interface EventByCategoryViewController () <EKEventViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toggleHeaderButton;
@@ -105,6 +106,11 @@
 	
 	tvc.refreshControl = self.refreshControl;
 	
+	self.tableView.emptyDataSetSource = self;
+	self.tableView.emptyDataSetDelegate = self;
+	
+	self.tableView.tableFooterView = [UIView new];
+	
 }
 
 - (IBAction)dismissSelf:(id)sender {
@@ -154,6 +160,7 @@
 		
             if (error) {
                 SVHUD_FAILURE(@"Error!");
+				[self.refreshControl endRefreshing];
                 return;
             }
 		
@@ -196,6 +203,7 @@
 		
             if (error) {
                 SVHUD_FAILURE(@"Error!");
+				[self.refreshControl endRefreshing];
                 return;
             }
 		
@@ -415,6 +423,43 @@
 //	CGRect rect = [self.category.detail boundingRectWithSize:CGSizeMake(SWdith - 120, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.f]} context:nil];
 //	return rect.size.height + 32.f;
 	return headerViewShown * headerHeight;
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+	return [UIImage imageNamed:@"RevelsCutout"];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+	return GLOBAL_BACK_COLOR;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"No data found.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
+								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.f]};
+	
+	return [[NSAttributedString alloc] initWithString:@"Reload" attributes:attributes];
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+	return (events.count == 0);
+}
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+	[self fetchEvents];
 }
 
 #pragma mark - Cell button actions

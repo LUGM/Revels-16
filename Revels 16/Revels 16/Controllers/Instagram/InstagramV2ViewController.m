@@ -11,10 +11,11 @@
 #import "InstagramData.h"
 #import "InstagramDetailViewController.h"
 #import "InstagramRootViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <KWTransition/KWTransition.h>
 
-@interface InstagramV2ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate>
+@interface InstagramV2ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) KWTransition *transition;
 
@@ -36,11 +37,12 @@
 	
 	self.transition = [KWTransition manager];
 	
+	self.collectionView.emptyDataSetSource = self;
+	self.collectionView.emptyDataSetDelegate = self;
+	
 }
 
 - (IBAction)refreshAction:(id)sender {
-	
-	SVHUD_SHOW;
 	
 	NSString *URLString = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=fd6b3100174e42d7aa7d546574e01c76", kTagToSearch];
 	
@@ -58,6 +60,8 @@
 
 
 - (void)fetchImages {
+	
+	SVHUD_SHOW;
 	
 	ASMutableURLRequest *request = [ASMutableURLRequest getRequestWithURL:nextURL];
 	
@@ -147,6 +151,43 @@
 	[irvc setTransitioningDelegate:self];
 
 	[self.navigationController presentViewController:irvc animated:YES completion:nil];
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+	return [UIImage imageNamed:@"RevelsCutout"];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+	return GLOBAL_BACK_COLOR;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"No data found.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
+								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.f]};
+	
+	return [[NSAttributedString alloc] initWithString:@"Reload" attributes:attributes];
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+	return (instagramObjects.count == 0);
+}
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+	[self fetchImages];
 }
 
 #pragma mark - View controller animated transistioning

@@ -67,6 +67,13 @@
 		CGPointMake(CENTER.x - (2 * sqrt(3) * HEXWIDTH)/3, CENTER.y - 2 * HEXWIDTH)
 	};
 	
+	CGPoint strpts2[4] = {
+		CGPointMake(0.8 * strpts[0].x, 0.8 * strpts[0].y),
+		CGPointMake(0.8 * strpts[1].x, 0.8 * strpts[1].y),
+		CGPointMake(0.8 * strpts[2].x, 0.8 * strpts[2].y),
+		CGPointMake(0.8 * strpts[3].x, 0.8 * strpts[3].y)
+	};
+	
 	CGPoint entpts[6] = {
 		CGPointMake(CENTER.x - HEXWIDTH/6, CENTER.y + HEXSIDE/2),
 		CGPointMake(CENTER.x + HEXWIDTH/6, CENTER.y + HEXSIDE/2),
@@ -152,22 +159,22 @@
 	if (!imagePaths) {
 		
 		UIBezierPath *imagePath0 = [UIBezierPath bezierPath];
-		[imagePath0 moveToPoint:strpts[0]];
+		[imagePath0 moveToPoint:strpts2[0]];
 		[imagePath0 addLineToPoint:entpts[3]];
 		[imagePath0 addLineToPoint:hexpts[1]];
 		
 		UIBezierPath *imagePath1 = [UIBezierPath bezierPath];
-		[imagePath1 moveToPoint:strpts[1]];
+		[imagePath1 moveToPoint:strpts2[1]];
 		[imagePath1 addLineToPoint:entpts[1]];
 		[imagePath1 addLineToPoint:hexpts[2]];
 		
 		UIBezierPath *imagePath2 = [UIBezierPath bezierPath];
-		[imagePath2 moveToPoint:strpts[2]];
+		[imagePath2 moveToPoint:strpts2[2]];
 		[imagePath2 addLineToPoint:entpts[0]];
 		[imagePath2 addLineToPoint:hexpts[4]];
 		
 		UIBezierPath *imagePath3 = [UIBezierPath bezierPath];
-		[imagePath3 moveToPoint:strpts[3]];
+		[imagePath3 moveToPoint:strpts2[3]];
 		[imagePath3 addLineToPoint:entpts[4]];
 		[imagePath3 addLineToPoint:hexpts[5]];
 		

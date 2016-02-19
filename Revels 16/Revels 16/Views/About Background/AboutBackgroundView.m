@@ -29,7 +29,7 @@
 //	CGContextRef context = UIGraphicsGetCurrentContext();
 //	CGSize patSize = CGSizeMake(PATTERN_SIZE, PATTERN_SIZE);
 //	
-//	UIGraphicsBeginImageContext(CGSizeMake(patSize.width, patSize.height));
+//	UIGraphicsBeginImageContext(CGSizeMake(WIDTH, HEIGHT));
 	
 	CGPoint pts[4][6];
 	
@@ -76,7 +76,7 @@
 //	
 //	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 //	UIGraphicsEndImageContext();
-//	
+//
 //	[[UIColor colorWithPatternImage:image] setFill];
 //	CGContextFillRect(context, rect);
 	

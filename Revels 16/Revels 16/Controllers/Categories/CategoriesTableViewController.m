@@ -8,10 +8,11 @@
 
 #import "CategoriesTableViewController.h"
 #import "EventByCategoryViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <KWTransition/KWTransition.h>
 #import "REVCategory.h"
 
-@interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate>
+@interface CategoriesTableViewController () <UIViewControllerTransitioningDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) KWTransition *transition;
 
@@ -43,6 +44,11 @@
 	self.transition = [KWTransition manager];
 	
 	cellBackgroundColors = [UIColor revelsColors];
+	
+	self.tableView.tableFooterView = [UIView new];
+	
+	self.tableView.emptyDataSetSource = self;
+	self.tableView.emptyDataSetDelegate = self;
 	
 }
 
@@ -196,6 +202,43 @@
 	
 	[self.tabBarController presentViewController:navC animated:YES completion:nil];
 	
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+	return [UIImage imageNamed:@"RevelsCutout"];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+	return GLOBAL_BACK_COLOR;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"No data found.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
+								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.f]};
+	
+	return [[NSAttributedString alloc] initWithString:@"Reload" attributes:attributes];
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+	return (categories.count == 0);
+}
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+	[self fetchCategories:nil];
 }
 
 #pragma mark - View controller animated transistioning

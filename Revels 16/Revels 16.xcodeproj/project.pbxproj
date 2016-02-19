@@ -50,6 +50,7 @@
 		59CDF9FF1C72E85B00F41D72 /* UINavigationItem+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CDF9FE1C72E85B00F41D72 /* UINavigationItem+Loading.m */; };
 		59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */; };
 		59E086561C686DA80029EFED /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E086551C686DA80029EFED /* Reachability.m */; };
+		59E2883F1C77200700AB01F0 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E2883E1C77200700AB01F0 /* LaunchViewController.m */; };
 		59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A51C5F746A00471695 /* EventsListViewController.m */; };
 		59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2A81C5F74DB00471695 /* EventsTableViewCell.m */; };
 		59F7B2AD1C5F794B00471695 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F7B2AC1C5F794B00471695 /* FavouritesTableViewController.m */; };
@@ -142,6 +143,8 @@
 		59E086511C685A8A0029EFED /* EventHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventHeaderTableViewCell.m; path = Views/Cells/EventHeaderTableViewCell.m; sourceTree = "<group>"; };
 		59E086541C686DA80029EFED /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		59E086551C686DA80029EFED /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		59E2883D1C77200700AB01F0 /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchViewController.h; path = Controllers/Launch/LaunchViewController.h; sourceTree = "<group>"; };
+		59E2883E1C77200700AB01F0 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchViewController.m; path = Controllers/Launch/LaunchViewController.m; sourceTree = "<group>"; };
 		59F7B2661C5F64CE00471695 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		59F7B2A41C5F746A00471695 /* EventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsListViewController.h; path = Controllers/Events/EventsListViewController.h; sourceTree = "<group>"; };
 		59F7B2A51C5F746A00471695 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsListViewController.m; path = Controllers/Events/EventsListViewController.m; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 		596F91D81C5F191E000CBD48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				59E2883B1C771FF200AB01F0 /* Launch */,
 				596F91D71C5F191A000CBD48 /* Categories */,
 				59F7B2A31C5F744B00471695 /* Events */,
 				59F7B2BD1C5F800300471695 /* Instagram */,
@@ -559,6 +563,15 @@
 			path = Libraries/Reachability;
 			sourceTree = "<group>";
 		};
+		59E2883B1C771FF200AB01F0 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				59E2883D1C77200700AB01F0 /* LaunchViewController.h */,
+				59E2883E1C77200700AB01F0 /* LaunchViewController.m */,
+			);
+			name = Launch;
+			sourceTree = "<group>";
+		};
 		59F7B2A31C5F744B00471695 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,7 +747,6 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = HN3SCP8A52;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -856,6 +868,7 @@
 				5910A90D1C749B890063249F /* AboutBackgroundView.m in Sources */,
 				59FE791C1C61B3F700EC61A0 /* ExtendedNavBarView.m in Sources */,
 				598189F91C70810300F9AB1D /* MoreViewController.m in Sources */,
+				59E2883F1C77200700AB01F0 /* LaunchViewController.m in Sources */,
 				59F7B2BC1C5F7E6D00471695 /* ASMutableURLRequest.m in Sources */,
 				59E086561C686DA80029EFED /* Reachability.m in Sources */,
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
@@ -1020,7 +1033,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cbfd7ed9-cd62-4419-bb20-5bf2b833d210";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1059,7 +1072,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cbfd7ed9-cd62-4419-bb20-5bf2b833d210";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

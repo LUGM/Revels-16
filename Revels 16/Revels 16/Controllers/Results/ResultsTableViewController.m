@@ -7,11 +7,12 @@
 //
 
 #import "ResultsTableViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "ResultsHeaderView.h"
 #import "REVResult.h"
 #import "DADataManager.h"
 
-@interface ResultsTableViewController () <UISearchResultsUpdating>
+@interface ResultsTableViewController () <UISearchResultsUpdating, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
@@ -55,6 +56,11 @@
 	
 	self.selectedIndexPath = nil;
 	
+	self.tableView.emptyDataSetDelegate = self;
+	self.tableView.emptyDataSetSource = self;
+	
+	self.tableView.tableFooterView = [UIView new];
+	
 }
 
 - (IBAction)fetchResults:(id)sender {
@@ -74,6 +80,7 @@
                 // Handle error;
                 SVHUD_FAILURE(@"No connection!");
                 [self fetchSavedResults];
+				[self.refreshControl endRefreshing];
             }
 		
             PRINT_RESPONSE_HEADERS_AND_CODE;
@@ -195,20 +202,10 @@
 	
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-	return [[UIView alloc] initWithFrame:CGRectZero];
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	if (self.searchController.isActive)
 		return 0.f;
 	return 44.f;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-	if (section == [tableView numberOfSections] - 1)
-		return 10.f;
-	return 0.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -243,6 +240,43 @@
 		[tableView reloadData];
 	});
 
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+	return [UIImage imageNamed:@"RevelsCutout"];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+	return GLOBAL_BACK_COLOR;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"No data found.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
+								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.f]};
+	
+	return [[NSAttributedString alloc] initWithString:@"Reload" attributes:attributes];
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+	return (results.count == 0);
+}
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+	[self fetchResults:nil];
 }
 
 #pragma mark - Search controller updater

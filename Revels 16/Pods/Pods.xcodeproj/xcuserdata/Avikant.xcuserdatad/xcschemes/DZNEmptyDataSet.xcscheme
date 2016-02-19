@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C97418EB2774D5677682E1EC'
-               BlueprintName = 'KWTransition'
+               BlueprintIdentifier = '40611490F4F65E8D2A800425'
+               BlueprintName = 'DZNEmptyDataSet'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libKWTransition.a'>
+               BuildableName = 'libDZNEmptyDataSet.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

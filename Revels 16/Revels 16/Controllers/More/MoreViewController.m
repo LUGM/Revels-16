@@ -53,26 +53,6 @@
 	
 	self.transition = [KWTransition manager];
 	
-	if (SHeight < 600) {
-		self.revelsLogoTopConstraint.constant = -36;
-		self.collectionViewBottomConstraint.constant = 8;
-		self.collectionViewSpacingConstraint.constant = 0;
-		self.collectionViewLeadingConstraint.constant = 22;
-		self.collectionViewTrailingConstraint.constant = 22;
-		if (SHeight < 500) {
-			self.revelsLogoTopConstraint.constant = -48;
-			self.collectionViewSpacingConstraint.constant = -36;
-			self.collectionViewBottomConstraint.constant = -12;
-		}
-	}
-	else {
-		self.revelsLogoTopConstraint.constant = 20;
-		self.collectionViewLeadingConstraint.constant = 32;
-		self.collectionViewTrailingConstraint.constant = 32;
-		self.collectionViewBottomConstraint.constant = 8;
-		self.collectionViewSpacingConstraint.constant = 8;
-	}
-	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,6 +67,26 @@
 	self.tabBarController.tabBar.backgroundColor = [UIColor clearColor];
 	self.tabBarController.tabBar.backgroundImage = [UIImage new];
 	self.tabBarController.tabBar.shadowImage = [UIImage new];
+	
+	if (SHeight < 600) {
+		self.revelsLogoTopConstraint.constant = -24;
+		self.collectionViewBottomConstraint.constant = 8;
+		self.collectionViewSpacingConstraint.constant = -24;
+		self.collectionViewLeadingConstraint.constant = 22;
+		self.collectionViewTrailingConstraint.constant = 22;
+		if (SHeight < 500) {
+			self.revelsLogoTopConstraint.constant = -32;
+			self.collectionViewSpacingConstraint.constant = -44;
+			self.collectionViewBottomConstraint.constant = -12;
+		}
+	}
+	else {
+		self.revelsLogoTopConstraint.constant = 12;
+		self.collectionViewLeadingConstraint.constant = 32;
+		self.collectionViewTrailingConstraint.constant = 32;
+		self.collectionViewBottomConstraint.constant = 8;
+		self.collectionViewSpacingConstraint.constant = -12;
+	}
 	
 }
 
