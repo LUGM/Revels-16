@@ -50,8 +50,7 @@
 	[application setShortcutItems:@[catItem, eventsItem, instaItem, resultsItem]];
     
     // Parse init
-    [Parse setApplicationId:@"b4ySAS7cIdzpkfG78S61gsgXGnmejk7wC3VO4nOz"
-                  clientKey:@"o0U4wRrAgquQXj96F4fTx1C2LxUfyM3IobMJzyA0"];
+    [Parse setApplicationId:@"b4ySAS7cIdzpkfG78S61gsgXGnmejk7wC3VO4nOz" clientKey:@"o0U4wRrAgquQXj96F4fTx1C2LxUfyM3IobMJzyA0"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 	
@@ -85,7 +84,8 @@
 #pragma mark - Handling force touch shortcuts
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
-	UITabBarController *tabBarVC = (UITabBarController *)self.window.rootViewController;
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+	UITabBarController *tabBarVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
 	if ([shortcutItem.type containsString:@"categories"])
 		tabBarVC.selectedIndex = 0;
 	else if ([shortcutItem.type containsString:@"events"])
@@ -94,6 +94,7 @@
 		tabBarVC.selectedIndex = 2;
 	else if ([shortcutItem.type containsString:@"results"])
 		tabBarVC.selectedIndex = 3;
+	self.window.rootViewController = tabBarVC;
 }
 
 #pragma mark - Core Data stack

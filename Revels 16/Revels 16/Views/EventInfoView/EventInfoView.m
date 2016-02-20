@@ -81,9 +81,9 @@
 	[[UIApplication sharedApplication] openURL:phoneURL];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-	[self dismiss];
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//	[self dismiss];
+//}
 
 - (void)showInView:(UIView *)superview {
 	

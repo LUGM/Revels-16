@@ -1906,7 +1906,7 @@ Said the joker to the thief,
         <!--Navigation Controller-->
         <scene sceneID="KRd-ss-ZJV">
             <objects>
-                <navigationController storyboardIdentifier="InstagramV2VCNav" automaticallyAdjustsScrollViewInsets="NO" id="eJD-wB-heR" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InstagramV2VCNav" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="eJD-wB-heR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="44instagramLogo" id="j7D-ng-aGJ">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>

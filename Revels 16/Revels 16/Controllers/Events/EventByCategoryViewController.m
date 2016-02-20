@@ -46,6 +46,8 @@
     
     NSString *finalCategoryUrl;
     NSString *finalEventsUrl;
+	
+	CAGradientLayer *glayer;
 }
 
 - (void)viewDidLoad {
@@ -103,6 +105,10 @@
 	
 	self.refreshControl = [[UIRefreshControl alloc] init];
 	[self.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
+	
+	glayer = [CAGradientLayer layer];
+	glayer.frame = self.navigationController.view.bounds;
+	glayer.colors = @[(id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor], (id)[[UIColor colorWithWhite:0.1 alpha:0.6] CGColor], (id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor]];
 	
 	tvc.refreshControl = self.refreshControl;
 	
@@ -465,6 +471,10 @@
 #pragma mark - Cell button actions
 
 - (void)infoButtonPressed:(id)sender {
+	
+	glayer.frame = self.navigationController.view.bounds;
+	[self.navigationController.view.layer addSublayer:glayer];
+	
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
 	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
 	
@@ -473,6 +483,7 @@
 	[eventInfoView showInView:self.navigationController.view];
 	
 	[self.view addGestureRecognizer:tapGestureRecognizer];
+	
 }
 
 - (void)favsButtonPressed:(id)sender {
@@ -543,6 +554,8 @@
 	
 	[eventInfoView dismiss];
 	[self.view removeGestureRecognizer:tapGestureRecognizer];
+	
+	[glayer removeFromSuperlayer];
 	
 }
 

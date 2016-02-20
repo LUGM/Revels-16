@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *miniQuillImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *revelsImageView;
 
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
+
 @property (strong, nonatomic) KWTransition *transition;
 
 @end
@@ -28,28 +30,34 @@
 	self.miniQuillImageView.alpha = 0.0;
 	self.revelsImageView.alpha = 0.0;
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		[self animateLogo];
-	});
-	
 	self.transition = [KWTransition manager];
+	
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	
+	[self animateLogo];
+	
+	self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+	[self.view addGestureRecognizer:self.tapGesture];
 	
 }
 
 - (void)animateLogo {
 	
-	[UIView animateWithDuration:0.8 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+	[UIView animateWithDuration:0.6 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.mainQuillImageView.frame = self.miniQuillImageView.frame;
 	} completion:^(BOOL finished) {
 		
 	}];
 	
-	[UIView animateWithDuration:0.7 delay:0.7 options:UIViewAnimationOptionCurveEaseIn animations:^{
+	[UIView animateWithDuration:0.6 delay:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
 		self.mainQuillImageView.alpha = 0.0;
 		self.revelsImageView.alpha = 1.0;
 	} completion:^(BOOL finished) {
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			[self loadTabBarController];
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			if ([[self.view.window rootViewController] isKindOfClass:self.class])
+				[self loadTabBarController];
 		});
 	}];
 	
@@ -58,13 +66,21 @@
 - (void)loadTabBarController {
 	
 	UITabBarController *tabBarC = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-//	self.view.window.rootViewController = tabBarC;
 	
-	self.transition.style = KWTransitionStylePushUp;
+	self.transition.style = KWTransitionStyleUp;
 	
 	[tabBarC setTransitioningDelegate:self];
 	
-	[self presentViewController:tabBarC animated:YES completion:nil];
+	[self presentViewController:tabBarC animated:YES completion:^{
+		// Prevent unnecessary dismissals
+		self.view.window.rootViewController = tabBarC;
+	}];
+	
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+	
+	[self loadTabBarController];
 	
 }
 

@@ -26,6 +26,8 @@
 	
 	EventInfoView *eventInfoView;
 	UITapGestureRecognizer *tapGestureRecognizer;
+	
+	CAGradientLayer *glayer;
 }
 
 - (void)viewDidLoad {
@@ -44,6 +46,10 @@
 	
 	eventInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EventInfoView" owner:self options:nil] firstObject];
 	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+	
+	glayer = [CAGradientLayer layer];
+	glayer.frame = self.navigationController.view.bounds;
+	glayer.colors = @[(id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor], (id)[[UIColor colorWithWhite:0.1 alpha:0.6] CGColor], (id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor]];
 	
 	[self fetchFavourites];
 	
@@ -147,6 +153,10 @@
 #pragma mark - Cell button actions
 
 - (void)infoButtonPressed:(id)sender {
+	
+	glayer.frame = self.navigationController.view.bounds;
+	[self.navigationController.view.layer addSublayer:glayer];
+	
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
 	REVEvent *event = [events objectAtIndex:indexPath.row];
 	
@@ -222,6 +232,7 @@
 	[eventInfoView dismiss];
 	[self.view removeGestureRecognizer:tapGestureRecognizer];
 	
+	[glayer removeFromSuperlayer];
 }
 
 #pragma mark - Event kit view delegate

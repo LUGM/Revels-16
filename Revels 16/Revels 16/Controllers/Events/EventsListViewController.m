@@ -41,6 +41,8 @@
     
     NSString *finalEventsUrl;
     NSString *finalCategoryUrl;
+	
+	CAGradientLayer *glayer;
 }
 
 - (void)viewDidLoad {
@@ -81,6 +83,10 @@
 	[self fetchLocalEvents];
 	
 	[self refreshAction:nil];
+	
+	glayer = [CAGradientLayer layer];
+	glayer.frame = self.navigationController.view.bounds;
+	glayer.colors = @[(id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor], (id)[[UIColor colorWithWhite:0.1 alpha:0.6] CGColor], (id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor]];
 	
 	self.tableView.emptyDataSetDelegate = self;
 	self.tableView.emptyDataSetSource = self;
@@ -390,6 +396,9 @@
 
 - (void)infoButtonPressed:(id)sender {
 	
+	glayer.frame = self.navigationController.view.bounds;
+	[self.navigationController.view.layer addSublayer:glayer];
+	
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
 	REVEvent *event = [filteredEvents objectAtIndex:indexPath.row];
 	
@@ -400,7 +409,6 @@
 	[self.view addGestureRecognizer:tapGestureRecognizer];
 
 }
-
 
 - (void)favsButtonPressed:(id)sender {
 	
@@ -524,6 +532,8 @@
 #pragma mark - Tap gesture handler
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
+	
+	[glayer removeFromSuperlayer];
 	
 	[eventInfoView dismiss];
 	[self.view removeGestureRecognizer:tapGestureRecognizer];

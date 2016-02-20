@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) KWTransition *transition;
 
+@property (nonatomic, strong) UIView *statusBarBackgroundView;
+
 @end
 
 @implementation InstagramV2ViewController {
@@ -42,6 +44,30 @@
 	
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	
+	if (!self.statusBarBackgroundView) {
+		
+		CGRect barRect = CGRectMake(0.0f, 0.0f, SWdith, 26.0f);
+		
+		self.statusBarBackgroundView = [self.navigationController.view resizableSnapshotViewFromRect:barRect afterScreenUpdates:YES withCapInsets:UIEdgeInsetsZero];
+		
+		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+		NSArray *colors = [NSArray arrayWithObjects:
+						   (id)[[UIColor colorWithWhite:0 alpha:0] CGColor],
+						   (id)[[UIColor colorWithWhite:0 alpha:1] CGColor],
+						   nil];
+		[gradientLayer setColors:colors];
+		[gradientLayer setStartPoint:CGPointMake(0.0f, 1.0f)];
+		[gradientLayer setEndPoint:CGPointMake(0.0f, 0.7f)];
+		[gradientLayer setFrame:[self.statusBarBackgroundView bounds]];
+		
+		[[self.statusBarBackgroundView layer] setMask:gradientLayer];
+		[self.view addSubview:self.statusBarBackgroundView];
+	}
+	
+}
+
 - (IBAction)refreshAction:(id)sender {
 	
 	NSString *URLString = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=fd6b3100174e42d7aa7d546574e01c76", kTagToSearch];
@@ -51,13 +77,10 @@
 	Reachability *reachability = [Reachability reachabilityForInternetConnection];
 	if ([reachability isReachable])
 		[self fetchImages];
-	else {
-		SVHUD_FAILURE(@"Network error!");
-		[self dismissViewControllerAnimated:YES completion:nil];
-	}
+	else
+		SVHUD_FAILURE(@"No connection!");
 	
 }
-
 
 - (void)fetchImages {
 	
@@ -68,7 +91,7 @@
 	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
 		if (error) {
-			SVHUD_FAILURE(@"Error!");
+			SVHUD_FAILURE(@"Network Error!");
 			return;
 		}
 		
@@ -165,12 +188,23 @@
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
 	
-	NSString *text = @"No data found.";
+	NSString *text = @"No images right now.";
 	
 	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
 								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
 	
 	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"Check your connection and try again.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:14.f],
+								 NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+	
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {

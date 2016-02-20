@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, EasterEggController) {
 typedef struct EasterEggPosition {
 	EasterEggController pos1;
 	EasterEggController pos2;
+	EasterEggController pos3;
 } EasterEggPos_t;
 
 @interface DevelopersViewController () <DAHexagonalViewDelegate, UIViewControllerTransitioningDelegate>
@@ -49,7 +50,7 @@ typedef struct EasterEggPosition {
 	devDetailView = [[[NSBundle mainBundle] loadNibNamed:@"DeveloperDetailView" owner:nil options:nil] firstObject];
 	
 	motionManager = [[CMMotionManager alloc] init];
-	motionManager.deviceMotionUpdateInterval = 1.0/20.0;
+	motionManager.deviceMotionUpdateInterval = 1.0/5.0;
 	
 	self.transition = [KWTransition manager];
 	
@@ -140,21 +141,46 @@ typedef struct EasterEggPosition {
 	
 	[motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData * _Nullable accelerometerData, NSError * _Nullable error) {
 		
-		if (fabs(accelerometerData.acceleration.x) > 2) {
+		if (fabs(accelerometerData.acceleration.x) > 3) {
 //			printf("Acceletation.x = %.3f\n", accelerometerData.acceleration.x);
 //			[self presentEasterEggController:EasterEggControllerX];
+			
+			/*
+			if (eePos.pos1 == EasterEggControllerY && eePos.pos2 == EasterEggControllerZ) {
+				eePos.pos3 = EasterEggControllerX;
+				[self presentEasterEggController:EasterEggControllerX];
+			}
+			else if (eePos.pos1 == EasterEggControllerZ)
+				eePos.pos2 = EasterEggControllerX;
+			else
+				eePos.pos1 = EasterEggControllerX;
+			 */
+			
 			if (eePos.pos1 == EasterEggControllerZ) {
 				eePos.pos2 = EasterEggControllerX;
 				[self presentEasterEggController:EasterEggControllerX];
 			}
 			else
 				eePos.pos1 = EasterEggControllerX;
+			
 		}
 		
-		if (fabs(accelerometerData.acceleration.y) > 2) {
+		if (fabs(accelerometerData.acceleration.y) > 3) {
 //			printf("Acceletation.y = %.3f\n", accelerometerData.acceleration.y);
 //			[self presentEasterEggController:EasterEggControllerY];
-			if (eePos.pos1 == EasterEggControllerX) {
+			
+			/*
+			if (eePos.pos1 == EasterEggControllerZ && eePos.pos2 == EasterEggControllerX) {
+				eePos.pos3 = EasterEggControllerY;
+				[self presentEasterEggController:EasterEggControllerY];
+			}
+			else if (eePos.pos1 == EasterEggControllerX)
+				eePos.pos2 = EasterEggControllerY;
+			else
+				eePos.pos1 = EasterEggControllerY;
+			 */
+			
+			if (eePos.pos1 == EasterEggControllerZ) {
 				eePos.pos2 = EasterEggControllerY;
 				[self presentEasterEggController:EasterEggControllerY];
 			}
@@ -162,9 +188,21 @@ typedef struct EasterEggPosition {
 				eePos.pos1 = EasterEggControllerY;
 		}
 		
-		if (fabs(accelerometerData.acceleration.z) > 2) {
+		if (fabs(accelerometerData.acceleration.z) > 3) {
 //			printf("Acceletation.z = %.3f\n", accelerometerData.acceleration.z);
 //			[self presentEasterEggController:EasterEggControllerZ];
+			
+			/*
+			if (eePos.pos1 == EasterEggControllerX && eePos.pos2 == EasterEggControllerY) {
+				eePos.pos3 = EasterEggControllerZ;
+				[self presentEasterEggController:EasterEggControllerZ];
+			}
+			else if (eePos.pos1 == EasterEggControllerY)
+				eePos.pos2 = EasterEggControllerZ;
+			else
+				eePos.pos1 = EasterEggControllerZ;
+			 */
+			
 			if (eePos.pos1 == EasterEggControllerY) {
 				eePos.pos2 = EasterEggControllerZ;
 				[self presentEasterEggController:EasterEggControllerZ];
