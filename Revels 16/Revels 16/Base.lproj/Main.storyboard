@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VLq-1y-edG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VLq-1y-edG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -1175,15 +1175,23 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="RevelsQuill" translatesAutoresizingMaskIntoConstraints="NO" id="JSL-TZ-nhL">
                                 <rect key="frame" x="37" y="183" width="300" height="300"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to skip." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrZ-YS-sX6">
+                                <rect key="frame" x="151" y="640.5" width="73" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JSL-TZ-nhL" firstAttribute="centerY" secondItem="gqt-Wl-LYZ" secondAttribute="centerY" id="1Go-yI-YXi"/>
+                            <constraint firstItem="qYx-Im-p7P" firstAttribute="top" secondItem="FrZ-YS-sX6" secondAttribute="bottom" constant="8" id="2GK-oU-5oM"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qEH-I9-ZcD" secondAttribute="leading" id="2yz-jV-nEY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qEH-I9-ZcD" secondAttribute="trailing" constant="-1" id="5NP-hR-W20"/>
                             <constraint firstItem="Q1G-ie-ttU" firstAttribute="top" secondItem="qEH-I9-ZcD" secondAttribute="top" constant="-3" id="93q-CD-mpr"/>
                             <constraint firstItem="Q1G-ie-ttU" firstAttribute="leading" secondItem="qEH-I9-ZcD" secondAttribute="leading" constant="-3" id="9YS-Fb-lgd"/>
                             <constraint firstItem="qEH-I9-ZcD" firstAttribute="centerX" secondItem="gqt-Wl-LYZ" secondAttribute="centerX" id="E0f-br-GvF"/>
+                            <constraint firstItem="FrZ-YS-sX6" firstAttribute="centerX" secondItem="gqt-Wl-LYZ" secondAttribute="centerX" id="Edd-IT-hCo"/>
                             <constraint firstItem="qEH-I9-ZcD" firstAttribute="centerY" secondItem="gqt-Wl-LYZ" secondAttribute="centerY" id="GRM-jh-KqH"/>
                             <constraint firstItem="JSL-TZ-nhL" firstAttribute="centerX" secondItem="gqt-Wl-LYZ" secondAttribute="centerX" id="RAy-mO-Nz0"/>
                             <constraint firstItem="qEH-I9-ZcD" firstAttribute="centerY" secondItem="gqt-Wl-LYZ" secondAttribute="centerY" id="qx7-2K-rVG"/>
@@ -1340,30 +1348,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Linux Users Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-i2-oeo">
-                                <rect key="frame" x="20" y="503" width="560" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LUG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-i2-oeo" customClass="DynamicLabel">
+                                <rect key="frame" x="20" y="505.5" width="560" height="41"/>
                                 <fontDescription key="fontDescription" name="PixelCalculon" family="Pixel Calculon" pointSize="32"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="wordSpeed">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manipal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-s9-zhu">
-                                <rect key="frame" x="240.5" y="552" width="120.5" height="28"/>
-                                <fontDescription key="fontDescription" name="PixelCalculon" family="Pixel Calculon" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LUG Manipal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-s9-zhu">
+                                <rect key="frame" x="20" y="554" width="560" height="25.5"/>
+                                <fontDescription key="fontDescription" name="PixelCalculon" family="Pixel Calculon" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE DOWN TO GO BACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-9m-cdl" customClass="UnderlinedLabel">
-                                <rect key="frame" x="225.5" y="28" width="149.5" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE DOWN TO GO BACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-9m-cdl" customClass="DynamicLabel">
+                                <rect key="frame" x="20" y="28" width="560" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="KPg-dp-sAZ"/>
+                                    <constraint firstAttribute="height" constant="28" id="KPg-dp-sAZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="LeagueGothic-Regular" family="League Gothic" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsUnderline" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="wordSpeed">
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
@@ -1375,7 +1393,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P5r-iv-0gl">
-                                <rect key="frame" x="20" y="68" width="560" height="134"/>
+                                <rect key="frame" x="20" y="64" width="560" height="138"/>
                                 <string key="text">"There must be some kind of way out of here, "
 Said the joker to the thief,
 "There's too much confusion, I can't get no relief."</string>
@@ -1384,21 +1402,21 @@ Said the joker to the thief,
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbT-li-mKu">
-                                <rect key="frame" x="280" y="455" width="40" height="40"/>
+                                <rect key="frame" x="280" y="457.5" width="40" height="40"/>
                                 <state key="normal" image="sfacebook"/>
                                 <connections>
                                     <action selector="facebookAction:" destination="XdH-5u-Gnw" eventType="touchUpInside" id="ako-0Y-LQL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3k-ln-kXD">
-                                <rect key="frame" x="232" y="455" width="40" height="40"/>
+                                <rect key="frame" x="224" y="457.5" width="40" height="40"/>
                                 <state key="normal" image="sgithub"/>
                                 <connections>
                                     <action selector="githubAction:" destination="XdH-5u-Gnw" eventType="touchUpInside" id="fDI-p0-PF5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNs-tT-ujm">
-                                <rect key="frame" x="328" y="455" width="40" height="40"/>
+                                <rect key="frame" x="336" y="457.5" width="40" height="40"/>
                                 <state key="normal" image="ssafari"/>
                                 <connections>
                                     <action selector="websiteAction:" destination="XdH-5u-Gnw" eventType="touchUpInside" id="P12-pw-t73"/>
@@ -1413,15 +1431,19 @@ Said the joker to the thief,
                             <constraint firstItem="Wgh-s9-zhu" firstAttribute="top" secondItem="QWu-i2-oeo" secondAttribute="bottom" constant="8" id="9DC-Pd-fwc"/>
                             <constraint firstAttribute="leadingMargin" secondItem="P5r-iv-0gl" secondAttribute="leading" id="9Vb-qV-TQf"/>
                             <constraint firstAttribute="leadingMargin" secondItem="QWu-i2-oeo" secondAttribute="leading" id="AEB-DX-boG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wgh-s9-zhu" secondAttribute="trailing" id="CsY-A5-TJC"/>
                             <constraint firstItem="Gsm-9m-cdl" firstAttribute="centerX" secondItem="grV-kh-Czr" secondAttribute="centerX" id="FN5-gF-E2J"/>
-                            <constraint firstItem="CNs-tT-ujm" firstAttribute="leading" secondItem="BbT-li-mKu" secondAttribute="trailing" constant="8" id="N4p-wU-hQc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Gsm-9m-cdl" secondAttribute="leading" id="IEw-On-Pkb"/>
+                            <constraint firstItem="CNs-tT-ujm" firstAttribute="leading" secondItem="BbT-li-mKu" secondAttribute="trailing" constant="16" id="N4p-wU-hQc"/>
                             <constraint firstItem="CNs-tT-ujm" firstAttribute="centerY" secondItem="BbT-li-mKu" secondAttribute="centerY" id="RUB-To-fWf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gsm-9m-cdl" secondAttribute="trailing" id="RvJ-Ro-jfj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QWu-i2-oeo" secondAttribute="trailing" id="ZHX-27-Uqp"/>
                             <constraint firstItem="BbT-li-mKu" firstAttribute="centerX" secondItem="QWu-i2-oeo" secondAttribute="centerX" id="ah8-vV-ahG"/>
-                            <constraint firstItem="BbT-li-mKu" firstAttribute="leading" secondItem="n3k-ln-kXD" secondAttribute="trailing" constant="8" id="al8-F4-eLp"/>
+                            <constraint firstItem="BbT-li-mKu" firstAttribute="leading" secondItem="n3k-ln-kXD" secondAttribute="trailing" constant="16" id="al8-F4-eLp"/>
                             <constraint firstItem="Gsm-9m-cdl" firstAttribute="top" secondItem="EvW-k7-kPl" secondAttribute="bottom" constant="8" id="cha-dE-oTp"/>
                             <constraint firstItem="FtS-Fy-jdC" firstAttribute="centerY" secondItem="grV-kh-Czr" secondAttribute="centerY" id="dnQ-qi-GeU"/>
                             <constraint firstItem="FtS-Fy-jdC" firstAttribute="top" secondItem="P5r-iv-0gl" secondAttribute="bottom" constant="8" id="hMi-y0-Y2y"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Wgh-s9-zhu" secondAttribute="leading" id="hQv-Cy-h8Z"/>
                             <constraint firstItem="P5r-iv-0gl" firstAttribute="top" secondItem="Gsm-9m-cdl" secondAttribute="bottom" constant="8" id="ha2-aL-CSx"/>
                             <constraint firstItem="n3k-ln-kXD" firstAttribute="centerY" secondItem="BbT-li-mKu" secondAttribute="centerY" id="pDP-JY-kez"/>
                             <constraint firstItem="QWu-i2-oeo" firstAttribute="top" secondItem="BbT-li-mKu" secondAttribute="bottom" constant="8" id="pbN-aF-2lD"/>
@@ -1429,6 +1451,12 @@ Said the joker to the thief,
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="skewedBackground" value="NO"/>
                         </userDefinedRuntimeAttributes>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FN5-gF-E2J"/>
+                                <exclude reference="4Zh-mV-Izv"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="browserButton" destination="CNs-tT-ujm" id="St5-Tb-Zvi"/>

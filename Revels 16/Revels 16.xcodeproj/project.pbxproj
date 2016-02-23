@@ -19,6 +19,7 @@
 		5910A9201C749BE20063249F /* UnderlinedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A91E1C749BE20063249F /* UnderlinedLabel.m */; };
 		59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F161C63612100A45854 /* EventByCategoryViewController.m */; };
 		592AE8241C69037B00256BDA /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE8231C69037B00256BDA /* Colours.m */; };
+		594568801C7CBF28009A0336 /* DynamicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5945687F1C7CBF28009A0336 /* DynamicLabel.m */; };
 		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
 		596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */; };
 		596A7BEF1C6A1EF400EB74B1 /* DeveloperDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596A7BEE1C6A1EF400EB74B1 /* DeveloperDetailView.xib */; };
@@ -90,6 +91,8 @@
 		59130F161C63612100A45854 /* EventByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventByCategoryViewController.m; path = Controllers/Events/EventByCategoryViewController.m; sourceTree = "<group>"; };
 		592AE8221C69037B00256BDA /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
 		592AE8231C69037B00256BDA /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
+		5945687E1C7CBF28009A0336 /* DynamicLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicLabel.h; sourceTree = "<group>"; };
+		5945687F1C7CBF28009A0336 /* DynamicLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicLabel.m; sourceTree = "<group>"; };
 		5962B05C1C650EA6009290B2 /* DAHexagonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAHexagonalView.h; path = Views/DAHexagonalView/DAHexagonalView.h; sourceTree = "<group>"; };
 		5962B05D1C650EA6009290B2 /* DAHexagonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAHexagonalView.m; path = Views/DAHexagonalView/DAHexagonalView.m; sourceTree = "<group>"; };
 		596A7BE91C6A1ED400EB74B1 /* DeveloperDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeveloperDetailView.h; path = Views/DeveloperDetail/DeveloperDetailView.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				5910A91C1C749BE20063249F /* RoundedLabel.m */,
 				5910A91D1C749BE20063249F /* UnderlinedLabel.h */,
 				5910A91E1C749BE20063249F /* UnderlinedLabel.m */,
+				5945687E1C7CBF28009A0336 /* DynamicLabel.h */,
+				5945687F1C7CBF28009A0336 /* DynamicLabel.m */,
 			);
 			name = Labels;
 			path = Views/Labels;
@@ -883,6 +888,7 @@
 				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
 				5910A91F1C749BE20063249F /* RoundedLabel.m in Sources */,
+				594568801C7CBF28009A0336 /* DynamicLabel.m in Sources */,
 				5910A8EC1C737DC00063249F /* REVResult.m in Sources */,
 				59FE79331C61C77700EC61A0 /* REVEvent+CoreDataProperties.m in Sources */,
 				59F7B2D41C5FD04000471695 /* InstagramDetailViewController.m in Sources */,

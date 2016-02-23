@@ -12,4 +12,6 @@
 
 @property (nonatomic) IBInspectable BOOL skewedBackground;
 
+- (void)jiggleBackground;
+
 @end

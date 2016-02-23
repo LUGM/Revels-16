@@ -11,7 +11,7 @@
 #import "EventInfoView.h"
 #import "REVEvent.h"
 
-@interface FavouritesTableViewController () <EKEventViewDelegate>
+@interface FavouritesTableViewController () <EKEventViewDelegate, EventInfoViewDelegate>
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
@@ -26,8 +26,6 @@
 	
 	EventInfoView *eventInfoView;
 	UITapGestureRecognizer *tapGestureRecognizer;
-	
-	CAGradientLayer *glayer;
 }
 
 - (void)viewDidLoad {
@@ -45,11 +43,8 @@
 	cellBackgroundColors = [UIColor revelsColors];
 	
 	eventInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EventInfoView" owner:self options:nil] firstObject];
+	eventInfoView.delegate = self;
 	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-	
-	glayer = [CAGradientLayer layer];
-	glayer.frame = self.navigationController.view.bounds;
-	glayer.colors = @[(id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor], (id)[[UIColor colorWithWhite:0.1 alpha:0.6] CGColor], (id)[[UIColor colorWithWhite:0.9 alpha:0.1] CGColor]];
 	
 	[self fetchFavourites];
 	
@@ -154,9 +149,6 @@
 
 - (void)infoButtonPressed:(id)sender {
 	
-	glayer.frame = self.navigationController.view.bounds;
-	[self.navigationController.view.layer addSublayer:glayer];
-	
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sender tag] inSection:0];
 	REVEvent *event = [events objectAtIndex:indexPath.row];
 	
@@ -225,14 +217,70 @@
 	[[UIApplication sharedApplication] openURL:phoneURL];
 }
 
+
+#pragma mark - Event info view delegate
+
+- (void)didPresentEventInfoView {
+	
+	[self.view addGestureRecognizer:tapGestureRecognizer];
+	
+	[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+		self.view.alpha = 0.7;
+	} completion:nil];
+	
+}
+
+- (void)willRemoveEventInfoView {
+	
+	[eventInfoView dismiss];
+	
+	[self.view removeGestureRecognizer:tapGestureRecognizer];
+	
+	[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+		self.view.alpha = 1.f;
+	} completion:nil];
+	
+}
+
+- (void)timeButtonPressedForEvent:(REVEvent *)event {
+	
+	if (event) {
+		
+		EKEventStore *ekEventStore = [[EKEventStore alloc] init];
+		EKEvent *ekEvent = [EKEvent eventWithEventStore:ekEventStore];
+		
+		if (!([EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] == EKAuthorizationStatusAuthorized)) {
+			[ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+				if (!granted) {
+					SVHUD_FAILURE(@"Access denied!");
+					return;
+				}
+			}];
+		}
+		
+		ekEvent.title = event.name;
+		ekEvent.startDate = event.startDate;
+		ekEvent.endDate = event.endDate;
+		ekEvent.location = event.venue;
+		
+		[ekEvent setCalendar:[ekEventStore defaultCalendarForNewEvents]];
+		
+		EKEventViewController *eventViewController = [[EKEventViewController alloc] init];
+		eventViewController.event = ekEvent;
+		eventViewController.allowsEditing = YES;
+		eventViewController.delegate = self;
+		UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:eventViewController];
+		[self presentViewController:navigationController animated:YES completion:nil];
+		
+	}
+	
+}
+
 #pragma mark - Tap gesture handler
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
 	
-	[eventInfoView dismiss];
-	[self.view removeGestureRecognizer:tapGestureRecognizer];
-	
-	[glayer removeFromSuperlayer];
+	[self willRemoveEventInfoView];
 }
 
 #pragma mark - Event kit view delegate

@@ -16,6 +16,7 @@
 
 @implementation AboutBackgroundView {
 	NSArray <UIColor *> *colors;
+	NSInteger colorOffset;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -68,7 +69,7 @@
 	}
 	
 	for (NSInteger i = 0; i < paths.count; i++) {
-		[colors[i % colors.count] setFill];
+		[colors[(i + colorOffset) % colors.count] setFill];
 		[paths[i] fill];
 	}
 	
@@ -82,5 +83,18 @@
 	
 }
 
+- (void)jiggleBackground {
+	
+	colorOffset += 1;
+	if (colorOffset > colors.count - 1)
+		colorOffset = 0;
+	
+	[self setNeedsDisplay];
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self jiggleBackground];
+	});
+	
+}
 
 @end

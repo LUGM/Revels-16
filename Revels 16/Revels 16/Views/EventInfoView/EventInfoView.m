@@ -10,6 +10,8 @@
 
 @implementation EventInfoView {
 	REVEvent *evnt;
+	
+	BOOL presented;
 }
 
 
@@ -70,10 +72,13 @@
 	self.eventDetailsTextView.textAlignment = NSTextAlignmentJustified;
 	self.eventDateTimeLabel.text = [NSString stringWithFormat:@"%@ | %@", event.dateString, event.timeString];
 	self.contactNameLabel.text = event.contactName;
+	self.categoryImageView.image = [UIImage imageNamed:event.categoryName];
 }
 
 - (IBAction)timeAction:(id)sender {
-	
+	if ([self.delegate respondsToSelector:@selector(timeButtonPressedForEvent:)]) {
+		[self.delegate timeButtonPressedForEvent:evnt];
+	}
 }
 
 - (IBAction)phoneAction:(id)sender {
@@ -81,11 +86,19 @@
 	[[UIApplication sharedApplication] openURL:phoneURL];
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//	[self dismiss];
-//}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	if ([self.delegate respondsToSelector:@selector(willRemoveEventInfoView)]) {
+		[self.delegate willRemoveEventInfoView];
+	}
+	[self dismiss];
+}
 
 - (void)showInView:(UIView *)superview {
+	
+	if (presented)
+		return;
+	
+	presented = YES;
 	
 	[superview addSubview:self];
 	
@@ -107,6 +120,10 @@
 		self.alpha = 1.0;
 	} completion:nil];
 	
+	if ([self.delegate respondsToSelector:@selector(didPresentEventInfoView)]) {
+		[self.delegate didPresentEventInfoView];
+	}
+	
 }
 
 - (void)dismiss {
@@ -116,6 +133,7 @@
 		self.alpha = 0.0;
 	} completion:^(BOOL finished) {
 		[self removeFromSuperview];
+		presented = NO;
 	}];
 	
 }

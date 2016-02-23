@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -29,11 +29,21 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0v9-cE-TRS">
+                                    <rect key="frame" x="8" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="66F-qN-5ah"/>
+                                        <constraint firstAttribute="width" constant="44" id="yi8-jF-mwz"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="0v9-cE-TRS" secondAttribute="bottom" id="09s-bW-tSG"/>
+                                <constraint firstItem="0v9-cE-TRS" firstAttribute="leading" secondItem="faR-LF-PMe" secondAttribute="leading" constant="8" id="8n1-dI-H4E"/>
                                 <constraint firstAttribute="height" constant="44" id="H9z-Kv-tkc"/>
                                 <constraint firstAttribute="bottom" secondItem="ZkN-ZA-zpg" secondAttribute="bottom" constant="8" id="KzH-fp-H1q"/>
+                                <constraint firstItem="0v9-cE-TRS" firstAttribute="top" secondItem="faR-LF-PMe" secondAttribute="top" id="M0h-qD-pbT"/>
                                 <constraint firstItem="ZkN-ZA-zpg" firstAttribute="top" secondItem="faR-LF-PMe" secondAttribute="top" constant="8" id="Rx8-HI-R3e"/>
                                 <constraint firstItem="ZkN-ZA-zpg" firstAttribute="leading" secondItem="faR-LF-PMe" secondAttribute="leading" constant="8" id="c3D-6D-kIh"/>
                                 <constraint firstAttribute="trailing" secondItem="ZkN-ZA-zpg" secondAttribute="trailing" constant="8" id="dH7-Jj-sg0"/>
@@ -179,6 +189,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="categoryImageView" destination="0v9-cE-TRS" id="5sF-Tt-vWq"/>
                 <outlet property="contactNameLabel" destination="fHT-6D-AFq" id="aYn-q1-prv"/>
                 <outlet property="eventDateTimeLabel" destination="z3F-l9-yHb" id="esB-97-BNJ"/>
                 <outlet property="eventDetailsTextView" destination="9cb-iC-ffV" id="RJc-VQ-TG0"/>

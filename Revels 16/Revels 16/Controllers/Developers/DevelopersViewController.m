@@ -247,24 +247,15 @@ typedef struct EasterEggPosition {
 	
 	EasterEggViewController *eevc = [self.storyboard instantiateViewControllerWithIdentifier:@"EasterEggVC"];
 	
-	if (easterEggController == EasterEggControllerX) {
-		eevc.lugText = @"Linux Users Group";
-		eevc.backgroundColor = [UIColor paleGreenColor];
+	if (easterEggController == EasterEggControllerX)
 		eevc.ptype = PresentationTypeXY;
-	}
-	else if (easterEggController == EasterEggControllerY) {
-		eevc.lugText = @"Linux Users Group";
-		eevc.backgroundColor = [UIColor palePurpleColor];
+	else if (easterEggController == EasterEggControllerY)
 		eevc.ptype = PresentationTypeYZ;
-	}
-	else if (easterEggController == EasterEggControllerZ) {
-		eevc.lugText = @"Linux Users Group";
-		eevc.backgroundColor = [UIColor babyBlueColor];
+	else if (easterEggController == EasterEggControllerZ)
 		eevc.ptype = PresentationTypeZX;
-	}
 	else if (easterEggController == EasterEggControllerF) {
-		eevc.lugText = @"Linux Users Group";
-		eevc.backgroundColor = [UIColor lightCreamColor];
+		eevc.ptype = PresentationTypeYZ;
+		eevc.quote = @"That's not how the force works! - Han Solo";
 	}
 	
 	self.transition.style = KWTransitionStyleUp;

@@ -36,7 +36,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	
-	[self animateLogo];
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self animateLogo];
+	});
 	
 	self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
 	[self.view addGestureRecognizer:self.tapGesture];

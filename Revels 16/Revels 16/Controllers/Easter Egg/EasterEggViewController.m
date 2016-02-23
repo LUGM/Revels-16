@@ -7,14 +7,16 @@
 //
 
 #import "EasterEggViewController.h"
+#import "AboutBackgroundView.h"
 #import "UnderlinedLabel.h"
+#import "DynamicLabel.h"
 
 @interface EasterEggViewController ()
 
 @property (weak, nonatomic) IBOutlet UnderlinedLabel *goBackLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *lugImageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *lugLabel;
+@property (weak, nonatomic) IBOutlet DynamicLabel *lugLabel;
 @property (weak, nonatomic) IBOutlet UILabel *manipalLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
@@ -62,11 +64,14 @@
 	if (self.centerImage)
 		self.lugImageView.image = self.centerImage;
 	
-	if (self.lugText)
-		self.lugLabel.text = self.lugText;
+	if (!self.lugText) {
+		self.lugText = @"L Li Lin Linu Linux Linux Linux U Us Use User Users Users Users G Gr Gro Grou Group Group Group M Ma Man Mani Manip Manipa Manipal Manipal Manipal";
+	}
+	self.lugLabel.text = self.lugText;
 	
-	if (self.manipalText)
-		self.manipalLabel.text = self.manipalText;
+	if (!self.manipalText)
+		self.manipalText = @"LUG Manipal";
+	self.manipalLabel.text = self.manipalText;
 	
 	if (self.quote)
 		self.quoteLabel.text = self.quote;
@@ -82,36 +87,43 @@
 		tapGesture.numberOfTapsRequired = 3;
 		tapGesture.numberOfTouchesRequired = 3;
 		[self.view addGestureRecognizer:tapGesture];
+		[(AboutBackgroundView *)self.view jiggleBackground];
 	}
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		[self animateLUG];
+		[self animateLabels];
 	});
 	
 }
 
+- (void)animateLabels {
+	self.lugLabel.text = self.lugText;
+	self.goBackLabel.text = @"Swipe down to go back";
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self animateLabels];
+	});
+}
+
 - (void)animateLUG {
-	[UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction animations:^{
 		self.lugImageView.transform = CGAffineTransformMakeScale(0.9, 0.9);
 		self.lugImageView.alpha = 0.9;
 		if (self.ptype == PresentationTypeZX) {
-			self.lugLabel.transform = CGAffineTransformMakeScale(0.98, 0.98);
-			self.manipalLabel.transform = CGAffineTransformMakeScale(0.98, 0.98);
+			self.githubButton.transform = CGAffineTransformMakeTranslation(8, 0);
+			self.facebookButton.transform = CGAffineTransformMakeTranslation(0, 8);
+			self.browserButton.transform = CGAffineTransformMakeTranslation(-8, 0);
 		}
 		if (self.ptype == PresentationTypeXY) {
-			self.githubButton.transform = CGAffineTransformMakeTranslation(0, 5);
-			self.facebookButton.transform = CGAffineTransformMakeTranslation(0, -5);
-			self.browserButton.transform = CGAffineTransformMakeTranslation(0, 5);
+			self.githubButton.transform = CGAffineTransformMakeTranslation(-8, 0);
+			self.facebookButton.transform = CGAffineTransformMakeTranslation(0, -8);
+			self.browserButton.transform = CGAffineTransformMakeTranslation(8, 0);
 		}
 	} completion:^(BOOL finished) {
-		[UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		[UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction animations:^{
 			self.lugImageView.transform = CGAffineTransformIdentity;
 			self.lugImageView.alpha = 1.f;
-			if (self.ptype == PresentationTypeZX) {
-				self.lugLabel.transform = CGAffineTransformIdentity;
-				self.manipalLabel.transform = CGAffineTransformIdentity;
-			}
-			if (self.ptype == PresentationTypeXY) {
+			if (self.ptype == PresentationTypeXY || self.ptype == PresentationTypeZX) {
 				self.githubButton.transform = CGAffineTransformIdentity;
 				self.facebookButton.transform = CGAffineTransformIdentity;
 				self.browserButton.transform = CGAffineTransformIdentity;
