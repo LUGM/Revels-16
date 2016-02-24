@@ -4,10 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>KWTransition.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>Parse.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-Revels 16.xcscheme</key>
 		<dict>
@@ -27,6 +42,21 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>218B2561AF14F3542AFA3B30D0523618</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CD92797A96766670A60AE5197C5FB82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>736E57AD5AEFAAF68D47AE4E8FCB8F68</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7ED7435F72CA25FFCCFDC57C43F24DB0</key>
 		<dict>
 			<key>primary</key>
@@ -37,7 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9B916844F33E8D3CF7BC18CE424E9721</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AD0EF7B817603848764E07952F0087BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B9EB5CACDFE0AABBB8E793EC40386A72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0349D3391FAFE0FD6112394286B808C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

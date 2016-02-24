@@ -138,7 +138,6 @@
 		59BA13AD1C60764D00679C49 /* InstagramV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramV2ViewController.m; path = Controllers/Instagram/InstagramV2ViewController.m; sourceTree = "<group>"; };
 		59BA13B61C6079B600679C49 /* ParallaxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParallaxCollectionViewCell.h; path = Views/Cells/ParallaxCollectionViewCell.h; sourceTree = "<group>"; };
 		59BA13B71C6079B600679C49 /* ParallaxCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParallaxCollectionViewCell.m; path = Views/Cells/ParallaxCollectionViewCell.m; sourceTree = "<group>"; };
-		59BA13C71C60D98C00679C49 /* Revels 16.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Revels 16.entitlements"; sourceTree = "<group>"; };
 		59BA13CD1C60DE1200679C49 /* REVCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVCategory.h; path = Model/Category/REVCategory.h; sourceTree = "<group>"; };
 		59BA13CE1C60DE1200679C49 /* REVCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVCategory.m; path = Model/Category/REVCategory.m; sourceTree = "<group>"; };
 		59BA13D21C60E28500679C49 /* DADataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADataManager.h; path = Model/DADataManager/DADataManager.h; sourceTree = "<group>"; };
@@ -186,6 +185,7 @@
 		59FE793B1C62670200EC61A0 /* CrossButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossButton.m; sourceTree = "<group>"; };
 		A36625A11C74E58D004F5D71 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../parse-library/Bolts.framework"; sourceTree = "<group>"; };
 		A36625A21C74E58D004F5D71 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../parse-library/Parse.framework"; sourceTree = "<group>"; };
+		A397C65C1C7E33B300FE5188 /* Revels 16.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Revels 16.entitlements"; sourceTree = "<group>"; };
 		A7D306B1EDF2F2E2053521A6 /* libPods-Revels 16.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Revels 16.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2288AEFED249667A1BA3B48 /* Pods-Revels 16.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels 16.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels 16/Pods-Revels 16.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -319,7 +319,7 @@
 		596F91BB1C5F18F9000CBD48 /* Revels 16 */ = {
 			isa = PBXGroup;
 			children = (
-				59BA13C71C60D98C00679C49 /* Revels 16.entitlements */,
+				A397C65C1C7E33B300FE5188 /* Revels 16.entitlements */,
 				596F91CB1C5F18F9000CBD48 /* Assets.xcassets */,
 				596F91DB1C5F1B3A000CBD48 /* Libraries */,
 				596F91D61C5F1913000CBD48 /* App Delegate */,
@@ -770,9 +770,10 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = M2TZJK2U6H;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -1059,7 +1060,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbfd7ed9-cd62-4419-bb20-5bf2b833d210";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1098,7 +1099,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbfd7ed9-cd62-4419-bb20-5bf2b833d210";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
