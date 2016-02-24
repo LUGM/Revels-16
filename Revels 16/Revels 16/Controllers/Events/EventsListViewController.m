@@ -88,7 +88,10 @@
 	
 	self.tableView.tableFooterView = [UIView new];
 	
-//	self.tableView.backgroundView = [[AboutBackgroundView alloc] initWithFrame:self.view.bounds];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[self.tableView reloadData];
 }
 
 - (IBAction)refreshAction:(id)sender {

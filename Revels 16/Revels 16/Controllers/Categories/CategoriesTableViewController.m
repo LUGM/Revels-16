@@ -231,7 +231,7 @@
 	return [[NSAttributedString alloc] initWithString:@"Reload" attributes:attributes];
 }
 
-#pragma mark - DZN Empty Data Set Source
+#pragma mark - DZN Empty Set Delegate
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
 	return (categories.count == 0);

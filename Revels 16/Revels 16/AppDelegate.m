@@ -51,7 +51,16 @@
     
     // Parse init
     [Parse setApplicationId:@"b4ySAS7cIdzpkfG78S61gsgXGnmejk7wC3VO4nOz" clientKey:@"o0U4wRrAgquQXj96F4fTx1C2LxUfyM3IobMJzyA0"];
-    
+	
+	// Register for Push Notitications
+	UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+													UIUserNotificationTypeBadge |
+													UIUserNotificationTypeSound);
+	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+																			 categories:nil];
+	[application registerUserNotificationSettings:settings];
+	[application registerForRemoteNotifications];
+	
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 	
 	return YES;
@@ -79,6 +88,31 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
+}
+
+#pragma mark - Handle push
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	// Store the deviceToken in the current installation and save it to Parse.
+	PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+	[currentInstallation setDeviceTokenFromData:deviceToken];
+	[currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	[PFPush handlePush:userInfo];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^)())completionHandler {
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+	UITabBarController *tabBarVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+	tabBarVC.selectedIndex = 4;
+	self.window.rootViewController = tabBarVC;
+	
+	UINavigationController *moreNavVC = [tabBarVC.viewControllers objectAtIndex:4];
+	UINavigationController *navc = [storyboard instantiateViewControllerWithIdentifier:@"NotificationsVCNav"];
+	[moreNavVC presentViewController:navc animated:YES completion:nil];
 }
 
 #pragma mark - Handling force touch shortcuts

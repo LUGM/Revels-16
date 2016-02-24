@@ -10,8 +10,9 @@
 #import "EventsTableViewCell.h"
 #import "EventInfoView.h"
 #import "REVEvent.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
-@interface FavouritesTableViewController () <EKEventViewDelegate, EventInfoViewDelegate>
+@interface FavouritesTableViewController () <EKEventViewDelegate, EventInfoViewDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
@@ -34,6 +35,8 @@
 	
 	events = [NSMutableArray new];
 	
+	[self.tableView reloadData];
+	
 	self.selectedIndexPath = nil;
 	
 	managedObjectContext = [AppDelegate managedObjectContext];
@@ -47,6 +50,11 @@
 	tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
 	
 	[self fetchFavourites];
+	
+	self.tableView.tableFooterView = [UIView new];
+	
+	self.tableView.emptyDataSetSource = self;
+	self.tableView.emptyDataSetDelegate = self;
 	
 }
 
@@ -143,6 +151,43 @@
 	if ([indexPath compare:self.selectedIndexPath] == NSOrderedSame)
 		return 228.f;
 	return 60.f;
+}
+
+#pragma mark - DZN Empty Data Set Source
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+	return [UIImage imageNamed:@"RevelsCutout"];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+	return GLOBAL_BACK_COLOR;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"You don't have any favourites right now.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
+								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.f]};
+	
+	return [[NSAttributedString alloc] initWithString:@"Dismiss" attributes:attributes];
+}
+
+#pragma mark - DZN Empty Set Delegate
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+	return (events.count == 0);
+}
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Cell button actions

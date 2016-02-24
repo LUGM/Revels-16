@@ -11,6 +11,8 @@
 		18A64A191C74D152008B2170 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A181C74D152008B2170 /* CoreGraphics.framework */; };
 		18A64A1B1C74D19E008B2170 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */; };
 		18A64A1D1C74D1AB008B2170 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A64A1C1C74D1AA008B2170 /* libsqlite3.tbd */; };
+		5901CCE31C7E0C1700656CE1 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5901CCE21C7E0C1700656CE1 /* MoreTableViewController.m */; };
+		5901CCE71C7E177400656CE1 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5901CCE61C7E177400656CE1 /* NotificationsTableViewController.m */; };
 		5910A8EC1C737DC00063249F /* REVResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8EB1C737DC00063249F /* REVResult.m */; };
 		5910A8F71C73980D0063249F /* ResultsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5910A8F61C73980D0063249F /* ResultsHeaderView.xib */; };
 		5910A8FD1C7399880063249F /* ResultsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A8FC1C7399880063249F /* ResultsHeaderView.m */; };
@@ -76,6 +78,10 @@
 		18A64A181C74D152008B2170 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18A64A1A1C74D19E008B2170 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		18A64A1C1C74D1AA008B2170 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5901CCE11C7E0C1700656CE1 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewController.h; path = Controllers/More/MoreTableViewController.h; sourceTree = "<group>"; };
+		5901CCE21C7E0C1700656CE1 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewController.m; path = Controllers/More/MoreTableViewController.m; sourceTree = "<group>"; };
+		5901CCE51C7E177400656CE1 /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationsTableViewController.h; path = Controllers/Notifications/NotificationsTableViewController.h; sourceTree = "<group>"; };
+		5901CCE61C7E177400656CE1 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationsTableViewController.m; path = Controllers/Notifications/NotificationsTableViewController.m; sourceTree = "<group>"; };
 		5910A8EA1C737DC00063249F /* REVResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REVResult.h; path = Model/Result/REVResult.h; sourceTree = "<group>"; };
 		5910A8EB1C737DC00063249F /* REVResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REVResult.m; path = Model/Result/REVResult.m; sourceTree = "<group>"; };
 		5910A8F61C73980D0063249F /* ResultsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultsHeaderView.xib; path = Views/Cells/ResultsHeaderView.xib; sourceTree = "<group>"; };
@@ -202,6 +208,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5901CCE41C7E175700656CE1 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				5901CCE51C7E177400656CE1 /* NotificationsTableViewController.h */,
+				5901CCE61C7E177400656CE1 /* NotificationsTableViewController.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
 		5910A8E81C737DA20063249F /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,10 +442,13 @@
 			children = (
 				598189F71C70810300F9AB1D /* MoreViewController.h */,
 				598189F81C70810300F9AB1D /* MoreViewController.m */,
+				5901CCE11C7E0C1700656CE1 /* MoreTableViewController.h */,
+				5901CCE21C7E0C1700656CE1 /* MoreTableViewController.m */,
 				59F7B2B11C5F7ACA00471695 /* About */,
 				598189F51C7080E100F9AB1D /* Register */,
 				59F7B2AA1C5F78D800471695 /* Favourites */,
 				59F7B2B51C5F7D2A00471695 /* Developers */,
+				5901CCE41C7E175700656CE1 /* Notifications */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -860,6 +878,7 @@
 				598189FD1C7081FF00F9AB1D /* RegisterWebViewController.m in Sources */,
 				59F7B2DC1C5FD4BD00471695 /* UIImage+ImageEffects.m in Sources */,
 				596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */,
+				5901CCE71C7E177400656CE1 /* NotificationsTableViewController.m in Sources */,
 				5989871D1C6AFF030042148B /* EasterEggViewController.m in Sources */,
 				59F7B2A61C5F746A00471695 /* EventsListViewController.m in Sources */,
 				5910A9201C749BE20063249F /* UnderlinedLabel.m in Sources */,
@@ -879,6 +898,7 @@
 				596F920F1C5F3651000CBD48 /* CategoriesTableViewController.m in Sources */,
 				5910A8FD1C7399880063249F /* ResultsHeaderView.m in Sources */,
 				59F7B2A91C5F74DB00471695 /* EventsTableViewCell.m in Sources */,
+				5901CCE31C7E0C1700656CE1 /* MoreTableViewController.m in Sources */,
 				59BA13CF1C60DE1200679C49 /* REVCategory.m in Sources */,
 				596F91BE1C5F18F9000CBD48 /* main.m in Sources */,
 				59818A021C709A4E00F9AB1D /* MoreCollectionViewCell.m in Sources */,
