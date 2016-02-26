@@ -27,11 +27,6 @@
 	
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:17.f], NSForegroundColorAttributeName: [UIColor darkTextColor]}];
 	
-//	[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:15.0f], NSForegroundColorAttributeName:[UIColor blackColor]}];
-	
-//	UINavigationController *navc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"DevelopersVCNav"];
-//	self.window.rootViewController = navc;
-	
 	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
 	[[UITabBar appearance] setBarTintColor:GLOBAL_BACK_COLOR];
 	
@@ -93,33 +88,43 @@
 #pragma mark - Handle push
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	
 	// Store the deviceToken in the current installation and save it to Parse.
+	
 	PFInstallation *currentInstallation = [PFInstallation currentInstallation];
 	[currentInstallation setDeviceTokenFromData:deviceToken];
 	[currentInstallation saveInBackground];
+	
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	
 	[PFPush handlePush:userInfo];
-}
-
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^)())completionHandler {
 	
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-	UITabBarController *tabBarVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-	tabBarVC.selectedIndex = 4;
-	self.window.rootViewController = tabBarVC;
+	if (application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground) {
+		
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+		UITabBarController *tabBarVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+		tabBarVC.selectedIndex = 4;
+		
+		self.window.rootViewController = tabBarVC;
+		
+		UINavigationController *moreNavC = tabBarVC.viewControllers[4];
+		UIViewController *moreVC = [moreNavC.viewControllers firstObject];
+		[moreVC performSegueWithIdentifier:@"NotificationsSegue" sender:moreVC];
+		
+	}
 	
-	UINavigationController *moreNavVC = [tabBarVC.viewControllers objectAtIndex:4];
-	UINavigationController *navc = [storyboard instantiateViewControllerWithIdentifier:@"NotificationsVCNav"];
-	[moreNavVC presentViewController:navc animated:YES completion:nil];
 }
 
 #pragma mark - Handling force touch shortcuts
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+	
 	UITabBarController *tabBarVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+	
 	if ([shortcutItem.type containsString:@"categories"])
 		tabBarVC.selectedIndex = 0;
 	else if ([shortcutItem.type containsString:@"events"])
@@ -128,6 +133,7 @@
 		tabBarVC.selectedIndex = 2;
 	else if ([shortcutItem.type containsString:@"results"])
 		tabBarVC.selectedIndex = 3;
+	
 	self.window.rootViewController = tabBarVC;
 }
 

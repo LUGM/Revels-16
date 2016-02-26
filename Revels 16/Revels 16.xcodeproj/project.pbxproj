@@ -21,6 +21,7 @@
 		5910A9201C749BE20063249F /* UnderlinedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910A91E1C749BE20063249F /* UnderlinedLabel.m */; };
 		59130F171C63612100A45854 /* EventByCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59130F161C63612100A45854 /* EventByCategoryViewController.m */; };
 		592AE8241C69037B00256BDA /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE8231C69037B00256BDA /* Colours.m */; };
+		592D66F71C80101E009EBE3D /* DevPatternView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592D66F61C80101E009EBE3D /* DevPatternView.m */; };
 		594568801C7CBF28009A0336 /* DynamicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5945687F1C7CBF28009A0336 /* DynamicLabel.m */; };
 		5962B05E1C650EA6009290B2 /* DAHexagonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962B05D1C650EA6009290B2 /* DAHexagonalView.m */; };
 		596A7BEB1C6A1ED400EB74B1 /* DeveloperDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 596A7BEA1C6A1ED400EB74B1 /* DeveloperDetailView.m */; };
@@ -97,6 +98,8 @@
 		59130F161C63612100A45854 /* EventByCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventByCategoryViewController.m; path = Controllers/Events/EventByCategoryViewController.m; sourceTree = "<group>"; };
 		592AE8221C69037B00256BDA /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
 		592AE8231C69037B00256BDA /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
+		592D66F51C80101E009EBE3D /* DevPatternView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevPatternView.h; path = Views/DAHexagonalView/DevPatternView.h; sourceTree = "<group>"; };
+		592D66F61C80101E009EBE3D /* DevPatternView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DevPatternView.m; path = Views/DAHexagonalView/DevPatternView.m; sourceTree = "<group>"; };
 		5945687E1C7CBF28009A0336 /* DynamicLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicLabel.h; sourceTree = "<group>"; };
 		5945687F1C7CBF28009A0336 /* DynamicLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicLabel.m; sourceTree = "<group>"; };
 		5962B05C1C650EA6009290B2 /* DAHexagonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAHexagonalView.h; path = Views/DAHexagonalView/DAHexagonalView.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 			children = (
 				5962B05C1C650EA6009290B2 /* DAHexagonalView.h */,
 				5962B05D1C650EA6009290B2 /* DAHexagonalView.m */,
+				592D66F51C80101E009EBE3D /* DevPatternView.h */,
+				592D66F61C80101E009EBE3D /* DevPatternView.m */,
 			);
 			name = HexagonalDevView;
 			sourceTree = "<group>";
@@ -770,7 +775,6 @@
 				TargetAttributes = {
 					596F91B81C5F18F9000CBD48 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = M2TZJK2U6H;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -905,6 +909,7 @@
 				59818A021C709A4E00F9AB1D /* MoreCollectionViewCell.m in Sources */,
 				59F7B2B41C5F7AD800471695 /* AboutTableViewController.m in Sources */,
 				59A7CE951C6CB6F1001682F3 /* EventInfoView.m in Sources */,
+				592D66F71C80101E009EBE3D /* DevPatternView.m in Sources */,
 				59E086521C685A8A0029EFED /* EventHeaderTableViewCell.m in Sources */,
 				59FE79371C625A1000EC61A0 /* InstagramRootViewController.m in Sources */,
 				59BA13D41C60E28500679C49 /* DADataManager.m in Sources */,
@@ -1060,7 +1065,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e9c1d89d-6e81-4abb-89bc-f7c6bd4fd28c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1099,7 +1104,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lugmanipal.Revels-15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e9c1d89d-6e81-4abb-89bc-f7c6bd4fd28c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

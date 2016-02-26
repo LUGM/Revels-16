@@ -249,15 +249,25 @@
 }
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
-	return GLOBAL_BACK_COLOR;
+	return [UIColor whiteColor];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
 	
-	NSString *text = @"No data found.";
+	NSString *text = @"Results not available right now.";
 	
 	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
 								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+	
+	NSString *text = @"Try again later.";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:14.f],
+								 NSForegroundColorAttributeName: [UIColor lightGrayColor]};
 	
 	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }

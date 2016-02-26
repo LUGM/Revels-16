@@ -43,24 +43,22 @@
 	self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 	self.navigationController.view.backgroundColor = [UIColor clearColor];
 	
-	/*
+	
 	self.tabBarController.tabBar.barTintColor = [UIColor clearColor];
 	self.tabBarController.tabBar.backgroundColor = [UIColor clearColor];
 	self.tabBarController.tabBar.backgroundImage = [UIImage new];
 	self.tabBarController.tabBar.shadowImage = [UIImage new];
-	*/
+	
 	
 	if (!self.navBarBackgroundView) {
 		
-		CGRect barRect = CGRectMake(0.0f, 0.0f, SWdith, 78.0f);
+		CGRect barRect = CGRectMake(0.0f, 0.0f, SWdith, 82.0f);
 		
 		self.navBarBackgroundView = [self.navigationController.view resizableSnapshotViewFromRect:barRect afterScreenUpdates:YES withCapInsets:UIEdgeInsetsZero];
 		
 		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-		NSArray *colors = [NSArray arrayWithObjects:
-						   (id)[[UIColor colorWithWhite:0.8 alpha:0] CGColor],
-						   (id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor],
-						   nil];
+		NSArray *colors = @[(id)[[UIColor colorWithWhite:0.8 alpha:0] CGColor],
+							(id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor]];
 		[gradientLayer setColors:colors];
 		[gradientLayer setStartPoint:CGPointMake(0.0f, 1.0f)];
 		[gradientLayer setEndPoint:CGPointMake(0.0f, 0.7f)];
@@ -70,35 +68,33 @@
 		[self.navigationController.view addSubview:self.navBarBackgroundView];
 	}
 	
-	/*
+	
 	
 	if (!self.tabBarBackgroundView) {
 		
-		CGRect barRect = CGRectMake(0.0f, SHeight - 56.f, SWdith, 56.0f);
+		CGRect barRect = CGRectMake(0.0f, SHeight - 60.f, SWdith, 60.0f);
 		
-		self.tabBarBackgroundView = [self.tabBarController.view resizableSnapshotViewFromRect:barRect afterScreenUpdates:YES withCapInsets:UIEdgeInsetsZero];
+		self.tabBarBackgroundView = [[UIView alloc] initWithFrame:barRect];
+		self.tabBarBackgroundView.backgroundColor = GLOBAL_BACK_COLOR;
 		
 		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-		NSArray *colors = [NSArray arrayWithObjects:
-						   (id)[[UIColor colorWithWhite:0.8 alpha:0] CGColor],
-						   (id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor],
-						   nil];
+		NSArray *colors = @[(id)[[UIColor colorWithWhite:0.8 alpha:0] CGColor],
+						    (id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor]];
 		[gradientLayer setColors:colors];
 		[gradientLayer setStartPoint:CGPointMake(0.0f, 0.0f)];
 		[gradientLayer setEndPoint:CGPointMake(0.0f, 0.3f)];
 		[gradientLayer setFrame:[self.tabBarBackgroundView bounds]];
 		
 		[self.tabBarBackgroundView setFrame:barRect];
-		
 		[[self.tabBarBackgroundView layer] setMask:gradientLayer];
 		[self.navigationController.view addSubview:self.tabBarBackgroundView];
 	}
 	 
-	 */
+	
 	
 }
 
-/*
+
 - (void)viewDidDisappear:(BOOL)animated {
 	
 	self.tabBarController.tabBar.barTintColor = nil;
@@ -107,7 +103,7 @@
 	self.tabBarController.tabBar.shadowImage = nil;
 	
 }
- */
+
 
 #pragma mark - Table view delegate
 
@@ -115,11 +111,39 @@
 	
 	// Animate cells
 	
+	if (indexPath.section == 0)
+		return;
+	
+	if (indexPath.section == 1)
+		cell.layer.transform = CATransform3DScale(CATransform3DMakeTranslation(0, (indexPath.row % 2 == 0)?20:-20, 0), 0.8, 0.8, 0.8);
+	else
+		cell.layer.transform = CATransform3DScale(CATransform3DMakeTranslation((indexPath.section % 2 == 0)?80:-80, 0, 0), 0.8, 0.8, 0.8);
+	
+	cell.alpha = 0.0;
+	
+	[UIView animateWithDuration:0.8 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.8 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		cell.layer.transform = CATransform3DIdentity;
+		cell.alpha = 1.0;
+	} completion:^(BOOL finished) {
+		
+	}];
+	
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	UINavigationController *navc;
+	
+	if (indexPath.section == 0) {
+		
+		navc = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterVCNav"];
+		
+		RegisterWebViewController *rwvc = [navc.viewControllers firstObject];
+		
+		rwvc.passedTitle = @"MIT Revels";
+		rwvc.passedURL = [NSURL URLWithString:@"http://www.mitrevels.in"];
+		
+	}
 	
 	if (indexPath.section == 1) {
 		
@@ -179,6 +203,13 @@
 	[self.navigationController presentViewController:navc animated:YES completion:nil];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.section == 0)
+		return NO;
+	return YES;
 }
 
 #pragma mark - View controller animated transistioning

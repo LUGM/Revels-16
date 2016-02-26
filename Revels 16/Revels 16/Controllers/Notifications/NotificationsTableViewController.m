@@ -10,6 +10,9 @@
 
 @interface NotificationsTableViewController ()
 
+@property (strong, nonatomic) UIView *navBarBackgroundView;
+@property (strong, nonatomic) UIView *bottomBackgroundView;
+
 @end
 
 @implementation NotificationsTableViewController {
@@ -49,6 +52,54 @@
 	[imageView setContentMode:UIViewContentModeScaleAspectFit];
 	
 	self.tableView.tableHeaderView = imageView;
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	self.navigationController.navigationBar.shadowImage = [UIImage new];
+	self.navigationController.navigationBar.translucent = YES;
+	self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+	self.navigationController.view.backgroundColor = [UIColor clearColor];
+	
+	if (!self.navBarBackgroundView) {
+		
+		CGRect barRect = CGRectMake(0.0f, 0.0f, SWdith, 82.0f);
+		
+		self.navBarBackgroundView = [[UIView alloc] initWithFrame:barRect];
+		self.navBarBackgroundView.backgroundColor = GLOBAL_BACK_COLOR;
+		
+		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+		NSArray *colors = @[(id)[[UIColor colorWithWhite:0.8 alpha:0] CGColor],
+							(id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor]];
+		[gradientLayer setColors:colors];
+		[gradientLayer setStartPoint:CGPointMake(0.0f, 1.0f)];
+		[gradientLayer setEndPoint:CGPointMake(0.0f, 0.7f)];
+		[gradientLayer setFrame:[self.navBarBackgroundView bounds]];
+		
+		[[self.navBarBackgroundView layer] setMask:gradientLayer];
+		[self.navigationController.view insertSubview:self.navBarBackgroundView belowSubview:self.navigationController.navigationBar];
+	}
+	
+	if (!self.bottomBackgroundView) {
+		
+		CGRect barRect = CGRectMake(0.0f, SHeight - 32.f, SWdith, 32.0f);
+		
+		self.bottomBackgroundView = [[UIView alloc] initWithFrame:barRect];
+		self.bottomBackgroundView.backgroundColor = GLOBAL_BACK_COLOR;
+		
+		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+		NSArray *colors = @[(id)[[UIColor colorWithWhite:0.8 alpha:0] CGColor],
+							(id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor]];
+		[gradientLayer setColors:colors];
+		[gradientLayer setStartPoint:CGPointMake(0.0f, 0.0f)];
+		[gradientLayer setEndPoint:CGPointMake(0.0f, 1.f)];
+		[gradientLayer setFrame:[self.bottomBackgroundView bounds]];
+		
+		[[self.bottomBackgroundView layer] setMask:gradientLayer];
+		[self.navigationController.view addSubview:self.bottomBackgroundView];
+	}
 	
 }
 

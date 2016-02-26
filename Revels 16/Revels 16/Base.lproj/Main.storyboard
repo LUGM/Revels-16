@@ -2527,7 +2527,7 @@ Said the joker to the thief,
         <scene sceneID="qRh-wt-ZVQ">
             <objects>
                 <tableViewController storyboardIdentifier="MoreVC2" id="lUJ-9u-h5P" customClass="MoreTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="rTM-ax-IsN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="8" sectionFooterHeight="8" id="rTM-ax-IsN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -2555,72 +2555,90 @@ Said the joker to the thief,
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="" id="mkE-V2-a55">
+                            <tableViewSection headerTitle=" " id="mkE-V2-a55">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="eX2-WK-Gjq" imageView="jKQ-l7-JPY" rowHeight="50" style="IBUITableViewCellStyleDefault" id="AI6-ba-ivc">
-                                        <rect key="frame" x="0.0" y="231" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="72" id="AI6-ba-ivc">
+                                        <rect key="frame" x="0.0" y="235" width="600" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AI6-ba-ivc" id="04u-O2-hdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Register for Proshow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eX2-WK-Gjq">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="registerIcon" id="jKQ-l7-JPY">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="proshowPrebooking" translatesAutoresizingMaskIntoConstraints="NO" id="Ww8-cO-dr5">
+                                                    <rect key="frame" x="180" y="0.0" width="240" height="72"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="Jkc-fx-Qhn"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ww8-cO-dr5" firstAttribute="top" secondItem="04u-O2-hdt" secondAttribute="topMargin" constant="-8" id="Dzg-uO-77B"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ww8-cO-dr5" secondAttribute="bottom" constant="-8" id="NOu-Bh-W83"/>
+                                                <constraint firstItem="Ww8-cO-dr5" firstAttribute="centerX" secondItem="04u-O2-hdt" secondAttribute="centerX" id="TZ6-ug-NNl"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="TZ6-ug-NNl"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Ww8-cO-dr5" firstAttribute="centerX" secondItem="AI6-ba-ivc" secondAttribute="centerX" id="06c-jf-Qv7"/>
+                                        </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="vAE-HA-8ox" imageView="Npw-ZN-KgM" rowHeight="50" style="IBUITableViewCellStyleDefault" id="WCa-NV-zVh">
-                                        <rect key="frame" x="0.0" y="281" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="72" id="WCa-NV-zVh">
+                                        <rect key="frame" x="0.0" y="307" width="600" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCa-NV-zVh" id="Slu-fh-43G">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Register for Revels'16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vAE-HA-8ox">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="registerIcon" id="Npw-ZN-KgM">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revels16onlineregistration" translatesAutoresizingMaskIntoConstraints="NO" id="RUp-cv-rYJ">
+                                                    <rect key="frame" x="180" y="0.0" width="240" height="72"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="sRe-Df-t82"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RUp-cv-rYJ" firstAttribute="top" secondItem="Slu-fh-43G" secondAttribute="topMargin" constant="-8" id="X9w-fw-Yny"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="RUp-cv-rYJ" secondAttribute="bottom" constant="-8" id="mJJ-90-gvy"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="RUp-cv-rYJ" secondAttribute="bottom" id="Cni-Sg-R3n"/>
+                                            <constraint firstItem="RUp-cv-rYJ" firstAttribute="centerX" secondItem="WCa-NV-zVh" secondAttribute="centerX" id="XNz-9J-aR2"/>
+                                            <constraint firstItem="RUp-cv-rYJ" firstAttribute="top" secondItem="WCa-NV-zVh" secondAttribute="top" id="a9c-eh-dAN"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Cni-Sg-R3n"/>
+                                                <exclude reference="a9c-eh-dAN"/>
+                                            </mask>
+                                        </variation>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="1Rs-if-J7j">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Bqt-Aq-Lag" imageView="qy2-hd-P0O" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Mck-wz-7Ty">
-                                        <rect key="frame" x="0.0" y="367" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Bqt-Aq-Lag" imageView="qy2-hd-P0O" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Mck-wz-7Ty">
+                                        <rect key="frame" x="0.0" y="395" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mck-wz-7Ty" id="sWA-4G-0Zh">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bqt-Aq-Lag">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="50"/>
+                                                    <rect key="frame" x="74" y="0.0" width="491" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="aboutIcon" id="qy2-hd-P0O">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="15" y="8" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -2631,22 +2649,22 @@ Said the joker to the thief,
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="vTz-2Z-T11">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="IL9-1E-ABD" imageView="uEd-Br-c57" rowHeight="50" style="IBUITableViewCellStyleDefault" id="gza-25-l5E">
-                                        <rect key="frame" x="0.0" y="453" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="IL9-1E-ABD" imageView="uEd-Br-c57" rowHeight="60" style="IBUITableViewCellStyleDefault" id="gza-25-l5E">
+                                        <rect key="frame" x="0.0" y="471" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gza-25-l5E" id="IRR-6s-Grg">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IL9-1E-ABD">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="50"/>
+                                                    <rect key="frame" x="74" y="0.0" width="491" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Xventure" id="uEd-Br-c57">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="50"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="notificationsIcon" id="uEd-Br-c57">
+                                                    <rect key="frame" x="15" y="8" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -2657,22 +2675,22 @@ Said the joker to the thief,
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="lOp-Lj-DAo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="UMq-3N-HtO" imageView="kAJ-Kz-rta" rowHeight="50" style="IBUITableViewCellStyleDefault" id="dxH-jJ-his">
-                                        <rect key="frame" x="0.0" y="539" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="UMq-3N-HtO" imageView="kAJ-Kz-rta" rowHeight="60" style="IBUITableViewCellStyleDefault" id="dxH-jJ-his">
+                                        <rect key="frame" x="0.0" y="547" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxH-jJ-his" id="wdG-7A-pV5">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Favourites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UMq-3N-HtO">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="50"/>
+                                                    <rect key="frame" x="74" y="0.0" width="491" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="favouritesIcon" id="kAJ-Kz-rta">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="15" y="8" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -2683,22 +2701,22 @@ Said the joker to the thief,
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="35p-XK-rT4">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bVn-ZM-Pn4" imageView="1SM-1y-oYP" rowHeight="50" style="IBUITableViewCellStyleDefault" id="N3D-sa-r22">
-                                        <rect key="frame" x="0.0" y="625" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bVn-ZM-Pn4" imageView="1SM-1y-oYP" rowHeight="60" style="IBUITableViewCellStyleDefault" id="N3D-sa-r22">
+                                        <rect key="frame" x="0.0" y="623" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N3D-sa-r22" id="EeI-Bv-wxF">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Developers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVn-ZM-Pn4">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="50"/>
+                                                    <rect key="frame" x="74" y="0.0" width="491" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="developersIcon" id="1SM-1y-oYP">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="15" y="8" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -2714,6 +2732,9 @@ Said the joker to the thief,
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="More" id="3XA-l4-mud"/>
+                    <connections>
+                        <segue destination="Dfj-Dc-GNZ" kind="presentation" identifier="NotificationsSegue" id="ajQ-sU-JAT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPk-7r-Lbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2812,19 +2833,20 @@ Said the joker to the thief,
         <image name="RevelsCutout" width="320" height="153"/>
         <image name="RevelsQuill" width="300" height="300"/>
         <image name="Right" width="13" height="24"/>
-        <image name="Xventure" width="60" height="60"/>
-        <image name="aboutIcon" width="60" height="60"/>
+        <image name="aboutIcon" width="44" height="44"/>
         <image name="call" width="44" height="44"/>
         <image name="contact" width="44" height="44"/>
         <image name="crossButton" width="30" height="30"/>
         <image name="date" width="44" height="44"/>
-        <image name="developersIcon" width="60" height="60"/>
+        <image name="developersIcon" width="44" height="44"/>
         <image name="eventsIcon" width="60" height="60"/>
-        <image name="favouritesIcon" width="60" height="60"/>
+        <image name="favouritesIcon" width="44" height="44"/>
         <image name="favsEmpty" width="44" height="44"/>
         <image name="infoButton" width="30" height="30"/>
         <image name="location" width="44" height="44"/>
-        <image name="registerIcon" width="60" height="60"/>
+        <image name="notificationsIcon" width="44" height="44"/>
+        <image name="proshowPrebooking" width="800" height="240"/>
+        <image name="revels16onlineregistration" width="500" height="200"/>
         <image name="save" width="40" height="40"/>
         <image name="sfacebook" width="40" height="40"/>
         <image name="sgithub" width="40" height="40"/>

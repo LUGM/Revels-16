@@ -9,6 +9,7 @@
 #import "DevelopersViewController.h"
 #import "EasterEggViewController.h"
 #import "DeveloperDetailView.h"
+#import "DevPatternView.h"
 #import <KWTransition/KWTransition.h>
 
 typedef NS_ENUM(NSUInteger, EasterEggController) {
@@ -27,6 +28,8 @@ typedef struct EasterEggPosition {
 @interface DevelopersViewController () <DAHexagonalViewDelegate, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) KWTransition *transition;
+
+@property (nonatomic, strong) DevPatternView *navBarBackgroundView;
 
 @end
 
@@ -50,13 +53,42 @@ typedef struct EasterEggPosition {
 	devDetailView = [[[NSBundle mainBundle] loadNibNamed:@"DeveloperDetailView" owner:nil options:nil] firstObject];
 	
 	motionManager = [[CMMotionManager alloc] init];
-	motionManager.deviceMotionUpdateInterval = 1.0/5.0;
+	motionManager.deviceMotionUpdateInterval = 1.0/3.0;
 	
 	self.transition = [KWTransition manager];
 	
 	eePos.pos1 = 0;
 	eePos.pos2 = 0;
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	self.navigationController.navigationBar.shadowImage = [UIImage new];
+	self.navigationController.navigationBar.translucent = YES;
+	self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+	self.navigationController.view.backgroundColor = [UIColor clearColor];
+	
+	if (!self.navBarBackgroundView) {
+		
+		CGRect barRect = CGRectMake(0.0f, 0.0f, SWdith, 80.0f);
+		
+		self.navBarBackgroundView = [[DevPatternView alloc] initWithFrame:barRect];
+		self.navBarBackgroundView.backgroundColor = [UIColor clearColor];
+		
+		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+		NSArray *colors = @[(id)[[UIColor colorWithWhite:0.5 alpha:0] CGColor],
+							(id)[[UIColor colorWithWhite:1.0 alpha:1] CGColor]];
+		[gradientLayer setColors:colors];
+		[gradientLayer setStartPoint:CGPointMake(0.0f, 1.0f)];
+		[gradientLayer setEndPoint:CGPointMake(0.0f, 0.8f)];
+		[gradientLayer setFrame:[self.navBarBackgroundView bounds]];
+		
+		[[self.navBarBackgroundView layer] setMask:gradientLayer];
+		[self.navigationController.view insertSubview:self.navBarBackgroundView belowSubview:self.navigationController.navigationBar];
+	}
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -75,11 +107,6 @@ typedef struct EasterEggPosition {
 	
 	self.hexagonalView.delegate = nil;
 	
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - DAHexagonalViewDelegate
@@ -142,19 +169,6 @@ typedef struct EasterEggPosition {
 	[motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData * _Nullable accelerometerData, NSError * _Nullable error) {
 		
 		if (fabs(accelerometerData.acceleration.x) > 3) {
-//			printf("Acceletation.x = %.3f\n", accelerometerData.acceleration.x);
-//			[self presentEasterEggController:EasterEggControllerX];
-			
-			/*
-			if (eePos.pos1 == EasterEggControllerY && eePos.pos2 == EasterEggControllerZ) {
-				eePos.pos3 = EasterEggControllerX;
-				[self presentEasterEggController:EasterEggControllerX];
-			}
-			else if (eePos.pos1 == EasterEggControllerZ)
-				eePos.pos2 = EasterEggControllerX;
-			else
-				eePos.pos1 = EasterEggControllerX;
-			 */
 			
 			if (eePos.pos1 == EasterEggControllerZ) {
 				eePos.pos2 = EasterEggControllerX;
@@ -166,19 +180,6 @@ typedef struct EasterEggPosition {
 		}
 		
 		if (fabs(accelerometerData.acceleration.y) > 3) {
-//			printf("Acceletation.y = %.3f\n", accelerometerData.acceleration.y);
-//			[self presentEasterEggController:EasterEggControllerY];
-			
-			/*
-			if (eePos.pos1 == EasterEggControllerZ && eePos.pos2 == EasterEggControllerX) {
-				eePos.pos3 = EasterEggControllerY;
-				[self presentEasterEggController:EasterEggControllerY];
-			}
-			else if (eePos.pos1 == EasterEggControllerX)
-				eePos.pos2 = EasterEggControllerY;
-			else
-				eePos.pos1 = EasterEggControllerY;
-			 */
 			
 			if (eePos.pos1 == EasterEggControllerZ) {
 				eePos.pos2 = EasterEggControllerY;
@@ -189,19 +190,6 @@ typedef struct EasterEggPosition {
 		}
 		
 		if (fabs(accelerometerData.acceleration.z) > 3) {
-//			printf("Acceletation.z = %.3f\n", accelerometerData.acceleration.z);
-//			[self presentEasterEggController:EasterEggControllerZ];
-			
-			/*
-			if (eePos.pos1 == EasterEggControllerX && eePos.pos2 == EasterEggControllerY) {
-				eePos.pos3 = EasterEggControllerZ;
-				[self presentEasterEggController:EasterEggControllerZ];
-			}
-			else if (eePos.pos1 == EasterEggControllerY)
-				eePos.pos2 = EasterEggControllerZ;
-			else
-				eePos.pos1 = EasterEggControllerZ;
-			 */
 			
 			if (eePos.pos1 == EasterEggControllerY) {
 				eePos.pos2 = EasterEggControllerZ;
