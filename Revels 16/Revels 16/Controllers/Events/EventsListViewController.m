@@ -243,12 +243,12 @@
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
 	
-	NSInteger direction = 1;
+	NSInteger direction = -1;
 	NSInteger index = currentSegmentedIndex;
 	NSInteger newIndex = (index == 0)?4:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
-		direction = -1;
+		direction = 1;
 		newIndex = (index == 4)?0:(index + 1);
 	}
 	
