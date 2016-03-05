@@ -54,8 +54,10 @@
 
 - (IBAction)fetchCategories:(id)sender {
 	
-	SVHUD_SHOW;
-    
+	if (categories.count < 1) {
+		SVHUD_SHOW;
+	}
+	
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
         finalCategoryUrl = config[@"categories"];
 	
@@ -83,7 +85,7 @@
 		
             @try {
                 id jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                //        NSLog(@"%@", jsonData);
+                // NSLog(@"%@", jsonData);
 			
                 if (statusCode == 200)
                 {

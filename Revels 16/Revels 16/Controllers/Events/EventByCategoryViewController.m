@@ -56,7 +56,7 @@
 	filteredEvents = [NSMutableArray new];
 	
 	self.selectedIndexPath = nil;
-	currentSegmentedIndex = 0;
+	currentSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
 	
 	fetchCount = 0;
 	
@@ -120,13 +120,16 @@
 
 - (void)fetchFilteredEvents {
 	NSError *error;
+	
 	events = [[managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+	
 	filteredEvents = [NSMutableArray arrayWithArray:events];
 	if (error)
 		NSLog(@"Error in fetching: %@", error.localizedDescription);
+	
 	[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:currentSegmentedIndex]];
 	
-	if (filteredEvents.count < 1 && fetchCount < 2) {
+	if (events.count < 1 && fetchCount < 2) {
 		Reachability *reachability = [Reachability reachabilityForInternetConnection];
 		if ([reachability isReachable])
 			[self fetchEvents];
@@ -138,8 +141,6 @@
 	}
 	if (fetchCount == 2) {
 		SVHUD_FAILURE(@"Failed!");
-		// Display more information as toast?
-//		[self dismissSelf:nil];
 	}
 }
 
@@ -148,7 +149,13 @@
 	SVHUD_SHOW;
     
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
-        finalCategoryUrl = config[@"categories"];
+		
+		@try {
+			finalCategoryUrl = config[@"categories"];
+		}
+		@catch (NSException *exception) {
+			NSLog(@"%@", exception.reason);
+		}
 	
         NSURL *categoryUrl = [NSURL URLWithString:finalCategoryUrl];
 	
@@ -191,7 +198,13 @@
 - (void)fetchEventSchedule {
     
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
-        finalEventsUrl = config[@"schedule"];
+		
+		@try {
+			finalEventsUrl = config[@"categories"];
+		}
+		@catch (NSException *exception) {
+			NSLog(@"%@", exception.reason);
+		}
 	
         NSURL *eventsURL = [NSURL URLWithString:finalEventsUrl];
 	
@@ -250,13 +263,13 @@
 	if (index < currentSegmentedIndex)
 		direction = -1;
 	
-	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+	[UIView animateWithDuration:0.12 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.tableView.layer.transform = CATransform3DMakeTranslation(- direction * (SWdith + 40), 0, 0);
 		self.tableView.alpha = 0.5;
 	} completion:^(BOOL finished) {
 		self.tableView.layer.transform = CATransform3DMakeTranslation(direction * (SWdith + 40), 0, 0);
 		[self filterEventsForSelectedSegmentTitle:[segmentedControl titleForSegmentAtIndex:index]];
-		[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+		[UIView animateWithDuration:0.12 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 			self.tableView.layer.transform = CATransform3DIdentity;
 			self.tableView.alpha = 1.f;
 		} completion:nil];
@@ -276,16 +289,16 @@
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
 	
-	NSInteger direction = -1;
+	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
 	NSInteger newIndex = (index == 0)?4:(index - 1);
 	
-	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
-		direction = 1;
+	if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+		direction = -1;
 		newIndex = (index == 4)?0:(index + 1);
 	}
 	
-	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+	[UIView animateWithDuration:0.12 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.tableView.layer.transform = CATransform3DMakeTranslation(- direction * (SWdith + 40), 0, 0);
 		self.tableView.alpha = 0.5;
 	} completion:^(BOOL finished) {
@@ -293,7 +306,7 @@
 		self.segmentedControl.selectedSegmentIndex = newIndex;
 		[self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:newIndex]];
 		currentSegmentedIndex = newIndex;
-		[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+		[UIView animateWithDuration:0.12 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 			self.tableView.layer.transform = CATransform3DIdentity;
 			self.tableView.alpha = 1.f;
 		} completion:nil];
@@ -433,12 +446,15 @@
 }
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
-	return GLOBAL_BACK_COLOR;
+	return self.view.backgroundColor;
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
 	
-	NSString *text = @"No data found.";
+	NSString *text;
+	if (self.segmentedControl.selectedSegmentIndex < 4) {
+		text = [NSString stringWithFormat:@"No events for Day %li", self.segmentedControl.selectedSegmentIndex + 1];
+	}
 	
 	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.f],
 								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
@@ -450,17 +466,18 @@
 	
 	NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.f]};
 	
-	return [[NSAttributedString alloc] initWithString:@"Reload" attributes:attributes];
+	return [[NSAttributedString alloc] initWithString:@"Show all" attributes:attributes];
 }
 
 #pragma mark - DZN Empty Data Set Source
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
-	return (events.count == 0);
+	return (filteredEvents.count == 0);
 }
 
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
-	[self fetchEvents];
+	self.segmentedControl.selectedSegmentIndex = 4;
+	[self segmentedControlValueChanged:self.segmentedControl];
 }
 
 #pragma mark - Cell button actions

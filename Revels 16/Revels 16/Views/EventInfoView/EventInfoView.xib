@@ -17,8 +17,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faR-LF-PMe">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventNameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-ZA-zpg" customClass="UnderlinedLabel">
-                                    <rect key="frame" x="8" y="8" width="304" height="28"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventNameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-ZA-zpg" customClass="UnderlinedLabel">
+                                    <rect key="frame" x="60" y="8" width="200" height="28"/>
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -45,14 +45,22 @@
                                 <constraint firstAttribute="bottom" secondItem="ZkN-ZA-zpg" secondAttribute="bottom" constant="8" id="KzH-fp-H1q"/>
                                 <constraint firstItem="0v9-cE-TRS" firstAttribute="top" secondItem="faR-LF-PMe" secondAttribute="top" id="M0h-qD-pbT"/>
                                 <constraint firstItem="ZkN-ZA-zpg" firstAttribute="top" secondItem="faR-LF-PMe" secondAttribute="top" constant="8" id="Rx8-HI-R3e"/>
+                                <constraint firstItem="ZkN-ZA-zpg" firstAttribute="leading" secondItem="0v9-cE-TRS" secondAttribute="trailing" constant="8" id="ULI-Z2-br7"/>
                                 <constraint firstItem="ZkN-ZA-zpg" firstAttribute="leading" secondItem="faR-LF-PMe" secondAttribute="leading" constant="8" id="c3D-6D-kIh"/>
                                 <constraint firstAttribute="trailing" secondItem="ZkN-ZA-zpg" secondAttribute="trailing" constant="8" id="dH7-Jj-sg0"/>
+                                <constraint firstItem="ZkN-ZA-zpg" firstAttribute="centerX" secondItem="faR-LF-PMe" secondAttribute="centerX" id="ztT-ob-x2v"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="12"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="c3D-6D-kIh"/>
+                                    <exclude reference="dH7-Jj-sg0"/>
+                                </mask>
+                            </variation>
                         </view>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="pBJ-oR-7fh">
                             <rect key="frame" x="8" y="240" width="32" height="32"/>
@@ -118,10 +126,22 @@
                             <rect key="frame" x="8" y="44" width="304" height="188"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
                         </textView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9F-yy-8aM">
+                            <rect key="frame" x="8" y="231" width="304" height="1"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="eDF-02-fBH"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="Ooz-TB-ms2" firstAttribute="trailing" secondItem="g3y-FD-WOt" secondAttribute="trailing" id="49p-BS-yzO"/>
@@ -144,8 +164,11 @@
                         <constraint firstItem="fHT-6D-AFq" firstAttribute="leading" secondItem="4QT-53-8Ga" secondAttribute="trailing" constant="8" id="ed6-R1-8Cl"/>
                         <constraint firstItem="z3F-l9-yHb" firstAttribute="bottom" secondItem="pBJ-oR-7fh" secondAttribute="bottom" id="fav-a9-5OB"/>
                         <constraint firstItem="fHT-6D-AFq" firstAttribute="bottom" secondItem="4QT-53-8Ga" secondAttribute="bottom" id="hlV-34-ccc"/>
+                        <constraint firstItem="N9F-yy-8aM" firstAttribute="trailing" secondItem="9cb-iC-ffV" secondAttribute="trailing" id="jXB-gS-ChQ"/>
                         <constraint firstItem="9cb-iC-ffV" firstAttribute="top" secondItem="faR-LF-PMe" secondAttribute="bottom" id="leS-rs-TiZ"/>
                         <constraint firstItem="4QT-53-8Ga" firstAttribute="top" secondItem="pBJ-oR-7fh" secondAttribute="bottom" constant="8" id="maE-Rw-nW7"/>
+                        <constraint firstItem="N9F-yy-8aM" firstAttribute="leading" secondItem="9cb-iC-ffV" secondAttribute="leading" id="pIs-7d-P2y"/>
+                        <constraint firstItem="N9F-yy-8aM" firstAttribute="bottom" secondItem="9cb-iC-ffV" secondAttribute="bottom" id="q9O-Pm-vOq"/>
                         <constraint firstAttribute="trailing" secondItem="9cb-iC-ffV" secondAttribute="trailing" constant="8" id="qz9-iz-sib"/>
                         <constraint firstItem="4QT-53-8Ga" firstAttribute="leading" secondItem="Mky-WK-brj" secondAttribute="leading" constant="8" id="rKY-9q-7lx"/>
                         <constraint firstAttribute="trailing" secondItem="faR-LF-PMe" secondAttribute="trailing" id="s0k-rO-5lC"/>

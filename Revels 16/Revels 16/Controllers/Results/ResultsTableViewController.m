@@ -68,6 +68,7 @@
 	SVHUD_SHOW;
     
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+		
         finalResultUrl = config[@"results"];
 	
         NSURL *URL = [NSURL URLWithString:finalResultUrl];
@@ -134,8 +135,10 @@
 - (void)setupSearchController {
 	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
 	self.searchController.searchResultsUpdater = self;
-	self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
 	self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
+	UITextField *txfSearchField = [self.searchController.searchBar valueForKey:@"_searchField"];
+	txfSearchField.backgroundColor = [UIColor colorWithWhite:0.90 alpha:1.0];
+	self.searchController.searchBar.barTintColor = [UIColor whiteColor];
 	self.searchController.searchBar.tintColor = [UIColor blackColor];
 	self.searchController.dimsBackgroundDuringPresentation = NO;
 	self.definesPresentationContext = YES;

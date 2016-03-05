@@ -55,6 +55,7 @@
 	
 	managedObjectContext = [AppDelegate managedObjectContext];
 	fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"REVEvent"];
+	[fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES]]];
 	
 	[self setupSearchController];
 	
@@ -111,8 +112,10 @@
 
 - (void)fetchEvents {
 	
-	SVHUD_SHOW;
-    
+	if (events.count < 1) {
+		SVHUD_SHOW;
+	}
+	
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
         finalCategoryUrl = config[@"categories"];
 	
@@ -177,6 +180,9 @@
                 NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     events = [NSMutableArray arrayWithArray:evnts];
+					[events sortUsingComparator:^NSComparisonResult(REVEvent *event1, REVEvent *event2) {
+						return [event1.startDate compare:event2.startDate];
+					}];
                     [self filterEventsForSelectedSegmentTitle:[self.segmentedControl titleForSegmentAtIndex:self.segmentedControl.selectedSegmentIndex]];
                 });
             }
@@ -243,12 +249,12 @@
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)recognizer {
 	
-	NSInteger direction = -1;
+	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
 	NSInteger newIndex = (index == 0)?4:(index - 1);
 	
-	if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
-		direction = 1;
+	if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+		direction = -1;
 		newIndex = (index == 4)?0:(index + 1);
 	}
 	
