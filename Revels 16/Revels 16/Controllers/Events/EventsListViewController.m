@@ -82,7 +82,13 @@
 	
 	[self fetchLocalEvents];
 	
-	[self refreshAction:nil];
+	Reachability *reachability = [Reachability reachabilityForInternetConnection];
+	if ([reachability isReachable]) {
+		[self fetchEvents];
+	}
+	else {
+		SVHUD_FAILURE(@"No connection!");
+	}
 	
 	self.tableView.emptyDataSetDelegate = self;
 	self.tableView.emptyDataSetSource = self;
@@ -253,11 +259,11 @@
 	
 	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
-	NSInteger newIndex = (index == 0)?4:(index - 1);
+	NSInteger newIndex = (index == 0)?3:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
 		direction = -1;
-		newIndex = (index == 4)?0:(index + 1);
+		newIndex = (index == 3)?0:(index + 1);
 	}
 	
 	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -303,7 +309,7 @@
 	if (cell == nil)
 		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
-	cell.eventNameLabel.text = [NSString stringWithFormat:@"%@ | %@", event.name, event.day];
+	cell.eventNameLabel.text = event.name;
 	cell.categoryNameLabel.text = event.categoryName;
 	
 	[cell.infoButton setTag:indexPath.row];

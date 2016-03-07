@@ -47,7 +47,6 @@
                                             <segment title="Day 2"/>
                                             <segment title="Day 3"/>
                                             <segment title="Day 4"/>
-                                            <segment title="All"/>
                                         </segments>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -2298,7 +2297,7 @@ Said the joker to the thief,
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-ub-0jT" customClass="ExtendedNavBarView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="5wD-4P-eJt">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5wD-4P-eJt">
                                         <rect key="frame" x="8" y="8" width="584" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <segments>
@@ -2306,7 +2305,6 @@ Said the joker to the thief,
                                             <segment title="Day 2"/>
                                             <segment title="Day 3"/>
                                             <segment title="Day 4"/>
-                                            <segment title="All"/>
                                         </segments>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>

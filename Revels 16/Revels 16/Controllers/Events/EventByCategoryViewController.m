@@ -225,6 +225,9 @@
                     NSMutableArray *evnts = [REVEvent eventsAfterUpdatingScheduleFromJSONData:[jsonData valueForKey:@"data"] inManagedObjectContext:managedObjectContext];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         events = [NSMutableArray arrayWithArray:evnts];
+						[events sortUsingComparator:^NSComparisonResult(REVEvent *event1, REVEvent *event2) {
+							return [event1.startDate compare:event2.startDate];
+						}];
                         [self.refreshControl endRefreshing];
                         [self fetchFilteredEvents];
                     });
@@ -286,11 +289,11 @@
 	
 	NSInteger direction = 1;
 	NSInteger index = currentSegmentedIndex;
-	NSInteger newIndex = (index == 0)?4:(index - 1);
+	NSInteger newIndex = (index == 0)?3:(index - 1);
 	
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
 		direction = -1;
-		newIndex = (index == 4)?0:(index + 1);
+		newIndex = (index == 3)?0:(index + 1);
 	}
 	
 	[UIView animateWithDuration:0.12 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -333,7 +336,7 @@
 	if (cell == nil)
 		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
-	cell.eventNameLabel.text = [NSString stringWithFormat:@"%@ | %@", event.name, event.day];
+	cell.eventNameLabel.text = event.name;
 	cell.categoryNameLabel.text = event.detail;
 	
 	[cell.infoButton setTag:indexPath.row];
@@ -605,8 +608,10 @@
 
 - (void)filterEventsForSelectedSegmentTitle:(NSString *)segmentTitle {
 	filteredEvents = [NSMutableArray arrayWithArray:events];
-	if (self.segmentedControl.selectedSegmentIndex != 4)
+//	if (self.segmentedControl.selectedSegmentIndex != 4)
 		[filteredEvents filterUsingPredicate:[NSPredicate predicateWithFormat:@"day == %@", segmentTitle]];
+//	else
+//		[filteredEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%@ contains[cd] day", @"Day 1 Day 2 Day 3 Day 4"]];
 	[self.tableView reloadData];
 }
 

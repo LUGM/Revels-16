@@ -96,7 +96,7 @@
 	if (cell == nil)
 		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
-	cell.eventNameLabel.text = event.name;
+	cell.eventNameLabel.text = [NSString stringWithFormat:@"%@ (%@)", event.name, event.day];
 	cell.categoryNameLabel.text = event.categoryName;
 	
 	[cell.infoButton setTag:indexPath.row];
