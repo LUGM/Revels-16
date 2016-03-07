@@ -199,12 +199,7 @@
     
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
 		
-		@try {
-			finalEventsUrl = config[@"categories"];
-		}
-		@catch (NSException *exception) {
-			NSLog(@"%@", exception.reason);
-		}
+		finalEventsUrl = config[@"schedule"];
 	
         NSURL *eventsURL = [NSURL URLWithString:finalEventsUrl];
 	
@@ -338,7 +333,7 @@
 	if (cell == nil)
 		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
-	cell.eventNameLabel.text = event.name;
+	cell.eventNameLabel.text = [NSString stringWithFormat:@"%@ | %@", event.name, event.day];
 	cell.categoryNameLabel.text = event.detail;
 	
 	[cell.infoButton setTag:indexPath.row];

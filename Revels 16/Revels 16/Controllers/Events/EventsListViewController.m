@@ -98,6 +98,7 @@
 - (IBAction)refreshAction:(id)sender {
 	Reachability *reachability = [Reachability reachabilityForInternetConnection];
 	if ([reachability isReachable]) {
+		SVHUD_SHOW;
 		[self fetchEvents];
 	}
 	else {
@@ -117,6 +118,7 @@
 	}
 	
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig * _Nullable config, NSError * _Nullable error) {
+		
         finalCategoryUrl = config[@"categories"];
 	
         NSURL *eventsUrl = [NSURL URLWithString:finalCategoryUrl];
@@ -301,7 +303,7 @@
 	if (cell == nil)
 		cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCell"];
 	
-	cell.eventNameLabel.text = event.name;
+	cell.eventNameLabel.text = [NSString stringWithFormat:@"%@ | %@", event.name, event.day];
 	cell.categoryNameLabel.text = event.categoryName;
 	
 	[cell.infoButton setTag:indexPath.row];

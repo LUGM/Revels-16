@@ -50,6 +50,7 @@
 			event.isFavourite = NO;
 			event.contactName = [NSString stringWithFormat:@"%@", dict[@"cntctname"]];
 			event.contactPhone = [NSString stringWithFormat:@"%@", dict[@"cntctno"]];
+			event.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
 		}
 		@catch (NSException *exception) {
 			NSLog(@"Event parsing error: %@", exception.reason);
@@ -105,7 +106,9 @@
 					}
 					
 					else {
+						
 						printf("Inserting : %s\n", [dict[@"eid"] UTF8String]);
+						
 						[REVEvent createNewEventWithDict:dict inEntity:[NSEntityDescription entityForName:@"REVEvent" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
 					}
 					
@@ -143,11 +146,15 @@
 			NSString *cid = [NSString stringWithFormat:@"%@", [dict objectForKey:@"cid"]];
 			NSString *eid = [NSString stringWithFormat:@"%@", [dict objectForKey:@"eid"]];
 			
-			NSArray *filteredArray = [events filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"eid == %@ AND catID == %@", eid, cid]];
+			NSString *day = [NSString stringWithFormat:@"Day %@", [dict objectForKey:@"day"]];
+			
+			NSArray *filteredArray = [events filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"eid == %@ AND catID == %@ AND day == %@", eid, cid, day]];
 			REVEvent *fevent = [filteredArray firstObject];
 			
 			if (fevent != nil) {
+				
 				printf("Updating : %s|%s\n", cid.UTF8String, eid.UTF8String);
+				
 				fevent.venue = [NSString stringWithFormat:@"%@", dict[@"evenue"]];
 				fevent.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
 				
@@ -155,6 +162,39 @@
 				[formatter setDateFormat:@"d-M-yy h:mm a"];
 				fevent.startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"strttime"]]];
 				fevent.endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"endtime"]]];
+				
+			}
+			else {
+				
+				filteredArray = [events filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"eid == %@ AND catID == %@", eid, cid]];
+				fevent = [filteredArray firstObject];
+				
+				if (fevent != nil) {
+					
+					printf("Inserting : %s|%s\n", cid.UTF8String, eid.UTF8String);
+					
+					REVEvent *nevent = [REVEvent createNewEventWithDict:dict inEntity:[NSEntityDescription entityForName:@"REVEvent" inManagedObjectContext:managedObjectContext] insertIntoManagedObjectContext:managedObjectContext];
+					
+					nevent.uid = fevent.uid;
+					nevent.name = fevent.name;
+					nevent.eid = fevent.eid;
+					nevent.detail = fevent.detail;
+					nevent.maxTeamNo = fevent.maxTeamNo;
+					nevent.categoryName = fevent.categoryName;
+					nevent.catID = fevent.catID;
+					nevent.isFavourite = NO;
+					nevent.contactName = fevent.contactName;
+					nevent.contactPhone = fevent.contactPhone;
+					
+					nevent.venue = [NSString stringWithFormat:@"%@", dict[@"evenue"]];
+					nevent.day = [NSString stringWithFormat:@"Day %@", dict[@"day"]];
+					
+					NSDateFormatter *formatter = [NSDateFormatter new];
+					[formatter setDateFormat:@"d-M-yy h:mm a"];
+					nevent.startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"strttime"]]];
+					nevent.endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dict[@"date"], dict[@"endtime"]]];
+					
+				}
 				
 			}
 		}
