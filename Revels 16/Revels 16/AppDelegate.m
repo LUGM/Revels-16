@@ -3,7 +3,7 @@
 //  Revels 16
 //
 //  Created by Avikant Saini on 2/1/16.
-//  Copyright © 2016 Dark Army. All rights reserved.
+//  Copyright © 2016 LUGM. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -43,9 +43,9 @@
 	UIMutableApplicationShortcutItem *resultsItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.da.revels.results" localizedTitle:@"Results"];
 	[resultsItem setIcon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"44resultsIcon"]];
 	[application setShortcutItems:@[catItem, eventsItem, instaItem, resultsItem]];
-    
-    // Parse init
-    [Parse setApplicationId:@"b4ySAS7cIdzpkfG78S61gsgXGnmejk7wC3VO4nOz" clientKey:@"o0U4wRrAgquQXj96F4fTx1C2LxUfyM3IobMJzyA0"];
+	
+	// To get client key and application id message us at https://www.facebook.com/LUGManipal/
+//    [Parse setApplicationId:@"" clientKey:@""];
 	
 	// Register for Push Notitications
 	UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |

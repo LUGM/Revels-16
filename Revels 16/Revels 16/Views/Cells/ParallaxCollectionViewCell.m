@@ -38,7 +38,7 @@
 
 - (void)setupImageView {
 	self.clipsToBounds = YES;
-	self.parallaxImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, IMAGE_HEIGHT)];
+	self.parallaxImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.origin.x - 2, self.bounds.origin.y - 2, self.bounds.size.width + 4, IMAGE_HEIGHT + 4)];
 	self.parallaxImageView.backgroundColor = [UIColor redColor];
 	self.parallaxImageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.parallaxImageView.clipsToBounds = NO;

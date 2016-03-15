@@ -35,6 +35,7 @@
 	
 	instagramObjects = [NSMutableArray new];
 	
+	SVHUD_SHOW;
 	[self refreshAction:nil];
 	
 	self.transition = [KWTransition manager];
@@ -84,7 +85,7 @@
 
 - (void)fetchImages {
 	
-	SVHUD_SHOW;
+//	SVHUD_SHOW;
 	
 	ASMutableURLRequest *request = [ASMutableURLRequest getRequestWithURL:nextURL];
 	
@@ -114,7 +115,7 @@
 					[self.collectionView reloadData];
 					//				[self.collectionView reloadInputViews];
 					SVHUD_HIDE;
-					lastIndexPath = [NSIndexPath indexPathForRow:instagramObjects.count - 1 inSection:0];
+					lastIndexPath = [NSIndexPath indexPathForRow:instagramObjects.count - 9 inSection:0];
 				});
 				
 			}
@@ -241,21 +242,21 @@
 #pragma mark - Collection view delegate flow layout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-	CGFloat size = self.collectionView.bounds.size.width/2 - 16;
+	CGFloat size = self.collectionView.bounds.size.width/2;
 	return CGSizeMake(size, size);
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-	return UIEdgeInsetsMake(4, 4, 4, 4);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-	return 16.f;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-	return 16.f;
-}
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+//	return UIEdgeInsetsMake(4, 4, 4, 4);
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+//	return 16.f;
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+//	return 16.f;
+//}
 
 #pragma mark - Scroll view delegate
 
@@ -266,10 +267,15 @@
 			CGFloat yOffset = ((self.collectionView.contentOffset.y - cell.frame.origin.y) / IMAGE_HEIGHT) * IMAGE_OFFSET_SPEED;
 			cell.imageOffset = CGPointMake(0.0f, yOffset);
 		}
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:instagramObjects.count - 1 inSection:0];
 		if ([self.collectionView.indexPathsForVisibleItems containsObject:lastIndexPath]) {
 			lastIndexPath = nil;
-			SVHUD_SHOW;
+//			SVHUD_SHOW;
 			[self fetchImages];
+		}
+		if ([self.collectionView.indexPathsForVisibleItems containsObject:indexPath]) {
+			if (lastIndexPath == nil)
+				SVHUD_SHOW;
 		}
 	}
 }
